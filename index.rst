@@ -18,3 +18,25 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: General
+
+   architecture
+   reference
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Prereqs
+
+   prerequisites
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Configure
+
+   configuration
