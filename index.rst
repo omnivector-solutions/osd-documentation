@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to OSD Documentation's documentation!
-=============================================
+Welcome to the Omnivector Slurm Distribution documentation!
+===========================================================
 
 .. toctree::
    :maxdepth: 2
