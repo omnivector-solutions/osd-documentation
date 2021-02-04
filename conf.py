@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'OSD Documentation'
+project = 'Omnivector Slurm Distribution'
 copyright = '2021, Omnivector Solutions'
 author = 'Omnivector Solutions'
 
