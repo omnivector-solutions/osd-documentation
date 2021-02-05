@@ -30,7 +30,7 @@ Indices and tables
 
 .. toctree::
    :maxdepth: 2
-   :caption: Prereqs
+   :caption: Prerequisites
 
    prerequisites
 

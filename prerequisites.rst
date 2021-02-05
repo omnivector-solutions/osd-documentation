@@ -1,6 +1,6 @@
-.. _deployment:
+.. _prerequisits:
 
-Prereqs
+Prerequisits
 ============
 
 The slurm charms can be deployed to a cloud substrate of your choosing. In order
@@ -12,7 +12,7 @@ to deploy the slurm charms you must have juju installed on your local system.
 .. toctree::
    :maxdepth: 2
    :numbered: 1
-   :caption: Quick Start Guide
+   :caption: Prerequisits
 
-   prereqs/install-juju-and-lxd
-   prereqs/deploy-slurm-charms-on-lxd
+   prerequisits/install-juju-and-lxd
+   prerequisits/deploy-slurm-charms-on-lxd
