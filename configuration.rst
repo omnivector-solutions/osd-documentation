@@ -13,12 +13,29 @@ Meaning that all upstream slurm configurations are supported by OSD.
 
 
 The `slurm.conf` file can be customized through the slurm charm configuration options.
-Each slurm component charm provides a set of options that enable
+Each slurm component charm provides a set of options that enable operators to configure the
+cluster.
 
-
+*************
+Slurmctld
+*************
+The central management daemon of Slurm.  
 
 *************
 Slurmd
 *************
 The compute node daemon for Slurm.
+
+*************
+slurmdbd
+*************
+Slurm Database Daemon.
+
+*************
+slurm-configurator
+*************
+Slurm configuration engine.
+
+
+
 
