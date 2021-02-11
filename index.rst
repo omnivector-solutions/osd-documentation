@@ -39,4 +39,4 @@ Indices and tables
    :maxdepth: 2
    :caption: Configure
 
-   configuration
+   configuration/configuration

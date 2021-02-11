@@ -9,33 +9,18 @@ Meaning that all upstream slurm configurations are supported by OSD.
 .. toctree::
    :maxdepth: 2
    :numbered: 1
-   :caption: How to configure slurm
-
 
 The `slurm.conf` file can be customized through the slurm charm configuration options.
 Each slurm component charm provides a set of options that enable operators to configure the
 cluster.
 
-*************
-Slurmctld
-*************
-The central management daemon of Slurm.  
 
-*************
-Slurmd
-*************
-The compute node daemon for Slurm.
+.. toctree::
+   :maxdepth: 2
+   :numbered:
 
-*************
-slurmdbd
-*************
-Slurm Database Daemon.
-
-*************
-slurm-configurator
-*************
-Slurm configuration engine.
-
-
-
-
+   slurm-configurator
+   slurmctld
+   slurmd
+   slurmdbd
+   slurmrestd
