@@ -1,0 +1,46 @@
+name: Publish Docs
+
+on:
+  push:
+    branches: [master, testing, release/**]
+  pull_request:
+    branches: [master, testing, release/**]
+
+jobs:
+  publish-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Make Html
+        run: |
+          # Use the osc sphinx docker image to build our sphinx docs
+          docker run --rm -v "${PWD}:/doc" -u "$(id -u):$(id -g)" ohiosupercomputer/docker-sphinx make html
+
+      - id: set-git-user
+        run: |
+          git config user.name omnivector-qa
+          git config user.email admin@omnivector.solutions
+
+      - name: Checkout the gh-pages branch, commit and push
+        run: |
+          # Get and store the branch name that we are building.
+          REF=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
+          # Move the docs in /tmp to clear the changes to the filesystem
+          # and to preserve for later use.
+          mv build/ /tmp/
+          # Fetch the gh-pages branch.
+          git fetch origin gh-pages:gh-pages
+          # Checkout the gh-pages branch.
+          git checkout gh-pages
+          # Remove the docs for this branch/release if there are any.
+          rm -fr "${REF}"
+          # Copy the built html to a directory named after
+          # the branch/release we are building.
+          cp -R /tmp/build/html "${REF}"
+          # Add, commit, and push the newly built docs to the docs repo.
+          git add -A .
+          git commit -m "[ci skip] Autodoc commit for ${GITHUB_SHA}."
+          git push -q -f origin gh-pages

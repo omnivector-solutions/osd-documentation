@@ -1,4 +1,4 @@
-.. _configuration-slurmctld:
+.. _operations-slurmctld:
 
 *************
 Slurmctld
@@ -6,7 +6,7 @@ Slurmctld
 The central management daemon of Slurm.  
 
 
-.. list-table:: slurmctld options
+.. list-table::
    :header-rows: 1
 
    * - Config
@@ -29,3 +29,6 @@ The central management daemon of Slurm.
        A comma-separated list of nagios servicegroups.
        If left empty, the nagios_context will be used as the servicegroup
      -
+
+.. actions::
+   :header-rows: 1

@@ -5,7 +5,7 @@ slurm-configurator
 ******************
 Slurm configuration engine.
 
-.. list-table:: slurm-configurator options
+.. list-table:: slurm-configurator charm configuration
    :header-rows: 1
 
    * - Config
@@ -38,6 +38,18 @@ Slurm configuration engine.
      - Type of node criteria to use for setting weights on nodes.
      -
 
+.. list-table:: slurm-configurator charm actions
+   :header-rows: 1
 
-
-
+   * - Action
+     - Description
+     - Parameters
+   * - restart-slurmctld
+     - Restart the slurmctld process.
+     - 
+   * - restart-slurmd
+     - Restart the slurmd process.
+     -
+   * - get-slurm-conf
+     - Return the slurm.conf file as a string.
+     -
