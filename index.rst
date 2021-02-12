@@ -9,7 +9,7 @@ Welcome to the Omnivector Slurm Distribution documentation!
 .. toctree::
    :maxdepth: 2
 
-   Installation Overview <installation/installation>
+   Slurm Installation Overview <slurm-installation/overview>
 
 
 .. toctree::
