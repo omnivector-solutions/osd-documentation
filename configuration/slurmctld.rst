@@ -1,17 +1,20 @@
-.. _configuration-configuration-slurmctld:
+.. _configuration-slurmctld:
 
 *************
 Slurmctld
 *************
 The central management daemon of Slurm.  
 
+
 .. list-table:: slurmctld options
+   :header-rows: 1
+
    * - Config
      - Description
      - Default value
    * - snapstore-channel
      - Snapstore channel to install the slurm snap from.
-     - "--stable"
+     - --stable
    * - nagios_context
      - |
        Used by the nrpe subordinate charms.
@@ -23,8 +26,6 @@ The central management daemon of Slurm.
      -
    * - nagios_servicegroups
      - |
-      A comma-separated list of nagios servicegroups.
-      If left empty, the nagios_context will be used as the servicegroup
+       A comma-separated list of nagios servicegroups.
+       If left empty, the nagios_context will be used as the servicegroup
      -
-
-

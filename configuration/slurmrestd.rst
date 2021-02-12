@@ -14,5 +14,5 @@ Interface to Slurm via REST API.
      - Default value
    * - snapstore-channel
      - Snap store channel to install the slurm snap from.
-     - "--stable"
+     - --stable
  

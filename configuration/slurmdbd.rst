@@ -1,4 +1,4 @@
-.. _configuration-configuration-slurmdbd:
+.. _configuration-slurmdbd:
 
 *************
 slurmdbd
@@ -14,7 +14,7 @@ Slurm Database Daemon.
      - Default value[
    * - snapstore-channel
      - Snap store channel to install the slurm snap from.
-     - "--stable"
+     - --stable
    * - nagios_context
      - |
        Used by the nrpe subordinate charms.

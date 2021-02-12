@@ -13,7 +13,7 @@ Slurm configuration engine.
      - Default value
    * - snapstore-channel
      - Snapstore channel to install the slurm snap from.
-     - "--stable"
+     - --stable
    * - cluster_name
      - Name of the slurm cluster.
      - cluster1

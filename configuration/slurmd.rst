@@ -1,4 +1,4 @@
-.. _configuration-configuration-slurmd:
+.. _configuration-slurmd:
 
 *************
 Slurmd
@@ -14,7 +14,7 @@ The compute node daemon for Slurm.
      - Default value
    * - snapstore-channel
      - Snap store channel to install the slurm snap from.
-     - "--stable"
+     - --stable
    * - partition-name
      - |
        Name by which the partition may be referenced (e.g. "Interactive"). This
@@ -24,6 +24,7 @@ The compute node daemon for Slurm.
        in that partition record or replaced with a different set of default
        values. Each line where PartitionName is "DEFAULT" will replace or add to
        previous default values and not a reinitialize the default values.
+     - 
    * - partition-config
      - |
        Extra partition configuration specified as a space separated key=value single line.
