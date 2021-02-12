@@ -8,8 +8,20 @@ Welcome to the Omnivector Slurm Distribution documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
+   Installation Overview <installation/installation>
+
+
+.. toctree::
+   :maxdepth: 2
+
+   Upgrade Overview <upgrades/upgrades>
+
+
+.. toctree::
+   :maxdepth: 2
+
+   Configuration Overview <configuration/configuration>
 
 
 Indices and tables
@@ -18,25 +30,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: General
-
-   architecture
-   reference
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Prerequisites
-
-   prerequisites
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Configure
-
-   configuration/configuration
