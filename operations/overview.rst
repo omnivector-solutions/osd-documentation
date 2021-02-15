@@ -17,6 +17,8 @@ tools called *actions*.
 
 Find the charm action information and configuration information for each charm:
 
+**Configuration and Actions**
+
 .. toctree::
    :maxdepth: 2
 
@@ -25,3 +27,18 @@ Find the charm action information and configuration information for each charm:
    slurmd
    slurmdbd
    slurmrestd
+
+
+**Upgrade Procedure**
+
+.. toctree::
+   :maxdepth: 2
+
+   upgrading-osd
+
+**Backup Procedure**
+
+.. toctree::
+   :maxdepth: 2
+
+   backups
