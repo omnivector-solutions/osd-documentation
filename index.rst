@@ -21,7 +21,7 @@ Welcome to the Omnivector Slurm Distribution documentation!
 .. toctree::
    :maxdepth: 2
 
-   Configuration Overview <configuration/configuration>
+   Operations Overview <operations/operations>
 
 
 Indices and tables
