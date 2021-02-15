@@ -16,3 +16,9 @@ Find a list of each charm's configuration options and administrative actions bel
    slurmdbd
    slurmrestd
    slurm-configurator
+
+
+Common Operations
+*****************
+
+

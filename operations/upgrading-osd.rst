@@ -10,22 +10,29 @@ If the desired affect is to upgrade the ops code, upgrade the charms. In the cas
 to update the running slurm process itself, you will want to upgrade the snap.
 
 
-**Charm Upgrades**
-
+Charm Upgrades
+**************
 To upgrade the operations code, the slurm charms, you can follow the example
  (the order in which charms are upgraded does not matter here):
 
 .. code-block:: bash
 
-    for application in slurmctld slurmd slurmdbd slurmrestd slurm-configurator; do
+    for application in slurmctld \
+                       slurmd \
+                       slurmdbd \
+                       slurmrestd \
+                       slurm-configurator; do
+
         juju upgrade-charm $application
+
     done
 
 Juju will reach out to the charmhub and pull down the latest charm code (if a more recent revisions exists
 then what is running on the machine) and run the ``upgrade-charm`` hook event.
 
 
-**Snap Upgrades**
+Snap Upgrades
+**************
 
 The slurm snap can be upgraded via the slurm charms in a number of ways:
 
@@ -35,8 +42,14 @@ to a later version, attach the snap resource to the charm as follows.
 
 .. code-block:: bash
 
-    for application in slurmctld slurmd slurmdbd slurmrestd slurm-configurator; do
+    for application in slurmctld \
+                       slurmd \
+                       slurmdbd \
+                       slurmrestd \
+                       slurm-configurator; do
+
         juju attach $application slurm-resource=slurm-snap.resource
+
     done
 
 
@@ -44,6 +57,13 @@ In the case you want to upgrade the snap and the charm simultaneously, you can r
 
 .. code-block:: bash
 
-    for application in slurmctld slurmd slurmdbd slurmrestd slurm-configurator; do
-        juju upgrade-charm $application --resource slurm-resource=slurm-snap.resource
+    for application in slurmctld \
+                       slurmd \
+                       slurmdbd \
+                       slurmrestd \
+                       slurm-configurator; do
+
+        juju upgrade-charm $application \
+            --resource slurm-resource=slurm-snap.resource
+
     done
