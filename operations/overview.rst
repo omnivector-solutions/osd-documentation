@@ -17,17 +17,12 @@ tools called *actions*.
 
 Find the charm action information and configuration information for each charm:
 
-**Configuration and Actions**
+**Configuration and Administration**
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
-   slurm-configurator
-   slurmctld
-   slurmd
-   slurmdbd
-   slurmrestd
-
+   configuration/configuration
 
 **Upgrade Procedure**
 
@@ -36,9 +31,9 @@ Find the charm action information and configuration information for each charm:
 
    upgrading-osd
 
-**Backup Procedure**
+**Backup/Restore Procedure**
 
 .. toctree::
    :maxdepth: 2
 
-   backups
+   backup-restore

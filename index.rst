@@ -13,13 +13,7 @@ Welcome to the Omnivector Slurm Distribution documentation!
 
 
 .. toctree::
-   :maxdepth: 2
-
-   Upgrade Overview <upgrades/upgrades>
-
-
-.. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    Operations Overview <operations/overview>
 
