@@ -117,3 +117,6 @@ you can see the status of your cluster by running the ``sinfo`` command:
 .. code-block:: bash
 
    $ juju run --unit slurm-configurator/0 sinfo
+   PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
+   juju-compute-GsLk    up   infinite      1   idle juju-01ab62-3
+   configurator*     inact   infinite      1   idle juju-01ab62-1
