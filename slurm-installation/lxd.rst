@@ -28,13 +28,14 @@ You can now bootstrap your local cloud:
 
    juju bootstrap localhost
 
-The command ``juju clouds`` can give you some details about the available
-clouds, and the command ``juju status`` shows the status of that cloud.
+Following a successful bootstrap, ``juju controllers`` will show your newly
+provisioned lxd controller.
+
 
 Add a model
 ###########
 
-Once you are logged into a juju controller you need to add a model. Run the
+Once you have created your juju controller you need to add a model. Run the
 following command to add the model that will house the OSD.
 
 .. code-block:: bash
@@ -48,7 +49,7 @@ Deploy Slurm
 Now it is time to get Slurm :)
 
 First we need to build a *charm*. That's what Juju will deploy to our cloud.
-Chars are built with ``charmcraft``:
+charms are built with ``charmcraft``:
 
 .. code-block:: bash
 
@@ -69,13 +70,16 @@ Now it is time to deploy!
 
    juju deploy ./bundles/slurm-core/focal-beta-lxd-bundle.yaml
 
-Juju will then create the machines as described in that YAML and deploy the
-charms. It will take a while to get everything ready. Wait some time and query
-juju's status:
+Juju will then create the applications, configurations and LXD containers 
+described in the ``focal-beta-lxd-bundle.yaml`` which will in turn define
+the contents of the model.
+
+It will take a moment get everything ready. You can check the status of your
+model with juju's status:
 
 .. code-block:: bash
 
-   $ juju status
+   $ watch -n 1 -c juju status --color
 
    Model    Controller  Cloud/Region         Version  SLA          Timestamp
    default  overlord    localhost/localhost  2.8.7    unsupported  17:44:29Z
@@ -104,3 +108,12 @@ juju's status:
    4        started  10.34.166.218  juju-01ab62-4  focal       Running
    5        started  10.34.166.66   juju-01ab62-5  focal       Running
 
+
+Once the workload status is *active* and the agent status is *idle*, the
+slurm cluster is ready for use.
+
+you can see the status of your cluster by running the ``sinfo`` command:
+
+.. code-block:: bash
+
+   $ juju run --unit slurm-configurator/0 sinfo
