@@ -2,9 +2,7 @@ name: Publish Docs
 
 on:
   push:
-    branches: [master, release/**]
-  pull_request:
-    branches: [testing]
+    branches: [master, release/**, testing]
 
 jobs:
   publish-docs:
