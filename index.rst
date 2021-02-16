@@ -3,13 +3,19 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to the Omnivector Slurm Distribution documentation!
+Welcome to the documentation for the Omnivector Slurm Distribution!
 ===========================================================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
+   Slurm Installation Overview <slurm-installation/overview>
+
+
+.. toctree::
+   :maxdepth: 3
+
+   Slurm Operations Overview <operations/overview>
 
 
 Indices and tables
@@ -18,25 +24,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: General
-
-   architecture
-   reference
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Prerequisites
-
-   prerequisites
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Configure
-
-   configuration/configuration
