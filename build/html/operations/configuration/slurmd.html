@@ -1,0 +1,205 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Slurmd &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="slurmdbd" href="slurmdbd.html" />
+    <link rel="prev" title="Slurmctld" href="slurmctld.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="slurmd">
+<span id="configuration-slurmd"></span><h1>Slurmd<a class="headerlink" href="#slurmd" title="Permalink to this headline">¶</a></h1>
+<p>The compute node daemon for Slurm.</p>
+<table border="1" class="docutils" id="id1">
+<caption><span class="caption-text">slurmd options</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Config</th>
+<th class="head">Description</th>
+<th class="head">Default value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>snapstore-channel</td>
+<td>Snap store channel to install the slurm snap from.</td>
+<td>--stable</td>
+</tr>
+<tr class="row-odd"><td>partition-name</td>
+<td><div class="first line-block">
+<div class="line"><br /></div>
+</div>
+<p class="last">Name by which the partition may be referenced (e.g. &quot;Interactive&quot;). This
+name can be specified by users when submitting jobs. If the PartitionName
+is &quot;DEFAULT&quot;, the values specified with that record will apply to
+subsequent partition specifications unless explicitly set to other values
+in that partition record or replaced with a different set of default
+values. Each line where PartitionName is &quot;DEFAULT&quot; will replace or add to
+previous default values and not a reinitialize the default values.</p>
+</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>partition-config</td>
+<td><div class="first line-block">
+<div class="line"><br /></div>
+</div>
+<p class="last">Extra partition configuration specified as a space separated key=value single line.</p>
+</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>partition-state</td>
+<td><div class="first line-block">
+<div class="line"><br /></div>
+</div>
+<p class="last">State of partition or availability for use. Possible values are &quot;UP&quot;, &quot;DOWN&quot;, &quot;DRAIN&quot; and &quot;INACTIVE&quot;. The default value is &quot;UP&quot;. See also the related &quot;Alternate&quot; keyword.</p>
+</td>
+<td>&quot;UP&quot;</td>
+</tr>
+<tr class="row-even"><td>nagios_context</td>
+<td><div class="first line-block">
+<div class="line"><br /></div>
+</div>
+<p>Used by the nrpe subordinate charms.
+A string that will be prepended to instance name to set the host name
+in nagios. So for instance the hostname would be something like:</p>
+<blockquote>
+<div>juju-myservice-0</div></blockquote>
+<p class="last">If you're running multiple environments with the same services in them
+this allows you to differentiate between them.</p>
+</td>
+<td>&quot;juju&quot;</td>
+</tr>
+<tr class="row-odd"><td>nagios_servicegroups</td>
+<td><div class="first line-block">
+<div class="line"><br /></div>
+</div>
+<p class="last">A comma-separated list of nagios servicegroups.
+If left empty, the nagios_context will be used as the servicegroup</p>
+</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Omnivector Slurm Distribution</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../slurm-installation/overview.html">Slurm Installation Overview</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../overview.html">Operations Overview</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="configuration.html">Configuration and Administration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="slurmctld.html">Slurmctld</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Slurmd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slurmdbd.html">slurmdbd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slurmrestd.html">slurmrestd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slurm-configurator.html">slurm-configurator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html#common-operations">Common Operations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../upgrading-osd.html">Upgrade OSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backup-restore.html">Backup and restore the slurm database</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../overview.html">Operations</a><ul>
+  <li><a href="configuration.html">Configuration and Administration</a><ul>
+      <li>Previous: <a href="slurmctld.html" title="previous chapter">Slurmctld</a></li>
+      <li>Next: <a href="slurmdbd.html" title="next chapter">slurmdbd</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Omnivector Solutions.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/operations/configuration/slurmd.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
