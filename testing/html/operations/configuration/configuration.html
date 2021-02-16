@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>slurmdbd &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
+    <title>Configuration and Administration &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -16,8 +16,8 @@
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="slurmrestd" href="slurmrestd.html" />
-    <link rel="prev" title="Slurmd" href="slurmd.html" />
+    <link rel="next" title="Slurmctld" href="slurmctld.html" />
+    <link rel="prev" title="Operations" href="../overview.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -34,63 +34,24 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="slurmdbd">
-<span id="configuration-slurmdbd"></span><h1>slurmdbd<a class="headerlink" href="#slurmdbd" title="Permalink to this headline">¶</a></h1>
-<p>Slurm Database Daemon.</p>
-<table border="1" class="docutils" id="id1">
-<caption><span class="caption-text">slurmdbd options</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Config</th>
-<th class="head">Description</th>
-<th class="head">Default value[</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>snapstore-channel</td>
-<td>Snap store channel to install the slurm snap from.</td>
-<td>--stable</td>
-</tr>
-<tr class="row-odd"><td>nagios_context</td>
-<td><div class="first line-block">
-<div class="line"><br /></div>
+  <div class="section" id="configuration-and-administration">
+<h1>Configuration and Administration<a class="headerlink" href="#configuration-and-administration" title="Permalink to this headline">¶</a></h1>
+<p>Each slurm component charm exposes a set of zero or more administrative actions and
+charm configuration options. Some configuration options are represented across charms
+and others are charm specific.</p>
+<p>Find a list of each charm's configuration options and administrative actions below.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="slurmctld.html">Slurmctld</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurmd.html">Slurmd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurmdbd.html">slurmdbd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurmrestd.html">slurmrestd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurm-configurator.html">slurm-configurator</a></li>
+</ul>
 </div>
-<p>Used by the nrpe subordinate charms.
-A string that will be prepended to instance name to set the host name
-in nagios. So for instance the hostname would be something like:</p>
-<blockquote>
-<div>juju-myservice-0</div></blockquote>
-<p class="last">If you're running multiple environments with the same services in them
-this allows you to differentiate between them.</p>
-</td>
-<td>&quot;juju&quot;</td>
-</tr>
-<tr class="row-even"><td>nagios_servicegroups</td>
-<td><div class="first line-block">
-<div class="line"><br /></div>
+<div class="section" id="common-operations">
+<h2>Common Operations<a class="headerlink" href="#common-operations" title="Permalink to this headline">¶</a></h2>
 </div>
-<p class="last">A comma-separated list of nagios servicegroups.
-If left empty, the nagios_context will be used as the servicegroup</p>
-</td>
-<td>&#160;</td>
-</tr>
-<tr class="row-odd"><td>slurmdbd_debug</td>
-<td><div class="first line-block">
-<div class="line"><br /></div>
-</div>
-<p class="last">The level of detail to provide slurmdbd daemon's logs. The default value
-is info. If the slurmdbd daemon is initiated with -v or --verbose
-options, that debug level will be preserve or restored upon
-reconfiguration.&quot;</p>
-</td>
-<td>&#160;</td>
-</tr>
-</tbody>
-</table>
 </div>
 
 
@@ -111,17 +72,17 @@ reconfiguration.&quot;</p>
 
 <h3>Navigation</h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../slurm-installation/overview.html">Slurm Installation Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../slurm-installation/overview.html">Installation Overview</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../overview.html">Operations Overview</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="configuration.html">Configuration and Administration</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuration and Administration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="slurmctld.html">Slurmctld</a></li>
 <li class="toctree-l3"><a class="reference internal" href="slurmd.html">Slurmd</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">slurmdbd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slurmdbd.html">slurmdbd</a></li>
 <li class="toctree-l3"><a class="reference internal" href="slurmrestd.html">slurmrestd</a></li>
 <li class="toctree-l3"><a class="reference internal" href="slurm-configurator.html">slurm-configurator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration.html#common-operations">Common Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-operations">Common Operations</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../upgrading-osd.html">Upgrade OSD</a></li>
@@ -135,10 +96,8 @@ reconfiguration.&quot;</p>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../overview.html">Operations</a><ul>
-  <li><a href="configuration.html">Configuration and Administration</a><ul>
-      <li>Previous: <a href="slurmd.html" title="previous chapter">Slurmd</a></li>
-      <li>Next: <a href="slurmrestd.html" title="next chapter">slurmrestd</a></li>
-  </ul></li>
+      <li>Previous: <a href="../overview.html" title="previous chapter">Operations</a></li>
+      <li>Next: <a href="slurmctld.html" title="next chapter">Slurmctld</a></li>
   </ul></li>
   </ul></li>
 </ul>
@@ -175,7 +134,7 @@ reconfiguration.&quot;</p>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../../_sources/operations/configuration/slurmdbd.rst.txt"
+      <a href="../../_sources/operations/configuration/configuration.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
