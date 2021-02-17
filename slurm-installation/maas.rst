@@ -4,7 +4,7 @@ Install slurm on MAAS
 
 
 Login to a juju controller
-#######################################
+##########################
 If you don't already have a juju controller, bootstrap juju by creating a juju controller machine.
 
 .. code-block:: bash

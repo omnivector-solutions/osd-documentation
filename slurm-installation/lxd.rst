@@ -14,9 +14,9 @@ Install and configure LXD, if you haven't already:
 
 .. code-block:: bash
 
-   sudo snap install lxd
-   lxd init --auto
-   lxd network set lxdbr0 ipv6.address none
+   $ sudo snap install lxd
+   $ lxd init --auto
+   $ lxd network set lxdbr0 ipv6.address none
 
 .. note::
 
@@ -26,7 +26,7 @@ You can now bootstrap your local cloud:
 
 .. code-block:: bash
 
-   juju bootstrap localhost
+   $ juju bootstrap localhost
 
 Following a successful bootstrap, ``juju controllers`` will show your newly
 provisioned lxd controller.
@@ -40,7 +40,7 @@ following command to add the model that will house the OSD.
 
 .. code-block:: bash
 
-   juju add-model slurm
+   $ juju add-model slurm
 
 
 Deploy Slurm
@@ -53,22 +53,22 @@ charms are built with ``charmcraft``:
 
 .. code-block:: bash
 
-   sudo snap install --edge charmcraft
+   $ sudo snap install --edge charmcraft
 
 Clone the `slurm-charms <https://juju.is/docs/models>`_ git repository, it
 contains all the nuts and bolts to build the charms:
 
 .. code-block:: bash
 
-   git clone https://github.com/omnivector-solutions/slurm-charms
-   cd slurm-charms
-   make charms
+   $ git clone https://github.com/omnivector-solutions/slurm-charms
+   $ cd slurm-charms
+   $ make charms
 
 Now it is time to deploy!
 
 .. code-block:: bash
 
-   juju deploy ./bundles/slurm-core/focal-beta-lxd-bundle.yaml
+   $ juju deploy ./bundles/slurm-core/focal-beta-lxd-bundle.yaml
 
 Juju will then create the applications, configurations and LXD containers 
 described in the ``focal-beta-lxd-bundle.yaml`` which will in turn define

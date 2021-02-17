@@ -1,8 +1,8 @@
 .. _operations-slurmctld:
 
-*************
+*********
 Slurmctld
-*************
+*********
 The central management daemon of Slurm.  
 
 
@@ -32,3 +32,4 @@ The central management daemon of Slurm.
 
 .. actions::
    :header-rows: 1
+

@@ -1,9 +1,8 @@
 .. _operations-backup-restore:
 
-===================================================
+=====================================
 Backup and restore the slurm database
-===================================================
-
+=====================================
 
 
 **Backup the slurm database**
@@ -11,7 +10,7 @@ In order to backup a slurm cluster, we first need to create a backup of its data
 
 .. code-block:: bash
 
-    juju run
+    $ juju run
 
 
 **Restore the slurm database**
@@ -19,4 +18,4 @@ In order to restore a slurm cluster, we first need to restore a backup of its da
 
 .. code-block:: bash
 
-    juju run
+    $ juju run

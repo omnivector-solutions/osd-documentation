@@ -11,7 +11,7 @@ You must have the juju client installed on your local system in order to adminis
 
 .. code-block:: bash
 
-   sudo snap install juju --classic
+   $ sudo snap install juju --classic
 
 
 Once the juju client is installed you will be ready to proceed with deploying slurm to a cloud of your choosing.

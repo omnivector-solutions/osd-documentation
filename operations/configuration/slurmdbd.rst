@@ -1,8 +1,8 @@
 .. _configuration-slurmdbd:
 
-*************
+********
 slurmdbd
-*************
+********
 Slurm Database Daemon.
 
 
