@@ -19,10 +19,10 @@ Slurm configuration engine.
      - cluster1
    * - default_partition
      - Default cluster partition.
-     - 
+     -
    * - acct_gather_custom
      - User supplied acct_gather.conf confinguration.
-     - 
+     -
    * - custom_config
      - User supplied slurm confinguration.
      -
@@ -46,7 +46,7 @@ Slurm configuration engine.
      - Parameters
    * - restart-slurmctld
      - Restart the slurmctld process.
-     - 
+     -
    * - restart-slurmd
      - Restart the slurmd process.
      -
