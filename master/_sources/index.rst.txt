@@ -4,18 +4,13 @@
    contain the root `toctree` directive.
 
 Welcome to the documentation for the Omnivector Slurm Distribution!
-===========================================================
-
-.. toctree::
-   :maxdepth: 2
-
-   Slurm Installation Overview <slurm-installation/overview>
-
+===================================================================
 
 .. toctree::
    :maxdepth: 3
 
-   Slurm Operations Overview <operations/overview>
+   Slurm Installation Overview <slurm-installation/overview>
+   Operations Overview <operations/overview>
 
 
 Indices and tables
