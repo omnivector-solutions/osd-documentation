@@ -1,15 +1,15 @@
 .. _design:
 
-*****************************************************
-Packaging, Delivery, Automation and Service Discovery
-*****************************************************
+************************
+Packaging and Automation
+************************
 
-OSD focuses on loosly coupling automation and service discovery with the running/operating of
-slurm itself. The reason behind "loosly" coupling the automation with slurm operations is
+OSD focuses on `loosly` coupling automation and service discovery with the running/operating of
+slurm itself. The reason behind `loosly` coupling the automation with slurm operations is
 because more often then not the operators and administrators of slurm will need to
 have some level of interaction with the cluster before lifecycle operations take place. If the
-ops code was tightly coupled with the application workload (in this context, slurm) it would prevent
-an operator from better operating a cluster.
+ops code was `tightly` coupled with the application workload (in this context, slurm) it would prevent
+an operator from being able to perform manual operations commonly needed in and out of cluster lifecycle.
 
 In codifying operations, the right balance of automation and operator interaction is often difficult to find.
 
@@ -33,10 +33,10 @@ OSD provisions slurm by means of installing the slurm snap on each slurm compone
 
 This behavior can be changed to allow users to bring their own slurm builds by means of providing a user supplied resource_.
 A user supplied resource can be in the format of a ``.tar.gz`` or ``.snap`` file. A user can supply a tar or snap resource
-and OSD will figure out how to install and configure slurm based on the type of resource has been provided. For example if a snap resource
+and OSD will figure out how to install and configure slurm based on the type of resource that has been provided. For example, if a snap resource
 is provided, OSD will know to configure slurm using snap primitives. Similarly, if a tarball resource is provided, OSD will know
 the correct place to put things in order to appropriately configure and run the components of slurm at the OS level, using systemd.
-OSD determines the type of resource provided and in turn uses the operations modified to operate the supplied resource; snap or tarball.
+OSD determines the type of resource provided and in turn uses the correct installation, configuration and lifecycle operations for that resource; snap or tarball.
 
 .. _resource: https://discourse.charmhub.io/t/using-resources-developer-guide/1127
 
@@ -50,7 +50,11 @@ Supported user provided slurm resources are:
  * slurm tarball
 
 
-Find the slurm snap homepage on the `<snapstore_>`_. Follow along or contribute to the development on `<github_>`_.
+Find the slurm snap homepage on the `<snapstore_>`_.
+---------------------------------------------------------------
+
+Follow along or contribute to the development on `<github_>`_.
+---------------------------------------------------------------
 
 .. _snapstore: https://snapcraft.io/slurm
 .. _github: https://github.com/omnivector-solutions/snap-slurm
