@@ -8,8 +8,8 @@ Welcome to the documentation for the Omnivector Slurm Distribution!
 ===================================================================
 
 The Omnivector Slurm Distribution (OSD) provides a no-nonsense way to operate and maintain
-a slurm cluster. Deploy one of our slurm bundles to a cloud of your choosing and begin
-processing your workload in a matter of minutes.
+a slurm cluster. Deploy slurm to a cloud of your choosing (or on-premise infrastructure)
+and begin processing your workload in a matter of minutes.
 
 
 .. toctree::
