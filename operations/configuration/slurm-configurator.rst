@@ -38,6 +38,8 @@ Slurm configuration engine.
      - Type of node criteria to use for setting weights on nodes.
      -
 
+Actions
+#######
 .. list-table:: slurm-configurator charm actions
    :header-rows: 1
 
@@ -53,3 +55,6 @@ Slurm configuration engine.
    * - get-slurm-conf
      - Return the slurm.conf file as a string.
      -
+
+
+

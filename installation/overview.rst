@@ -4,7 +4,7 @@
 Installation overview
 =====================
 
-The OSD can be installed on a cloud of your choosing. The only common component
+OSD can be installed on a cloud of your choosing. The only common component
 used across deployments is juju_ itself.  You must have the juju client
 installed on your local system in order to administer the installation and
 deployment of the Slurm charms.
@@ -27,7 +27,7 @@ Slurm to a cloud of your choosing.
 Setup cloud
 ===========
 
-Follow the documentation for the cloud you with to deploy Slurm on:
+Follow the documentation for the cloud on which you wish to deploy Slurm.
 
 AWS
 ###
