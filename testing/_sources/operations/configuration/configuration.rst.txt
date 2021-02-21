@@ -6,7 +6,8 @@ Each slurm component charm exposes a set of zero or more administrative actions 
 charm configuration options. Some configuration options are represented across charms
 and others are charm specific.
 
-Find a list of each charm's configuration options and administrative actions below.
+Find a list of each charm's configuration options, administrative actions and example usage
+below.
 
 .. toctree::
    :maxdepth: 2
@@ -16,9 +17,3 @@ Find a list of each charm's configuration options and administrative actions bel
    slurmdbd
    slurmrestd
    slurm-configurator
-
-
-Common Operations
-*****************
-
-

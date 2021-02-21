@@ -1,0 +1,182 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Automation and Service Discovery &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Backup and restore the slurm database" href="../operations/backup-restore.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="automation-and-service-discovery">
+<span id="design"></span><h1>Automation and Service Discovery<a class="headerlink" href="#automation-and-service-discovery" title="Permalink to this headline">¶</a></h1>
+<p>OSD focuses on loosly coupling automation and service discovery with the running/operating of
+slurm itself. The reason we choose to &quot;loosly&quot; couple our automation with slurm operations is
+due to the fact that more often then not the operator or administrator of slurm will need to
+have some level of interaction with the cluster before lifecycle operations take place. With
+this said, a great deal of automation does exist in OSD, purposefully built to <em>aid</em> administrators
+in the operation of slurm.</p>
+<div class="section" id="slurm-lifecycle-automation">
+<h2>Slurm Lifecycle Automation<a class="headerlink" href="#slurm-lifecycle-automation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Adding and removing nodes from a cluster partition</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>Powering physical or virtual machine resources on or off</li>
+<li>Operating system installation</li>
+<li>Network setup and configuration</li>
+<li>Disk partitioning and other storage configuration</li>
+<li>Installation of slurm</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>Containerized slurm process</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>We package and distribute slurm as a snapped process. This enables us to provide lightweight, idempotent and hardened slurm builds that work across operating systems</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>Generating node and partition configuration</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>When a machine resource is added to a partition the <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code> Node and partition configuration are automatically generated for the machine and partition</li>
+</ul>
+</div></blockquote>
+<ul>
+<li><p class="first">Composition and distribution of <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code></p>
+<blockquote>
+<div><ul class="simple">
+<li>Discover and aggregate node level inventory information<ul>
+<li>node name</li>
+<li>node addr</li>
+<li>node state</li>
+<li>real memory</li>
+<li>num cpus</li>
+<li>threads per core</li>
+<li>cores per socket</li>
+<li>sockets per board</li>
+</ul>
+</li>
+<li>Partition configuration<ul>
+<li>node inventory</li>
+<li>partition name</li>
+<li>partition state</li>
+<li>partition config</li>
+</ul>
+</li>
+<li>User defined configuration<ul>
+<li>Seed your own configuration into the <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code></li>
+<li>Regeneration and redistribution of configuration based on diff from previous config</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Omnivector Slurm Distribution</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation/overview.html">Installation Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operations/overview.html">Operations Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#slurm-lifecycle-automation">Slurm Lifecycle Automation</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../operations/backup-restore.html" title="previous chapter">Backup and restore the slurm database</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Omnivector Solutions.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/design/overview.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

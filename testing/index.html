@@ -16,7 +16,7 @@
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Installation overview" href="slurm-installation/overview.html" />
+    <link rel="next" title="Installation overview" href="installation/overview.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -35,26 +35,29 @@
             
   <div class="section" id="welcome-to-the-documentation-for-the-omnivector-slurm-distribution">
 <h1>Welcome to the documentation for the Omnivector Slurm Distribution!<a class="headerlink" href="#welcome-to-the-documentation-for-the-omnivector-slurm-distribution" title="Permalink to this headline">¶</a></h1>
+<p>The Omnivector Slurm Distribution (OSD) provides a no-nonsense way to operate and maintain
+a slurm cluster. Deploy slurm to a cloud of your choosing (or on-premise infrastructure)
+and begin processing your workload in a matter of minutes.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="slurm-installation/overview.html">Slurm Installation Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="slurm-installation/lxd.html">Install slurm on LXD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slurm-installation/aws.html">Install slurm on AWS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slurm-installation/maas.html">Install slurm on MAAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation/overview.html">Installation Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation/overview.html#install-juju">Install Juju</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation/overview.html#setup-cloud">Setup cloud</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation/overview.html#aws">AWS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/overview.html#lxd">LXD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="installation/overview.html#maas">MAAS</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="installation/overview.html#deploy-slurm">Deploy Slurm</a></li>
 </ul>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="operations/overview.html">Slurm Operations Overview</a><ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="operations/overview.html">Operations Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="operations/configuration/configuration.html">Configuration and Administration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="operations/configuration/slurmctld.html">Slurmctld</a></li>
 <li class="toctree-l3"><a class="reference internal" href="operations/configuration/slurmd.html">Slurmd</a></li>
 <li class="toctree-l3"><a class="reference internal" href="operations/configuration/slurmdbd.html">slurmdbd</a></li>
 <li class="toctree-l3"><a class="reference internal" href="operations/configuration/slurmrestd.html">slurmrestd</a></li>
 <li class="toctree-l3"><a class="reference internal" href="operations/configuration/slurm-configurator.html">slurm-configurator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="operations/configuration/configuration.html#common-operations">Common Operations</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="operations/upgrading-osd.html">Upgrade OSD</a><ul>
@@ -65,16 +68,20 @@
 <li class="toctree-l2"><a class="reference internal" href="operations/backup-restore.html">Backup and restore the slurm database</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="design/overview.html">Design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="design/overview.html#slurm-lifecycle-automation">Slurm Lifecycle Automation</a></li>
+</ul>
+</li>
 </ul>
 </div>
-</div>
 <div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
 <li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
 <li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
+</div>
 </div>
 
 
@@ -95,17 +102,16 @@
 
 <h3>Navigation</h3>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="slurm-installation/overview.html">Slurm Installation Overview</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="operations/overview.html">Slurm Operations Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation/overview.html">Installation Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations/overview.html">Operations Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design/overview.html">Design</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="#">Documentation overview</a><ul>
-      <li>Next: <a href="slurm-installation/overview.html" title="next chapter">Installation overview</a></li>
+      <li>Next: <a href="installation/overview.html" title="next chapter">Installation overview</a></li>
   </ul></li>
 </ul>
 </div>

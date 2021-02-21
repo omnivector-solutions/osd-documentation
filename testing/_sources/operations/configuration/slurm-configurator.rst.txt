@@ -19,10 +19,10 @@ Slurm configuration engine.
      - cluster1
    * - default_partition
      - Default cluster partition.
-     - 
+     -
    * - acct_gather_custom
      - User supplied acct_gather.conf confinguration.
-     - 
+     -
    * - custom_config
      - User supplied slurm confinguration.
      -
@@ -38,6 +38,8 @@ Slurm configuration engine.
      - Type of node criteria to use for setting weights on nodes.
      -
 
+Actions
+#######
 .. list-table:: slurm-configurator charm actions
    :header-rows: 1
 
@@ -46,10 +48,13 @@ Slurm configuration engine.
      - Parameters
    * - restart-slurmctld
      - Restart the slurmctld process.
-     - 
+     -
    * - restart-slurmd
      - Restart the slurmd process.
      -
    * - get-slurm-conf
      - Return the slurm.conf file as a string.
      -
+
+
+

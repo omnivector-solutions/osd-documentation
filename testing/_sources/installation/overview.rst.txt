@@ -1,10 +1,65 @@
+.. _installation:
+
 =====================
-Install slurm on LXD
+Installation overview
 =====================
 
+OSD can be installed on a cloud of your choosing. The only common component
+used across deployments is juju_ itself.  You must have the juju client
+installed on your local system in order to administer the installation and
+deployment of the Slurm charms.
+
+.. _juju: https://juju.is
+
+
+Install Juju
+============
+
+.. code-block:: bash
+
+   $ sudo snap install juju --classic
+
+
+Once the juju client is installed you will be ready to proceed with deploying
+Slurm to a cloud of your choosing.
+
+
+Setup cloud
+===========
+
+Follow the documentation for the cloud on which you wish to deploy Slurm.
+
+AWS
+###
+
+
+Login to a juju controller
+--------------------------
+
+In any deployment scenario we will need to be logged into a juju controller.
+For this example we will login to the public juju controller, Jaas.
+
+.. code-block:: bash
+
+   $ juju login jaas
+
+
+Add a model
+-----------
+
+Once you are logged into a juju controller you need to add a model. Run the
+following command to add the model that will house the OSD.
+
+.. code-block:: bash
+
+   $ juju add-model slurm aws/us-west-2
+
+
+LXD
+###
 
 Bootstrap a localhost LXD Juju controller
-#########################################
+-----------------------------------------
 
 In any deployment scenario we will need to be logged into a juju controller.
 For this example we will bootstrap a juju controller in a LXD container on our
@@ -14,9 +69,9 @@ Install and configure LXD, if you haven't already:
 
 .. code-block:: bash
 
-   sudo snap install lxd
-   lxd init --auto
-   lxd network set lxdbr0 ipv6.address none
+   $ sudo snap install lxd
+   $ lxd init --auto
+   $ lxd network set lxdbr0 ipv6.address none
 
 .. note::
 
@@ -26,25 +81,52 @@ You can now bootstrap your local cloud:
 
 .. code-block:: bash
 
-   juju bootstrap localhost
+   $ juju bootstrap localhost
 
 Following a successful bootstrap, ``juju controllers`` will show your newly
 provisioned lxd controller.
 
 
 Add a model
-###########
+-----------
 
 Once you have created your juju controller you need to add a model. Run the
 following command to add the model that will house the OSD.
 
 .. code-block:: bash
 
-   juju add-model slurm
+   $ juju add-model slurm
+
+
+MAAS
+####
+
+
+Login to a juju controller
+--------------------------
+
+If you don't already have a juju controller, bootstrap juju by creating a juju
+controller machine.
+
+.. code-block:: bash
+
+   $ juju bootstrap
+
+
+Add a model
+-----------
+
+Once you are logged into a juju controller you need to add a model. Run the
+following command to add the model that will house the OSD.
+
+.. code-block:: bash
+
+   $ juju add-model slurm
+
 
 
 Deploy Slurm
-############
+============
 
 Now it is time to get Slurm :)
 
@@ -53,24 +135,36 @@ charms are built with ``charmcraft``:
 
 .. code-block:: bash
 
-   sudo snap install --edge charmcraft
+   $ sudo snap install --edge charmcraft
 
-Clone the `slurm-charms <https://juju.is/docs/models>`_ git repository, it
-contains all the nuts and bolts to build the charms:
-
-.. code-block:: bash
-
-   git clone https://github.com/omnivector-solutions/slurm-charms
-   cd slurm-charms
-   make charms
-
-Now it is time to deploy!
+Clone the `slurm-charms <https://github.com/omnivector-solutions/slurm-charms>`_
+git repository, it contains all the nuts and bolts to build the charms:
 
 .. code-block:: bash
 
-   juju deploy ./bundles/slurm-core/focal-beta-lxd-bundle.yaml
+   $ git clone https://github.com/omnivector-solutions/slurm-charms
+   $ cd slurm-charms
+   $ make charms
 
-Juju will then create the applications, configurations and LXD containers 
+Now it is time to deploy! Chose the appropriate bundle for your situation:
+
+====================================== =======
+Bundle                                 Purpose
+====================================== =======
+``centos-beta-no-spaces-bundle.yaml``  Centos
+``focal-beta-bundle.yaml``             AWS
+``focal-beta-lxd-bundle.yaml``         LXD
+``focal-beta-no-spaces-bundle.yaml``
+``focal-local.yaml``
+====================================== =======
+
+For example, to deploy to a local LXD cloud:
+
+.. code-block:: bash
+
+   $ juju deploy ./bundles/slurm-core/focal-beta-lxd-bundle.yaml
+
+Juju will then create the applications, configurations and LXD containers
 described in the ``focal-beta-lxd-bundle.yaml`` which will in turn define
 the contents of the model.
 
@@ -110,9 +204,9 @@ model with juju's status:
 
 
 Once the workload status is *active* and the agent status is *idle*, the
-slurm cluster is ready for use.
+Slurm cluster is ready for use.
 
-you can see the status of your cluster by running the ``sinfo`` command:
+You can see the status of your cluster by running the ``sinfo`` command:
 
 .. code-block:: bash
 
