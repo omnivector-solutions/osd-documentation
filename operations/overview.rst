@@ -12,10 +12,9 @@ of automation for each component of slurm; slurmctld, slurmd, slurmdbd, slurmres
 custom configuration engine charm called "slurm-configurator".
 
 The ``slurm.conf`` file can be customized through the slurm charm configuration options.
-Each slurm component charm provides a set of options that enable operators/administrators to operate the cluster.
+Each slurm component charm provides a set of options that aid operators and administrators in operating the cluster.
 
-Alongside the capability to manage the ``slurm.conf``, the charms also provide a set of operational
-tools called *actions*.
+Alongside the capability to manage the ``slurm.conf``, the charms also provide a set of tools called *actions*.
 
 Find the charm action information and configuration information for each charm:
 
