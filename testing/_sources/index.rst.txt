@@ -15,9 +15,9 @@ and begin processing your workload in a matter of minutes.
 .. toctree::
    :maxdepth: 2
 
-   Installation Overview <installation/overview>
-   Operations Overview <operations/overview>
-   Design Overview <design/overview>
+   Installation <installation/overview>
+   Operations <operations/overview>
+   Design <design/overview>
 
 
 Indices and tables
