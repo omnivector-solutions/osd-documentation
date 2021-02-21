@@ -56,5 +56,3 @@ Actions
      - Return the slurm.conf file as a string.
      -
 
-
-
