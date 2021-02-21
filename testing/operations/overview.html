@@ -16,7 +16,7 @@
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Configuration and Administration" href="configuration/configuration.html" />
+    <link rel="next" title="Slurmd" href="configuration/slurmd.html" />
     <link rel="prev" title="Installation overview" href="../installation/overview.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -36,29 +36,32 @@
             
   <div class="section" id="operations">
 <span id="id1"></span><h1>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h1>
+<p>The operational magic in OSD is encapsulated in ops code called <strong>charms</strong>. We have curated a suite
+of automation for each component of slurm; slurmctld, slurmd, slurmdbd, slurmrestd, and additionally our
+custom configuration engine charm called &quot;slurm-configurator&quot;.</p>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
 <p>The Omnivector Slurm Distribution can be configured to the extent that you can configure slurm itself.
 Meaning that all upstream slurm configurations are supported by OSD.</p>
-<p>The operational magic in OSD is encapsulated in ops code called <strong>charms</strong>. We have curated a suite
-of automation for each component of slurm; slurmctld, slurmd, slurmdbd, slurmrestd. As well as our
-custom configuration engine charm called &quot;slurm-configurator&quot;.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code> file can be customized through the slurm charm configuration options.
-Each slurm component charm provides a set of options that aid operators and administrators in operating the cluster.</p>
-<p>Alongside the capability to manage the <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code>, the charms also provide a set of tools called <em>actions</em>.</p>
-<p>Find the charm action information and configuration information for each charm:</p>
-<p><strong>Configuration and Administration</strong></p>
+<p>Each slurm component charm provides a set of options that enable operators to customize the cluster.</p>
+<div class="section" id="slurm-conf">
+<h3>slurm.conf<a class="headerlink" href="#slurm-conf" title="Permalink to this headline">¶</a></h3>
+<p>User supplied <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code> values can be added to OSD configuration via the slurm-configurator charm configuration option, <code class="docutils literal notranslate"><span class="pre">custom-config</span></code>.</p>
+<p>Alongside the capability to manage the <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code>, the slurm operator charms also provide a set of tools called <em>actions</em> that enable administrators
+to perform cluster wide operations and configurations from a simplified, unified interface.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="configuration/configuration.html">Configuration and Administration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="configuration/slurmctld.html">Slurmctld</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration/slurmd.html">Slurmd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration/slurmdbd.html">slurmdbd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration/slurmrestd.html">slurmrestd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration/slurm-configurator.html">slurm-configurator</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration/slurmd.html">Slurmd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration/slurmdbd.html">slurmdbd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration/slurmctld.html">Slurmctld</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration/slurmrestd.html">slurmrestd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration/slurm-configurator.html">slurm-configurator</a></li>
 </ul>
 </div>
-<p><strong>Upgrade Procedure</strong></p>
+</div>
+</div>
+<div class="section" id="upgrade-procedure">
+<h2>Upgrade Procedure<a class="headerlink" href="#upgrade-procedure" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="upgrading-osd.html">Upgrade OSD</a><ul>
@@ -68,11 +71,14 @@ Each slurm component charm provides a set of options that aid operators and admi
 </li>
 </ul>
 </div>
-<p><strong>Backup/Restore Procedure</strong></p>
+</div>
+<div class="section" id="backup-restore-procedure">
+<h2>Backup/Restore Procedure<a class="headerlink" href="#backup-restore-procedure" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and restore the slurm database</a></li>
 </ul>
+</div>
 </div>
 </div>
 
@@ -96,9 +102,9 @@ Each slurm component charm provides a set of options that aid operators and admi
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../installation/overview.html">Installation Overview</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Operations Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="configuration/configuration.html">Configuration and Administration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="upgrading-osd.html">Upgrade OSD</a></li>
-<li class="toctree-l2"><a class="reference internal" href="backup-restore.html">Backup and restore the slurm database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#upgrade-procedure">Upgrade Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#backup-restore-procedure">Backup/Restore Procedure</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../design/overview.html">Design</a></li>
@@ -109,7 +115,7 @@ Each slurm component charm provides a set of options that aid operators and admi
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="../installation/overview.html" title="previous chapter">Installation overview</a></li>
-      <li>Next: <a href="configuration/configuration.html" title="next chapter">Configuration and Administration</a></li>
+      <li>Next: <a href="configuration/slurmd.html" title="next chapter">Slurmd</a></li>
   </ul></li>
 </ul>
 </div>

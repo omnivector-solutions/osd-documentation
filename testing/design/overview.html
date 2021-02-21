@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Packaging, Delivery, Automation and Service Discovery &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
+    <title>Packaging and Automation &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -33,14 +33,14 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="packaging-delivery-automation-and-service-discovery">
-<span id="design"></span><h1>Packaging, Delivery, Automation and Service Discovery<a class="headerlink" href="#packaging-delivery-automation-and-service-discovery" title="Permalink to this headline">¶</a></h1>
-<p>OSD focuses on loosly coupling automation and service discovery with the running/operating of
-slurm itself. The reason behind &quot;loosly&quot; coupling the automation with slurm operations is
+  <div class="section" id="packaging-and-automation">
+<span id="design"></span><h1>Packaging and Automation<a class="headerlink" href="#packaging-and-automation" title="Permalink to this headline">¶</a></h1>
+<p>OSD focuses on <cite>loosly</cite> coupling automation and service discovery with the running/operating of
+slurm itself. The reason behind <cite>loosly</cite> coupling the automation with slurm operations is
 because more often then not the operators and administrators of slurm will need to
 have some level of interaction with the cluster before lifecycle operations take place. If the
-ops code was tightly coupled with the application workload (in this context, slurm) it would prevent
-an operator from better operating a cluster.</p>
+ops code was <cite>tightly</cite> coupled with the application workload (in this context, slurm) it would prevent
+an operator from being able to perform manual operations commonly needed in and out of cluster lifecycle.</p>
 <p>In codifying operations, the right balance of automation and operator interaction is often difficult to find.</p>
 <p>With this said, a great deal of automation does exist in OSD, purposefully built to <em>aid</em> administrators
 in the operation of slurm.</p>
@@ -56,10 +56,10 @@ Distributing slurm as a snap enables OSD to provide lightweight, idempotent, har
 <p>OSD provisions slurm by means of installing the slurm snap on each slurm component node in the cluster (default).</p>
 <p>This behavior can be changed to allow users to bring their own slurm builds by means of providing a user supplied <a class="reference external" href="https://discourse.charmhub.io/t/using-resources-developer-guide/1127">resource</a>.
 A user supplied resource can be in the format of a <code class="docutils literal notranslate"><span class="pre">.tar.gz</span></code> or <code class="docutils literal notranslate"><span class="pre">.snap</span></code> file. A user can supply a tar or snap resource
-and OSD will figure out how to install and configure slurm based on the type of resource has been provided. For example if a snap resource
+and OSD will figure out how to install and configure slurm based on the type of resource that has been provided. For example, if a snap resource
 is provided, OSD will know to configure slurm using snap primitives. Similarly, if a tarball resource is provided, OSD will know
 the correct place to put things in order to appropriately configure and run the components of slurm at the OS level, using systemd.
-OSD determines the type of resource provided and in turn uses the operations modified to operate the supplied resource; snap or tarball.</p>
+OSD determines the type of resource provided and in turn uses the correct installation, configuration and lifecycle operations for that resource; snap or tarball.</p>
 <p>Supported user provided slurm resources are:</p>
 <blockquote>
 <div><ul class="simple">
@@ -67,7 +67,12 @@ OSD determines the type of resource provided and in turn uses the operations mod
 <li>slurm tarball</li>
 </ul>
 </div></blockquote>
-<p>Find the slurm snap homepage on the <a class="reference external" href="https://snapcraft.io/slurm">snapstore</a>. Follow along or contribute to the development on <a class="reference external" href="https://github.com/omnivector-solutions/snap-slurm">github</a>.</p>
+<div class="section" id="find-the-slurm-snap-homepage-on-the-snapstore">
+<h3>Find the slurm snap homepage on the <a class="reference external" href="https://snapcraft.io/slurm">snapstore</a>.<a class="headerlink" href="#find-the-slurm-snap-homepage-on-the-snapstore" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="follow-along-or-contribute-to-the-development-on-github">
+<h3>Follow along or contribute to the development on <a class="reference external" href="https://github.com/omnivector-solutions/snap-slurm">github</a>.<a class="headerlink" href="#follow-along-or-contribute-to-the-development-on-github" title="Permalink to this headline">¶</a></h3>
+</div>
 </div>
 <div class="section" id="slurm-lifecycle-automation">
 <h2>Slurm Lifecycle Automation<a class="headerlink" href="#slurm-lifecycle-automation" title="Permalink to this headline">¶</a></h2>
