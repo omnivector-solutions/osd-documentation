@@ -106,8 +106,9 @@ A short list of thoughtfully curated lifecycle operations automated by OSD.
      * Regeneration and redistribution of configuration based on diff from previous config
 
 
-Find more on OSD slurm operations in our ops docs:
+Find more on slurm lifecycle operations in the OSD operations documentation:
 
 .. toctree::
    :maxdepth: 1
+
    ../operations/overview
