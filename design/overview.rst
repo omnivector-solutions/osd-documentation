@@ -1,10 +1,10 @@
 .. _design:
 
-************************
-Packaging and Automation
-************************
+******
+Design
+******
 
-OSD focuses on `loosly` coupling automation and service discovery with the running/operating of
+OSD focuses on `loosly` coupling automation and service discovery with the operating of
 slurm itself. The reason behind `loosly` coupling the automation with slurm operations is
 because more often then not the operators and administrators of slurm will need to
 have some level of interaction with the cluster before lifecycle operations take place. If the
@@ -61,8 +61,8 @@ Follow along or contribute to the development on `<github_>`_.
 
 
 
-Slurm Lifecycle Automation
-##########################
+Lifecycle Automation
+####################
 
 A short list of thoughtfully curated lifecycle operations automated by OSD.
 
