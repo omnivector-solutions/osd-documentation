@@ -50,11 +50,10 @@ Supported user provided slurm resources are:
  * slurm tarball
 
 
-Find the slurm snap homepage on the `<snapstore_>`_.
----------------------------------------------------------------
 
-Follow along or contribute to the development on `<github_>`_.
----------------------------------------------------------------
+Find the slurm snap homepage on the `<snapstore_>`_.
+
+Contribute to the slurm snap development on `<github_>`_.
 
 .. _snapstore: https://snapcraft.io/slurm
 .. _github: https://github.com/omnivector-solutions/snap-slurm
@@ -83,7 +82,6 @@ A short list of thoughtfully curated lifecycle operations automated by OSD.
  * When a machine resource is added to a partition the ``slurm.conf`` `Node` and `Partition` configuration are generated for the machine and partition
 
 * Composition and distribution of ``slurm.conf``
-
    * Discover and aggregate node level inventory information
 
      * node name
@@ -107,3 +105,9 @@ A short list of thoughtfully curated lifecycle operations automated by OSD.
      * Seed your own configuration into the ``slurm.conf``
      * Regeneration and redistribution of configuration based on diff from previous config
 
+
+Find more on OSD slurm operations in our ops docs:
+
+.. toctree::
+   :maxdepth: 1
+   ../operations/overview

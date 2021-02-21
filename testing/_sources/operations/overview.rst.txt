@@ -33,8 +33,8 @@ to perform cluster wide operations and configurations from a simplified, unified
    configuration/slurm-configurator
 
 
-Upgrade Procedure
-*****************
+Upgrade
+*******
 
 .. toctree::
    :maxdepth: 2
@@ -43,8 +43,8 @@ Upgrade Procedure
 
 
 
-Backup/Restore Procedure
-*************************
+Backup/Restore
+**************
 
 .. toctree::
    :maxdepth: 2
