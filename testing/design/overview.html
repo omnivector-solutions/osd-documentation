@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Automation and Service Discovery &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
+    <title>Packaging, Delivery, Automation and Service Discovery &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -33,16 +33,35 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="automation-and-service-discovery">
-<span id="design"></span><h1>Automation and Service Discovery<a class="headerlink" href="#automation-and-service-discovery" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="packaging-delivery-automation-and-service-discovery">
+<span id="design"></span><h1>Packaging, Delivery, Automation and Service Discovery<a class="headerlink" href="#packaging-delivery-automation-and-service-discovery" title="Permalink to this headline">¶</a></h1>
 <p>OSD focuses on loosly coupling automation and service discovery with the running/operating of
-slurm itself. The reason we choose to &quot;loosly&quot; couple our automation with slurm operations is
-due to the fact that more often then not the operator or administrator of slurm will need to
+slurm itself. The reason behind &quot;loosly&quot; coupling the automation with slurm operations is
+because more often then not the operators and administrators of slurm will need to
 have some level of interaction with the cluster before lifecycle operations take place. With
 this said, a great deal of automation does exist in OSD, purposefully built to <em>aid</em> administrators
 in the operation of slurm.</p>
+<p>We have taken a similar approach in the delivery of the slurm process. OSD provides the bindings
+that enable operators to lean on our upstream builds, or bring their own build of slurm. Whichever it is,
+OSD will automate the process of distributing, installing (or upgrading) and configuring slurm. This method of
+delivery enables OSD to support offline upgrades and installations in a streamline manner.</p>
+<div class="section" id="packaging-and-delivery">
+<h2>Packaging and Delivery<a class="headerlink" href="#packaging-and-delivery" title="Permalink to this headline">¶</a></h2>
+<p>One of the core efficiencies in OSD is the packaging and distribution of slurm as a <a class="reference external" href="https://snapcraft.io/about">snapped</a> process.
+Distributing slurm as a snap enables us to provide lightweight, idempotent and hardened slurm builds that work across operating systems.</p>
+<p>OSD provisions slurm by means of installing the slurm snap on each slurm component node in the cluster (default).
+This behavior can be changed to allow users to bring their own slurm builds by means of providing a user supplied <a class="reference external" href="https://discourse.charmhub.io/t/using-resources-developer-guide/1127">resource</a>.</p>
+<p>Supported user provided slurm resources are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>slurm snap</li>
+<li>slurm tarball</li>
+</ul>
+</div></blockquote>
+</div>
 <div class="section" id="slurm-lifecycle-automation">
 <h2>Slurm Lifecycle Automation<a class="headerlink" href="#slurm-lifecycle-automation" title="Permalink to this headline">¶</a></h2>
+<p>A short list of lifecycle operations have been thoughtfully currated are as follows.</p>
 <ul class="simple">
 <li>Adding and removing nodes from a cluster partition</li>
 </ul>
@@ -53,14 +72,6 @@ in the operation of slurm.</p>
 <li>Network setup and configuration</li>
 <li>Disk partitioning and other storage configuration</li>
 <li>Installation of slurm</li>
-</ul>
-</div></blockquote>
-<ul class="simple">
-<li>Containerized slurm process</li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li>We package and distribute slurm as a snapped process. This enables us to provide lightweight, idempotent and hardened slurm builds that work across operating systems</li>
 </ul>
 </div></blockquote>
 <ul class="simple">
@@ -126,6 +137,7 @@ in the operation of slurm.</p>
 <li class="toctree-l1"><a class="reference internal" href="../installation/overview.html">Installation Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../operations/overview.html">Operations Overview</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#packaging-and-delivery">Packaging and Delivery</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#slurm-lifecycle-automation">Slurm Lifecycle Automation</a></li>
 </ul>
 </li>
