@@ -52,14 +52,14 @@ necessarily opinionated.</p>
 <div class="section" id="packaging-and-delivery">
 <h2>Packaging and Delivery<a class="headerlink" href="#packaging-and-delivery" title="Permalink to this headline">¶</a></h2>
 <p>One of the core efficiencies in OSD is the packaging and distribution of slurm as a <a class="reference external" href="https://snapcraft.io/about">snapped</a> process.
-Distributing slurm as a snap enables OSD to provide lightweight, idempotent and hardened slurm builds that work across operating systems.</p>
+Distributing slurm as a snap enables OSD to provide lightweight, idempotent, hardened slurm builds that work across operating systems.</p>
 <p>OSD provisions slurm by means of installing the slurm snap on each slurm component node in the cluster (default).</p>
 <p>This behavior can be changed to allow users to bring their own slurm builds by means of providing a user supplied <a class="reference external" href="https://discourse.charmhub.io/t/using-resources-developer-guide/1127">resource</a>.
 A user supplied resource can be in the format of a <code class="docutils literal notranslate"><span class="pre">.tar.gz</span></code> or <code class="docutils literal notranslate"><span class="pre">.snap</span></code> file. A user can supply a tar or snap resource
-and OSD will figure out how to install and configure slurm based on the type of resource provided. For example if a snap resource
+and OSD will figure out how to install and configure slurm based on the type of resource has been provided. For example if a snap resource
 is provided, OSD will know to configure slurm using snap primitives. Similarly, if a tarball resource is provided, OSD will know
-the correct place to put things in order to appropriately configure and run the components of slurm. OSD determines the type of
-resource provided and in turn uses the operations modified to operate the supplied resource; snap or tarball.</p>
+the correct place to put things in order to appropriately configure and run the components of slurm at the OS level, using systemd.
+OSD determines the type of resource provided and in turn uses the operations modified to operate the supplied resource; snap or tarball.</p>
 <p>Supported user provided slurm resources are:</p>
 <blockquote>
 <div><ul class="simple">
@@ -71,7 +71,7 @@ resource provided and in turn uses the operations modified to operate the suppli
 </div>
 <div class="section" id="slurm-lifecycle-automation">
 <h2>Slurm Lifecycle Automation<a class="headerlink" href="#slurm-lifecycle-automation" title="Permalink to this headline">¶</a></h2>
-<p>A short list of lifecycle operations have been thoughtfully currated are as follows.</p>
+<p>A short list of thoughtfully curated lifecycle operations automated by OSD.</p>
 <ul class="simple">
 <li>Adding and removing nodes from a cluster partition</li>
 </ul>

@@ -27,16 +27,16 @@ Packaging and Delivery
 ######################
 
 One of the core efficiencies in OSD is the packaging and distribution of slurm as a snapped_ process.
-Distributing slurm as a snap enables OSD to provide lightweight, idempotent and hardened slurm builds that work across operating systems.
+Distributing slurm as a snap enables OSD to provide lightweight, idempotent, hardened slurm builds that work across operating systems.
 
 OSD provisions slurm by means of installing the slurm snap on each slurm component node in the cluster (default).
 
 This behavior can be changed to allow users to bring their own slurm builds by means of providing a user supplied resource_.
 A user supplied resource can be in the format of a ``.tar.gz`` or ``.snap`` file. A user can supply a tar or snap resource
-and OSD will figure out how to install and configure slurm based on the type of resource provided. For example if a snap resource
+and OSD will figure out how to install and configure slurm based on the type of resource has been provided. For example if a snap resource
 is provided, OSD will know to configure slurm using snap primitives. Similarly, if a tarball resource is provided, OSD will know
-the correct place to put things in order to appropriately configure and run the components of slurm. OSD determines the type of
-resource provided and in turn uses the operations modified to operate the supplied resource; snap or tarball. 
+the correct place to put things in order to appropriately configure and run the components of slurm at the OS level, using systemd.
+OSD determines the type of resource provided and in turn uses the operations modified to operate the supplied resource; snap or tarball.
 
 .. _resource: https://discourse.charmhub.io/t/using-resources-developer-guide/1127
 
@@ -60,7 +60,7 @@ Find the slurm snap homepage on the `<snapstore_>`_. Follow along or contribute 
 Slurm Lifecycle Automation
 ##########################
 
-A short list of lifecycle operations have been thoughtfully currated are as follows.
+A short list of thoughtfully curated lifecycle operations automated by OSD.
 
 * Adding and removing nodes from a cluster partition
  
@@ -102,5 +102,4 @@ A short list of lifecycle operations have been thoughtfully currated are as foll
 
      * Seed your own configuration into the ``slurm.conf``
      * Regeneration and redistribution of configuration based on diff from previous config
-
 
