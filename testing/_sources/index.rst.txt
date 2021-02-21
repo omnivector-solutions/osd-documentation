@@ -17,7 +17,7 @@ and begin processing your workload in a matter of minutes.
 
    Installation Overview <installation/overview>
    Operations Overview <operations/overview>
-   Design <design/overview>
+   Design Overview <design/overview>
 
 
 Indices and tables
