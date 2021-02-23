@@ -158,6 +158,7 @@ components.</li>
 <p>For example, to deploy Slurm to a local LXD cloud, using the <code class="docutils literal notranslate"><span class="pre">--beta</span></code>
 channel for the snaps, on Ubuntu Focal:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy ./slurm-core/bundle.yaml <span class="se">\</span>
+              --overlay ./slurm-core/clouds/lxd.yaml <span class="se">\</span>
               --overlay ./slurm-core/series/focal.yaml <span class="se">\</span>
               --overlay ./slurm-core/options/beta-snap.yaml
 </pre></div>
