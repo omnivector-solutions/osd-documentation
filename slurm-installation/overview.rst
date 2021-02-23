@@ -171,6 +171,7 @@ channel for the snaps, on Ubuntu Focal:
 .. code-block:: bash
 
    $ juju deploy ./slurm-core/bundle.yaml \
+                 --overlay ./slurm-core/clouds/lxd.yaml \
                  --overlay ./slurm-core/series/focal.yaml \
                  --overlay ./slurm-core/options/beta-snap.yaml
 
