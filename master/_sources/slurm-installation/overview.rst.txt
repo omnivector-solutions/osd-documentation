@@ -146,27 +146,37 @@ git repository, it contains all the nuts and bolts to build the charms:
    $ cd slurm-charms
    $ make charms
 
-Now it is time to deploy! Chose the appropriate bundle for your situation:
-
-====================================== =======
-Bundle                                 Purpose
-====================================== =======
-``centos-beta-no-spaces-bundle.yaml``  Centos
-``focal-beta-bundle.yaml``             AWS
-``focal-beta-lxd-bundle.yaml``         LXD
-``focal-beta-no-spaces-bundle.yaml``
-``focal-local.yaml``
-====================================== =======
-
-For example, to deploy to a local LXD cloud:
+Now it is time to deploy! The bundles and overlays are in a separate repository,
+`slurm-overlay-bundles <https://github.com/omnivector-solutions/slurm-overlay-bundles>`_.
+Clone the repository on the same directory you cloned ``slurm-charms/``:
 
 .. code-block:: bash
 
-   $ juju deploy ./bundles/slurm-core/focal-beta-lxd-bundle.yaml
+   $ git clone https://github.com/omnivector-solutions/slurm-overlay-bundles
+   $ cd slurm-overlay-bundles
+
+The ``slurm-core`` directory contains all the bundles and overlays to deploy a
+basic Slurm cluster:
+
+- ``slurm-core/bundle.yaml``: the basic definition of the Slurm components.
+- ``slurm-core/clouds/``: overlays with specific settings for each supported
+  cloud environment.
+- ``slurm-core/options/``: overlays with specific ``options`` for the Slurm
+  components.
+- ``slurm-core/series/``: overlays to define the OS of the Slurm components.
+
+For example, to deploy Slurm to a local LXD cloud, using the ``--beta``
+channel for the snaps, on Ubuntu Focal:
+
+.. code-block:: bash
+
+   $ juju deploy ./slurm-core/bundle.yaml \
+                 --overlay ./slurm-core/series/focal.yaml \
+                 --overlay ./slurm-core/options/beta-snap.yaml
 
 Juju will then create the applications, configurations and LXD containers
-described in the ``focal-beta-lxd-bundle.yaml`` which will in turn define
-the contents of the model.
+described in the respective files, which will in turn define the contents of
+the model.
 
 It will take a moment get everything ready. You can check the status of your
 model with juju's status:
@@ -203,8 +213,8 @@ model with juju's status:
    5        started  10.34.166.66   juju-01ab62-5  focal       Running
 
 
-Once the workload status is *active* and the agent status is *idle*, the
-Slurm cluster is ready for use.
+Once the workload status is *active* and the agent status is *idle*, the Slurm
+cluster is ready for use.
 
 You can see the status of your cluster by running the ``sinfo`` command:
 

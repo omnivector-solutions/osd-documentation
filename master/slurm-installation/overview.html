@@ -138,42 +138,33 @@ $ <span class="nb">cd</span> slurm-charms
 $ make charms
 </pre></div>
 </div>
-<p>Now it is time to deploy! Chose the appropriate bundle for your situation:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="84%" />
-<col width="16%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Bundle</th>
-<th class="head">Purpose</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">centos-beta-no-spaces-bundle.yaml</span></code></td>
-<td>Centos</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">focal-beta-bundle.yaml</span></code></td>
-<td>AWS</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">focal-beta-lxd-bundle.yaml</span></code></td>
-<td>LXD</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">focal-beta-no-spaces-bundle.yaml</span></code></td>
-<td>&#160;</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">focal-local.yaml</span></code></td>
-<td>&#160;</td>
-</tr>
-</tbody>
-</table>
-<p>For example, to deploy to a local LXD cloud:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy ./bundles/slurm-core/focal-beta-lxd-bundle.yaml
+<p>Now it is time to deploy! The bundles and overlays are in a separate repository,
+<a class="reference external" href="https://github.com/omnivector-solutions/slurm-overlay-bundles">slurm-overlay-bundles</a>.
+Clone the repository on the same directory you cloned <code class="docutils literal notranslate"><span class="pre">slurm-charms/</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/omnivector-solutions/slurm-overlay-bundles
+$ <span class="nb">cd</span> slurm-overlay-bundles
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">slurm-core</span></code> directory contains all the bundles and overlays to deploy a
+basic Slurm cluster:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">slurm-core/bundle.yaml</span></code>: the basic definition of the Slurm components.</li>
+<li><code class="docutils literal notranslate"><span class="pre">slurm-core/clouds/</span></code>: overlays with specific settings for each supported
+cloud environment.</li>
+<li><code class="docutils literal notranslate"><span class="pre">slurm-core/options/</span></code>: overlays with specific <code class="docutils literal notranslate"><span class="pre">options</span></code> for the Slurm
+components.</li>
+<li><code class="docutils literal notranslate"><span class="pre">slurm-core/series/</span></code>: overlays to define the OS of the Slurm components.</li>
+</ul>
+<p>For example, to deploy Slurm to a local LXD cloud, using the <code class="docutils literal notranslate"><span class="pre">--beta</span></code>
+channel for the snaps, on Ubuntu Focal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy ./slurm-core/bundle.yaml <span class="se">\</span>
+              --overlay ./slurm-core/series/focal.yaml <span class="se">\</span>
+              --overlay ./slurm-core/options/beta-snap.yaml
 </pre></div>
 </div>
 <p>Juju will then create the applications, configurations and LXD containers
-described in the <code class="docutils literal notranslate"><span class="pre">focal-beta-lxd-bundle.yaml</span></code> which will in turn define
-the contents of the model.</p>
+described in the respective files, which will in turn define the contents of
+the model.</p>
 <p>It will take a moment get everything ready. You can check the status of your
 model with juju's status:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ watch -n <span class="m">1</span> -c juju status --color
@@ -206,8 +197,8 @@ Machine  State    DNS            Inst id        Series  AZ  Message
 <span class="m">5</span>        started  <span class="m">10</span>.34.166.66   juju-01ab62-5  focal       Running
 </pre></div>
 </div>
-<p>Once the workload status is <em>active</em> and the agent status is <em>idle</em>, the
-Slurm cluster is ready for use.</p>
+<p>Once the workload status is <em>active</em> and the agent status is <em>idle</em>, the Slurm
+cluster is ready for use.</p>
 <p>You can see the status of your cluster by running the <code class="docutils literal notranslate"><span class="pre">sinfo</span></code> command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run --unit slurm-configurator/0 sinfo
 PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
