@@ -147,13 +147,13 @@ git repository, it contains all the nuts and bolts to build the charms:
    $ make charms
 
 Now it is time to deploy! The bundles and overlays are in a separate repository,
-`slurm-overlay-bundles <https://github.com/omnivector-solutions/slurm-overlay-bundles>`_.
+`slurm-bundles <https://github.com/omnivector-solutions/slurm-bundles>`_.
 Clone the repository on the same directory you cloned ``slurm-charms/``:
 
 .. code-block:: bash
 
-   $ git clone https://github.com/omnivector-solutions/slurm-overlay-bundles
-   $ cd slurm-overlay-bundles
+   $ git clone https://github.com/omnivector-solutions/slurm-bundles
+   $ cd slurm-bundles
 
 The ``slurm-core`` directory contains all the bundles and overlays to deploy a
 basic Slurm cluster:
