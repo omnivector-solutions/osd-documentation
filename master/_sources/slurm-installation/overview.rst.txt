@@ -223,5 +223,28 @@ You can see the status of your cluster by running the ``sinfo`` command:
 
    $ juju run --unit slurm-configurator/0 sinfo
    PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
+   juju-compute-GsLk    up   infinite      1   down juju-01ab62-3
+   configurator*     inact   infinite      1   idle juju-01ab62-1
+
+The nodes start in *down* state with a ``Reason = New node``, so when you add
+more nodes to the cluster, they will not execute the jobs from que queue. This
+way it is possible to do some post installation before setting the nodes as
+*idle*. You can double check that your nodes are down because of this and not
+some other reason with ``sinfo -R``:
+
+.. code-block:: bash
+
+   $ juju run --unit slurm-configurator/0 "sinfo -R"
+   REASON               USER      TIMESTAMP           NODELIST
+   New node             root      2021-03-09T20:24:09 ip-172-31-83-4
+
+After setting the node up, to bring it back you need to run a Juju *action*:
+
+.. code-block:: bash
+
+   $ juju run-action slurmd/1 node-configured
+   $ juju run --unit slurm-configurator/0 sinfo
+   PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
    juju-compute-GsLk    up   infinite      1   idle juju-01ab62-3
    configurator*     inact   infinite      1   idle juju-01ab62-1
+
