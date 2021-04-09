@@ -131,7 +131,7 @@ Deploy Slurm
 Now it is time to get Slurm :)
 
 First we need to build a *charm*. That's what Juju will deploy to our cloud.
-charms are built with ``charmcraft``:
+Charms are built with ``charmcraft``:
 
 .. code-block:: bash
 
@@ -165,15 +165,13 @@ basic Slurm cluster:
   components.
 - ``slurm-core/series/``: overlays to define the OS of the Slurm components.
 
-For example, to deploy Slurm to a local LXD cloud, using the ``--beta``
-channel for the snaps, on Ubuntu Focal:
+For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal:
 
 .. code-block:: bash
 
    $ juju deploy ./slurm-core/bundle.yaml \
                  --overlay ./slurm-core/clouds/lxd.yaml \
                  --overlay ./slurm-core/series/focal.yaml \
-                 --overlay ./slurm-core/options/beta-snap.yaml
 
 Juju will then create the applications, configurations and LXD containers
 described in the respective files, which will in turn define the contents of
