@@ -131,7 +131,7 @@ Deploy Slurm
 Now it is time to get Slurm :)
 
 First we need to build a *charm*. That's what Juju will deploy to our cloud.
-charms are built with ``charmcraft``:
+Charms are built with ``charmcraft``:
 
 .. code-block:: bash
 
@@ -165,15 +165,13 @@ basic Slurm cluster:
   components.
 - ``slurm-core/series/``: overlays to define the OS of the Slurm components.
 
-For example, to deploy Slurm to a local LXD cloud, using the ``--beta``
-channel for the snaps, on Ubuntu Focal:
+For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal:
 
 .. code-block:: bash
 
    $ juju deploy ./slurm-core/bundle.yaml \
                  --overlay ./slurm-core/clouds/lxd.yaml \
                  --overlay ./slurm-core/series/focal.yaml \
-                 --overlay ./slurm-core/options/beta-snap.yaml
 
 Juju will then create the applications, configurations and LXD containers
 described in the respective files, which will in turn define the contents of
@@ -248,3 +246,59 @@ After setting the node up, to bring it back you need to run a Juju *action*:
    juju-compute-GsLk    up   infinite      1   idle juju-01ab62-3
    configurator*     inact   infinite      1   idle juju-01ab62-1
 
+
+CentOS7 Deploys on LXD clouds
+-----------------------------
+
+You need to manually create an LXD image for CentOS7 in order to deploy it with
+Juju.
+
+First step is to download a configuration file describing the image:
+
+.. code-block:: bash
+
+    $ wget https://raw.githubusercontent.com/lxc/lxc-ci/master/images/centos.yaml
+
+Juju needs two extra packages (`sudo` and `openssh-server`) that are not in the
+base image. You need to manually add them in the `packages` section of the yaml
+file. The first `set` of packages in the file should then be:
+
+.. code-block:: bash
+
+    packages:
+      manager: yum
+      update: true
+      cleanup: true
+      sets:
+      - packages:
+        - cronie
+        - cronie-noanacron
+        - curl
+        - dhclient
+        - initscripts
+        - openssh-clients
+        - passwd
+        - policycoreutils
+        - rootfiles
+        - rsyslog
+        - vim-minimal
+        - sudo
+        - openssh-server
+        action: install
+
+Now we need to install `distrobuilder` and generate the image:
+
+.. code-block:: bash
+
+    $ sudo snap install distrobuilder --classic
+    $ sudo distrobuilder build-lxd centos.yaml -o image.architecture=x86_64 -o image.release=7 -o image.variant=cloud
+
+To make this new image available to Juju, we need to import it with an alias:
+
+.. code-block:: bash
+
+    $ lxc image import lxd.tar.xz rootfs.squashfs --alias juju/centos7/amd64
+
+You can check that the image was correctly imported to LXD with
+``lxc image list``. To test it works with Juju, you can
+``juju add-machine --series centos7``.

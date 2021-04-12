@@ -127,7 +127,7 @@ following command to add the model that will house the OSD.</p>
 <h2>Deploy Slurm<a class="headerlink" href="#deploy-slurm" title="Permalink to this headline">¶</a></h2>
 <p>Now it is time to get Slurm :)</p>
 <p>First we need to build a <em>charm</em>. That's what Juju will deploy to our cloud.
-charms are built with <code class="docutils literal notranslate"><span class="pre">charmcraft</span></code>:</p>
+Charms are built with <code class="docutils literal notranslate"><span class="pre">charmcraft</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo snap install --edge charmcraft
 </pre></div>
 </div>
@@ -155,12 +155,10 @@ cloud environment.</li>
 components.</li>
 <li><code class="docutils literal notranslate"><span class="pre">slurm-core/series/</span></code>: overlays to define the OS of the Slurm components.</li>
 </ul>
-<p>For example, to deploy Slurm to a local LXD cloud, using the <code class="docutils literal notranslate"><span class="pre">--beta</span></code>
-channel for the snaps, on Ubuntu Focal:</p>
+<p>For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy ./slurm-core/bundle.yaml <span class="se">\</span>
               --overlay ./slurm-core/clouds/lxd.yaml <span class="se">\</span>
               --overlay ./slurm-core/series/focal.yaml <span class="se">\</span>
-              --overlay ./slurm-core/options/beta-snap.yaml
 </pre></div>
 </div>
 <p>Juju will then create the applications, configurations and LXD containers
@@ -225,6 +223,49 @@ juju-compute-GsLk    up   infinite      <span class="m">1</span>   idle juju-01a
 configurator*     inact   infinite      <span class="m">1</span>   idle juju-01ab62-1
 </pre></div>
 </div>
+<p>You need to manually create an LXD image for CentOS7 in order to deploy it with
+Juju.</p>
+<p>First step is to download a configuration file describing the image:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget https://raw.githubusercontent.com/lxc/lxc-ci/master/images/centos.yaml
+</pre></div>
+</div>
+<p>Juju needs two extra packages (<cite>sudo</cite> and <cite>openssh-server</cite>) that are not in the
+base image. You need to manually add them in the <cite>packages</cite> section of the yaml
+file. The first <cite>set</cite> of packages in the file should then be:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>packages:
+  manager: yum
+  update: <span class="nb">true</span>
+  cleanup: <span class="nb">true</span>
+  sets:
+  - packages:
+    - cronie
+    - cronie-noanacron
+    - curl
+    - dhclient
+    - initscripts
+    - openssh-clients
+    - passwd
+    - policycoreutils
+    - rootfiles
+    - rsyslog
+    - vim-minimal
+    - sudo
+    - openssh-server
+    action: install
+</pre></div>
+</div>
+<p>Now we need to install <cite>distrobuilder</cite> and generate the image:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo snap install distrobuilder --classic
+$ sudo distrobuilder build-lxd centos.yaml -o image.architecture<span class="o">=</span>x86_64 -o image.release<span class="o">=</span><span class="m">7</span> -o image.variant<span class="o">=</span>cloud
+</pre></div>
+</div>
+<p>To make this new image available to Juju, we need to import it with an alias:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ lxc image import lxd.tar.xz rootfs.squashfs --alias juju/centos7/amd64
+</pre></div>
+</div>
+<p>You can check that the image was correctly imported to LXD with
+<code class="docutils literal notranslate"><span class="pre">lxc</span> <span class="pre">image</span> <span class="pre">list</span></code>. To test it works with Juju, you can
+<code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">add-machine</span> <span class="pre">--series</span> <span class="pre">centos7</span></code>.</p>
 </div>
 </div>
 
