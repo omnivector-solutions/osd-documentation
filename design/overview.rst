@@ -4,8 +4,8 @@
 Automation and Service Discovery
 **********
 
-OSD focuses on loosly coupling automation and service discovery with the running/operating of
-slurm itself. The reason we choose to "loosly" couple our automation with slurm operations is
+OSD focuses on loosely coupling automation and service discovery with the running/operating of
+slurm itself. The reason we choose to "loosely" couple our automation with slurm operations is
 due to the fact that more often then not the operator or administrator of slurm will need to
 have some level of interaction with the cluster before lifecycle operations take place. With
 this said, a great deal of automation does exist in OSD, purposefully built to *aid* administrators
@@ -15,27 +15,13 @@ in the operation of slurm.
 Slurm Lifecycle Automation
 ######
 
-* Adding and removing nodes from a cluster partition
- 
- * Powering physical or virtual machine resources on or off
-
- * Operating system installation
-
- * Network setup and configuration
-
- * Disk partitioning and other storage configuration
+ * Adding and removing nodes from a cluster partition
 
  * Installation of slurm
- 
-* Containerized slurm process
 
- * We package and distribute slurm as a snapped process. This enables us to provide lightweight, idempotent and hardened slurm builds that work across operating systems
+ * Node and partition configuration
 
-* Generating node and partition configuration
-
- * When a machine resource is added to a partition the ``slurm.conf`` Node and partition configuration are automatically generated for the machine and partition
-
-* Composition and distribution of ``slurm.conf``
+ * Composition and distribution of ``slurm.conf``
 
    * Discover and aggregate node level inventory information
 
