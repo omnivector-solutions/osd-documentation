@@ -10,6 +10,7 @@ Welcome to the documentation for the Omnivector Slurm Distribution!
    :maxdepth: 3
 
    Slurm Installation Overview <slurm-installation/overview>
+   architecture
    Operations Overview <operations/overview>
 
 
