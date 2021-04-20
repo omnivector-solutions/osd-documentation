@@ -19,12 +19,10 @@ Lifecycle Automation
 A short list of thoughtfully curated lifecycle operations automated by OSD.
 
  * Adding and removing nodes from a cluster partition
-
  * Installation of slurm
-
  * Generating node and partition configuration
-
  * Composition and distribution of ``slurm.conf``
+
    * Discover and aggregate node level inventory information
 
      * node name
