@@ -13,7 +13,7 @@ Welcome to the documentation for the Omnivector Slurm Distribution!
    Operations Overview <operations/overview>
 
 
-OSD focuses on `loosly` coupling automation and service discovery with the operating of
+OSD focuses on `loosely` coupling automation and service discovery with the operating of
 Slurm itself. The reason behind `loosely` coupling the automation with Slurm operations is
 because more often then not the operators and administrators of slurm will need to
 have some level of interaction with the cluster before lifecycle operations take place. If the
