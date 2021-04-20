@@ -54,14 +54,3 @@ A short list of thoughtfully curated lifecycle operations automated by OSD.
 
      * Seed your own configuration into the ``slurm.conf``
      * Regeneration and redistribution of configuration based on diff from previous config
-
-
-Find more on slurm lifecycle operations in the OSD operations documentation:
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
