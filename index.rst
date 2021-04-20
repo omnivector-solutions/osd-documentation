@@ -6,19 +6,20 @@
 Welcome to the documentation for the Omnivector Slurm Distribution!
 ===================================================================
 
-.. toctree::
-   :maxdepth: 3
-
-   Slurm Installation Overview <slurm-installation/overview>
-   Operations Overview <operations/overview>
-
-
 OSD focuses on `loosely` coupling automation and service discovery with the operating of
 Slurm itself. The reason behind `loosely` coupling the automation with Slurm operations is
 because more often then not the operators and administrators of slurm will need to
 have some level of interaction with the cluster before lifecycle operations take place. If the
 ops code was `tightly` coupled with the application workload (in this context, slurm) it would prevent
 an operator from being able to perform manual operations commonly needed in and out of cluster lifecycle.
+
+
+
+.. toctree::
+   :maxdepth: 3
+
+   Slurm Installation Overview <slurm-installation/overview>
+   Operations Overview <operations/overview>
 
 
 Lifecycle Automation
