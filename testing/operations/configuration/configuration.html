@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>slurmrestd &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
+    <title>Configuration and Administration &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
@@ -16,8 +16,8 @@
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="slurm-configurator" href="slurm-configurator.html" />
-    <link rel="prev" title="slurmdbd" href="slurmdbd.html" />
+    <link rel="next" title="Slurmctld" href="slurmctld.html" />
+    <link rel="prev" title="Operations" href="../overview.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -34,29 +34,24 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="slurmrestd">
-<span id="configuration-configuration-slurmrestd"></span><h1>slurmrestd<a class="headerlink" href="#slurmrestd" title="Permalink to this headline">¶</a></h1>
-<p>Interface to Slurm via REST API.</p>
-<table border="1" class="docutils" id="id1">
-<caption><span class="caption-text">slurmrestd options</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col width="33%" />
-<col width="33%" />
-<col width="33%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Config</th>
-<th class="head">Description</th>
-<th class="head">Default value</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>snapstore-channel</td>
-<td>Snap store channel to install the slurm snap from.</td>
-<td>--stable</td>
-</tr>
-</tbody>
-</table>
+  <div class="section" id="configuration-and-administration">
+<h1>Configuration and Administration<a class="headerlink" href="#configuration-and-administration" title="Permalink to this headline">¶</a></h1>
+<p>Each slurm component charm exposes a set of zero or more administrative actions and
+charm configuration options. Some configuration options are represented across charms
+and others are charm specific.</p>
+<p>Find a list of each charm's configuration options and administrative actions below.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="slurmctld.html">Slurmctld</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurmd.html">Slurmd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurmdbd.html">slurmdbd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurmrestd.html">slurmrestd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slurm-configurator.html">slurm-configurator</a></li>
+</ul>
+</div>
+<div class="section" id="common-operations">
+<h2>Common Operations<a class="headerlink" href="#common-operations" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
@@ -79,13 +74,13 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../slurm-installation/overview.html">Slurm Installation Overview</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../overview.html">Operations Overview</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="configuration.html">Configuration and Administration</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuration and Administration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="slurmctld.html">Slurmctld</a></li>
 <li class="toctree-l3"><a class="reference internal" href="slurmd.html">Slurmd</a></li>
 <li class="toctree-l3"><a class="reference internal" href="slurmdbd.html">slurmdbd</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">slurmrestd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slurmrestd.html">slurmrestd</a></li>
 <li class="toctree-l3"><a class="reference internal" href="slurm-configurator.html">slurm-configurator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="configuration.html#common-operations">Common Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-operations">Common Operations</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../upgrading-osd.html">Upgrade OSD</a></li>
@@ -99,10 +94,8 @@
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../overview.html">Operations</a><ul>
-  <li><a href="configuration.html">Configuration and Administration</a><ul>
-      <li>Previous: <a href="slurmdbd.html" title="previous chapter">slurmdbd</a></li>
-      <li>Next: <a href="slurm-configurator.html" title="next chapter">slurm-configurator</a></li>
-  </ul></li>
+      <li>Previous: <a href="../overview.html" title="previous chapter">Operations</a></li>
+      <li>Next: <a href="slurmctld.html" title="next chapter">Slurmctld</a></li>
   </ul></li>
   </ul></li>
 </ul>
@@ -139,7 +132,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../../_sources/operations/configuration/slurmrestd.rst.txt"
+      <a href="../../_sources/operations/configuration/configuration.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

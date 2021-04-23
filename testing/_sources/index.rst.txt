@@ -3,26 +3,45 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-===================================================================
 Welcome to the documentation for the Omnivector Slurm Distribution!
 ===================================================================
 
-The Omnivector Slurm Distribution (OSD) provides a no-nonsense way to operate and maintain
-a slurm cluster(s). Deploy slurm to a cloud of your choosing (or on-premise infrastructure)
-and begin processing your workload in a matter of minutes.
-
-
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
-   Installation <installation/overview>
-   Operations <operations/overview>
-   Design <design/overview>
+   Slurm Installation Overview <slurm-installation/overview>
+   Operations Overview <operations/overview>
 
 
-Indices and tables
-==================
+Lifecycle Automation
+####################
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+A short list of thoughtfully curated lifecycle operations automated by OSD.
+
+ * Adding and removing nodes from a cluster partition
+ * Installation of slurm
+ * Generating node and partition configuration
+ * Composition and distribution of ``slurm.conf``
+
+   * Discover and aggregate node level inventory information
+
+     * node name
+     * node addr
+     * node state
+     * real memory
+     * num cpus
+     * threads per core
+     * cores per socket
+     * sockets per board
+
+   * Partition configuration
+
+     * node inventory
+     * partition name
+     * partition state
+     * partition config
+
+   * User defined configuration
+
+     * Seed your own configuration into the ``slurm.conf``
+     * Regeneration and redistribution of configuration based on diff from previous config

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Installation overview &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
+    <title>Install slurm on LXD &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -16,8 +16,6 @@
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Operations" href="../operations/overview.html" />
-    <link rel="prev" title="Welcome to the documentation for the Omnivector Slurm Distribution!" href="../index.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -34,53 +32,17 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="installation-overview">
-<span id="installation"></span><h1>Installation overview<a class="headerlink" href="#installation-overview" title="Permalink to this headline">¶</a></h1>
-<p>OSD can be installed on a cloud of your choosing. The only common component
-used across deployments is <a class="reference external" href="https://juju.is">juju</a> itself.  You must have the juju client
-installed on your local system in order to administer the installation and
-deployment of the Slurm charms.</p>
-<div class="section" id="install-juju">
-<h2>Install Juju<a class="headerlink" href="#install-juju" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo snap install juju --classic
-</pre></div>
-</div>
-<p>Once the juju client is installed you will be ready to proceed with deploying
-Slurm to a cloud of your choosing.</p>
-</div>
-<div class="section" id="setup-cloud">
-<h2>Setup cloud<a class="headerlink" href="#setup-cloud" title="Permalink to this headline">¶</a></h2>
-<p>Follow the documentation for the cloud on which you wish to deploy Slurm.</p>
-<div class="section" id="aws">
-<h3>AWS<a class="headerlink" href="#aws" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="login-to-a-juju-controller">
-<h4>Login to a juju controller<a class="headerlink" href="#login-to-a-juju-controller" title="Permalink to this headline">¶</a></h4>
-<p>In any deployment scenario we will need to be logged into a juju controller.
-For this example we will login to the public juju controller, Jaas.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju login jaas
-</pre></div>
-</div>
-</div>
-<div class="section" id="add-a-model">
-<h4>Add a model<a class="headerlink" href="#add-a-model" title="Permalink to this headline">¶</a></h4>
-<p>Once you are logged into a juju controller you need to add a model. Run the
-following command to add the model that will house the OSD.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju add-model slurm aws/us-west-2
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="lxd">
-<h3>LXD<a class="headerlink" href="#lxd" title="Permalink to this headline">¶</a></h3>
+  <div class="section" id="install-slurm-on-lxd">
+<h1>Install slurm on LXD<a class="headerlink" href="#install-slurm-on-lxd" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="bootstrap-a-localhost-lxd-juju-controller">
-<h4>Bootstrap a localhost LXD Juju controller<a class="headerlink" href="#bootstrap-a-localhost-lxd-juju-controller" title="Permalink to this headline">¶</a></h4>
+<h2>Bootstrap a localhost LXD Juju controller<a class="headerlink" href="#bootstrap-a-localhost-lxd-juju-controller" title="Permalink to this headline">¶</a></h2>
 <p>In any deployment scenario we will need to be logged into a juju controller.
 For this example we will bootstrap a juju controller in a LXD container on our
 local machine.</p>
 <p>Install and configure LXD, if you haven't already:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo snap install lxd
-$ lxd init --auto
-$ lxd network <span class="nb">set</span> lxdbr0 ipv6.address none
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo snap install lxd
+lxd init --auto
+lxd network <span class="nb">set</span> lxdbr0 ipv6.address none
 </pre></div>
 </div>
 <div class="admonition note">
@@ -88,39 +50,18 @@ $ lxd network <span class="nb">set</span> lxdbr0 ipv6.address none
 <p class="last">Juju does not support IPv6, the last command disables it.</p>
 </div>
 <p>You can now bootstrap your local cloud:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju bootstrap localhost
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>juju bootstrap localhost
 </pre></div>
 </div>
 <p>Following a successful bootstrap, <code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">controllers</span></code> will show your newly
 provisioned lxd controller.</p>
 </div>
-<div class="section" id="id1">
-<h4>Add a model<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="add-a-model">
+<h2>Add a model<a class="headerlink" href="#add-a-model" title="Permalink to this headline">¶</a></h2>
 <p>Once you have created your juju controller you need to add a model. Run the
 following command to add the model that will house the OSD.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju add-model slurm
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>juju add-model slurm
 </pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="maas">
-<h3>MAAS<a class="headerlink" href="#maas" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id2">
-<h4>Login to a juju controller<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
-<p>If you don't already have a juju controller, bootstrap juju by creating a juju
-controller machine.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju bootstrap
-</pre></div>
-</div>
-</div>
-<div class="section" id="id3">
-<h4>Add a model<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
-<p>Once you are logged into a juju controller you need to add a model. Run the
-following command to add the model that will house the OSD.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju add-model slurm
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="deploy-slurm">
@@ -128,47 +69,18 @@ following command to add the model that will house the OSD.</p>
 <p>Now it is time to get Slurm :)</p>
 <p>First we need to build a <em>charm</em>. That's what Juju will deploy to our cloud.
 charms are built with <code class="docutils literal notranslate"><span class="pre">charmcraft</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo snap install --edge charmcraft
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo snap install --edge charmcraft
 </pre></div>
 </div>
-<p>Clone the <a class="reference external" href="https://github.com/omnivector-solutions/slurm-charms">slurm-charms</a>
-git repository, it contains all the nuts and bolts to build the charms:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/omnivector-solutions/slurm-charms
-$ <span class="nb">cd</span> slurm-charms
-$ make charms
+<p>Clone the <a class="reference external" href="https://juju.is/docs/models">slurm-charms</a> git repository, it
+contains all the nuts and bolts to build the charms:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/omnivector-solutions/slurm-charms
+<span class="nb">cd</span> slurm-charms
+make charms
 </pre></div>
 </div>
-<p>Now it is time to deploy! Chose the appropriate bundle for your situation:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="84%" />
-<col width="16%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Bundle</th>
-<th class="head">Purpose</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">centos-beta-no-spaces-bundle.yaml</span></code></td>
-<td>Centos</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">focal-beta-bundle.yaml</span></code></td>
-<td>AWS</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">focal-beta-lxd-bundle.yaml</span></code></td>
-<td>LXD</td>
-</tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">focal-beta-no-spaces-bundle.yaml</span></code></td>
-<td>&#160;</td>
-</tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">focal-local.yaml</span></code></td>
-<td>&#160;</td>
-</tr>
-</tbody>
-</table>
-<p>For example, to deploy to a local LXD cloud:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy ./bundles/slurm-core/focal-beta-lxd-bundle.yaml
+<p>Now it is time to deploy!</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>juju deploy ./bundles/slurm-core/focal-beta-lxd-bundle.yaml
 </pre></div>
 </div>
 <p>Juju will then create the applications, configurations and LXD containers
@@ -207,8 +119,8 @@ Machine  State    DNS            Inst id        Series  AZ  Message
 </pre></div>
 </div>
 <p>Once the workload status is <em>active</em> and the agent status is <em>idle</em>, the
-Slurm cluster is ready for use.</p>
-<p>You can see the status of your cluster by running the <code class="docutils literal notranslate"><span class="pre">sinfo</span></code> command:</p>
+slurm cluster is ready for use.</p>
+<p>you can see the status of your cluster by running the <code class="docutils literal notranslate"><span class="pre">sinfo</span></code> command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run --unit slurm-configurator/0 sinfo
 PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
 juju-compute-GsLk    up   infinite      <span class="m">1</span>   idle juju-01ab62-3
@@ -235,23 +147,15 @@ configurator*     inact   infinite      <span class="m">1</span>   idle juju-01a
 
 
 <h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#install-juju">Install Juju</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#setup-cloud">Setup cloud</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#deploy-slurm">Deploy Slurm</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../operations/overview.html">Operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../design/overview.html">Design</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Slurm Installation Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../operations/overview.html">Operations Overview</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../index.html" title="previous chapter">Welcome to the documentation for the Omnivector Slurm Distribution!</a></li>
-      <li>Next: <a href="../operations/overview.html" title="next chapter">Operations</a></li>
   </ul></li>
 </ul>
 </div>
@@ -287,7 +191,7 @@ configurator*     inact   infinite      <span class="m">1</span>   idle juju-01a
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../_sources/installation/overview.rst.txt"
+      <a href="../_sources/slurm-installation/lxd.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

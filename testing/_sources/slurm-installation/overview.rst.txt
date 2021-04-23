@@ -4,7 +4,7 @@
 Installation overview
 =====================
 
-OSD can be installed on a cloud of your choosing. The only common component
+The OSD can be installed on a cloud of your choosing. The only common component
 used across deployments is juju_ itself.  You must have the juju client
 installed on your local system in order to administer the installation and
 deployment of the Slurm charms.
@@ -27,7 +27,7 @@ Slurm to a cloud of your choosing.
 Setup cloud
 ===========
 
-Follow the documentation for the cloud on which you wish to deploy Slurm.
+Follow the documentation for the cloud you with to deploy Slurm on:
 
 AWS
 ###
@@ -131,7 +131,7 @@ Deploy Slurm
 Now it is time to get Slurm :)
 
 First we need to build a *charm*. That's what Juju will deploy to our cloud.
-charms are built with ``charmcraft``:
+Charms are built with ``charmcraft``:
 
 .. code-block:: bash
 
@@ -146,27 +146,36 @@ git repository, it contains all the nuts and bolts to build the charms:
    $ cd slurm-charms
    $ make charms
 
-Now it is time to deploy! Chose the appropriate bundle for your situation:
-
-====================================== =======
-Bundle                                 Purpose
-====================================== =======
-``centos-beta-no-spaces-bundle.yaml``  Centos
-``focal-beta-bundle.yaml``             AWS
-``focal-beta-lxd-bundle.yaml``         LXD
-``focal-beta-no-spaces-bundle.yaml``
-``focal-local.yaml``
-====================================== =======
-
-For example, to deploy to a local LXD cloud:
+Now it is time to deploy! The bundles and overlays are in a separate repository,
+`slurm-bundles <https://github.com/omnivector-solutions/slurm-bundles>`_.
+Clone the repository on the same directory you cloned ``slurm-charms/``:
 
 .. code-block:: bash
 
-   $ juju deploy ./bundles/slurm-core/focal-beta-lxd-bundle.yaml
+   $ git clone https://github.com/omnivector-solutions/slurm-bundles
+   $ cd slurm-bundles
+
+The ``slurm-core`` directory contains all the bundles and overlays to deploy a
+basic Slurm cluster:
+
+- ``slurm-core/bundle.yaml``: the basic definition of the Slurm components.
+- ``slurm-core/clouds/``: overlays with specific settings for each supported
+  cloud environment.
+- ``slurm-core/options/``: overlays with specific ``options`` for the Slurm
+  components.
+- ``slurm-core/series/``: overlays to define the OS of the Slurm components.
+
+For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal:
+
+.. code-block:: bash
+
+   $ juju deploy ./slurm-core/bundle.yaml \
+                 --overlay ./slurm-core/clouds/lxd.yaml \
+                 --overlay ./slurm-core/series/focal.yaml \
 
 Juju will then create the applications, configurations and LXD containers
-described in the ``focal-beta-lxd-bundle.yaml`` which will in turn define
-the contents of the model.
+described in the respective files, which will in turn define the contents of
+the model.
 
 It will take a moment get everything ready. You can check the status of your
 model with juju's status:
@@ -203,8 +212,8 @@ model with juju's status:
    5        started  10.34.166.66   juju-01ab62-5  focal       Running
 
 
-Once the workload status is *active* and the agent status is *idle*, the
-Slurm cluster is ready for use.
+Once the workload status is *active* and the agent status is *idle*, the Slurm
+cluster is ready for use.
 
 You can see the status of your cluster by running the ``sinfo`` command:
 
@@ -212,5 +221,84 @@ You can see the status of your cluster by running the ``sinfo`` command:
 
    $ juju run --unit slurm-configurator/0 sinfo
    PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
+   juju-compute-GsLk    up   infinite      1   down juju-01ab62-3
+   configurator*     inact   infinite      1   idle juju-01ab62-1
+
+The nodes start in *down* state with a ``Reason = New node``, so when you add
+more nodes to the cluster, they will not execute the jobs from que queue. This
+way it is possible to do some post installation before setting the nodes as
+*idle*. You can double check that your nodes are down because of this and not
+some other reason with ``sinfo -R``:
+
+.. code-block:: bash
+
+   $ juju run --unit slurm-configurator/0 "sinfo -R"
+   REASON               USER      TIMESTAMP           NODELIST
+   New node             root      2021-03-09T20:24:09 ip-172-31-83-4
+
+After setting the node up, to bring it back you need to run a Juju *action*:
+
+.. code-block:: bash
+
+   $ juju run-action slurmd/1 node-configured
+   $ juju run --unit slurm-configurator/0 sinfo
+   PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
    juju-compute-GsLk    up   infinite      1   idle juju-01ab62-3
    configurator*     inact   infinite      1   idle juju-01ab62-1
+
+
+CentOS7 Deploys on LXD clouds
+-----------------------------
+
+You need to manually create an LXD image for CentOS7 in order to deploy it with
+Juju.
+
+First step is to download a configuration file describing the image:
+
+.. code-block:: bash
+
+    $ wget https://raw.githubusercontent.com/lxc/lxc-ci/master/images/centos.yaml
+
+Juju needs two extra packages (`sudo` and `openssh-server`) that are not in the
+base image. You need to manually add them in the `packages` section of the yaml
+file. The first `set` of packages in the file should then be:
+
+.. code-block:: bash
+
+    packages:
+      manager: yum
+      update: true
+      cleanup: true
+      sets:
+      - packages:
+        - cronie
+        - cronie-noanacron
+        - curl
+        - dhclient
+        - initscripts
+        - openssh-clients
+        - passwd
+        - policycoreutils
+        - rootfiles
+        - rsyslog
+        - vim-minimal
+        - sudo
+        - openssh-server
+        action: install
+
+Now we need to install `distrobuilder` and generate the image:
+
+.. code-block:: bash
+
+    $ sudo snap install distrobuilder --classic
+    $ sudo distrobuilder build-lxd centos.yaml -o image.architecture=x86_64 -o image.release=7 -o image.variant=cloud
+
+To make this new image available to Juju, we need to import it with an alias:
+
+.. code-block:: bash
+
+    $ lxc image import lxd.tar.xz rootfs.squashfs --alias juju/centos7/amd64
+
+You can check that the image was correctly imported to LXD with
+``lxc image list``. To test it works with Juju, you can
+``juju add-machine --series centos7``.
