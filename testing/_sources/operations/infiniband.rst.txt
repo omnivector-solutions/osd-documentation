@@ -4,9 +4,16 @@
 Infiniband
 ==========
 
-The ``slurmd`` charm have a few actions to manage the Infiniband drivers. A
-typical installation has the following steps: first setup the repository to get
-the drivers from, then run the install action, and finally reboot the node.
+The ``slurmd`` charm contains support for Infiniband driver lifecycle
+operations.
+
+Using the ``slurmd`` charm *actions* we can configure a repository and install
+infiniband drivers from a named repository.
+
+The general workflow for installing Infiniband drivers from a custom repository
+includes setting up the driver repository, installing the drivers, and
+rebooting the node (in that order).
+
 
 By default, OSD uses the Mellanox repository for OFED 5.3. If you want a
 different version, or a different repository, you can create a text file
@@ -17,12 +24,13 @@ available `here
 The repository configuration file for Ubuntu is `here
 <https://linux.mellanox.com/public/repo/mlnx_ofed/4.9-2.2.4.0/ubuntu20.04/mellanox_mlnx_ofed.list>`_.
 
-With this file saved as ``repository``, you can then configure the charm and
-install Infiniband. For example, to install the drivers in a loop to cover all
-150 compute nodes:
+For example, to download a repository file for CentOS and install the drivers
+in a loop to cover all 150 compute nodes:
 
 .. code-blocK:: bash
 
+   curl -O repository \
+        https://linux.mellanox.com/public/repo/mlnx_ofed/4.9-2.2.4.0/rhel7.9/mellanox_mlnx_ofed.repo
 
    for i in {{0..150}}; do
    	juju run-action compute/$i set-infiniband-repo repo="$(cat repository)" --wait

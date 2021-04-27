@@ -36,19 +36,25 @@
             
   <div class="section" id="infiniband">
 <span id="id1"></span><h1>Infiniband<a class="headerlink" href="#infiniband" title="Permalink to this headline">¶</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm have a few actions to manage the Infiniband drivers. A
-typical installation has the following steps: first setup the repository to get
-the drivers from, then run the install action, and finally reboot the node.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm contains support for Infiniband driver lifecycle
+operations.</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm <em>actions</em> we can configure a repository and install
+infiniband drivers from a named repository.</p>
+<p>The general workflow for installing Infiniband drivers from a custom repository
+includes setting up the driver repository, installing the drivers, and
+rebooting the node (in that order).</p>
 <p>By default, OSD uses the Mellanox repository for OFED 5.3. If you want a
 different version, or a different repository, you can create a text file
 describing the repository and configure the charms to use it. For example, to
 use Mellanox OFED 4.9 for CentOS7, you can download the <code class="docutils literal notranslate"><span class="pre">.repo</span></code> file
 available <a class="reference external" href="https://linux.mellanox.com/public/repo/mlnx_ofed/4.9-2.2.4.0/rhel7.9/mellanox_mlnx_ofed.repo">here</a>.
 The repository configuration file for Ubuntu is <a class="reference external" href="https://linux.mellanox.com/public/repo/mlnx_ofed/4.9-2.2.4.0/ubuntu20.04/mellanox_mlnx_ofed.list">here</a>.</p>
-<p>With this file saved as <code class="docutils literal notranslate"><span class="pre">repository</span></code>, you can then configure the charm and
-install Infiniband. For example, to install the drivers in a loop to cover all
-150 compute nodes:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> i in <span class="o">{{</span><span class="m">0</span>..150<span class="o">}}</span><span class="p">;</span> <span class="k">do</span>
+<p>For example, to download a repository file for CentOS and install the drivers
+in a loop to cover all 150 compute nodes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -O repository <span class="se">\</span>
+     https://linux.mellanox.com/public/repo/mlnx_ofed/4.9-2.2.4.0/rhel7.9/mellanox_mlnx_ofed.repo
+
+<span class="k">for</span> i in <span class="o">{{</span><span class="m">0</span>..150<span class="o">}}</span><span class="p">;</span> <span class="k">do</span>
      juju run-action compute/<span class="nv">$i</span> set-infiniband-repo <span class="nv">repo</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>cat repository<span class="k">)</span><span class="s2">&quot;</span> --wait
      juju run-action compute/<span class="nv">$i</span> install-infiniband
 <span class="k">done</span>
