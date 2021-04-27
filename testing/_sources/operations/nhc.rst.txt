@@ -1,0 +1,39 @@
+.. _nhc:
+
+===
+NHC
+===
+
+OSD installs `LBNL Node Health Check (NHC) <https://github.com/mej/nhc>`_ by
+default in the ``slurmd`` charm. The base configuration file contains only
+basic checks, and you easily extend it with to match your own cluster.
+
+For example, suppose you want to also check for: 100 Gb/sec infiniband, and the
+``/scratch`` is mounted as ``r/w``. The easiest way is to create a
+``custom-conf.nhc`` file with those checks:
+
+::
+
+   * || check_fs_mount_rw -f /scratch
+   * || check_hw_ib 100
+
+And then configuring your ``slurmd`` application to use it:
+
+.. code-block:: bash
+
+        $ juju config slurmd nhc-conf="$(cat custom-conf.nhc)"
+
+
+We also provide an action to see the currently used ``nhc.conf``, which
+contains our base checks in addition to your custom ones:
+
+.. code-block:: bash
+
+        $ juju run-action slurmd/2 show-nhc-config --wait
+
+
+
+TODO:
+
+* slurm.conf related attributes
+* how to change that

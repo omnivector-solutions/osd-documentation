@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Backup and restore the slurm database &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
+    <title>NHC &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -16,8 +16,8 @@
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Upgrade OSD" href="upgrading-osd.html" />
-    <link rel="prev" title="NHC" href="nhc.html" />
+    <link rel="next" title="Backup and restore the slurm database" href="backup-restore.html" />
+    <link rel="prev" title="Infiniband" href="infiniband.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -34,18 +34,32 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="backup-and-restore-the-slurm-database">
-<span id="operations-backup-restore"></span><h1>Backup and restore the slurm database<a class="headerlink" href="#backup-and-restore-the-slurm-database" title="Permalink to this headline">¶</a></h1>
-<p><strong>Backup the slurm database</strong>
-In order to backup a slurm cluster, we first need to create a backup of its database.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>juju run
+  <div class="section" id="nhc">
+<span id="id1"></span><h1>NHC<a class="headerlink" href="#nhc" title="Permalink to this headline">¶</a></h1>
+<p>OSD installs <a class="reference external" href="https://github.com/mej/nhc">LBNL Node Health Check (NHC)</a> by
+default in the <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm. The base configuration file contains only
+basic checks, and you easily extend it with to match your own cluster.</p>
+<p>For example, suppose you want to also check for: 100 Gb/sec infiniband, and the
+<code class="docutils literal notranslate"><span class="pre">/scratch</span></code> is mounted as <code class="docutils literal notranslate"><span class="pre">r/w</span></code>. The easiest way is to create a
+<code class="docutils literal notranslate"><span class="pre">custom-conf.nhc</span></code> file with those checks:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">||</span> <span class="n">check_fs_mount_rw</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">scratch</span>
+<span class="o">*</span> <span class="o">||</span> <span class="n">check_hw_ib</span> <span class="mi">100</span>
 </pre></div>
 </div>
-<p><strong>Restore the slurm database</strong>
-In order to restore a slurm cluster, we first need to restore a backup of its database.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run
+<p>And then configuring your <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> application to use it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmd nhc-conf<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>cat custom-conf.nhc<span class="k">)</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
+<p>We also provide an action to see the currently used <code class="docutils literal notranslate"><span class="pre">nhc.conf</span></code>, which
+contains our base checks in addition to your custom ones:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmd/2 show-nhc-config --wait
+</pre></div>
+</div>
+<p>TODO:</p>
+<ul class="simple">
+<li>slurm.conf related attributes</li>
+<li>how to change that</li>
+</ul>
 </div>
 
 
@@ -70,8 +84,8 @@ In order to restore a slurm cluster, we first need to restore a backup of its da
 <li class="toctree-l1"><a class="reference internal" href="../architecture.html">OSD Architecture</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">Operations Overview</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="infiniband.html">Infiniband</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nhc.html">NHC</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Backup and restore the slurm database</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">NHC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html">Backup and restore the slurm database</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrading-osd.html">Upgrade OSD</a></li>
 </ul>
 </li>
@@ -83,8 +97,8 @@ In order to restore a slurm cluster, we first need to restore a backup of its da
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="overview.html">Operations</a><ul>
-      <li>Previous: <a href="nhc.html" title="previous chapter">NHC</a></li>
-      <li>Next: <a href="upgrading-osd.html" title="next chapter">Upgrade OSD</a></li>
+      <li>Previous: <a href="infiniband.html" title="previous chapter">Infiniband</a></li>
+      <li>Next: <a href="backup-restore.html" title="next chapter">Backup and restore the slurm database</a></li>
   </ul></li>
   </ul></li>
 </ul>
@@ -121,7 +135,7 @@ In order to restore a slurm cluster, we first need to restore a backup of its da
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../_sources/operations/backup-restore.rst.txt"
+      <a href="../_sources/operations/nhc.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
