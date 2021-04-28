@@ -35,7 +35,7 @@ contains our base checks in addition to your custom ones:
 
 The settings used in ``slurm.conf`` for NHC are as follows:
 
-..
+::
 
    HealthCheckProgram=/sbin/nhc
    HealthCheckInterval=600
