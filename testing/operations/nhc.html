@@ -38,28 +38,30 @@
 <span id="id1"></span><h1>NHC<a class="headerlink" href="#nhc" title="Permalink to this headline">¶</a></h1>
 <p>OSD installs <a class="reference external" href="https://github.com/mej/nhc">LBNL Node Health Check (NHC)</a> by
 default in the <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm. The base configuration file contains only
-basic checks, and you easily extend it with to match your own cluster.</p>
+basic checks, and you can easily extend it to match your own cluster.</p>
 <p>For example, suppose you want to also check for: 100 Gb/sec infiniband, and the
-<code class="docutils literal notranslate"><span class="pre">/scratch</span></code> is mounted as <code class="docutils literal notranslate"><span class="pre">r/w</span></code>. The easiest way is to create a
-<code class="docutils literal notranslate"><span class="pre">custom-conf.nhc</span></code> file with those checks:</p>
+<code class="docutils literal notranslate"><span class="pre">/scratch</span></code> partition to be mounted as <code class="docutils literal notranslate"><span class="pre">r/w</span></code>. The easiest way to do so is to
+create a <code class="docutils literal notranslate"><span class="pre">custom-conf.nhc</span></code> file with those checks:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">||</span> <span class="n">check_fs_mount_rw</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">scratch</span>
 <span class="o">*</span> <span class="o">||</span> <span class="n">check_hw_ib</span> <span class="mi">100</span>
 </pre></div>
 </div>
-<p>And then configuring your <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> application to use it:</p>
+<p>And then configure your <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> application to use it:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmd nhc-conf<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>cat custom-conf.nhc<span class="k">)</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
+<p>Note that this will append your custom configurations to the <code class="docutils literal notranslate"><span class="pre">nhc.conf</span></code> file,
+without overwriting the file.</p>
 <p>We also provide an action to see the currently used <code class="docutils literal notranslate"><span class="pre">nhc.conf</span></code>, which
 contains our base checks in addition to your custom ones:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmd/2 show-nhc-config --wait
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmd/leader show-nhc-config --wait
 </pre></div>
 </div>
-<p>TODO:</p>
-<ul class="simple">
-<li>slurm.conf related attributes</li>
-<li>how to change that</li>
-</ul>
+<p>The settings used in <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code> for NHC are as follows:</p>
+<blockquote>
+<div>HealthCheckProgram=/sbin/nhc
+HealthCheckInterval=600
+HealthCheckNodeState=ANY,CYCLE</div></blockquote>
 </div>
 
 
