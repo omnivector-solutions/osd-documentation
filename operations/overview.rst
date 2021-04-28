@@ -21,6 +21,7 @@ Find below a list of operations on how to manage and configure OSD:
 .. toctree::
    :maxdepth: 2
 
+   nodes
    infiniband
    nhc
    backup-restore
