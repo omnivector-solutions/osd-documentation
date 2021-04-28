@@ -57,12 +57,20 @@ contains our base checks in addition to your custom ones:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmd/leader show-nhc-config --wait
 </pre></div>
 </div>
-<p>The settings used in <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code> for NHC are as follows:</p>
+<p>The default settings used in <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code> for NHC are as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HealthCheckProgram</span><span class="o">=/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nhc</span>
 <span class="n">HealthCheckInterval</span><span class="o">=</span><span class="mi">600</span>
 <span class="n">HealthCheckNodeState</span><span class="o">=</span><span class="n">ANY</span><span class="p">,</span><span class="n">CYCLE</span>
 </pre></div>
 </div>
+<p>It is possible to change the interval (in seconds) and the node states:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmd health-check-interval<span class="o">=</span><span class="m">300</span>
+$ juju config slurmd health-check-state<span class="o">=</span><span class="s2">&quot;CYCLE,ANY&quot;</span>
+</pre></div>
+</div>
+<p>Please refer to the
+<a class="reference external" href="https://slurm.schedmd.com/slurm.conf.html">slurm.conf documentation</a> for
+configuration details.</p>
 </div>
 
 

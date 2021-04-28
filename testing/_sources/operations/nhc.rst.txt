@@ -33,10 +33,21 @@ contains our base checks in addition to your custom ones:
 
         $ juju run-action slurmd/leader show-nhc-config --wait
 
-The settings used in ``slurm.conf`` for NHC are as follows:
+The default settings used in ``slurm.conf`` for NHC are as follows:
 
 ::
 
    HealthCheckProgram=/sbin/nhc
    HealthCheckInterval=600
    HealthCheckNodeState=ANY,CYCLE
+
+It is possible to change the interval (in seconds) and the node states:
+
+.. code-block:: bash
+
+   $ juju config slurmd health-check-interval=300
+   $ juju config slurmd health-check-state="CYCLE,ANY"
+
+Please refer to the
+`slurm.conf documentation <https://slurm.schedmd.com/slurm.conf.html>`_ for
+configuration details.
