@@ -36,19 +36,26 @@
             
   <div class="section" id="infiniband">
 <span id="id1"></span><h1>Infiniband<a class="headerlink" href="#infiniband" title="Permalink to this headline">¶</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm have a few actions to manage the Infiniband drivers. A
-typical installation has the following steps: first setup the repository to get
-the drivers from, then run the install action, and finally reboot the node.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm contains support for Infiniband driver lifecycle
+operations.</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm actions we can configure a repository and install
+Infiniband drivers from it.</p>
+<p>The general workflow for installing infiniband drivers from a custom repository
+includes setting up the driver repository, installing the drivers, and
+rebooting the node (in that order).</p>
 <p>By default, OSD uses the Mellanox repository for OFED 5.3. If you want a
 different version, or a different repository, you can create a text file
 describing the repository and configure the charms to use it. For example, to
-use Mellanox OFED 4.9 for CentOS7, you can download the <code class="docutils literal notranslate"><span class="pre">.repo</span></code> file
-available <a class="reference external" href="https://linux.mellanox.com/public/repo/mlnx_ofed/4.9-2.2.4.0/rhel7.9/mellanox_mlnx_ofed.repo">here</a>.
-The repository configuration file for Ubuntu is <a class="reference external" href="https://linux.mellanox.com/public/repo/mlnx_ofed/4.9-2.2.4.0/ubuntu20.04/mellanox_mlnx_ofed.list">here</a>.</p>
-<p>With this file saved as <code class="docutils literal notranslate"><span class="pre">repository</span></code>, you can then configure the charm and
-install Infiniband. For example, to install the drivers in a loop to cover all
-150 compute nodes:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> i in <span class="o">{{</span><span class="m">0</span>..150<span class="o">}}</span><span class="p">;</span> <span class="k">do</span>
+use Mellanox OFED 4.9, you can download the appropriate repository file to your
+operating system:
+- <a class="reference external" href="https://linux.mellanox.com/public/repo/mlnx_ofed/4.9-2.2.4.0/rhel7.9/mellanox_mlnx_ofed.repo">CentOS7 - OFED 4.9</a>;
+- <a class="reference external" href="https://linux.mellanox.com/public/repo/mlnx_ofed/4.9-2.2.4.0/ubuntu20.04/mellanox_mlnx_ofed.list">Ubuntu 20.04 - OFED 4.9</a>.</p>
+<p>For example, to download the repository file for OFED 4.9 in CentOS7 and
+install the drivers in a loop to cover all 150 compute nodes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -O repository <span class="se">\</span>
+     https://linux.mellanox.com/public/repo/mlnx_ofed/4.9-2.2.4.0/rhel7.9/mellanox_mlnx_ofed.repo
+
+<span class="k">for</span> i in <span class="o">{{</span><span class="m">0</span>..150<span class="o">}}</span><span class="p">;</span> <span class="k">do</span>
      juju run-action compute/<span class="nv">$i</span> set-infiniband-repo <span class="nv">repo</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>cat repository<span class="k">)</span><span class="s2">&quot;</span> --wait
      juju run-action compute/<span class="nv">$i</span> install-infiniband
 <span class="k">done</span>
@@ -77,7 +84,7 @@ the nodes.</p>
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../slurm-installation/overview.html">Slurm Installation Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../architecture.html">OSD Architecture</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">Operations Overview</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="nodes.html">Nodes operations</a></li>

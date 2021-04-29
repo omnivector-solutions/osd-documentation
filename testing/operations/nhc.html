@@ -38,8 +38,9 @@
 <span id="id1"></span><h1>NHC<a class="headerlink" href="#nhc" title="Permalink to this headline">¶</a></h1>
 <p>OSD installs <a class="reference external" href="https://github.com/mej/nhc">LBNL Node Health Check (NHC)</a> by
 default in the <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm. The base configuration file contains only
-basic checks, and you can easily extend it to match your own cluster.</p>
-<p>For example, suppose you want to also check for: 100 Gb/sec infiniband, and the
+basic checks to ensure slurm and munge processes are active. You
+can easily extend the NHC configuration to match your setup.</p>
+<p>For example, suppose you want to also check for: 100 Gb/sec Infiniband, and the
 <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> partition to be mounted as <code class="docutils literal notranslate"><span class="pre">r/w</span></code>. The easiest way to do so is to
 create a <code class="docutils literal notranslate"><span class="pre">custom-conf.nhc</span></code> file with those checks:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">||</span> <span class="n">check_fs_mount_rw</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">scratch</span>
@@ -50,8 +51,8 @@ create a <code class="docutils literal notranslate"><span class="pre">custom-con
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmd nhc-conf<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>cat custom-conf.nhc<span class="k">)</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
-<p>Note that this will append your custom configurations to the <code class="docutils literal notranslate"><span class="pre">nhc.conf</span></code> file,
-without overwriting the file.</p>
+<p>Note that this <em>appends</em> your custom configurations to the charm defined
+<code class="docutils literal notranslate"><span class="pre">nhc.conf</span></code>, without overwriting the pre-existing checks defined by the charm.</p>
 <p>We also provide an action to see the currently used <code class="docutils literal notranslate"><span class="pre">nhc.conf</span></code>, which
 contains our base checks in addition to your custom ones:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmd/leader show-nhc-config --wait
@@ -91,7 +92,7 @@ configuration details.</p>
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../slurm-installation/overview.html">Slurm Installation Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../architecture.html">OSD Architecture</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">Operations Overview</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="nodes.html">Nodes operations</a></li>

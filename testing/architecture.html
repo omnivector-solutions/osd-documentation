@@ -17,7 +17,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Operations" href="operations/overview.html" />
-    <link rel="prev" title="Installation overview" href="slurm-installation/overview.html" />
+    <link rel="prev" title="Installation overview" href="installation.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -48,12 +48,13 @@ Ubuntu Focal</li>
 </ul>
 <p>On the compute nodes, we also install
 <a class="reference external" href="https://github.com/mej/nhc">Node Health Check (NHC)</a> with a only a few basic
-checks for the node health status. It is possible, and recommended, that the
-cluster administrator extends these checks. Check <a class="reference internal" href="operations/nhc.html#nhc"><span class="std std-ref">NHC</span></a> section for
-details on how to configure it.</p>
+checks that ensure the slurm and munge processes are active. It is possible,
+and recommended, that the cluster administrator extends these checks. Check
+<a class="reference internal" href="operations/nhc.html#nhc"><span class="std std-ref">NHC</span></a> section for details on how to configure it.</p>
 <p>The easiest way to install Infiniband drivers on the compute nodes is to use
-the charm supplied actions related to infiniband management. Check
-<a class="reference internal" href="operations/infiniband.html#infiniband"><span class="std std-ref">Infiniband</span></a> section for details on how to install it.</p>
+the charm supplied actions related to Infiniband management. Check
+<a class="reference internal" href="operations/infiniband.html#infiniband"><span class="std std-ref">Infiniband</span></a> section for more details on Infiniband driver lifecycle
+operations.</p>
 </div>
 
 
@@ -74,7 +75,7 @@ the charm supplied actions related to infiniband management. Check
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="slurm-installation/overview.html">Slurm Installation Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation overview</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">OSD Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="operations/overview.html">Operations Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration/configuration.html">Configuration and Administration</a></li>
@@ -84,7 +85,7 @@ the charm supplied actions related to infiniband management. Check
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="slurm-installation/overview.html" title="previous chapter">Installation overview</a></li>
+      <li>Previous: <a href="installation.html" title="previous chapter">Installation overview</a></li>
       <li>Next: <a href="operations/overview.html" title="next chapter">Operations</a></li>
   </ul></li>
 </ul>

@@ -86,6 +86,61 @@ You can now bootstrap your local cloud:
 Following a successful bootstrap, ``juju controllers`` will show your newly
 provisioned lxd controller.
 
+CentOS7 Deploys on LXD clouds
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You need to manually create an LXD image for CentOS7 in order to deploy it with
+Juju.
+
+First step is to download a configuration file describing the image:
+
+.. code-block:: bash
+
+    $ wget https://raw.githubusercontent.com/lxc/lxc-ci/master/images/centos.yaml
+
+Juju needs two extra packages (`sudo` and `openssh-server`) that are not in the
+base image. You need to manually add them in the `packages` section of the yaml
+file. The first `set` of packages in the file should then be:
+
+.. code-block:: bash
+
+    packages:
+      manager: yum
+      update: true
+      cleanup: true
+      sets:
+      - packages:
+        - cronie
+        - cronie-noanacron
+        - curl
+        - dhclient
+        - initscripts
+        - openssh-clients
+        - passwd
+        - policycoreutils
+        - rootfiles
+        - rsyslog
+        - vim-minimal
+        - sudo
+        - openssh-server
+        action: install
+
+Now we need to install `distrobuilder` and generate the image:
+
+.. code-block:: bash
+
+    $ sudo snap install distrobuilder --classic
+    $ sudo distrobuilder build-lxd centos.yaml -o image.architecture=x86_64 -o image.release=7 -o image.variant=cloud
+
+To make this new image available to Juju, we need to import it with an alias:
+
+.. code-block:: bash
+
+    $ lxc image import lxd.tar.xz rootfs.squashfs --alias juju/centos7/amd64
+
+You can check that the image was correctly imported to LXD with
+``lxc image list``. To test it works with Juju, you can
+``juju add-machine --series centos7``.
 
 Add a model
 -----------
@@ -246,59 +301,5 @@ After setting the node up, to bring it back you need to run a Juju *action*:
    juju-compute-GsLk    up   infinite      1   idle juju-01ab62-3
    configurator*     inact   infinite      1   idle juju-01ab62-1
 
-
-CentOS7 Deploys on LXD clouds
------------------------------
-
-You need to manually create an LXD image for CentOS7 in order to deploy it with
-Juju.
-
-First step is to download a configuration file describing the image:
-
-.. code-block:: bash
-
-    $ wget https://raw.githubusercontent.com/lxc/lxc-ci/master/images/centos.yaml
-
-Juju needs two extra packages (`sudo` and `openssh-server`) that are not in the
-base image. You need to manually add them in the `packages` section of the yaml
-file. The first `set` of packages in the file should then be:
-
-.. code-block:: bash
-
-    packages:
-      manager: yum
-      update: true
-      cleanup: true
-      sets:
-      - packages:
-        - cronie
-        - cronie-noanacron
-        - curl
-        - dhclient
-        - initscripts
-        - openssh-clients
-        - passwd
-        - policycoreutils
-        - rootfiles
-        - rsyslog
-        - vim-minimal
-        - sudo
-        - openssh-server
-        action: install
-
-Now we need to install `distrobuilder` and generate the image:
-
-.. code-block:: bash
-
-    $ sudo snap install distrobuilder --classic
-    $ sudo distrobuilder build-lxd centos.yaml -o image.architecture=x86_64 -o image.release=7 -o image.variant=cloud
-
-To make this new image available to Juju, we need to import it with an alias:
-
-.. code-block:: bash
-
-    $ lxc image import lxd.tar.xz rootfs.squashfs --alias juju/centos7/amd64
-
-You can check that the image was correctly imported to LXD with
-``lxc image list``. To test it works with Juju, you can
-``juju add-machine --series centos7``.
+Please refer to our :ref:`operations` section for detailed instructions on how
+to manage the cluster.

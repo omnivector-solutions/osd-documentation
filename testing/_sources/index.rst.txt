@@ -9,15 +9,7 @@ Welcome to the documentation for the Omnivector Slurm Distribution!
 .. toctree::
    :maxdepth: 3
 
-   Slurm Installation Overview <slurm-installation/overview>
+   installation
    architecture
    Operations Overview <operations/overview>
    configuration/configuration
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

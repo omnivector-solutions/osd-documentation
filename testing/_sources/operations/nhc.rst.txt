@@ -6,9 +6,10 @@ NHC
 
 OSD installs `LBNL Node Health Check (NHC) <https://github.com/mej/nhc>`_ by
 default in the ``slurmd`` charm. The base configuration file contains only
-basic checks, and you can easily extend it to match your own cluster.
+basic checks to ensure slurm and munge processes are active. You
+can easily extend the NHC configuration to match your setup.
 
-For example, suppose you want to also check for: 100 Gb/sec infiniband, and the
+For example, suppose you want to also check for: 100 Gb/sec Infiniband, and the
 ``/scratch`` partition to be mounted as ``r/w``. The easiest way to do so is to
 create a ``custom-conf.nhc`` file with those checks:
 
@@ -23,8 +24,8 @@ And then configure your ``slurmd`` application to use it:
 
         $ juju config slurmd nhc-conf="$(cat custom-conf.nhc)"
 
-Note that this will append your custom configurations to the ``nhc.conf`` file,
-without overwriting the file.
+Note that this *appends* your custom configurations to the charm defined
+``nhc.conf``, without overwriting the pre-existing checks defined by the charm.
 
 We also provide an action to see the currently used ``nhc.conf``, which
 contains our base checks in addition to your custom ones:
