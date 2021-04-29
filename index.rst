@@ -44,4 +44,4 @@ A short list of thoughtfully curated lifecycle operations automated by OSD.
    * User defined configuration
 
      * Seed your own configuration into the ``slurm.conf``
-     * Regeneration and redistribution of configuration based on diff from previous config
+     * Regeneration and redistribution of configuration based on ``diff`` from previous configuration
