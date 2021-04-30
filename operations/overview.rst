@@ -22,6 +22,7 @@ Find below a list of operations on how to manage and configure OSD:
    :maxdepth: 2
 
    nodes
+   partitions
    infiniband
    nhc
    backup-restore
