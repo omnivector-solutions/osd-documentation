@@ -11,13 +11,13 @@ The Omnivector Slurm Distribution stands on a suite of codified operations calle
 "charms" to asssemble, install, deploy and operate SLURM.
 
 Slurm Charms
-~~~~~~~~~~~~
+------------
 `slurm-charms <https://github.com/omnivector-solutions/slurm-charms/>`_
 are the components that encapsulate the operational know-how and automation
 needed to facilitate the lifecycle of a SLURM cluster.
 
 Slurm Bundles
-~~~~~~~~~~~~~
+-------------
 The `slurm-bundles <https://github.com/omnivector-solutions/slurm-bundles/>`_
 define the base slurm deployment configurations for different clouds and
 operating systems.
