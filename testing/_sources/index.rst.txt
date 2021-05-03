@@ -18,7 +18,7 @@ and take advantage of the full range of features contained in the Omnivector Slu
 .. toctree::
    :maxdepth: 3
 
-   installation
    architecture
+   installation
    Operations Overview <operations/overview>
    configuration/configuration
