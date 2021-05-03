@@ -6,11 +6,11 @@
 Welcome to the documentation for the Omnivector Slurm Distribution!
 ===================================================================
 This documentation is the source of truth for information pertaining
-to deploying and operating the Omnivector Slurm Distribution.
+to deploying and operating the Omnivector Slurm Distribution (OSD).
 
-OSD consists of a set of codified automations called "charms". Charms
-are collections of custom curated operations that are used to support the
-"charmed" application lifecycle.
+The Omnivector Slurm Distribution is built with codified operations
+called "charms". Charms are custom curated operations code that are used
+to automate and support the charmed application lifecycle.
 
 The `slurm-charms <https://github.com/omnivector-solutions/slurm-charms/>`_
 are at the heart of our operations suite and encapsulate the operational
