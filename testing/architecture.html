@@ -36,7 +36,24 @@
             
   <div class="section" id="osd-architecture">
 <h1>OSD Architecture<a class="headerlink" href="#osd-architecture" title="Permalink to this headline">¶</a></h1>
-<p>The Omnivector Slurm Distribution has the following components:</p>
+<p>The Omnivector Slurm Distribution is built on a suite of automations called &quot;charms&quot;.
+Charms are the operational components that describe the lifecycle of a SLURM cluster.
+A full deployment comes in the form of multiple charms, one for each component of
+SLURM. A &quot;bundle&quot; is a yaml file where multiple charms can be defined. We use bundles
+to describe the interconnectivity and configuration of groups of charms.</p>
+<div class="section" id="slurm-charms">
+<h2>Slurm Charms<a class="headerlink" href="#slurm-charms" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://github.com/omnivector-solutions/slurm-charms/">slurm-charms</a>
+are the components that encapsulate the operational know-how and automation
+needed to facilitate the lifecycle of a SLURM cluster.</p>
+</div>
+<div class="section" id="slurm-bundles">
+<h2>Slurm Bundles<a class="headerlink" href="#slurm-bundles" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://github.com/omnivector-solutions/slurm-bundles/">slurm-bundles</a>
+define the base slurm deployment configurations for different clouds and
+operating systems.</p>
+<p>The Omnivector Slurm Distribution supports the following charm components
+as part of the slurm-core offering:</p>
 <ul class="simple">
 <li>Compute nodes (running <code class="docutils literal notranslate"><span class="pre">slurmd</span></code>)</li>
 <li>Slurm database node (running <code class="docutils literal notranslate"><span class="pre">slurmdbd</span></code>)</li>
@@ -46,15 +63,15 @@ entire cluster</li>
 <li>Slurm REST service (running <code class="docutils literal notranslate"><span class="pre">slurmrestd</span></code>) - currently only available for
 Ubuntu Focal</li>
 </ul>
-<p>On the compute nodes, we also install
-<a class="reference external" href="https://github.com/mej/nhc">Node Health Check (NHC)</a> with a only a few basic
-checks that ensure the slurm and munge processes are active. It is possible,
-and recommended, that the cluster administrator extends these checks. Check
+<p>Additionally we include the <a class="reference external" href="https://github.com/mej/nhc">Node Health Check (NHC)</a>
+with a minimal configuration and checks to ensure the slurm and munge processes are active.
+It is possible, and recommended, that the cluster administrator extends these checks. Check
 <a class="reference internal" href="operations/nhc.html#nhc"><span class="std std-ref">NHC</span></a> section for details on how to configure it.</p>
 <p>The easiest way to install Infiniband drivers on the compute nodes is to use
 the charm supplied actions related to Infiniband management. Check
 <a class="reference internal" href="operations/infiniband.html#infiniband"><span class="std std-ref">Infiniband</span></a> section for more details on Infiniband driver lifecycle
 operations.</p>
+</div>
 </div>
 
 
@@ -76,7 +93,11 @@ operations.</p>
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation overview</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">OSD Architecture</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">OSD Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#slurm-charms">Slurm Charms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#slurm-bundles">Slurm Bundles</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="operations/overview.html">Operations Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration/configuration.html">Configuration and Administration</a></li>
 </ul>
