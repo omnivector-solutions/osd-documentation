@@ -9,9 +9,9 @@ Welcome to the documentation for the Omnivector Slurm Distribution!
 This documentation serves as the source of truth for information
 pertaining to deploying and/or operating the Omnivector Slurm Distribution.
 
-The [slurm charms](https://github.com/omnivector-solutions/slurm-charms)
+The `slurm-charms <https://github.com/omnivector-solutions/slurm-charms/>`_
 are at the heart of our operations suite, and encapsulate the operational
-know-how and automation needed to facilitate running a SLURM cluster.
+know-how and automation needed to facilitate the lifecycle of a SLURM cluster.
 
 Follow the documentation below to get up and running!
 
