@@ -6,7 +6,7 @@
 Welcome to the documentation for the Omnivector Slurm Distribution!
 ===================================================================
 This documentation is the source of truth for information pertaining
-to deploying and operating the Omnivector Slurm Distribution (OSD).
+to deployment and operating the Omnivector Slurm Distribution (OSD).
 
 The Omnivector Slurm Distribution uses codified operations code called "charms"
 to asssemble, install, deploy and operate SLURM itself. Charms expose the
