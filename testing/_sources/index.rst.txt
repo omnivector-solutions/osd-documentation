@@ -17,7 +17,8 @@ are at the heart of our operations suite and encapsulate the operational
 know-how and automation needed to facilitate the lifecycle of a SLURM cluster.
 
 The `slurm-bundles <https://github.com/omnivector-solutions/slurm-bundles/>`_
-define base configurations for the slurm deployments on different clouds.
+define the base slurm deployment configurations for different clouds and
+operating systems.
 
 Follow the documentation below to better understand how to get up and running
 and take advantage of the full range of features contained in the Omnivector Slurm Distribution!
