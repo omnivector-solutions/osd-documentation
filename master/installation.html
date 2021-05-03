@@ -7,19 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Installation overview &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Operations" href="../operations/overview.html" />
-    <link rel="prev" title="Welcome to the documentation for the Omnivector Slurm Distribution!" href="../index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Operations" href="operations/overview.html" />
+    <link rel="prev" title="OSD Architecture" href="architecture.html" />
    
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
@@ -93,6 +93,52 @@ $ lxd network <span class="nb">set</span> lxdbr0 ipv6.address none
 </div>
 <p>Following a successful bootstrap, <code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">controllers</span></code> will show your newly
 provisioned lxd controller.</p>
+<div class="section" id="centos7-deploys-on-lxd-clouds">
+<h5>CentOS7 Deploys on LXD clouds<a class="headerlink" href="#centos7-deploys-on-lxd-clouds" title="Permalink to this headline">¶</a></h5>
+<p>You need to manually create an LXD image for CentOS7 in order to deploy it with
+Juju.</p>
+<p>First step is to download a configuration file describing the image:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget https://raw.githubusercontent.com/lxc/lxc-ci/master/images/centos.yaml
+</pre></div>
+</div>
+<p>Juju needs two extra packages (<cite>sudo</cite> and <cite>openssh-server</cite>) that are not in the
+base image. You need to manually add them in the <cite>packages</cite> section of the yaml
+file. The first <cite>set</cite> of packages in the file should then be:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>packages:
+  manager: yum
+  update: <span class="nb">true</span>
+  cleanup: <span class="nb">true</span>
+  sets:
+  - packages:
+    - cronie
+    - cronie-noanacron
+    - curl
+    - dhclient
+    - initscripts
+    - openssh-clients
+    - passwd
+    - policycoreutils
+    - rootfiles
+    - rsyslog
+    - vim-minimal
+    - sudo
+    - openssh-server
+    action: install
+</pre></div>
+</div>
+<p>Now we need to install <cite>distrobuilder</cite> and generate the image:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo snap install distrobuilder --classic
+$ sudo distrobuilder build-lxd centos.yaml -o image.architecture<span class="o">=</span>x86_64 -o image.release<span class="o">=</span><span class="m">7</span> -o image.variant<span class="o">=</span>cloud
+</pre></div>
+</div>
+<p>To make this new image available to Juju, we need to import it with an alias:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ lxc image import lxd.tar.xz rootfs.squashfs --alias juju/centos7/amd64
+</pre></div>
+</div>
+<p>You can check that the image was correctly imported to LXD with
+<code class="docutils literal notranslate"><span class="pre">lxc</span> <span class="pre">image</span> <span class="pre">list</span></code>. To test it works with Juju, you can
+<code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">add-machine</span> <span class="pre">--series</span> <span class="pre">centos7</span></code>.</p>
+</div>
 </div>
 <div class="section" id="id1">
 <h4>Add a model<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
@@ -223,49 +269,8 @@ juju-compute-GsLk    up   infinite      <span class="m">1</span>   idle juju-01a
 configurator*     inact   infinite      <span class="m">1</span>   idle juju-01ab62-1
 </pre></div>
 </div>
-<p>You need to manually create an LXD image for CentOS7 in order to deploy it with
-Juju.</p>
-<p>First step is to download a configuration file describing the image:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget https://raw.githubusercontent.com/lxc/lxc-ci/master/images/centos.yaml
-</pre></div>
-</div>
-<p>Juju needs two extra packages (<cite>sudo</cite> and <cite>openssh-server</cite>) that are not in the
-base image. You need to manually add them in the <cite>packages</cite> section of the yaml
-file. The first <cite>set</cite> of packages in the file should then be:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>packages:
-  manager: yum
-  update: <span class="nb">true</span>
-  cleanup: <span class="nb">true</span>
-  sets:
-  - packages:
-    - cronie
-    - cronie-noanacron
-    - curl
-    - dhclient
-    - initscripts
-    - openssh-clients
-    - passwd
-    - policycoreutils
-    - rootfiles
-    - rsyslog
-    - vim-minimal
-    - sudo
-    - openssh-server
-    action: install
-</pre></div>
-</div>
-<p>Now we need to install <cite>distrobuilder</cite> and generate the image:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo snap install distrobuilder --classic
-$ sudo distrobuilder build-lxd centos.yaml -o image.architecture<span class="o">=</span>x86_64 -o image.release<span class="o">=</span><span class="m">7</span> -o image.variant<span class="o">=</span>cloud
-</pre></div>
-</div>
-<p>To make this new image available to Juju, we need to import it with an alias:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ lxc image import lxd.tar.xz rootfs.squashfs --alias juju/centos7/amd64
-</pre></div>
-</div>
-<p>You can check that the image was correctly imported to LXD with
-<code class="docutils literal notranslate"><span class="pre">lxc</span> <span class="pre">image</span> <span class="pre">list</span></code>. To test it works with Juju, you can
-<code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">add-machine</span> <span class="pre">--series</span> <span class="pre">centos7</span></code>.</p>
+<p>Please refer to our <a class="reference internal" href="operations/overview.html#operations"><span class="std std-ref">Operations</span></a> section for detailed instructions on how
+to manage the cluster.</p>
 </div>
 </div>
 
@@ -276,7 +281,7 @@ $ sudo distrobuilder build-lxd centos.yaml -o image.architecture<span class="o">
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../index.html">Omnivector Slurm Distribution</a></h1>
+<h1 class="logo"><a href="index.html">Omnivector Slurm Distribution</a></h1>
 
 
 
@@ -287,7 +292,8 @@ $ sudo distrobuilder build-lxd centos.yaml -o image.architecture<span class="o">
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Slurm Installation Overview</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">OSD Architecture</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#install-juju">Install Juju</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#setup-cloud">Setup cloud</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#aws">AWS</a></li>
@@ -298,22 +304,23 @@ $ sudo distrobuilder build-lxd centos.yaml -o image.architecture<span class="o">
 <li class="toctree-l2"><a class="reference internal" href="#deploy-slurm">Deploy Slurm</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../operations/overview.html">Operations Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations/overview.html">Operations Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration/configuration.html">Configuration and Administration</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
-  <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../index.html" title="previous chapter">Welcome to the documentation for the Omnivector Slurm Distribution!</a></li>
-      <li>Next: <a href="../operations/overview.html" title="next chapter">Operations</a></li>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="architecture.html" title="previous chapter">OSD Architecture</a></li>
+      <li>Next: <a href="operations/overview.html" title="next chapter">Operations</a></li>
   </ul></li>
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
+    <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
@@ -342,7 +349,7 @@ $ sudo distrobuilder build-lxd centos.yaml -o image.architecture<span class="o">
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../_sources/slurm-installation/overview.rst.txt"
+      <a href="_sources/installation.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

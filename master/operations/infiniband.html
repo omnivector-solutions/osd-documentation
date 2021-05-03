@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Backup and restore the slurm database &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
+    <title>Infiniband &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
@@ -16,8 +16,8 @@
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Upgrade OSD" href="upgrading-osd.html" />
-    <link rel="prev" title="NHC" href="nhc.html" />
+    <link rel="next" title="NHC" href="nhc.html" />
+    <link rel="prev" title="Partitions" href="partitions.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -34,18 +34,36 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="backup-and-restore-the-slurm-database">
-<span id="operations-backup-restore"></span><h1>Backup and restore the slurm database<a class="headerlink" href="#backup-and-restore-the-slurm-database" title="Permalink to this headline">¶</a></h1>
-<p><strong>Backup the slurm database</strong>
-In order to backup a slurm cluster, we first need to create a backup of its database.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>juju run
+  <div class="section" id="infiniband">
+<span id="id1"></span><h1>Infiniband<a class="headerlink" href="#infiniband" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm contains support for Infiniband driver lifecycle
+operations.</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm actions we can configure a repository and install
+Infiniband drivers from it.</p>
+<p>The general workflow for installing infiniband drivers from a custom repository
+includes setting up the driver repository, installing the drivers, and
+rebooting the node (in that order).</p>
+<p>By default, OSD uses the Mellanox repository for OFED 5.3. If you want a
+different version, or a different repository, you can create a text file
+describing the repository and configure the charms to use it. For example, to
+use Mellanox OFED 4.9, you can download the appropriate repository file to your
+operating system:
+- <a class="reference external" href="https://linux.mellanox.com/public/repo/mlnx_ofed/4.9-2.2.4.0/rhel7.9/mellanox_mlnx_ofed.repo">CentOS7 - OFED 4.9</a>;
+- <a class="reference external" href="https://linux.mellanox.com/public/repo/mlnx_ofed/4.9-2.2.4.0/ubuntu20.04/mellanox_mlnx_ofed.list">Ubuntu 20.04 - OFED 4.9</a>.</p>
+<p>For example, to download the repository file for OFED 4.9 in CentOS7 and
+install the drivers in a loop to cover all 150 compute nodes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -O repository <span class="se">\</span>
+     https://linux.mellanox.com/public/repo/mlnx_ofed/4.9-2.2.4.0/rhel7.9/mellanox_mlnx_ofed.repo
+
+<span class="k">for</span> i in <span class="o">{{</span><span class="m">0</span>..150<span class="o">}}</span><span class="p">;</span> <span class="k">do</span>
+     juju run-action compute/<span class="nv">$i</span> set-infiniband-repo <span class="nv">repo</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>cat repository<span class="k">)</span><span class="s2">&quot;</span> --wait
+     juju run-action compute/<span class="nv">$i</span> install-infiniband
+<span class="k">done</span>
 </pre></div>
 </div>
-<p><strong>Restore the slurm database</strong>
-In order to restore a slurm cluster, we first need to restore a backup of its database.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run
-</pre></div>
-</div>
+<p>The charm will install a package named <code class="docutils literal notranslate"><span class="pre">mlnx-ofed-all</span></code>. Note that this
+procedure takes some time. After the drivers are installed, you need to reboot
+the nodes.</p>
 </div>
 
 
@@ -71,9 +89,9 @@ In order to restore a slurm cluster, we first need to restore a backup of its da
 <li class="toctree-l1 current"><a class="reference internal" href="overview.html">Operations Overview</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="nodes.html">Nodes operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="partitions.html">Partitions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="infiniband.html">Infiniband</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Infiniband</a></li>
 <li class="toctree-l2"><a class="reference internal" href="nhc.html">NHC</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Backup and restore the slurm database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html">Backup and restore the slurm database</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrading-osd.html">Upgrade OSD</a></li>
 </ul>
 </li>
@@ -85,8 +103,8 @@ In order to restore a slurm cluster, we first need to restore a backup of its da
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="overview.html">Operations</a><ul>
-      <li>Previous: <a href="nhc.html" title="previous chapter">NHC</a></li>
-      <li>Next: <a href="upgrading-osd.html" title="next chapter">Upgrade OSD</a></li>
+      <li>Previous: <a href="partitions.html" title="previous chapter">Partitions</a></li>
+      <li>Next: <a href="nhc.html" title="next chapter">NHC</a></li>
   </ul></li>
   </ul></li>
 </ul>
@@ -123,7 +141,7 @@ In order to restore a slurm cluster, we first need to restore a backup of its da
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
-      <a href="../_sources/operations/backup-restore.rst.txt"
+      <a href="../_sources/operations/infiniband.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

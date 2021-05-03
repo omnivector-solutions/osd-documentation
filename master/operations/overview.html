@@ -16,8 +16,8 @@
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Configuration and Administration" href="configuration/configuration.html" />
-    <link rel="prev" title="Installation overview" href="../slurm-installation/overview.html" />
+    <link rel="next" title="Nodes operations" href="nodes.html" />
+    <link rel="prev" title="Installation overview" href="../installation.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -39,41 +39,36 @@
 <p>The Omnivector Slurm Distribution can be configured to the extent that you can configure slurm itself.
 Meaning that all upstream slurm configurations are supported by OSD.</p>
 <p>The operational magic in OSD is encapsulated in ops code called <strong>charms</strong>. We have curated a suite
-of automation for each component of slurm; slurmctld, slurmd, slurmdbd, slurmrestd. As well as our
-custom configuration engine charm called &quot;slurm-configurator&quot;.</p>
+of automation for each Slurm component: <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code>, <code class="docutils literal notranslate"><span class="pre">slurmd</span></code>, <code class="docutils literal notranslate"><span class="pre">slurmdbd</span></code>, and <code class="docutils literal notranslate"><span class="pre">slurmrestd</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code> file can be customized through the slurm charm configuration options.
 Each slurm component charm provides a set of options that enable operators/administrators to operate the cluster.</p>
 <p>Alongside the capability to manage the <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code>, the charms also provide a set of operational
 tools called <em>actions</em>.</p>
-<p>Find the charm action information and configuration information for each charm:</p>
-<p><strong>Configuration and Administration</strong></p>
+<p>Find below a list of operations on how to manage and configure OSD:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="configuration/configuration.html">Configuration and Administration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="configuration/slurmctld.html">Slurmctld</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration/slurmd.html">Slurmd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration/slurmdbd.html">slurmdbd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration/slurmrestd.html">slurmrestd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration/slurm-configurator.html">slurm-configurator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration/configuration.html#common-operations">Common Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nodes.html">Nodes operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nodes.html#adding-nodes">Adding nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodes.html#removing-nodes">Removing nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodes.html#draining-nodes">Draining nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodes.html#resuming-nodes">Resuming nodes</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="partitions.html">Partitions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="partitions.html#adding-partitions">Adding partitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="partitions.html#changing-partition-name">Changing partition name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="partitions.html#setting-the-default-partition">Setting the default partition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="partitions.html#changing-partition-state">Changing partition state</a></li>
 </ul>
-</div>
-<p><strong>Upgrade Procedure</strong></p>
-<div class="toctree-wrapper compound">
-<ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="infiniband.html">Infiniband</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nhc.html">NHC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and restore the slurm database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="upgrading-osd.html">Upgrade OSD</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="upgrading-osd.html#charm-upgrades">Charm Upgrades</a></li>
 <li class="toctree-l2"><a class="reference internal" href="upgrading-osd.html#snap-upgrades">Snap Upgrades</a></li>
 </ul>
 </li>
-</ul>
-</div>
-<p><strong>Backup/Restore Procedure</strong></p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and restore the slurm database</a></li>
 </ul>
 </div>
 </div>
@@ -96,21 +91,26 @@ tools called <em>actions</em>.</p>
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../slurm-installation/overview.html">Slurm Installation Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">OSD Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation overview</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Operations Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="configuration/configuration.html">Configuration and Administration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="upgrading-osd.html">Upgrade OSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodes.html">Nodes operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="partitions.html">Partitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infiniband.html">Infiniband</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nhc.html">NHC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="backup-restore.html">Backup and restore the slurm database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrading-osd.html">Upgrade OSD</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/configuration.html">Configuration and Administration</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="../slurm-installation/overview.html" title="previous chapter">Installation overview</a></li>
-      <li>Next: <a href="configuration/configuration.html" title="next chapter">Configuration and Administration</a></li>
+      <li>Previous: <a href="../installation.html" title="previous chapter">Installation overview</a></li>
+      <li>Next: <a href="nodes.html" title="next chapter">Nodes operations</a></li>
   </ul></li>
 </ul>
 </div>
