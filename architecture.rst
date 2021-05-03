@@ -1,4 +1,4 @@
-.. architecture:
+.. _architecture:
 
 ================
 OSD Architecture
@@ -21,6 +21,8 @@ The `slurm-bundles <https://github.com/omnivector-solutions/slurm-bundles/>`_
 define the base slurm deployment configurations for different clouds and
 operating systems.
 
+OSD Components
+--------------
 
 The Omnivector Slurm Distribution supports the following charm components
 as part of the slurm-core offering:
