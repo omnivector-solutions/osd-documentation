@@ -5,15 +5,18 @@
 
 Welcome to the documentation for the Omnivector Slurm Distribution!
 ===================================================================
-
-This documentation serves as the source of truth for information
-pertaining to deploying and/or operating the Omnivector Slurm Distribution.
+This documentation is the source of truth for information pertaining
+to operating the Omnivector Slurm Distribution.
 
 The `slurm-charms <https://github.com/omnivector-solutions/slurm-charms/>`_
-are at the heart of our operations suite, and encapsulate the operational
+are at the heart of our operations suite and encapsulate the operational
 know-how and automation needed to facilitate the lifecycle of a SLURM cluster.
 
-Follow the documentation below to get up and running!
+The `slurm-bundles <https://github.com/omnivector-solutions/slurm-bundles/>`_
+define base configurations for the slurm deployments on different clouds.
+
+Follow the documentation below to better understand how to take advantage of
+the full range of features contained in the Omnivector Slurm Distribution!
 
 .. toctree::
    :maxdepth: 3
