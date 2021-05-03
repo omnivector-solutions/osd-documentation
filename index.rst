@@ -12,7 +12,7 @@ The Omnivector Slurm Distribution stands on a suite of codified operations calle
 
 Slurm Charms
 ------------
-`slurm-charms <https://github.com/omnivector-solutions/slurm-charms/>`_
+The `slurm-charms <https://github.com/omnivector-solutions/slurm-charms/>`_
 are the components that encapsulate the operational know-how and automation
 needed to facilitate the lifecycle of a SLURM cluster.
 
