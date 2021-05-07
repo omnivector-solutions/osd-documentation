@@ -9,6 +9,21 @@ default in the ``slurmd`` charm. The base configuration file contains only
 basic checks to ensure slurm and munge processes are active. You
 can easily extend the NHC configuration to match your setup.
 
+.. note::
+
+   OSD uses short hostnames (``hostname -s``) as node identifiers in slurm.
+   Because of this, the NHC configuration needs to use the short hostname
+   also. The base NHC configuration provided in the slurmd charm takes care of
+   this by setting ``* || HOSTNAME="$HOSTNAME_S"`` at the top of the NHC config
+   file. This value will not be overridden by any custom user supplied NHC
+   config.
+
+   This is specially important if running checks on specific nodes on the cluster. For example, to only run the Nvidia monitoring on the ``gpu-*`` nodes:
+
+   ::
+
+      gpu-* || NVIDIA_HEALTHMON=...
+
 For example, suppose you want to also check for: 100 Gb/sec Infiniband, and the
 ``/scratch`` partition to be mounted as ``r/w``. The easiest way to do so is to
 create a ``custom-conf.nhc`` file with those checks:
@@ -38,7 +53,7 @@ The default settings used in ``slurm.conf`` for NHC are as follows:
 
 ::
 
-   HealthCheckProgram=/sbin/nhc
+   HealthCheckProgram=/usr/sbin/nhc-wrapper
    HealthCheckInterval=600
    HealthCheckNodeState=ANY,CYCLE
 
