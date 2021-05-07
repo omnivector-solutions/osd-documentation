@@ -53,7 +53,7 @@ The default settings used in ``slurm.conf`` for NHC are as follows:
 
 ::
 
-   HealthCheckProgram=/sbin/nhc
+   HealthCheckProgram=/usr/sbin/nhc-wrapper
    HealthCheckInterval=600
    HealthCheckNodeState=ANY,CYCLE
 
