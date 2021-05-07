@@ -40,6 +40,19 @@
 default in the <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm. The base configuration file contains only
 basic checks to ensure slurm and munge processes are active. You
 can easily extend the NHC configuration to match your setup.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>OSD uses short hostnames (<code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-s</span></code>) as node identifiers in slurm.
+Because of this, the NHC configuration needs to use the short hostname
+also. The base NHC configuration provided in the slurmd charm takes care of
+this by setting <code class="docutils literal notranslate"><span class="pre">*</span> <span class="pre">||</span> <span class="pre">HOSTNAME=&quot;$HOSTNAME_S&quot;</span></code> at the top of the NHC config
+file. This value will not be overridden by any custom user supplied NHC
+config.</p>
+<p>This is specially important if running checks on specific nodes on the cluster. For example, to only run the Nvidia monitoring on the <code class="docutils literal notranslate"><span class="pre">gpu-*</span></code> nodes:</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gpu</span><span class="o">-*</span> <span class="o">||</span> <span class="n">NVIDIA_HEALTHMON</span><span class="o">=...</span>
+</pre></div>
+</div>
+</div>
 <p>For example, suppose you want to also check for: 100 Gb/sec Infiniband, and the
 <code class="docutils literal notranslate"><span class="pre">/scratch</span></code> partition to be mounted as <code class="docutils literal notranslate"><span class="pre">r/w</span></code>. The easiest way to do so is to
 create a <code class="docutils literal notranslate"><span class="pre">custom-conf.nhc</span></code> file with those checks:</p>
