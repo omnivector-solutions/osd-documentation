@@ -36,60 +36,23 @@
             
   <div class="section" id="upgrade-osd">
 <span id="operations-upgrading-osd"></span><h1>Upgrade OSD<a class="headerlink" href="#upgrade-osd" title="Permalink to this headline">¶</a></h1>
-<p>OSD upgrades can happen at two different levels; 1) the upgrading of the operations (charm code), 2) the
-upgrading of the underlying slurm snap resource (the slurm process itself).</p>
-<p>If the desired affect is to upgrade the ops code, upgrade the charms. In the case that you want
-to update the running slurm process itself, you will want to upgrade the snap.</p>
 <div class="section" id="charm-upgrades">
 <h2>Charm Upgrades<a class="headerlink" href="#charm-upgrades" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt>To upgrade the operations code, the slurm charms, you can follow the example</dt>
-<dd>(the order in which charms are upgraded does not matter here):</dd>
-</dl>
+<p>To upgrade the operations code, the slurm charms, you can follow the example
+(the order in which charms are upgraded does not matter here):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> application in slurmctld <span class="se">\</span>
                    slurmd <span class="se">\</span>
                    slurmdbd <span class="se">\</span>
-                   slurmrestd <span class="se">\</span>
-                   slurm-configurator<span class="p">;</span> <span class="k">do</span>
+                   slurmrestd<span class="p">;</span> <span class="k">do</span>
 
     juju upgrade-charm <span class="nv">$application</span>
 
 <span class="k">done</span>
 </pre></div>
 </div>
-<p>Juju will reach out to the charmhub and pull down the latest charm code (if a more recent revisions exists
-then what is running on the machine) and run the <code class="docutils literal notranslate"><span class="pre">upgrade-charm</span></code> hook event.</p>
-</div>
-<div class="section" id="snap-upgrades">
-<h2>Snap Upgrades<a class="headerlink" href="#snap-upgrades" title="Permalink to this headline">¶</a></h2>
-<p>The slurm snap can be upgraded via the slurm charms in a number of ways:</p>
-<p>1) Attach a new resource to the charms.
-The slurm charms will always use a supplied resource if available. To upgrade the running slurm snap
-to a later version, attach the snap resource to the charm as follows.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> application in slurmctld <span class="se">\</span>
-                   slurmd <span class="se">\</span>
-                   slurmdbd <span class="se">\</span>
-                   slurmrestd <span class="se">\</span>
-                   slurm-configurator<span class="p">;</span> <span class="k">do</span>
-
-    juju attach <span class="nv">$application</span> slurm-resource<span class="o">=</span>slurm-snap.resource
-
-<span class="k">done</span>
-</pre></div>
-</div>
-<p>In the case you want to upgrade the snap and the charm simultaneously, you can run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> application in slurmctld <span class="se">\</span>
-                   slurmd <span class="se">\</span>
-                   slurmdbd <span class="se">\</span>
-                   slurmrestd <span class="se">\</span>
-                   slurm-configurator<span class="p">;</span> <span class="k">do</span>
-
-    juju upgrade-charm <span class="nv">$application</span> <span class="se">\</span>
-        --resource slurm-resource<span class="o">=</span>slurm-snap.resource
-
-<span class="k">done</span>
-</pre></div>
-</div>
+<p>Juju will reach out to the charmhub and pull down the latest charm code (if a
+more recent revisions exists then what is running on the machine) and run the
+<code class="docutils literal notranslate"><span class="pre">upgrade-charm</span></code> hook event.</p>
 </div>
 </div>
 
@@ -121,7 +84,6 @@ to a later version, attach the snap resource to the charm as follows.</p>
 <li class="toctree-l2"><a class="reference internal" href="backup-restore.html">Backup and restore the slurm database</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Upgrade OSD</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#charm-upgrades">Charm Upgrades</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#snap-upgrades">Snap Upgrades</a></li>
 </ul>
 </li>
 </ul>

@@ -46,7 +46,7 @@ with a new <em>Juju application name</em>.</p>
 <p>To add a <code class="docutils literal notranslate"><span class="pre">slurmd-debug</span></code> application for the <code class="docutils literal notranslate"><span class="pre">debug</span></code> partition, we need to:</p>
 <ul class="simple">
 <li>add the application;</li>
-<li>add a relation to the slurm-configurator charm;</li>
+<li>add a relation to the slurmctld charm;</li>
 <li>add extra options depending on the cloud provider.</li>
 </ul>
 <p>So, edit the bundle file to add a new entry in the <code class="docutils literal notranslate"><span class="pre">applications</span></code> section:</p>
@@ -62,7 +62,7 @@ with a new <em>Juju application name</em>.</p>
 </div>
 <p>And similarly, the relations:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">relations</span><span class="p">:</span>
-  <span class="o">-</span> <span class="o">-</span> <span class="n">slurm</span><span class="o">-</span><span class="n">configurator</span><span class="p">:</span><span class="n">slurmd</span>
+  <span class="o">-</span> <span class="o">-</span> <span class="n">slurmctld</span><span class="p">:</span><span class="n">slurmd</span>
     <span class="o">-</span> <span class="n">slurmd</span><span class="o">-</span><span class="n">debug</span><span class="p">:</span><span class="n">slurmd</span>
 </pre></div>
 </div>
@@ -90,13 +90,13 @@ can change the partition name with a juju configuration command:</p>
 </div>
 <div class="section" id="setting-the-default-partition">
 <h2>Setting the default partition<a class="headerlink" href="#setting-the-default-partition" title="Permalink to this headline">¶</a></h2>
-<p>To set the default Slurm partition, you must configure <code class="docutils literal notranslate"><span class="pre">slurm-configurator</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmd-configurator default-partition<span class="o">=</span>debug
+<p>To set the default Slurm partition, you must configure <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmdctld default-partition<span class="o">=</span>debug
 </pre></div>
 </div>
 <p>Alternatively, you can set the partition name in the bundle file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">slurmd</span><span class="o">-</span><span class="n">configurator</span><span class="p">:</span>
-  <span class="n">charm</span><span class="p">:</span> <span class="o">./../../</span><span class="n">slurm</span><span class="o">-</span><span class="n">charms</span><span class="o">/</span><span class="n">slurm</span><span class="o">-</span><span class="n">configurator</span><span class="o">.</span><span class="n">charm</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">slurmdctld</span><span class="p">:</span>
+  <span class="n">charm</span><span class="p">:</span> <span class="o">./../../</span><span class="n">slurm</span><span class="o">-</span><span class="n">charms</span><span class="o">/</span><span class="n">slurmctld</span><span class="o">.</span><span class="n">charm</span>
   <span class="n">num_units</span><span class="p">:</span> <span class="mi">1</span>
   <span class="n">options</span><span class="p">:</span>
     <span class="n">default</span><span class="o">-</span><span class="n">partition</span><span class="p">:</span> <span class="n">debug</span>

@@ -17,7 +17,7 @@ The easiest way to add a new partition is to modify the
 To add a ``slurmd-debug`` application for the ``debug`` partition, we need to:
 
 - add the application;
-- add a relation to the slurm-configurator charm;
+- add a relation to the slurmctld charm;
 - add extra options depending on the cloud provider.
 
 So, edit the bundle file to add a new entry in the ``applications`` section:
@@ -38,7 +38,7 @@ And similarly, the relations:
 ::
 
    relations:
-     - - slurm-configurator:slurmd
+     - - slurmctld:slurmd
        - slurmd-debug:slurmd
 
 If you need any custom configurations for your cloud provider, you could add
@@ -70,18 +70,18 @@ Alternatively, you can set the partition name in the bundle file:
 Setting the default partition
 #############################
 
-To set the default Slurm partition, you must configure ``slurm-configurator``:
+To set the default Slurm partition, you must configure ``slurmctld``:
 
 .. code-block:: bash
 
-   $ juju config slurmd-configurator default-partition=debug
+   $ juju config slurmdctld default-partition=debug
 
 Alternatively, you can set the partition name in the bundle file:
 
 ::
 
-   slurmd-configurator:
-     charm: ./../../slurm-charms/slurm-configurator.charm
+   slurmdctld:
+     charm: ./../../slurm-charms/slurmctld.charm
      num_units: 1
      options:
        default-partition: debug
