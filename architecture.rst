@@ -3,11 +3,12 @@
 ================
 OSD Architecture
 ================
-The Omnivector Slurm Distribution is built on a suite of automations called "charms".
-Charms are the operational components that describe the lifecycle of a SLURM cluster.
-A full deployment comes in the form of multiple charms, one for each component of
-SLURM. A "bundle" is a yaml file where multiple charms can be defined. We use bundles
-to describe the interconnectivity and configuration of groups of charms. 
+The Omnivector SLURM Distribution is built on a suite of automations called
+"charms".  Charms are the operational components that describe the lifecycle of
+a SLURM cluster.  A full SLURM deployment comes in the form of multiple charms, one
+for each component of SLURM. A "bundle" is a yaml file where multiple charms
+can be defined. We use bundles to describe the interconnectivity and
+configuration of groups of charms.
 
 Slurm Charms
 ------------
@@ -18,7 +19,7 @@ needed to facilitate the lifecycle of a SLURM cluster.
 Slurm Bundles
 -------------
 The `slurm-bundles <https://github.com/omnivector-solutions/slurm-bundles/>`_
-define the base slurm deployment configurations for different clouds and
+define the base SLURM deployment configurations for different clouds and
 operating systems.
 
 OSD Components
@@ -29,19 +30,17 @@ as part of the slurm-core offering:
 
 * Compute nodes (running ``slurmd``)
 
-* Slurm database node (running ``slurmdbd``)
+* SLURM database node (running ``slurmdbd``)
 
-* Slurm control node (running ``slurmctld``)
+* SLURM control node (running ``slurmctld``)
 
-* Slurm configurator node - an Omnivector system to configure and control the
-  entire cluster
-
-* Slurm REST service (running ``slurmrestd``) - currently only available for
+* SLURM REST service (running ``slurmrestd``) - currently only available for
   Ubuntu Focal
 
-Additionally we include the `Node Health Check (NHC) <https://github.com/mej/nhc>`_
-with a minimal configuration and checks to ensure the slurm and munge processes are active.
-It is possible, and recommended, that the cluster administrator extends these checks. Check
+Additionally we include the `Node Health Check (NHC)
+<https://github.com/mej/nhc>`_ with a minimal configuration and checks to
+ensure the ``slurm`` and ``munge`` processes are active.  It is possible, and
+recommended, that the cluster administrator extends these checks. Check
 :ref:`nhc` section for details on how to configure it.
 
 The easiest way to install Infiniband drivers on the compute nodes is to use
