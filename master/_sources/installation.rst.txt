@@ -216,8 +216,6 @@ basic Slurm cluster:
 - ``slurm-core/bundle.yaml``: the basic definition of the Slurm components.
 - ``slurm-core/clouds/``: overlays with specific settings for each supported
   cloud environment.
-- ``slurm-core/options/``: overlays with specific ``options`` for the Slurm
-  components.
 - ``slurm-core/series/``: overlays to define the OS of the Slurm components.
 
 For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal:
@@ -226,7 +224,7 @@ For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal:
 
    $ juju deploy ./slurm-core/bundle.yaml \
                  --overlay ./slurm-core/clouds/lxd.yaml \
-                 --overlay ./slurm-core/series/focal.yaml \
+                 --overlay ./slurm-core/series/focal.yaml
 
 Juju will then create the applications, configurations and LXD containers
 described in the respective files, which will in turn define the contents of
@@ -244,7 +242,6 @@ model with juju's status:
 
    App                 Version  Status  Scale  Charm               Store       Rev  OS      Notes
    percona-cluster     5.7.20   active      1  percona-cluster     jujucharms  293  ubuntu
-   slurm-configurator  20.11.3  active      1  slurm-configurator  local         1  ubuntu
    slurmctld           20.11.3  active      1  slurmctld           local         0  ubuntu
    slurmd              20.11.3  active      1  slurmd              local         0  ubuntu
    slurmdbd            20.11.3  active      1  slurmdbd            local         0  ubuntu
@@ -252,7 +249,6 @@ model with juju's status:
 
    Unit                   Workload  Agent  Machine  Public address  Ports     Message
    percona-cluster/0*     active    idle   0        10.34.166.18    3306/tcp  Unit is ready
-   slurm-configurator/0*  active    idle   1        10.34.166.187             slurm-configurator available
    slurmctld/0*           active    idle   2        10.34.166.222             slurmctld available
    slurmd/0*              active    idle   3        10.34.166.219             slurmd available
    slurmdbd/0*            active    idle   4        10.34.166.218             slurmdbd available
@@ -260,24 +256,22 @@ model with juju's status:
 
    Machine  State    DNS            Inst id        Series  AZ  Message
    0        started  10.34.166.18   juju-01ab62-0  bionic      Running
-   1        started  10.34.166.187  juju-01ab62-1  focal       Running
    2        started  10.34.166.222  juju-01ab62-2  focal       Running
    3        started  10.34.166.219  juju-01ab62-3  focal       Running
    4        started  10.34.166.218  juju-01ab62-4  focal       Running
    5        started  10.34.166.66   juju-01ab62-5  focal       Running
 
 
-Once the workload status is *active* and the agent status is *idle*, the Slurm
+Once the workload status is *active* and the agent status is *idle*, the SLURM
 cluster is ready for use.
 
 You can see the status of your cluster by running the ``sinfo`` command:
 
 .. code-block:: bash
 
-   $ juju run --unit slurm-configurator/0 sinfo
+   $ juju run --unit slurmcltd/0 sinfo
    PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
    juju-compute-GsLk    up   infinite      1   down juju-01ab62-3
-   configurator*     inact   infinite      1   idle juju-01ab62-1
 
 The nodes start in *down* state with a ``Reason = New node``, so when you add
 more nodes to the cluster, they will not execute the jobs from que queue. This
@@ -287,7 +281,7 @@ some other reason with ``sinfo -R``:
 
 .. code-block:: bash
 
-   $ juju run --unit slurm-configurator/0 "sinfo -R"
+   $ juju run --unit slurmcltd/0 "sinfo -R"
    REASON               USER      TIMESTAMP           NODELIST
    New node             root      2021-03-09T20:24:09 ip-172-31-83-4
 
@@ -296,10 +290,9 @@ After setting the node up, to bring it back you need to run a Juju *action*:
 .. code-block:: bash
 
    $ juju run-action slurmd/1 node-configured
-   $ juju run --unit slurm-configurator/0 sinfo
+   $ juju run --unit slurmcltd/0 sinfo
    PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
    juju-compute-GsLk    up   infinite      1   idle juju-01ab62-3
-   configurator*     inact   infinite      1   idle juju-01ab62-1
 
 Please refer to our :ref:`operations` section for detailed instructions on how
 to manage the cluster.
