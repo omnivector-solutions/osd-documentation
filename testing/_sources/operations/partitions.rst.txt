@@ -70,7 +70,7 @@ Alternatively, you can set the partition name in the bundle file:
 Setting the default partition
 #############################
 
-To set the default Slurm partition, you must configure ``slurmctld``:
+To set the default partition, you must configure ``slurmctld``:
 
 .. code-block:: bash
 

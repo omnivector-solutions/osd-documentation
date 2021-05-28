@@ -262,7 +262,7 @@ model with juju's status:
    5        started  10.34.166.66   juju-01ab62-5  focal       Running
 
 
-Once the workload status is *active* and the agent status is *idle*, the Slurm
+Once the workload status is *active* and the agent status is *idle*, the SLURM
 cluster is ready for use.
 
 You can see the status of your cluster by running the ``sinfo`` command:
