@@ -1,19 +1,18 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Partitions &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Infiniband" href="infiniband.html" />
@@ -34,20 +33,20 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="partitions">
+  <section id="partitions">
 <span id="id1"></span><h1>Partitions<a class="headerlink" href="#partitions" title="Permalink to this headline">¶</a></h1>
 <p>We recommend to use one <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> application for each partition in your
 cluster. So, to add a new partition you need to deploy a new <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm,
 with a new <em>Juju application name</em>.</p>
-<div class="section" id="adding-partitions">
+<section id="adding-partitions">
 <h2>Adding partitions<a class="headerlink" href="#adding-partitions" title="Permalink to this headline">¶</a></h2>
 <p>The easiest way to add a new partition is to modify the
 <code class="docutils literal notranslate"><span class="pre">slurm-bundles/slurm-core/bundle.yaml</span></code> file with your new application.</p>
 <p>To add a <code class="docutils literal notranslate"><span class="pre">slurmd-debug</span></code> application for the <code class="docutils literal notranslate"><span class="pre">debug</span></code> partition, we need to:</p>
 <ul class="simple">
-<li>add the application;</li>
-<li>add a relation to the slurmctld charm;</li>
-<li>add extra options depending on the cloud provider.</li>
+<li><p>add the application;</p></li>
+<li><p>add a relation to the slurmctld charm;</p></li>
+<li><p>add extra options depending on the cloud provider.</p></li>
 </ul>
 <p>So, edit the bundle file to add a new entry in the <code class="docutils literal notranslate"><span class="pre">applications</span></code> section:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">applications</span><span class="p">:</span>
@@ -71,8 +70,8 @@ them in this file or in the used overlay file. For example, we provide
 constraints and bindings for AWS clouds as an overlay in
 <code class="docutils literal notranslate"><span class="pre">slurm-bundles/slurm-core/clouds/aws.yaml</span></code>. If deploying to AWS, you should
 also copy those bindings to the new application.</p>
-</div>
-<div class="section" id="changing-partition-name">
+</section>
+<section id="changing-partition-name">
 <h2>Changing partition name<a class="headerlink" href="#changing-partition-name" title="Permalink to this headline">¶</a></h2>
 <p>By default, the charms create a randomly unique name for each partition. You
 can change the partition name with a juju configuration command:</p>
@@ -87,8 +86,8 @@ can change the partition name with a juju configuration command:</p>
     <span class="n">partition</span><span class="o">-</span><span class="n">name</span><span class="p">:</span> <span class="n">debug</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="setting-the-default-partition">
+</section>
+<section id="setting-the-default-partition">
 <h2>Setting the default partition<a class="headerlink" href="#setting-the-default-partition" title="Permalink to this headline">¶</a></h2>
 <p>To set the default partition, you must configure <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmdctld default-partition<span class="o">=</span>debug
@@ -102,8 +101,8 @@ can change the partition name with a juju configuration command:</p>
     <span class="n">default</span><span class="o">-</span><span class="n">partition</span><span class="p">:</span> <span class="n">debug</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="changing-partition-state">
+</section>
+<section id="changing-partition-state">
 <h2>Changing partition state<a class="headerlink" href="#changing-partition-state" title="Permalink to this headline">¶</a></h2>
 <p>To change the partition state to one of <code class="docutils literal notranslate"><span class="pre">UP</span></code>, <code class="docutils literal notranslate"><span class="pre">DOWN</span></code>, <code class="docutils literal notranslate"><span class="pre">DRAIN</span></code>, or
 <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>:</p>
@@ -111,8 +110,8 @@ can change the partition name with a juju configuration command:</p>
 </pre></div>
 </div>
 <p>By default, the partition is in the <code class="docutils literal notranslate"><span class="pre">UP</span></code> state.</p>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -153,6 +152,7 @@ can change the partition name with a juju configuration command:</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../configuration/configuration.html">Configuration and Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
 </ul>
 
 <div class="relations">
@@ -167,17 +167,15 @@ can change the partition name with a juju configuration command:</p>
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
 
 
 
@@ -194,7 +192,7 @@ can change the partition name with a juju configuration command:</p>
       &copy;2021, Omnivector Solutions.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

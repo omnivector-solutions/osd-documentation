@@ -23,3 +23,4 @@ Slurm Distribution!
    installation
    Operations Overview <operations/overview>
    configuration/configuration
+   Changelog <changelog>

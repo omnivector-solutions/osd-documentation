@@ -1,19 +1,18 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Installation overview &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Operations" href="operations/overview.html" />
@@ -34,45 +33,45 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="installation-overview">
+  <section id="installation-overview">
 <span id="installation"></span><h1>Installation overview<a class="headerlink" href="#installation-overview" title="Permalink to this headline">¶</a></h1>
 <p>The OSD can be installed on a cloud of your choosing. The only common component
 used across deployments is <a class="reference external" href="https://juju.is">juju</a> itself.  You must have the juju client
 installed on your local system in order to administer the installation and
 deployment of the Slurm charms.</p>
-<div class="section" id="install-juju">
+<section id="install-juju">
 <h2>Install Juju<a class="headerlink" href="#install-juju" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo snap install juju --classic
 </pre></div>
 </div>
 <p>Once the juju client is installed you will be ready to proceed with deploying
 Slurm to a cloud of your choosing.</p>
-</div>
-<div class="section" id="setup-cloud">
+</section>
+<section id="setup-cloud">
 <h2>Setup cloud<a class="headerlink" href="#setup-cloud" title="Permalink to this headline">¶</a></h2>
 <p>Follow the documentation for the cloud you with to deploy Slurm on:</p>
-<div class="section" id="aws">
+<section id="aws">
 <h3>AWS<a class="headerlink" href="#aws" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="login-to-a-juju-controller">
+<section id="login-to-a-juju-controller">
 <h4>Login to a juju controller<a class="headerlink" href="#login-to-a-juju-controller" title="Permalink to this headline">¶</a></h4>
 <p>In any deployment scenario we will need to be logged into a juju controller.
 For this example we will login to the public juju controller, Jaas.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju login jaas
 </pre></div>
 </div>
-</div>
-<div class="section" id="add-a-model">
+</section>
+<section id="add-a-model">
 <h4>Add a model<a class="headerlink" href="#add-a-model" title="Permalink to this headline">¶</a></h4>
 <p>Once you are logged into a juju controller you need to add a model. Run the
 following command to add the model that will house the OSD.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju add-model slurm aws/us-west-2
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="lxd">
+</section>
+</section>
+<section id="lxd">
 <h3>LXD<a class="headerlink" href="#lxd" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="bootstrap-a-localhost-lxd-juju-controller">
+<section id="bootstrap-a-localhost-lxd-juju-controller">
 <h4>Bootstrap a localhost LXD Juju controller<a class="headerlink" href="#bootstrap-a-localhost-lxd-juju-controller" title="Permalink to this headline">¶</a></h4>
 <p>In any deployment scenario we will need to be logged into a juju controller.
 For this example we will bootstrap a juju controller in a LXD container on our
@@ -84,8 +83,8 @@ $ lxd network <span class="nb">set</span> lxdbr0 ipv6.address none
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Juju does not support IPv6, the last command disables it.</p>
+<p class="admonition-title">Note</p>
+<p>Juju does not support IPv6, the last command disables it.</p>
 </div>
 <p>You can now bootstrap your local cloud:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju bootstrap localhost
@@ -93,7 +92,7 @@ $ lxd network <span class="nb">set</span> lxdbr0 ipv6.address none
 </div>
 <p>Following a successful bootstrap, <code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">controllers</span></code> will show your newly
 provisioned lxd controller.</p>
-<div class="section" id="centos7-deploys-on-lxd-clouds">
+<section id="centos7-deploys-on-lxd-clouds">
 <h5>CentOS7 Deploys on LXD clouds<a class="headerlink" href="#centos7-deploys-on-lxd-clouds" title="Permalink to this headline">¶</a></h5>
 <p>You need to manually create an LXD image for CentOS7 in order to deploy it with
 Juju.</p>
@@ -138,38 +137,38 @@ $ sudo distrobuilder build-lxd centos.yaml -o image.architecture<span class="o">
 <p>You can check that the image was correctly imported to LXD with
 <code class="docutils literal notranslate"><span class="pre">lxc</span> <span class="pre">image</span> <span class="pre">list</span></code>. To test it works with Juju, you can
 <code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">add-machine</span> <span class="pre">--series</span> <span class="pre">centos7</span></code>.</p>
-</div>
-</div>
-<div class="section" id="id1">
+</section>
+</section>
+<section id="id1">
 <h4>Add a model<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
 <p>Once you have created your juju controller you need to add a model. Run the
 following command to add the model that will house the OSD.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju add-model slurm
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="maas">
+</section>
+</section>
+<section id="maas">
 <h3>MAAS<a class="headerlink" href="#maas" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id2">
+<section id="id2">
 <h4>Login to a juju controller<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <p>If you don't already have a juju controller, bootstrap juju by creating a juju
 controller machine.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju bootstrap
 </pre></div>
 </div>
-</div>
-<div class="section" id="id3">
+</section>
+<section id="id3">
 <h4>Add a model<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <p>Once you are logged into a juju controller you need to add a model. Run the
 following command to add the model that will house the OSD.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju add-model slurm
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="deploy-slurm">
+</section>
+</section>
+</section>
+<section id="deploy-slurm">
 <h2>Deploy Slurm<a class="headerlink" href="#deploy-slurm" title="Permalink to this headline">¶</a></h2>
 <p>Now it is time to get Slurm :)</p>
 <p>First we need to build a <em>charm</em>. That's what Juju will deploy to our cloud.
@@ -194,10 +193,10 @@ $ <span class="nb">cd</span> slurm-bundles
 <p>The <code class="docutils literal notranslate"><span class="pre">slurm-core</span></code> directory contains all the bundles and overlays to deploy a
 basic Slurm cluster:</p>
 <ul class="simple">
-<li><code class="docutils literal notranslate"><span class="pre">slurm-core/bundle.yaml</span></code>: the basic definition of the Slurm components.</li>
-<li><code class="docutils literal notranslate"><span class="pre">slurm-core/clouds/</span></code>: overlays with specific settings for each supported
-cloud environment.</li>
-<li><code class="docutils literal notranslate"><span class="pre">slurm-core/series/</span></code>: overlays to define the OS of the Slurm components.</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slurm-core/bundle.yaml</span></code>: the basic definition of the Slurm components.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slurm-core/clouds/</span></code>: overlays with specific settings for each supported
+cloud environment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slurm-core/series/</span></code>: overlays to define the OS of the Slurm components.</p></li>
 </ul>
 <p>For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy ./slurm-core/bundle.yaml <span class="se">\</span>
@@ -264,8 +263,8 @@ juju-compute-GsLk    up   infinite      <span class="m">1</span>   idle juju-01a
 </div>
 <p>Please refer to our <a class="reference internal" href="operations/overview.html#operations"><span class="std std-ref">Operations</span></a> section for detailed instructions on how
 to manage the cluster.</p>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -302,6 +301,7 @@ to manage the cluster.</p>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="operations/overview.html">Operations Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configuration/configuration.html">Configuration and Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
 
 <div class="relations">
@@ -314,17 +314,15 @@ to manage the cluster.</p>
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
 
 
 
@@ -341,7 +339,7 @@ to manage the cluster.</p>
       &copy;2021, Omnivector Solutions.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

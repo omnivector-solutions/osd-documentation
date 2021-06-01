@@ -1,19 +1,18 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Nodes operations &#8212; Omnivector Slurm Distribution 0.0.1 documentation</title>
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Partitions" href="partitions.html" />
@@ -34,11 +33,11 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="nodes-operations">
+  <section id="nodes-operations">
 <span id="nodes"></span><h1>Nodes operations<a class="headerlink" href="#nodes-operations" title="Permalink to this headline">¶</a></h1>
 <p>This section walks through configurations and actions dealing with Slurm
 compute nodes.</p>
-<div class="section" id="adding-nodes">
+<section id="adding-nodes">
 <h2>Adding nodes<a class="headerlink" href="#adding-nodes" title="Permalink to this headline">¶</a></h2>
 <p>New nodes are added in <code class="docutils literal notranslate"><span class="pre">down</span></code> state. This allows the cluster administrator to
 install and configure dependencies before the node can run jobs.</p>
@@ -50,15 +49,15 @@ install and configure dependencies before the node can run jobs.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmd/1 node-configured
 </pre></div>
 </div>
-</div>
-<div class="section" id="removing-nodes">
+</section>
+<section id="removing-nodes">
 <h2>Removing nodes<a class="headerlink" href="#removing-nodes" title="Permalink to this headline">¶</a></h2>
 <p>Removing nodes are as simple as:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju remove-unit slurmd/4
 </pre></div>
 </div>
-</div>
-<div class="section" id="draining-nodes">
+</section>
+<section id="draining-nodes">
 <h2>Draining nodes<a class="headerlink" href="#draining-nodes" title="Permalink to this headline">¶</a></h2>
 <p>We provide an action in the <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm to drain nodes. You need to
 know in advance the hostname of the nodes you want to drain. You need to
@@ -83,8 +82,8 @@ unit-slurmctld-0:
 </div>
 <p>We recommend running this action in the <em>leader</em> of <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> application
 instead of using the number.</p>
-</div>
-<div class="section" id="resuming-nodes">
+</section>
+<section id="resuming-nodes">
 <h2>Resuming nodes<a class="headerlink" href="#resuming-nodes" title="Permalink to this headline">¶</a></h2>
 <p>We provide an action to resume nodes in <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmctld/leader resume <span class="nv">nodename</span><span class="o">=</span>juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span> --wait
@@ -103,8 +102,8 @@ unit-slurmctld-0:
     started: <span class="m">2021</span>-04-28 <span class="m">20</span>:17:23 +0000 UTC
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
           </div>
@@ -145,6 +144,7 @@ unit-slurmctld-0:
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../configuration/configuration.html">Configuration and Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
 </ul>
 
 <div class="relations">
@@ -159,17 +159,15 @@ unit-slurmctld-0:
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
 
 
 
@@ -186,7 +184,7 @@ unit-slurmctld-0:
       &copy;2021, Omnivector Solutions.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
