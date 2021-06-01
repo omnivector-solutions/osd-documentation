@@ -9,19 +9,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout
+      - name: "Checkout docs"
         uses: actions/checkout@v2
-
-      - name: Make Html
+      - name: "Checkout slurm-charms"
         run: |
-          # Use the osc sphinx docker image to build our sphinx docs
-          docker run --rm -v "${PWD}:/doc" -u "$(id -u):$(id -g)" ohiosupercomputer/docker-sphinx make html
+          git clone https://github.com/omnivector-solutions/slurm-charms.git \
+                    ../slurm-charms
+
+      - name: "Setup Python"
+        uses: actions/setup-python@v2
+      - name: "Install dependencies"
+        run: |
+          sudo apt update
+          sudo apt install -y graphviz
+          pip install -r requirements.txt
+
+      - name: "Build the HTML docs"
+        run: |
+          make html
 
       - id: set-git-user
         run: |
           git config user.name omnivector-qa
           git config user.email admin@omnivector.solutions
-
       - name: Checkout the gh-pages branch, commit and push
         run: |
           # Get and store the branch name that we are building.
