@@ -1,17 +1,15 @@
 # Configuration file for the Sphinx documentation builder.
 
-smartquotes = False
-
-master_doc = 'index'
 # -- Project information -----------------------------------------------------
 
 project = 'Omnivector Slurm Distribution'
 copyright = '2021, Omnivector Solutions'
 author = 'Omnivector Solutions'
+repo_url = 'https://github.com/omnivector-solutions/osd-documentation/'
 
-# The full version, including alpha/beta/rc tags
-release = '0.0.1'
+master_doc = 'index'
 
+smartquotes = False
 
 # -- General configuration ---------------------------------------------------
 
@@ -38,13 +36,18 @@ exclude_patterns = ['build', 'Thumbs.db', '.DS_Store', 'venv']
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = 'sphinx_book_theme'
+html_theme_options = {'repository_url' : repo_url,
+                      'use_repository_button': True,
+                      'use_issues_button': True}
+
+# Add omnilogo to the website
 html_logo = 'images/logo.png'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+#html_static_path = ['_static']
 
 
 # -- Preprocessing steps -----------------------------------------------------
