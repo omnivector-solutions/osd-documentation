@@ -8,12 +8,10 @@ and others are charm specific.
 
 Find a list of each charm's configuration options and administrative actions below.
 
-.. TODO find a way to automate the generation of these tables
-
 .. toctree::
    :maxdepth: 2
 
-   slurmctld
    slurmd
    slurmdbd
+   slurmctld
    slurmrestd

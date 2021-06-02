@@ -1,0 +1,65 @@
+.. This file is the template file to generate the configuration/slurm*.rst files
+.. Please do not edit configuration/slurm*.rst files manually, they will be
+.. overwritten next time the docs are rebuilt.
+
+.. _operations-{{ charm }}:
+
+{{ charm|length * "=" }}
+{{ charm }}
+{{ charm|length * "=" }}
+
+{{ charm_description }}
+
+
+{% if options %}
+Configurations
+==============
+
+To change a configuration for this charm, use the Juju command:
+
+.. code-block:: bash
+
+   $ juju config {{ charm }} configuration=value
+
+{% for configuration in options %}
+{{ configuration }}
+{{ configuration|length * "-" }}
+
+{{ options[configuration].description }}
+
+{% set default_value = options[configuration].default | string | replace('\n', '\\n') %}
+* type: {{ options[configuration].type }}
+* default-value: {{ "``{}``".format(default_value) if default_value else "empty"}}
+{% endfor %}
+{% endif %}
+
+
+{% if actions %}
+Actions
+=======
+
+To run an action for this charm, use the Juju ``run-action`` command:
+
+.. code-block:: bash
+
+   $ juju run-action {{ charm }}/leader action-name [parameters=value]
+
+{% for action in actions %}
+{{ action }}
+{{ action|length * "-" }}
+
+{{ actions[action].description }}
+
+{% if actions[action].params %}
+Parameters:
+
+{% for param in actions[action].params %}
+* ``{{ param }}``: {{ actions[action].params[param].description }}
+
+  * type: {{ actions[action].params[param].type }}
+
+{% endfor %}
+{% endif %}
+
+{% endfor %}
+{% endif %}

@@ -53,3 +53,73 @@ html_logo = 'images/logo.png'
 # -- Preprocessing steps -----------------------------------------------------
 import shutil
 shutil.copyfile('../slurm-charms/CHANGELOG', 'changelog.rst')
+
+
+# generate page for configurations and actions for all charms
+from pathlib import Path
+import yaml
+from jinja2 import Environment, FileSystemLoader
+
+environment = Environment(loader=FileSystemLoader("templates"))
+descripts = {"slurmd": "The SLURM compute node.",
+             "slurmdbd": "The SLURM database node.",
+             "slurmctld": "The central management charm.",
+             "slurmrestd": "Interface to SLURM via a REST api."}
+
+def parse_description(description: str):
+    """Parse action/config description to translate to rst.
+
+    Add paragraph breaks, translate "notes" and "examples" to rst syntax."""
+
+    description = description.replace('\n', '\n\n')
+    description = description.replace('Note: ', '.. note::\n\n   ')
+
+    example_str = 'Example Usage:\n\n.. code-block:: bash\n\n   '
+    description = description.replace('Example usage: ', example_str)
+
+    # rst code blocks have two backticks
+    description = description.replace('`', '``')
+
+    return description
+
+def parse_config(configs: dict):
+    for config in configs['options']:
+        descript = configs['options'][config]['description']
+        if descript:
+            configs['options'][config]['description'] = parse_description(descript)
+
+    return configs
+
+def parse_action(actions: dict):
+    for action in actions:
+        # action description
+        descript = actions[action]['description']
+        if descript:
+            actions[action]['description'] = parse_description(descript)
+
+        # parameters descriptions
+        if actions[action].get('params'):
+            for param in actions[action]['params']:
+                descript = actions[action]['params'][param]['description']
+                descript = parse_description(descript)
+                actions[action]['params'][param]['description'] = descript
+
+    return actions
+
+for charm in descripts.keys():
+    data = dict()
+    data["charm"] = charm
+    data["charm_description"] = descripts[charm]
+
+    config_file = Path(f'../slurm-charms/charm-{charm}/config.yaml')
+    if config_file.exists():
+        configs = yaml.safe_load(config_file.read_text())
+        data.update(parse_config(configs))
+
+    action_file = Path(f'../slurm-charms/charm-{charm}/actions.yaml')
+    if action_file.exists():
+        actions = parse_action(yaml.safe_load(action_file.read_text()))
+        data.update({'actions': actions})
+
+    template = environment.get_template("configs_and_actions.tmpl")
+    Path(f"configuration/{charm}.rst").write_text(template.render(data))

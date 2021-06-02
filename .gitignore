@@ -2,3 +2,4 @@ venv/
 _build/
 build/
 changelog.rst
+configuration/slurm*.rst
