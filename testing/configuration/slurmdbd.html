@@ -34,8 +34,8 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="slurmrestd" href="slurmrestd.html" />
-    <link rel="prev" title="Slurmd" href="slurmd.html" />
+    <link rel="next" title="slurmctld" href="slurmctld.html" />
+    <link rel="prev" title="slurmd" href="slurmd.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -129,18 +129,18 @@
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="slurmctld.html">
-     Slurmctld
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="slurmd.html">
-     Slurmd
+     slurmd
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      slurmdbd
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="slurmctld.html">
+     slurmctld
     </a>
    </li>
    <li class="toctree-l2">
@@ -237,6 +237,26 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuration">
+   Configuration
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#slurmdbd-debug">
+     slurmdbd-debug
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -246,63 +266,23 @@
               <div>
                 
   <div class="section" id="slurmdbd">
-<span id="configuration-slurmdbd"></span><h1>slurmdbd<a class="headerlink" href="#slurmdbd" title="Permalink to this headline">¶</a></h1>
-<p>Slurm Database Daemon.</p>
-<table class="table" id="id1">
-<caption><span class="caption-text">slurmdbd options</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Config</p></th>
-<th class="head"><p>Description</p></th>
-<th class="head"><p>Default value[</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>snapstore-channel</p></td>
-<td><p>Snap store channel to install the slurm snap from.</p></td>
-<td><p>--stable</p></td>
-</tr>
-<tr class="row-odd"><td><p>nagios_context</p></td>
-<td><div class="line-block">
-<div class="line"><br /></div>
+<span id="operations-slurmdbd"></span><h1>slurmdbd<a class="headerlink" href="#slurmdbd" title="Permalink to this headline">¶</a></h1>
+<p>The SLURM database node.</p>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>To change a configuration for this charm, use the Juju command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmdbd <span class="nv">configuration</span><span class="o">=</span>value
+</pre></div>
 </div>
-<p>Used by the nrpe subordinate charms.
-A string that will be prepended to instance name to set the host name
-in nagios. So for instance the hostname would be something like:</p>
-<blockquote>
-<div><p>juju-myservice-0</p>
-</div></blockquote>
-<p>If you're running multiple environments with the same services in them
-this allows you to differentiate between them.</p>
-</td>
-<td><p>&quot;juju&quot;</p></td>
-</tr>
-<tr class="row-even"><td><p>nagios_servicegroups</p></td>
-<td><div class="line-block">
-<div class="line"><br /></div>
+<div class="section" id="slurmdbd-debug">
+<h3>slurmdbd-debug<a class="headerlink" href="#slurmdbd-debug" title="Permalink to this headline">¶</a></h3>
+<p>The level of detail to provide slurmdbd daemon's logs. The default value is info. If the slurmdbd daemon is initiated with -v or --verbose options, that debug level will be preserve or restored upon reconfiguration.</p>
+<ul class="simple">
+<li><p>type: string</p></li>
+<li><p>default-value: <code class="docutils literal notranslate"><span class="pre">info</span></code></p></li>
+</ul>
 </div>
-<p>A comma-separated list of nagios servicegroups.
-If left empty, the nagios_context will be used as the servicegroup</p>
-</td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>slurmdbd_debug</p></td>
-<td><div class="line-block">
-<div class="line"><br /></div>
 </div>
-<p>The level of detail to provide slurmdbd daemon's logs. The default value
-is info. If the slurmdbd daemon is initiated with -v or --verbose
-options, that debug level will be preserve or restored upon
-reconfiguration.&quot;</p>
-</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 </div>
 
 
@@ -311,8 +291,8 @@ reconfiguration.&quot;</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="slurmd.html" title="previous page">Slurmd</a>
-    <a class='right-next' id="next-link" href="slurmrestd.html" title="next page">slurmrestd</a>
+    <a class='left-prev' id="prev-link" href="slurmd.html" title="previous page">slurmd</a>
+    <a class='right-next' id="next-link" href="slurmctld.html" title="next page">slurmctld</a>
 
         </div>
         
