@@ -12,8 +12,8 @@ The central management charm.
 
 
 
-Configuration
-=============
+Configurations
+==============
 
 To change a configuration for this charm, use the Juju command:
 
@@ -29,6 +29,7 @@ Name to be recorded in database for jobs from this cluster.  This is important i
 
 
 
+
 * type: string
 * default-value: ``osd-cluster``
 
@@ -36,6 +37,7 @@ default-partition
 -----------------
 
 Default Slurm partition. This is only used if defined, and must match an existing partition.
+
 
 
 
@@ -49,6 +51,7 @@ User supplied slurm confinguration.
 
 
 
+
 * type: string
 * default-value: empty
 
@@ -59,6 +62,7 @@ Identifies the plugin to be used for process tracking on a job step basis.
 
 
 
+
 * type: string
 * default-value: ``proctrack/cgroup``
 
@@ -66,6 +70,7 @@ cgroup-config
 -------------
 
 Configuration content for cgroup.conf
+
 
 
 
@@ -101,14 +106,16 @@ To run an action for this charm, use the Juju ``run-action`` command:
 
 .. code-block:: bash
 
-   $ juju run-action slurmctld/leader action-name [parameters]
+   $ juju run-action slurmctld/leader action-name [parameters=value]
 
 
 show-current-config
 -------------------
 
 Display the currently used slurm.conf.
+
 This action is best visualized with: $ juju run-action slurmctld/leader --format=json --wait | jq .[].results.slurm.conf | xargs -I % -0 python3 -c 'print(%)'
+
 
 
 
@@ -118,7 +125,13 @@ drain
 -----
 
 Drain specified nodes.
-Example usage: $ juju run-action slurmctld/leader drain nodename=node-[1,2] reason="Updating kernel"
+
+Example Usage:
+
+.. code-block:: bash
+
+   $ juju run-action slurmctld/leader drain nodename=node-[1,2] reason="Updating kernel"
+
 
 
 
@@ -142,8 +155,17 @@ resume
 ------
 
 Resume specified nodes.
-Note: newly added nodes will remain in the "down" state until configured, with the node-configured action.
-Example usage: juju run-action slurmctld/leader resume nodename=node-[1,2]
+
+.. note::
+
+   newly added nodes will remain in the "down" state until configured, with the node-configured action.
+
+Example Usage:
+
+.. code-block:: bash
+
+   juju run-action slurmctld/leader resume nodename=node-[1,2]
+
 
 
 
@@ -151,6 +173,7 @@ Parameters:
 
 
 * ``nodename``: The nodes to resume, using the Slurm format, e.g. node-[1,2].
+
 
 
   * type: string

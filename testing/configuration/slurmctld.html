@@ -243,8 +243,8 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#configuration">
-   Configuration
+  <a class="reference internal nav-link" href="#configurations">
+   Configurations
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -320,8 +320,8 @@
   <div class="section" id="slurmctld">
 <span id="operations-slurmctld"></span><h1>slurmctld<a class="headerlink" href="#slurmctld" title="Permalink to this headline">¶</a></h1>
 <p>The central management charm.</p>
-<div class="section" id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="configurations">
+<h2>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline">¶</a></h2>
 <p>To change a configuration for this charm, use the Juju command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmctld <span class="nv">configuration</span><span class="o">=</span>value
 </pre></div>
@@ -386,18 +386,21 @@
 <div class="section" id="actions">
 <h2>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h2>
 <p>To run an action for this charm, use the Juju <code class="docutils literal notranslate"><span class="pre">run-action</span></code> command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmctld/leader action-name <span class="o">[</span>parameters<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmctld/leader action-name <span class="o">[</span><span class="nv">parameters</span><span class="o">=</span>value<span class="o">]</span>
 </pre></div>
 </div>
 <div class="section" id="show-current-config">
 <h3>show-current-config<a class="headerlink" href="#show-current-config" title="Permalink to this headline">¶</a></h3>
-<p>Display the currently used slurm.conf.
-This action is best visualized with: $ juju run-action slurmctld/leader --format=json --wait | jq .[].results.slurm.conf | xargs -I % -0 python3 -c 'print(%)'</p>
+<p>Display the currently used slurm.conf.</p>
+<p>This action is best visualized with: $ juju run-action slurmctld/leader --format=json --wait | jq .[].results.slurm.conf | xargs -I % -0 python3 -c 'print(%)'</p>
 </div>
 <div class="section" id="drain">
 <h3>drain<a class="headerlink" href="#drain" title="Permalink to this headline">¶</a></h3>
-<p>Drain specified nodes.
-Example usage: $ juju run-action slurmctld/leader drain nodename=node-[1,2] reason=&quot;Updating kernel&quot;</p>
+<p>Drain specified nodes.</p>
+<p>Example Usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmctld/leader drain <span class="nv">nodename</span><span class="o">=</span>node-<span class="o">[</span><span class="m">1</span>,2<span class="o">]</span> <span class="nv">reason</span><span class="o">=</span><span class="s2">&quot;Updating kernel&quot;</span>
+</pre></div>
+</div>
 <p>Parameters:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">nodename</span></code>: The nodes to drain, Using the Slurm format, e.g. node-[1,2].</p>
@@ -414,9 +417,15 @@ Example usage: $ juju run-action slurmctld/leader drain nodename=node-[1,2] reas
 </div>
 <div class="section" id="resume">
 <h3>resume<a class="headerlink" href="#resume" title="Permalink to this headline">¶</a></h3>
-<p>Resume specified nodes.
-Note: newly added nodes will remain in the &quot;down&quot; state until configured, with the node-configured action.
-Example usage: juju run-action slurmctld/leader resume nodename=node-[1,2]</p>
+<p>Resume specified nodes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>newly added nodes will remain in the &quot;down&quot; state until configured, with the node-configured action.</p>
+</div>
+<p>Example Usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>juju run-action slurmctld/leader resume <span class="nv">nodename</span><span class="o">=</span>node-<span class="o">[</span><span class="m">1</span>,2<span class="o">]</span>
+</pre></div>
+</div>
 <p>Parameters:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">nodename</span></code>: The nodes to resume, using the Slurm format, e.g. node-[1,2].</p>

@@ -243,8 +243,8 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#configuration">
-   Configuration
+  <a class="reference internal nav-link" href="#configurations">
+   Configurations
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -350,8 +350,8 @@
   <div class="section" id="slurmd">
 <span id="operations-slurmd"></span><h1>slurmd<a class="headerlink" href="#slurmd" title="Permalink to this headline">¶</a></h1>
 <p>The SLURM compute node.</p>
-<div class="section" id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="configurations">
+<h2>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline">¶</a></h2>
 <p>To change a configuration for this charm, use the Juju command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmd <span class="nv">configuration</span><span class="o">=</span>value
 </pre></div>
@@ -382,8 +382,8 @@
 </div>
 <div class="section" id="nhc-conf">
 <h3>nhc-conf<a class="headerlink" href="#nhc-conf" title="Permalink to this headline">¶</a></h3>
-<p>Custom extra configuration to use for Node Health Check.
-These lines are appended to a basic nhc.conf provided by the charm.</p>
+<p>Custom extra configuration to use for Node Health Check.</p>
+<p>These lines are appended to a basic nhc.conf provided by the charm.</p>
 <ul class="simple">
 <li><p>type: string</p></li>
 <li><p>default-value: empty</p></li>
@@ -393,7 +393,7 @@ These lines are appended to a basic nhc.conf provided by the charm.</p>
 <div class="section" id="actions">
 <h2>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h2>
 <p>To run an action for this charm, use the Juju <code class="docutils literal notranslate"><span class="pre">run-action</span></code> command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmd/leader action-name <span class="o">[</span>parameters<span class="o">]</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmd/leader action-name <span class="o">[</span><span class="nv">parameters</span><span class="o">=</span>value<span class="o">]</span>
 </pre></div>
 </div>
 <div class="section" id="version">
@@ -418,9 +418,12 @@ These lines are appended to a basic nhc.conf provided by the charm.</p>
 </div>
 <div class="section" id="set-infiniband-repo">
 <h3>set-infiniband-repo<a class="headerlink" href="#set-infiniband-repo" title="Permalink to this headline">¶</a></h3>
-<p>Overrides the repository file with a custom repository for Infiniband installation.
-Note: this file should be base64 encoded.
-On CentOS, the file is placed at /etc/yum.repos.d/infiniband.repo, while on Ubuntu it is at /etc/apt/sources.list.d/infiniband.list.</p>
+<p>Overrides the repository file with a custom repository for Infiniband installation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this file should be base64 encoded.</p>
+</div>
+<p>On CentOS, the file is placed at /etc/yum.repos.d/infiniband.repo, while on Ubuntu it is at /etc/apt/sources.list.d/infiniband.list.</p>
 <p>Parameters:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">repo</span></code>: Base64 encoded string that holds all information about the repository.</p>
@@ -432,8 +435,8 @@ On CentOS, the file is placed at /etc/yum.repos.d/infiniband.repo, while on Ubun
 </div>
 <div class="section" id="install-infiniband">
 <h3>install-infiniband<a class="headerlink" href="#install-infiniband" title="Permalink to this headline">¶</a></h3>
-<p>Install Mellanox Infiniband drivers. This might take a few minutes to complete.
-If no custom repository was specified before, this action will set the Mellanox repository as the default and install the latest drivers from it.</p>
+<p>Install Mellanox Infiniband drivers. This might take a few minutes to complete.</p>
+<p>If no custom repository was specified before, this action will set the Mellanox repository as the default and install the latest drivers from it.</p>
 </div>
 <div class="section" id="uninstall-infiniband">
 <h3>uninstall-infiniband<a class="headerlink" href="#uninstall-infiniband" title="Permalink to this headline">¶</a></h3>

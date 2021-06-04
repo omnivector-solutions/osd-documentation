@@ -12,8 +12,8 @@ The SLURM compute node.
 
 
 
-Configuration
-=============
+Configurations
+==============
 
 To change a configuration for this charm, use the Juju command:
 
@@ -29,6 +29,7 @@ Name by which the partition may be referenced (e.g. "Interactive"). This name ca
 
 
 
+
 * type: string
 * default-value: ``None``
 
@@ -36,6 +37,7 @@ partition-config
 ----------------
 
 Extra partition configuration specified as a space separated key=value single line.
+
 
 
 
@@ -49,6 +51,7 @@ State of partition or availability for use. Possible values are "UP", "DOWN", "D
 
 
 
+
 * type: string
 * default-value: ``UP``
 
@@ -56,7 +59,9 @@ nhc-conf
 --------
 
 Custom extra configuration to use for Node Health Check.
+
 These lines are appended to a basic nhc.conf provided by the charm.
+
 
 
 
@@ -74,7 +79,7 @@ To run an action for this charm, use the Juju ``run-action`` command:
 
 .. code-block:: bash
 
-   $ juju run-action slurmd/leader action-name [parameters]
+   $ juju run-action slurmd/leader action-name [parameters=value]
 
 
 version
@@ -118,12 +123,18 @@ Display the currently configured repository for Infiniband drivers.
 
 
 
+
 set-infiniband-repo
 -------------------
 
 Overrides the repository file with a custom repository for Infiniband installation.
-Note: this file should be base64 encoded.
+
+.. note::
+
+   this file should be base64 encoded.
+
 On CentOS, the file is placed at /etc/yum.repos.d/infiniband.repo, while on Ubuntu it is at /etc/apt/sources.list.d/infiniband.list.
+
 
 
 
@@ -131,6 +142,7 @@ Parameters:
 
 
 * ``repo``: Base64 encoded string that holds all information about the repository.
+
 
 
   * type: string
@@ -143,7 +155,9 @@ install-infiniband
 ------------------
 
 Install Mellanox Infiniband drivers. This might take a few minutes to complete.
+
 If no custom repository was specified before, this action will set the Mellanox repository as the default and install the latest drivers from it.
+
 
 
 
