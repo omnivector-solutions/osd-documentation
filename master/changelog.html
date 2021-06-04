@@ -128,18 +128,18 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="configuration/slurmctld.html">
-     Slurmctld
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="configuration/slurmd.html">
-     Slurmd
+     slurmd
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="configuration/slurmdbd.html">
      slurmdbd
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="configuration/slurmctld.html">
+     slurmctld
     </a>
    </li>
    <li class="toctree-l2">
@@ -248,16 +248,21 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   0.6.2 - 2021-06-02
+   0.6.3 - 2021-06-02
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   0.6.1 - 2021-05-31
+   0.6.2 - 2021-06-02
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
+   0.6.1 - 2021-05-31
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
    0.6.0 - 2021-05-28
   </a>
  </li>
@@ -277,9 +282,19 @@
 <p>This file keeps track of all notable changes to the Slurm Charms.</p>
 <div class="section" id="unreleased">
 <h2>Unreleased<a class="headerlink" href="#unreleased" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>fix slurmrestd version in Juju status breaking the line.</p></li>
+</ul>
 </div>
 <div class="section" id="id1">
-<h2>0.6.2 - 2021-06-02<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>0.6.3 - 2021-06-02<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>fix systemd command to restart munge</p></li>
+<li><p>improve slurmdbd logs when restarting munge</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>0.6.2 - 2021-06-02<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>handle charm upgrade</p></li>
 <li><p>improve juju status' message to display failure when munge/slurm does not
@@ -288,16 +303,16 @@ start correctly</p></li>
 <li><p>enable munge system service, so it always start when the machine boots</p></li>
 </ul>
 </div>
-<div class="section" id="id2">
-<h2>0.6.1 - 2021-05-31<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>0.6.1 - 2021-05-31<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>changed charm's status message to have consistent capitalization.</p></li>
 <li><p>fixed initialization order of the charms, to ensure database and controller
 start before compute nodes and REST server.</p></li>
 </ul>
 </div>
-<div class="section" id="id3">
-<h2>0.6.0 - 2021-05-28<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>0.6.0 - 2021-05-28<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

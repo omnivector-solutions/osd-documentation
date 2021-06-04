@@ -1,35 +1,184 @@
+.. This file is the template file to generate the configuration/slurm*.rst files
+.. Please do not edit configuration/slurm*.rst files manually, they will be
+.. overwritten next time the docs are rebuilt.
+
 .. _operations-slurmctld:
 
-*********
-Slurmctld
-*********
-The central management daemon of Slurm.  
+=========
+slurmctld
+=========
+
+The central management charm.
 
 
-.. list-table::
-   :header-rows: 1
 
-   * - Config
-     - Description
-     - Default value
-   * - snapstore-channel
-     - Snapstore channel to install the slurm snap from.
-     - --stable
-   * - nagios_context
-     - |
-       Used by the nrpe subordinate charms.
-       A string that will be prepended to instance name to set the host name
-       in nagios. So for instance the hostname would be something like:
-           juju-myservice-0
-       If you're running multiple environments with the same services in them
-       this allows you to differentiate between them.
-     -
-   * - nagios_servicegroups
-     - |
-       A comma-separated list of nagios servicegroups.
-       If left empty, the nagios_context will be used as the servicegroup
-     -
+Configurations
+==============
 
-.. actions::
-   :header-rows: 1
+To change a configuration for this charm, use the Juju command:
+
+.. code-block:: bash
+
+   $ juju config slurmctld configuration=value
+
+
+cluster-name
+------------
+
+Name to be recorded in database for jobs from this cluster.  This is important if a single database is used to record information from multiple Slurm-managed clusters.
+
+
+
+
+* type: string
+* default-value: ``osd-cluster``
+
+default-partition
+-----------------
+
+Default Slurm partition. This is only used if defined, and must match an existing partition.
+
+
+
+
+* type: string
+* default-value: empty
+
+custom-config
+-------------
+
+User supplied slurm confinguration.
+
+
+
+
+* type: string
+* default-value: empty
+
+proctrack-type
+--------------
+
+Identifies the plugin to be used for process tracking on a job step basis.
+
+
+
+
+* type: string
+* default-value: ``proctrack/cgroup``
+
+cgroup-config
+-------------
+
+Configuration content for cgroup.conf
+
+
+
+
+* type: string
+* default-value: ``CgroupAutomount=yes\nConstrainCores=yes\n``
+
+health-check-interval
+---------------------
+
+Interval in seconds between executions of the Health Check.
+
+
+* type: int
+* default-value: ``600``
+
+health-check-state
+------------------
+
+Only run the Health Check on nodes in this state.
+
+
+* type: string
+* default-value: ``ANY,CYCLE``
+
+
+
+
+
+Actions
+=======
+
+To run an action for this charm, use the Juju ``run-action`` command:
+
+.. code-block:: bash
+
+   $ juju run-action slurmctld/leader action-name [parameters=value]
+
+
+show-current-config
+-------------------
+
+Display the currently used slurm.conf.
+
+This action is best visualized with: $ juju run-action slurmctld/leader --format=json --wait | jq .[].results.slurm.conf | xargs -I % -0 python3 -c 'print(%)'
+
+
+
+
+
+
+drain
+-----
+
+Drain specified nodes.
+
+Example Usage:
+
+.. code-block:: bash
+
+   $ juju run-action slurmctld/leader drain nodename=node-[1,2] reason="Updating kernel"
+
+
+
+
+Parameters:
+
+
+* ``nodename``: The nodes to drain, Using the Slurm format, e.g. node-[1,2].
+
+  * type: string
+
+
+* ``reason``: Reason to drain the nodes.
+
+  * type: string
+
+
+
+
+
+resume
+------
+
+Resume specified nodes.
+
+.. note::
+
+   newly added nodes will remain in the "down" state until configured, with the node-configured action.
+
+Example Usage:
+
+.. code-block:: bash
+
+   juju run-action slurmctld/leader resume nodename=node-[1,2]
+
+
+
+
+Parameters:
+
+
+* ``nodename``: The nodes to resume, using the Slurm format, e.g. node-[1,2].
+
+
+
+  * type: string
+
+
+
+
 

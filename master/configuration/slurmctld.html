@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Slurmctld &#8212; Omnivector Slurm Distribution  documentation</title>
+    <title>slurmctld &#8212; Omnivector Slurm Distribution  documentation</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -34,8 +34,8 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Slurmd" href="slurmd.html" />
-    <link rel="prev" title="Configuration and Administration" href="configuration.html" />
+    <link rel="next" title="slurmrestd" href="slurmrestd.html" />
+    <link rel="prev" title="slurmdbd" href="slurmdbd.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -128,19 +128,19 @@
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Slurmctld
-    </a>
-   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="slurmd.html">
-     Slurmd
+     slurmd
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="slurmdbd.html">
      slurmdbd
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     slurmctld
     </a>
    </li>
    <li class="toctree-l2">
@@ -237,6 +237,78 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configurations">
+   Configurations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cluster-name">
+     cluster-name
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#default-partition">
+     default-partition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#custom-config">
+     custom-config
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#proctrack-type">
+     proctrack-type
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cgroup-config">
+     cgroup-config
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#health-check-interval">
+     health-check-interval
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#health-check-state">
+     health-check-state
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#actions">
+   Actions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#show-current-config">
+     show-current-config
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#drain">
+     drain
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resume">
+     resume
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -246,51 +318,124 @@
               <div>
                 
   <div class="section" id="slurmctld">
-<span id="operations-slurmctld"></span><h1>Slurmctld<a class="headerlink" href="#slurmctld" title="Permalink to this headline">¶</a></h1>
-<p>The central management daemon of Slurm.</p>
-<table class="table">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Config</p></th>
-<th class="head"><p>Description</p></th>
-<th class="head"><p>Default value</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>snapstore-channel</p></td>
-<td><p>Snapstore channel to install the slurm snap from.</p></td>
-<td><p>--stable</p></td>
-</tr>
-<tr class="row-odd"><td><p>nagios_context</p></td>
-<td><div class="line-block">
-<div class="line"><br /></div>
+<span id="operations-slurmctld"></span><h1>slurmctld<a class="headerlink" href="#slurmctld" title="Permalink to this headline">¶</a></h1>
+<p>The central management charm.</p>
+<div class="section" id="configurations">
+<h2>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline">¶</a></h2>
+<p>To change a configuration for this charm, use the Juju command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmctld <span class="nv">configuration</span><span class="o">=</span>value
+</pre></div>
 </div>
-<p>Used by the nrpe subordinate charms.
-A string that will be prepended to instance name to set the host name
-in nagios. So for instance the hostname would be something like:</p>
-<blockquote>
-<div><p>juju-myservice-0</p>
-</div></blockquote>
-<p>If you're running multiple environments with the same services in them
-this allows you to differentiate between them.</p>
-</td>
-<td></td>
-</tr>
-<tr class="row-even"><td><p>nagios_servicegroups</p></td>
-<td><div class="line-block">
-<div class="line"><br /></div>
+<div class="section" id="cluster-name">
+<h3>cluster-name<a class="headerlink" href="#cluster-name" title="Permalink to this headline">¶</a></h3>
+<p>Name to be recorded in database for jobs from this cluster.  This is important if a single database is used to record information from multiple Slurm-managed clusters.</p>
+<ul class="simple">
+<li><p>type: string</p></li>
+<li><p>default-value: <code class="docutils literal notranslate"><span class="pre">osd-cluster</span></code></p></li>
+</ul>
 </div>
-<p>A comma-separated list of nagios servicegroups.
-If left empty, the nagios_context will be used as the servicegroup</p>
-</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<div class="section" id="default-partition">
+<h3>default-partition<a class="headerlink" href="#default-partition" title="Permalink to this headline">¶</a></h3>
+<p>Default Slurm partition. This is only used if defined, and must match an existing partition.</p>
+<ul class="simple">
+<li><p>type: string</p></li>
+<li><p>default-value: empty</p></li>
+</ul>
+</div>
+<div class="section" id="custom-config">
+<h3>custom-config<a class="headerlink" href="#custom-config" title="Permalink to this headline">¶</a></h3>
+<p>User supplied slurm confinguration.</p>
+<ul class="simple">
+<li><p>type: string</p></li>
+<li><p>default-value: empty</p></li>
+</ul>
+</div>
+<div class="section" id="proctrack-type">
+<h3>proctrack-type<a class="headerlink" href="#proctrack-type" title="Permalink to this headline">¶</a></h3>
+<p>Identifies the plugin to be used for process tracking on a job step basis.</p>
+<ul class="simple">
+<li><p>type: string</p></li>
+<li><p>default-value: <code class="docutils literal notranslate"><span class="pre">proctrack/cgroup</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="cgroup-config">
+<h3>cgroup-config<a class="headerlink" href="#cgroup-config" title="Permalink to this headline">¶</a></h3>
+<p>Configuration content for cgroup.conf</p>
+<ul class="simple">
+<li><p>type: string</p></li>
+<li><p>default-value: <code class="docutils literal notranslate"><span class="pre">CgroupAutomount=yes\nConstrainCores=yes\n</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="health-check-interval">
+<h3>health-check-interval<a class="headerlink" href="#health-check-interval" title="Permalink to this headline">¶</a></h3>
+<p>Interval in seconds between executions of the Health Check.</p>
+<ul class="simple">
+<li><p>type: int</p></li>
+<li><p>default-value: <code class="docutils literal notranslate"><span class="pre">600</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="health-check-state">
+<h3>health-check-state<a class="headerlink" href="#health-check-state" title="Permalink to this headline">¶</a></h3>
+<p>Only run the Health Check on nodes in this state.</p>
+<ul class="simple">
+<li><p>type: string</p></li>
+<li><p>default-value: <code class="docutils literal notranslate"><span class="pre">ANY,CYCLE</span></code></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="actions">
+<h2>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h2>
+<p>To run an action for this charm, use the Juju <code class="docutils literal notranslate"><span class="pre">run-action</span></code> command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmctld/leader action-name <span class="o">[</span><span class="nv">parameters</span><span class="o">=</span>value<span class="o">]</span>
+</pre></div>
+</div>
+<div class="section" id="show-current-config">
+<h3>show-current-config<a class="headerlink" href="#show-current-config" title="Permalink to this headline">¶</a></h3>
+<p>Display the currently used slurm.conf.</p>
+<p>This action is best visualized with: $ juju run-action slurmctld/leader --format=json --wait | jq .[].results.slurm.conf | xargs -I % -0 python3 -c 'print(%)'</p>
+</div>
+<div class="section" id="drain">
+<h3>drain<a class="headerlink" href="#drain" title="Permalink to this headline">¶</a></h3>
+<p>Drain specified nodes.</p>
+<p>Example Usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmctld/leader drain <span class="nv">nodename</span><span class="o">=</span>node-<span class="o">[</span><span class="m">1</span>,2<span class="o">]</span> <span class="nv">reason</span><span class="o">=</span><span class="s2">&quot;Updating kernel&quot;</span>
+</pre></div>
+</div>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">nodename</span></code>: The nodes to drain, Using the Slurm format, e.g. node-[1,2].</p>
+<ul>
+<li><p>type: string</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reason</span></code>: Reason to drain the nodes.</p>
+<ul>
+<li><p>type: string</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="resume">
+<h3>resume<a class="headerlink" href="#resume" title="Permalink to this headline">¶</a></h3>
+<p>Resume specified nodes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>newly added nodes will remain in the &quot;down&quot; state until configured, with the node-configured action.</p>
+</div>
+<p>Example Usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>juju run-action slurmctld/leader resume <span class="nv">nodename</span><span class="o">=</span>node-<span class="o">[</span><span class="m">1</span>,2<span class="o">]</span>
+</pre></div>
+</div>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">nodename</span></code>: The nodes to resume, using the Slurm format, e.g. node-[1,2].</p>
+<ul>
+<li><p>type: string</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 </div>
 
 
@@ -299,8 +444,8 @@ If left empty, the nagios_context will be used as the servicegroup</p>
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="configuration.html" title="previous page">Configuration and Administration</a>
-    <a class='right-next' id="next-link" href="slurmd.html" title="next page">Slurmd</a>
+    <a class='left-prev' id="prev-link" href="slurmdbd.html" title="previous page">slurmdbd</a>
+    <a class='right-next' id="next-link" href="slurmrestd.html" title="next page">slurmrestd</a>
 
         </div>
         
