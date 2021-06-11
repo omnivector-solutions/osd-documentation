@@ -25,7 +25,9 @@ To change a configuration for this charm, use the Juju command:
 cluster-name
 ------------
 
-Name to be recorded in database for jobs from this cluster.  This is important if a single database is used to record information from multiple Slurm-managed clusters.
+Name to be recorded in database for jobs from this cluster.
+
+This is important if a single database is used to record information from multiple Slurm-managed clusters.
 
 
 
@@ -47,7 +49,15 @@ Default Slurm partition. This is only used if defined, and must match an existin
 custom-config
 -------------
 
-User supplied slurm confinguration.
+User supplied Slurm configuration.
+
+This value supplements the charm supplied ``slurm.conf`` that is used for Slurm Controller and Compute nodes.
+
+Example Usage:
+
+.. code-block:: bash
+
+   $ juju config slurmcltd custom-config="FirstJobId=1234"
 
 
 
@@ -69,7 +79,7 @@ Identifies the plugin to be used for process tracking on a job step basis.
 cgroup-config
 -------------
 
-Configuration content for cgroup.conf
+Configuration content for ``cgroup.conf``.
 
 
 
@@ -112,9 +122,17 @@ To run an action for this charm, use the Juju ``run-action`` command:
 show-current-config
 -------------------
 
-Display the currently used slurm.conf.
+Display the currently used ``slurm.conf``.
 
-This action is best visualized with: $ juju run-action slurmctld/leader --format=json --wait | jq .[].results.slurm.conf | xargs -I % -0 python3 -c 'print(%)'
+.. note::
+
+   this file only exists in ``slurmctld`` charm and is automatically distributed to all compute nodes by Slurm.
+
+Example Usage:
+
+.. code-block:: bash
+
+   $ juju run-action slurmctld/leader --format=json --wait | jq .[].results.slurm.conf | xargs -I % -0 python3 -c 'print(%)'
 
 
 
@@ -138,7 +156,7 @@ Example Usage:
 Parameters:
 
 
-* ``nodename``: The nodes to drain, Using the Slurm format, e.g. node-[1,2].
+* ``nodename``: The nodes to drain, using the Slurm format, e.g. ``node-[1,2]``.
 
   * type: string
 
@@ -158,13 +176,13 @@ Resume specified nodes.
 
 .. note::
 
-   newly added nodes will remain in the "down" state until configured, with the node-configured action.
+   newly added nodes will remain in the ``down`` state until configured, with the ``node-configured`` action.
 
 Example Usage:
 
 .. code-block:: bash
 
-   juju run-action slurmctld/leader resume nodename=node-[1,2]
+   $ juju run-action slurmctld/leader resume nodename=node-[1,2]
 
 
 
@@ -172,7 +190,7 @@ Example Usage:
 Parameters:
 
 
-* ``nodename``: The nodes to resume, using the Slurm format, e.g. node-[1,2].
+* ``nodename``: The nodes to resume, using the Slurm format, e.g. ``node-[1,2]``.
 
 
 

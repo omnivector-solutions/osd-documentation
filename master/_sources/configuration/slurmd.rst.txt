@@ -25,7 +25,11 @@ To change a configuration for this charm, use the Juju command:
 partition-name
 --------------
 
-Name by which the partition may be referenced (e.g. "Interactive"). This name can be specified by users when submitting jobs. If the PartitionName is "DEFAULT", the values specified with that record will apply to subsequent partition specifications unless explicitly set to other values in that partition record or replaced with a different set of default values. Each line where PartitionName is "DEFAULT" will replace or add to previous default values and not a reinitialize the default values.
+Name by which the partition may be referenced (e.g. ``Interactive``).
+
+.. note::
+
+   the partition name should only contain letters, numbers, and hyphens. Spaces are not allowed.
 
 
 
@@ -36,7 +40,7 @@ Name by which the partition may be referenced (e.g. "Interactive"). This name ca
 partition-config
 ----------------
 
-Extra partition configuration specified as a space separated key=value single line.
+Extra partition configuration specified as a space separated ``key=value`` single line.
 
 
 
@@ -47,7 +51,7 @@ Extra partition configuration specified as a space separated key=value single li
 partition-state
 ---------------
 
-State of partition or availability for use. Possible values are "UP", "DOWN", "DRAIN" and "INACTIVE". The default value is "UP". See also the related "Alternate" keyword.
+State of partition or availability for use. Possible values are ``UP``, ``DOWN``, ``DRAIN`` and ``INACTIVE``. The default value is ``UP``. See also the related ``Alternate`` keyword.
 
 
 
@@ -60,7 +64,7 @@ nhc-conf
 
 Custom extra configuration to use for Node Health Check.
 
-These lines are appended to a basic nhc.conf provided by the charm.
+These lines are appended to a basic ``nhc.conf`` provided by the charm.
 
 
 
@@ -85,7 +89,7 @@ To run an action for this charm, use the Juju ``run-action`` command:
 version
 -------
 
-Return version of installed software
+Return version of installed software.
 
 
 
@@ -93,7 +97,7 @@ Return version of installed software
 node-configured
 ---------------
 
-Remove a nove from DownNodes when the reason is "New node".
+Remove a nove from DownNodes when the reason is ``New node``.
 
 
 
@@ -109,7 +113,7 @@ Return node inventory.
 show-nhc-config
 ---------------
 
-Display the currently used nhc.conf
+Display the currently used ``nhc.conf``.
 
 
 
@@ -133,7 +137,7 @@ Overrides the repository file with a custom repository for Infiniband installati
 
    this file should be base64 encoded.
 
-On CentOS, the file is placed at /etc/yum.repos.d/infiniband.repo, while on Ubuntu it is at /etc/apt/sources.list.d/infiniband.list.
+On CentOS, the file is placed at ``/etc/yum.repos.d/infiniband.repo``, while on Ubuntu it is at ``/etc/apt/sources.list.d/infiniband.list``.
 
 
 
