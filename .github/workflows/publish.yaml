@@ -3,6 +3,11 @@ name: Publish Docs
 on:
   push:
     branches: [master, release/**, testing]
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: Branch to rebuild the docs
+        required: true
 
 jobs:
   publish-docs:
