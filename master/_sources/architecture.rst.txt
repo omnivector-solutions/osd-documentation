@@ -34,8 +34,7 @@ as part of the slurm-core offering:
 
 * SLURM control node (running ``slurmctld``)
 
-* SLURM REST service (running ``slurmrestd``) - currently only available for
-  Ubuntu Focal
+* SLURM REST service (running ``slurmrestd``)
 
 Additionally we include the `Node Health Check (NHC)
 <https://github.com/mej/nhc>`_ with a minimal configuration and checks to
