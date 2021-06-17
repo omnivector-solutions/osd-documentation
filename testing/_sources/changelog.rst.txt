@@ -7,6 +7,18 @@ This file keeps track of all notable changes to the Slurm Charms.
 Unreleased
 ----------
 
+- fix slurmd action to query infiniband version
+- add slurmrestd to CentOS7
+- fix slurmrestd Systemd environment variables to enable jwt auth
+
+0.6.4 - 2021-06-11
+------------------
+
+- improve checks on Systemd commands to start/restart daemons, as to guarantee
+  correct Charm initialization
+- check for munge keys before starting Slurm daemons, to avoid a race condition
+- fix possible breakage in Slurm configuration due to spaces in partition names
+- improve description of configurations and actions.
 - fix slurmrestd version in Juju status breaking the line.
 
 0.6.3 - 2021-06-02

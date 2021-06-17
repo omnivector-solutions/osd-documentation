@@ -151,6 +151,11 @@
   </ul>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../contributing.html">
+   Contributing to OSD
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../changelog.html">
    Changelog
   </a>
@@ -358,7 +363,11 @@
 </div>
 <div class="section" id="partition-name">
 <h3>partition-name<a class="headerlink" href="#partition-name" title="Permalink to this headline">¶</a></h3>
-<p>Name by which the partition may be referenced (e.g. &quot;Interactive&quot;). This name can be specified by users when submitting jobs. If the PartitionName is &quot;DEFAULT&quot;, the values specified with that record will apply to subsequent partition specifications unless explicitly set to other values in that partition record or replaced with a different set of default values. Each line where PartitionName is &quot;DEFAULT&quot; will replace or add to previous default values and not a reinitialize the default values.</p>
+<p>Name by which the partition may be referenced (e.g. <code class="docutils literal notranslate"><span class="pre">Interactive</span></code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the partition name should only contain letters, numbers, and hyphens. Spaces are not allowed.</p>
+</div>
 <ul class="simple">
 <li><p>type: string</p></li>
 <li><p>default-value: <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
@@ -366,7 +375,7 @@
 </div>
 <div class="section" id="partition-config">
 <h3>partition-config<a class="headerlink" href="#partition-config" title="Permalink to this headline">¶</a></h3>
-<p>Extra partition configuration specified as a space separated key=value single line.</p>
+<p>Extra partition configuration specified as a space separated <code class="docutils literal notranslate"><span class="pre">key=value</span></code> single line.</p>
 <ul class="simple">
 <li><p>type: string</p></li>
 <li><p>default-value: empty</p></li>
@@ -374,7 +383,7 @@
 </div>
 <div class="section" id="partition-state">
 <h3>partition-state<a class="headerlink" href="#partition-state" title="Permalink to this headline">¶</a></h3>
-<p>State of partition or availability for use. Possible values are &quot;UP&quot;, &quot;DOWN&quot;, &quot;DRAIN&quot; and &quot;INACTIVE&quot;. The default value is &quot;UP&quot;. See also the related &quot;Alternate&quot; keyword.</p>
+<p>State of partition or availability for use. Possible values are <code class="docutils literal notranslate"><span class="pre">UP</span></code>, <code class="docutils literal notranslate"><span class="pre">DOWN</span></code>, <code class="docutils literal notranslate"><span class="pre">DRAIN</span></code> and <code class="docutils literal notranslate"><span class="pre">INACTIVE</span></code>. The default value is <code class="docutils literal notranslate"><span class="pre">UP</span></code>. See also the related <code class="docutils literal notranslate"><span class="pre">Alternate</span></code> keyword.</p>
 <ul class="simple">
 <li><p>type: string</p></li>
 <li><p>default-value: <code class="docutils literal notranslate"><span class="pre">UP</span></code></p></li>
@@ -383,7 +392,7 @@
 <div class="section" id="nhc-conf">
 <h3>nhc-conf<a class="headerlink" href="#nhc-conf" title="Permalink to this headline">¶</a></h3>
 <p>Custom extra configuration to use for Node Health Check.</p>
-<p>These lines are appended to a basic nhc.conf provided by the charm.</p>
+<p>These lines are appended to a basic <code class="docutils literal notranslate"><span class="pre">nhc.conf</span></code> provided by the charm.</p>
 <ul class="simple">
 <li><p>type: string</p></li>
 <li><p>default-value: empty</p></li>
@@ -398,11 +407,11 @@
 </div>
 <div class="section" id="version">
 <h3>version<a class="headerlink" href="#version" title="Permalink to this headline">¶</a></h3>
-<p>Return version of installed software</p>
+<p>Return version of installed software.</p>
 </div>
 <div class="section" id="node-configured">
 <h3>node-configured<a class="headerlink" href="#node-configured" title="Permalink to this headline">¶</a></h3>
-<p>Remove a nove from DownNodes when the reason is &quot;New node&quot;.</p>
+<p>Remove a nove from DownNodes when the reason is <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">node</span></code>.</p>
 </div>
 <div class="section" id="get-node-inventory">
 <h3>get-node-inventory<a class="headerlink" href="#get-node-inventory" title="Permalink to this headline">¶</a></h3>
@@ -410,7 +419,7 @@
 </div>
 <div class="section" id="show-nhc-config">
 <h3>show-nhc-config<a class="headerlink" href="#show-nhc-config" title="Permalink to this headline">¶</a></h3>
-<p>Display the currently used nhc.conf</p>
+<p>Display the currently used <code class="docutils literal notranslate"><span class="pre">nhc.conf</span></code>.</p>
 </div>
 <div class="section" id="get-infiniband-repo">
 <h3>get-infiniband-repo<a class="headerlink" href="#get-infiniband-repo" title="Permalink to this headline">¶</a></h3>
@@ -423,7 +432,7 @@
 <p class="admonition-title">Note</p>
 <p>this file should be base64 encoded.</p>
 </div>
-<p>On CentOS, the file is placed at /etc/yum.repos.d/infiniband.repo, while on Ubuntu it is at /etc/apt/sources.list.d/infiniband.list.</p>
+<p>On CentOS, the file is placed at <code class="docutils literal notranslate"><span class="pre">/etc/yum.repos.d/infiniband.repo</span></code>, while on Ubuntu it is at <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list.d/infiniband.list</span></code>.</p>
 <p>Parameters:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">repo</span></code>: Base64 encoded string that holds all information about the repository.</p>
