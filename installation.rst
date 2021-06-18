@@ -185,25 +185,10 @@ Deploy Slurm
 
 Now it is time to get Slurm :)
 
-First we need to build a *charm*. That's what Juju will deploy to our cloud.
-Charms are built with ``charmcraft``:
-
-.. code-block:: bash
-
-   $ sudo snap install --edge charmcraft
-
-Clone the `slurm-charms <https://github.com/omnivector-solutions/slurm-charms>`_
-git repository, it contains all the nuts and bolts to build the charms:
-
-.. code-block:: bash
-
-   $ git clone https://github.com/omnivector-solutions/slurm-charms
-   $ cd slurm-charms
-   $ make charms
-
-Now it is time to deploy! The bundles and overlays are in a separate repository,
-`slurm-bundles <https://github.com/omnivector-solutions/slurm-bundles>`_.
-Clone the repository on the same directory you cloned ``slurm-charms/``:
+We provide a bundle and overlays to simplify deploying all the components
+needed for a complete Slurm cluster in the repository `slurm-bundles
+<https://github.com/omnivector-solutions/slurm-bundles>`_. First, clone the
+repository and then enter it:
 
 .. code-block:: bash
 
@@ -215,10 +200,17 @@ basic Slurm cluster:
 
 - ``slurm-core/bundle.yaml``: the basic definition of the Slurm components.
 - ``slurm-core/clouds/``: overlays with specific settings for each supported
-  cloud environment.
-- ``slurm-core/series/``: overlays to define the OS of the Slurm components.
+  cloud environment. Currently available ones are AWS and LXD.
+- ``slurm-core/series/``: overlays to define the OS of the Slurm components,
+  the possible options are CentOS7 and Ubuntu Focal (20.04).
+- ``slurm-core/charms/``: overlays to change the source of the charm. By
+  default, the bundle gets the ``latest/stable`` channel from Charmhub. The
+  overlays in this directory allows ut to change the source to either
+  ``latest/edge`` channel or from your local machine. The latter one is
+  specially useful for development.
 
-For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal:
+For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal, using the
+``latest/stable`` charms:
 
 .. code-block:: bash
 
@@ -226,9 +218,9 @@ For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal:
                  --overlay ./slurm-core/clouds/lxd.yaml \
                  --overlay ./slurm-core/series/focal.yaml
 
-Juju will then create the applications, configurations and LXD containers
-described in the respective files, which will in turn define the contents of
-the model.
+Juju will then download the charms from Charmhub, create the applications,
+configurations and LXD containers described in the respective files, which will
+in turn define the contents of the model.
 
 It will take a moment get everything ready. You can check the status of your
 model with juju's status:
@@ -240,19 +232,19 @@ model with juju's status:
    Model    Controller  Cloud/Region         Version  SLA          Timestamp
    default  overlord    localhost/localhost  2.8.7    unsupported  17:44:29Z
 
-   App                 Version  Status  Scale  Charm               Store       Rev  OS      Notes
-   percona-cluster     5.7.20   active      1  percona-cluster     jujucharms  293  ubuntu
-   slurmctld           20.11.3  active      1  slurmctld           local         0  ubuntu
-   slurmd              20.11.3  active      1  slurmd              local         0  ubuntu
-   slurmdbd            20.11.3  active      1  slurmdbd            local         0  ubuntu
-   slurmrestd          20.11.3  active      1  slurmrestd          local         0  ubuntu
+   App              Version  Status  Scale  Charm            Store       Channel  Rev  OS      Message
+   percona-cluster  5.7.20   active      1  percona-cluster  charmstore  stable   293  ubuntu  Unit is ready
+   slurmctld        0.6.4    active      1  slurmctld        charmhub    stable     7  ubuntu  slurmctld available
+   slurmd           0.6.4    active      1  slurmd           charmhub    stable    13  ubuntu  slurmd available
+   slurmdbd         0.6.4    active      1  slurmdbd         charmhub    stable     5  ubuntu  slurmdbd ready
+   slurmrestd       0.6.4    active      1  slurmrestd       charmhub    stable     5  ubuntu  slurmrestd available
 
    Unit                   Workload  Agent  Machine  Public address  Ports     Message
    percona-cluster/0*     active    idle   0        10.34.166.18    3306/tcp  Unit is ready
    slurmctld/0*           active    idle   2        10.34.166.222             slurmctld available
    slurmd/0*              active    idle   3        10.34.166.219             slurmd available
    slurmdbd/0*            active    idle   4        10.34.166.218             slurmdbd available
-   slurmrestd/0*          active    idle   5        10.34.166.66              slurm installed
+   slurmrestd/0*          active    idle   5        10.34.166.66              slurmrestd available
 
    Machine  State    DNS            Inst id        Series  AZ  Message
    0        started  10.34.166.18   juju-01ab62-0  bionic      Running
@@ -296,3 +288,29 @@ After setting the node up, to bring it back you need to run a Juju *action*:
 
 Please refer to our :ref:`operations` section for detailed instructions on how
 to manage the cluster.
+
+Local charms
+############
+
+.. this section should be moved to the CONTRIBUTING guide later, right now we
+.. leave it here until that section is done
+
+First we need to build a *charm*. That's what Juju will deploy to our cloud.
+Charms are built with ``charmcraft``:
+
+.. code-block:: bash
+
+   $ sudo snap install --edge charmcraft
+
+Clone the `slurm-charms <https://github.com/omnivector-solutions/slurm-charms>`_
+git repository, it contains all the nuts and bolts to build the charms and then
+invoke the `make charms` command:
+
+.. code-block:: bash
+
+   $ git clone https://github.com/omnivector-solutions/slurm-charms
+   $ cd slurm-charms
+   $ make charms
+
+Now you can use the ``slurm-core/charms/local-development.yaml`` overlay for
+your bundle.
