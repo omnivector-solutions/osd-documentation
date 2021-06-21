@@ -219,8 +219,8 @@ For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal, using the
                  --overlay ./slurm-core/series/focal.yaml
 
 Juju will then download the charms from Charmhub, create the applications,
-configurations and LXD containers described in the respective files, which will
-in turn define the contents of the model.
+configurations, and LXD containers described in the respective files, which
+will comprise the model.
 
 It will take a moment get everything ready. You can check the status of your
 model with juju's status:
