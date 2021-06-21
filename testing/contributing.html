@@ -267,6 +267,11 @@
      Naming conventions
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-recommendations">
+     General Recommendations
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -285,13 +290,18 @@
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#local-setup">
+       Local setup
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#slurm-ops-manager">
        Slurm-ops-manager
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#slurm-charms">
-       slurm-charms
+      <a class="reference internal nav-link" href="#id2">
+       Slurm-charms
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
@@ -324,12 +334,12 @@
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id4">
-       slurm-charms
+      <a class="reference internal nav-link" href="#id6">
+       Slurm-charms
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id5">
+      <a class="reference internal nav-link" href="#id7">
        Slurm-ops-manager
       </a>
      </li>
@@ -405,6 +415,10 @@ naming conventions with regards to Slurm:</p>
 </dd>
 </dl>
 </div>
+<div class="section" id="general-recommendations">
+<h3>General Recommendations<a class="headerlink" href="#general-recommendations" title="Permalink to this headline">¶</a></h3>
+<p>Wrap the lines at 80 columns when writing documentation.</p>
+</div>
 </div>
 <div class="section" id="code">
 <h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
@@ -422,7 +436,34 @@ and a common code shared among them, called <code class="docutils literal notran
 - annotated tags for releases, see <a class="reference internal" href="#release-process"><span class="std std-ref">Release process</span></a> below for details</p>
 </div>
 <div class="section" id="charm-development">
-<h3>Charm development<a class="headerlink" href="#charm-development" title="Permalink to this headline">¶</a></h3>
+<span id="id1"></span><h3>Charm development<a class="headerlink" href="#charm-development" title="Permalink to this headline">¶</a></h3>
+<p>All Python should be compliant with Python3.6. This is a strong requirement for
+the charms to run on CentOS7.</p>
+<div class="section" id="local-setup">
+<h4>Local setup<a class="headerlink" href="#local-setup" title="Permalink to this headline">¶</a></h4>
+<p>This sections describes how to setup your system for local charm development.
+This section assumes the system is Linux-based and have support for <cite>snaps</cite>.</p>
+<p>The tool used to build a charm is
+<a class="reference external" href="https://github.com/canonical/charmcraft/">charmcraft</a>, and it should be
+installed as a classical snap:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo snap install --edge charmcraft --classic
+</pre></div>
+</div>
+<p>The charm code is available in the Git repository <a class="reference external" href="https://github.com/omnivector-solutions/slurm-charms">slurm-charms</a>, it contains all the
+nuts and bolts of all Slurm Charms as well as a helper <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> to build
+the charms. To clone and build:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/omnivector-solutions/slurm-charms
+$ <span class="nb">cd</span> slurm-charms
+$ make charms
+</pre></div>
+</div>
+<p>You can manually deploy the charms and add the relations or use the
+<code class="docutils literal notranslate"><span class="pre">slurm-core/charms/local-development.yaml</span></code> overlay for your bundle. The
+<cite>slurm-bundles</cite> repository contains a helper <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> that uses this
+overlay for all the targets. To deploy OSD locally in an LXD cluster running
+Ubuntu 20.04, use the command <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">lxd-ubuntu</span></code>. And to deploy locally with
+CentOS7: <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">lxd-centos</span></code>.</p>
+</div>
 <div class="section" id="slurm-ops-manager">
 <h4>Slurm-ops-manager<a class="headerlink" href="#slurm-ops-manager" title="Permalink to this headline">¶</a></h4>
 <p>Common code used in all charms should not be repeated. Instead, they should
@@ -434,14 +475,14 @@ a new commit to:</p>
 <li><p>update the <a class="reference internal" href="#changelog"><span class="std std-ref">CHANGELOG</span></a>.</p></li>
 </ul>
 </div>
-<div class="section" id="slurm-charms">
-<h4>slurm-charms<a class="headerlink" href="#slurm-charms" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id2">
+<h4>Slurm-charms<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <p>TODO</p>
 <div class="section" id="actions-and-configurations">
 <h5>Actions and Configurations<a class="headerlink" href="#actions-and-configurations" title="Permalink to this headline">¶</a></h5>
 <p>All Juju actions, configurations, and their parameters should have a
 description. This is the description that appears in the documentation pages,
-after a pre-processing.</p>
+after a pre-processing. Wrap the lines in the YAML files at 80 columns.</p>
 <p>The documentation translates the <code class="docutils literal notranslate"><span class="pre">description</span></code> field of the actions and
 configurations in the following ways:</p>
 <ul class="simple">
@@ -454,7 +495,7 @@ information related to that action/config.</p></li>
 </ul>
 </div>
 <div class="section" id="changelog">
-<span id="id1"></span><h5>CHANGELOG<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h5>
+<span id="id3"></span><h5>CHANGELOG<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h5>
 <p>The <code class="docutils literal notranslate"><span class="pre">CHANGELOG</span></code> file contains notable changes for end users, not charm
 developers. This means that internal changes (e.g., code related to CI,
 refactoring, unit tests, etc.) should not be documented.</p>
@@ -467,7 +508,7 @@ refactoring, unit tests, etc.) should not be documented.</p>
 <li><p>breaking changes</p></li>
 </ul>
 <p>This file should be written in reStructuredText format and it is copied to the
-documentation automatically.</p>
+documentation <a class="reference external" href="changelog.html">Changelog page</a> automatically.</p>
 <p>There should always be one, and only one, section <code class="docutils literal notranslate"><span class="pre">Unreleased</span></code> in the
 <code class="docutils literal notranslate"><span class="pre">CHANGELOG</span></code>. New entries should go at the top of this section.</p>
 </div>
@@ -475,8 +516,12 @@ documentation automatically.</p>
 <h5>Bats tests<a class="headerlink" href="#bats-tests" title="Permalink to this headline">¶</a></h5>
 <p>The Slurm Charms have an extensive suite of tests using
 <a class="reference external" href="https://github.com/bats-core/bats-core/">Bats</a>.</p>
-<p>To run, make sure you have installed bats with npm/npx:</p>
-<p>TODO: instructions to install bats.</p>
+<p>Install it with <code class="docutils literal notranslate"><span class="pre">npm</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ npm install -g bats
+</pre></div>
+</div>
+<p>To run the tests, enter in the directory of the <code class="docutils literal notranslate"><span class="pre">slurm-charms</span></code> and specify
+the name of the Juju model used:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ JUJU_MODEL=default npx bats tests/
 </pre></div>
 </div>
@@ -488,20 +533,23 @@ documentation automatically.</p>
 </div>
 </div>
 <div class="section" id="versioning">
-<span id="id2"></span><h3>Versioning<a class="headerlink" href="#versioning" title="Permalink to this headline">¶</a></h3>
+<span id="id4"></span><h3>Versioning<a class="headerlink" href="#versioning" title="Permalink to this headline">¶</a></h3>
 <p>The Slurm-charms and <code class="docutils literal notranslate"><span class="pre">slurm-ops-manager</span></code> follow a semantic versioning scheme.</p>
 </div>
 <div class="section" id="release-process">
-<span id="id3"></span><h3>Release process<a class="headerlink" href="#release-process" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id4">
-<h4>slurm-charms<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
-<p>TODO:
-- explain changelog
-- explain release script
-- charmhub releases</p>
+<span id="id5"></span><h3>Release process<a class="headerlink" href="#release-process" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h4>Slurm-charms<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p>To make a new release of the Slurm-charms, use the <code class="docutils literal notranslate"><span class="pre">script/release.sh</span></code>
+script. This script will update the <a class="reference internal" href="#changelog"><span class="std std-ref">CHANGELOG</span></a> with the version of the
+new release, create a new commit with the changes, and create a new Git tag
+with a description of the new release. This script intentionally does not push
+to GitHub, this way one can review the changes before <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>.</p>
+<p>After the new release is made in GitHub, pack and release the charms in
+Charmhub.</p>
 </div>
-<div class="section" id="id5">
-<h4>Slurm-ops-manager<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id7">
+<h4>Slurm-ops-manager<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
 <p>The release process for <code class="docutils literal notranslate"><span class="pre">slurm-ops-manager</span></code> is straightforward:</p>
 <ul class="simple">
 <li><p>create a new annotated Git tag: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">tag</span> <span class="pre">--annotate</span> <span class="pre">--sign</span> <span class="pre">x.y.z</span></code>. The tag

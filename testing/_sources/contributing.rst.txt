@@ -70,6 +70,11 @@ naming conventions with regards to Slurm:
 ``Slurm``
    Omnivector charms.
 
+General Recommendations
+-----------------------
+
+Wrap the lines at 80 columns when writing documentation.
+
 
 Code
 ====
@@ -89,8 +94,45 @@ TODO:
 - keep user related changes in the :ref:`changelog`
 - annotated tags for releases, see :ref:`release-process` below for details
 
+.. _charm-development:
+
 Charm development
 -----------------
+
+All Python should be compliant with Python3.6. This is a strong requirement for
+the charms to run on CentOS7.
+
+Local setup
+^^^^^^^^^^^
+
+This sections describes how to setup your system for local charm development.
+This section assumes the system is Linux-based and have support for `snaps`.
+
+The tool used to build a charm is
+`charmcraft <https://github.com/canonical/charmcraft/>`_, and it should be
+installed as a classical snap:
+
+.. code-block:: bash
+
+   $ sudo snap install --edge charmcraft --classic
+
+The charm code is available in the Git repository `slurm-charms
+<https://github.com/omnivector-solutions/slurm-charms>`_, it contains all the
+nuts and bolts of all Slurm Charms as well as a helper ``Makefile`` to build
+the charms. To clone and build:
+
+.. code-block:: bash
+
+   $ git clone https://github.com/omnivector-solutions/slurm-charms
+   $ cd slurm-charms
+   $ make charms
+
+You can manually deploy the charms and add the relations or use the
+``slurm-core/charms/local-development.yaml`` overlay for your bundle. The
+`slurm-bundles` repository contains a helper ``Makefile`` that uses this
+overlay for all the targets. To deploy OSD locally in an LXD cluster running
+Ubuntu 20.04, use the command ``make lxd-ubuntu``. And to deploy locally with
+CentOS7: ``make lxd-centos``.
 
 Slurm-ops-manager
 ^^^^^^^^^^^^^^^^^
@@ -104,7 +146,7 @@ a new commit to:
 - update the version of ``slurm-ops-manager`` in the ``requirements.txt`` file.
 - update the :ref:`changelog`.
 
-slurm-charms
+Slurm-charms
 ^^^^^^^^^^^^
 
 TODO
@@ -114,7 +156,7 @@ Actions and Configurations
 
 All Juju actions, configurations, and their parameters should have a
 description. This is the description that appears in the documentation pages,
-after a pre-processing.
+after a pre-processing. Wrap the lines in the YAML files at 80 columns.
 
 The documentation translates the ``description`` field of the actions and
 configurations in the following ways:
@@ -144,7 +186,7 @@ Changes that should be documented include:
 - breaking changes
 
 This file should be written in reStructuredText format and it is copied to the
-documentation automatically.
+documentation `Changelog page <changelog.html>`_ automatically.
 
 There should always be one, and only one, section ``Unreleased`` in the
 ``CHANGELOG``. New entries should go at the top of this section.
@@ -155,9 +197,14 @@ Bats tests
 The Slurm Charms have an extensive suite of tests using
 `Bats <https://github.com/bats-core/bats-core/>`_.
 
-To run, make sure you have installed bats with npm/npx:
+Install it with ``npm``:
 
-TODO: instructions to install bats.
+.. code-block::
+
+   $ npm install -g bats
+
+To run the tests, enter in the directory of the ``slurm-charms`` and specify
+the name of the Juju model used:
 
 .. code-block::
 
@@ -177,13 +224,17 @@ The Slurm-charms and ``slurm-ops-manager`` follow a semantic versioning scheme.
 Release process
 ---------------
 
-slurm-charms
+Slurm-charms
 ^^^^^^^^^^^^
 
-TODO:
-- explain changelog
-- explain release script
-- charmhub releases
+To make a new release of the Slurm-charms, use the ``script/release.sh``
+script. This script will update the :ref:`changelog` with the version of the
+new release, create a new commit with the changes, and create a new Git tag
+with a description of the new release. This script intentionally does not push
+to GitHub, this way one can review the changes before ``git push``.
+
+After the new release is made in GitHub, pack and release the charms in
+Charmhub.
 
 Slurm-ops-manager
 ^^^^^^^^^^^^^^^^^

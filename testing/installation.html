@@ -379,7 +379,7 @@ local machine.</p>
 <p>Install and configure LXD, if you haven't already:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo snap install lxd
 $ lxd init --auto
-$ lxd network <span class="nb">set</span> lxdbr0 ipv6.address none
+$ lxc network <span class="nb">set</span> lxdbr0 ipv6.address none
 </pre></div>
 </div>
 <div class="admonition note">
@@ -471,21 +471,9 @@ following command to add the model that will house the OSD.</p>
 <div class="section" id="deploy-slurm">
 <h2>Deploy Slurm<a class="headerlink" href="#deploy-slurm" title="Permalink to this headline">¶</a></h2>
 <p>Now it is time to get Slurm :)</p>
-<p>First we need to build a <em>charm</em>. That's what Juju will deploy to our cloud.
-Charms are built with <code class="docutils literal notranslate"><span class="pre">charmcraft</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo snap install --edge charmcraft
-</pre></div>
-</div>
-<p>Clone the <a class="reference external" href="https://github.com/omnivector-solutions/slurm-charms">slurm-charms</a>
-git repository, it contains all the nuts and bolts to build the charms:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/omnivector-solutions/slurm-charms
-$ <span class="nb">cd</span> slurm-charms
-$ make charms
-</pre></div>
-</div>
-<p>Now it is time to deploy! The bundles and overlays are in a separate repository,
-<a class="reference external" href="https://github.com/omnivector-solutions/slurm-bundles">slurm-bundles</a>.
-Clone the repository on the same directory you cloned <code class="docutils literal notranslate"><span class="pre">slurm-charms/</span></code>:</p>
+<p>We provide a bundle and overlays to simplify deploying all the components
+needed for a complete Slurm cluster in the repository <a class="reference external" href="https://github.com/omnivector-solutions/slurm-bundles">slurm-bundles</a>. First, clone the
+repository and then enter it:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/omnivector-solutions/slurm-bundles
 $ <span class="nb">cd</span> slurm-bundles
 </pre></div>
@@ -495,18 +483,25 @@ basic Slurm cluster:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">slurm-core/bundle.yaml</span></code>: the basic definition of the Slurm components.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">slurm-core/clouds/</span></code>: overlays with specific settings for each supported
-cloud environment.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">slurm-core/series/</span></code>: overlays to define the OS of the Slurm components.</p></li>
+cloud environment. Currently available ones are AWS and LXD.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slurm-core/series/</span></code>: overlays to define the OS of the Slurm components,
+the possible options are CentOS7 and Ubuntu Focal (20.04).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slurm-core/charms/</span></code>: overlays to change the source of the charm. By
+default, the bundle gets the <code class="docutils literal notranslate"><span class="pre">latest/stable</span></code> channel from Charmhub. The
+overlays in this directory allows ut to change the source to either
+<code class="docutils literal notranslate"><span class="pre">latest/edge</span></code> channel or from your local machine. The latter one is
+specially useful for development, see <a class="reference internal" href="contributing.html#charm-development"><span class="std std-ref">Charm development</span></a> for details.</p></li>
 </ul>
-<p>For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal:</p>
+<p>For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal, using the
+<code class="docutils literal notranslate"><span class="pre">latest/stable</span></code> charms:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy ./slurm-core/bundle.yaml <span class="se">\</span>
               --overlay ./slurm-core/clouds/lxd.yaml <span class="se">\</span>
               --overlay ./slurm-core/series/focal.yaml
 </pre></div>
 </div>
-<p>Juju will then create the applications, configurations and LXD containers
-described in the respective files, which will in turn define the contents of
-the model.</p>
+<p>Juju will then download the charms from Charmhub, create the applications,
+configurations, and LXD containers described in the respective files, which
+will comprise the model.</p>
 <p>It will take a moment get everything ready. You can check the status of your
 model with juju's status:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ watch -n <span class="m">1</span> -c juju status --color
@@ -514,19 +509,19 @@ model with juju's status:</p>
 Model    Controller  Cloud/Region         Version  SLA          Timestamp
 default  overlord    localhost/localhost  <span class="m">2</span>.8.7    unsupported  <span class="m">17</span>:44:29Z
 
-App                 Version  Status  Scale  Charm               Store       Rev  OS      Notes
-percona-cluster     <span class="m">5</span>.7.20   active      <span class="m">1</span>  percona-cluster     jujucharms  <span class="m">293</span>  ubuntu
-slurmctld           <span class="m">20</span>.11.3  active      <span class="m">1</span>  slurmctld           <span class="nb">local</span>         <span class="m">0</span>  ubuntu
-slurmd              <span class="m">20</span>.11.3  active      <span class="m">1</span>  slurmd              <span class="nb">local</span>         <span class="m">0</span>  ubuntu
-slurmdbd            <span class="m">20</span>.11.3  active      <span class="m">1</span>  slurmdbd            <span class="nb">local</span>         <span class="m">0</span>  ubuntu
-slurmrestd          <span class="m">20</span>.11.3  active      <span class="m">1</span>  slurmrestd          <span class="nb">local</span>         <span class="m">0</span>  ubuntu
+App              Version  Status  Scale  Charm            Store       Channel  Rev  OS      Message
+percona-cluster  <span class="m">5</span>.7.20   active      <span class="m">1</span>  percona-cluster  charmstore  stable   <span class="m">293</span>  ubuntu  Unit is ready
+slurmctld        <span class="m">0</span>.6.4    active      <span class="m">1</span>  slurmctld        charmhub    stable     <span class="m">7</span>  ubuntu  slurmctld available
+slurmd           <span class="m">0</span>.6.4    active      <span class="m">1</span>  slurmd           charmhub    stable    <span class="m">13</span>  ubuntu  slurmd available
+slurmdbd         <span class="m">0</span>.6.4    active      <span class="m">1</span>  slurmdbd         charmhub    stable     <span class="m">5</span>  ubuntu  slurmdbd ready
+slurmrestd       <span class="m">0</span>.6.4    active      <span class="m">1</span>  slurmrestd       charmhub    stable     <span class="m">5</span>  ubuntu  slurmrestd available
 
 Unit                   Workload  Agent  Machine  Public address  Ports     Message
 percona-cluster/0*     active    idle   <span class="m">0</span>        <span class="m">10</span>.34.166.18    <span class="m">3306</span>/tcp  Unit is ready
 slurmctld/0*           active    idle   <span class="m">2</span>        <span class="m">10</span>.34.166.222             slurmctld available
 slurmd/0*              active    idle   <span class="m">3</span>        <span class="m">10</span>.34.166.219             slurmd available
 slurmdbd/0*            active    idle   <span class="m">4</span>        <span class="m">10</span>.34.166.218             slurmdbd available
-slurmrestd/0*          active    idle   <span class="m">5</span>        <span class="m">10</span>.34.166.66              slurm installed
+slurmrestd/0*          active    idle   <span class="m">5</span>        <span class="m">10</span>.34.166.66              slurmrestd available
 
 Machine  State    DNS            Inst id        Series  AZ  Message
 <span class="m">0</span>        started  <span class="m">10</span>.34.166.18   juju-01ab62-0  bionic      Running
