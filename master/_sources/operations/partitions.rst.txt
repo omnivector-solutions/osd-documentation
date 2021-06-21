@@ -86,6 +86,8 @@ Alternatively, you can set the partition name in the bundle file:
      options:
        default-partition: debug
 
+.. _changing-partition-state:
+
 Changing partition state
 ########################
 

@@ -38,7 +38,7 @@ Draining nodes
 ##############
 
 We provide an action in the ``slurmctld`` charm to drain nodes. You need to
-know in advance the hostname of the nodes you want to drain. You need to
+know in advance the hostname of the nodes you want to drain and also
 specify a *reason* to drain. You can specify more than one node, by using the
 Slurm convention:
 
@@ -61,7 +61,12 @@ Slurm convention:
        started: 2021-04-28 20:13:06 +0000 UTC
 
 We recommend running this action in the *leader* of ``slurmctld`` application
-instead of using the number.
+instead of using the number, just for convenience.
+
+.. note::
+
+   This action is to drain nodes only. To drain partitions, see
+   :ref:`changing-partition-state`.
 
 Resuming nodes
 ##############
