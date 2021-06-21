@@ -71,7 +71,7 @@ Install and configure LXD, if you haven't already:
 
    $ sudo snap install lxd
    $ lxd init --auto
-   $ lxd network set lxdbr0 ipv6.address none
+   $ lxc network set lxdbr0 ipv6.address none
 
 .. note::
 
