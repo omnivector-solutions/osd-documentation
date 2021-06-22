@@ -88,9 +88,13 @@ By contributing with code development, you agree the license used.
 
 Git usage
 ---------
-TODO:
-- linear history (always rebase with master)?
-- fast forward merge?
+
+- all commits should be atomic.
+- linear history
+
+  - always rebase with master
+  - fast forward merge
+
 - keep user related changes in the :ref:`changelog`
 - annotated tags for releases, see :ref:`release-process` below for details
 
@@ -99,8 +103,11 @@ TODO:
 Charm development
 -----------------
 
-All Python should be compliant with Python3.6. This is a strong requirement for
-the charms to run on CentOS7.
+All Python code should be compliant with Python3.6. This is a strong
+requirement for the charms to run on CentOS7.
+
+The coding style used follows closely
+`PEP-008 <https://www.python.org/dev/peps/pep-0008/>`_.
 
 Local setup
 ^^^^^^^^^^^
@@ -149,7 +156,7 @@ a new commit to:
 Slurm-charms
 ^^^^^^^^^^^^
 
-TODO
+Specific code for each charm is handled in each charm.
 
 Actions and Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~

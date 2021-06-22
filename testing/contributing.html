@@ -429,16 +429,24 @@ and a common code shared among them, called <code class="docutils literal notran
 <p>By contributing with code development, you agree the license used.</p>
 <div class="section" id="git-usage">
 <h3>Git usage<a class="headerlink" href="#git-usage" title="Permalink to this headline">¶</a></h3>
-<p>TODO:
-- linear history (always rebase with master)?
-- fast forward merge?
-- keep user related changes in the <a class="reference internal" href="#changelog"><span class="std std-ref">CHANGELOG</span></a>
-- annotated tags for releases, see <a class="reference internal" href="#release-process"><span class="std std-ref">Release process</span></a> below for details</p>
+<ul class="simple">
+<li><p>all commits should be atomic.</p></li>
+<li><p>linear history</p>
+<ul>
+<li><p>always rebase with master</p></li>
+<li><p>fast forward merge</p></li>
+</ul>
+</li>
+<li><p>keep user related changes in the <a class="reference internal" href="#changelog"><span class="std std-ref">CHANGELOG</span></a></p></li>
+<li><p>annotated tags for releases, see <a class="reference internal" href="#release-process"><span class="std std-ref">Release process</span></a> below for details</p></li>
+</ul>
 </div>
 <div class="section" id="charm-development">
 <span id="id1"></span><h3>Charm development<a class="headerlink" href="#charm-development" title="Permalink to this headline">¶</a></h3>
-<p>All Python should be compliant with Python3.6. This is a strong requirement for
-the charms to run on CentOS7.</p>
+<p>All Python code should be compliant with Python3.6. This is a strong
+requirement for the charms to run on CentOS7.</p>
+<p>The coding style used follows closely
+<a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP-008</a>.</p>
 <div class="section" id="local-setup">
 <h4>Local setup<a class="headerlink" href="#local-setup" title="Permalink to this headline">¶</a></h4>
 <p>This sections describes how to setup your system for local charm development.
@@ -477,7 +485,7 @@ a new commit to:</p>
 </div>
 <div class="section" id="id2">
 <h4>Slurm-charms<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
-<p>TODO</p>
+<p>Specific code for each charm is handled in each charm.</p>
 <div class="section" id="actions-and-configurations">
 <h5>Actions and Configurations<a class="headerlink" href="#actions-and-configurations" title="Permalink to this headline">¶</a></h5>
 <p>All Juju actions, configurations, and their parameters should have a
