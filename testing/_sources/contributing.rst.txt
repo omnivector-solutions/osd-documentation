@@ -29,6 +29,13 @@ This documentation is built using `Sphinx <https://sphinx-doc.org/>`_ and
 and is hosted in
 `GitHub <https://github.com/omnivector-solutions/osd-documentation>`_.
 
+General Recommendations
+-----------------------
+
+Use US English.
+
+Wrap the lines at 80 columns when writing documentation.
+
 Sections
 --------
 
@@ -69,11 +76,6 @@ naming conventions with regards to Slurm:
 
 ``Slurm``
    Omnivector charms.
-
-General Recommendations
------------------------
-
-Wrap the lines at 80 columns when writing documentation.
 
 
 Code
