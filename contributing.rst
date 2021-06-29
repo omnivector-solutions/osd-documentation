@@ -86,12 +86,14 @@ OSD source-code is hosted in GitHub repositories. All the charms are in
 and a common code shared among them, called ``slurm-ops-mananger``, is hosted at
 `omnivector-solutions/slurm-ops-manager <https://github.com/omnivector-solutions/slurm-ops-manager>`_.
 
-By contributing with code development, you agree the license used.
+The slurm-charms source code is developed under the ``MIT`` license. By
+contributing to the slurm-charms project or affiliated code you are implicitly
+agreeing to your code contributions being governed by this license too.
 
 Git usage
 ---------
 
-- all commits should be atomic.
+- all commits should be atomic
 - linear history
 
   - always rebase with master
@@ -99,6 +101,8 @@ Git usage
 
 - keep user related changes in the :ref:`changelog`
 - annotated tags for releases, see :ref:`release-process` below for details
+- do not include merge commits in new branches. New branches should contain
+  only new code.
 
 .. _charm-development:
 
@@ -115,7 +119,7 @@ Local setup
 ^^^^^^^^^^^
 
 This sections describes how to setup your system for local charm development.
-This section assumes the system is Linux-based and have support for `snaps`.
+This section assumes the system is Linux-based and has support for `snaps`.
 
 The tool used to build a charm is
 `charmcraft <https://github.com/canonical/charmcraft/>`_, and it should be
@@ -125,7 +129,7 @@ installed as a classical snap:
 
    $ sudo snap install --edge charmcraft --classic
 
-The charm code is available in the Git repository `slurm-charms
+The OSD charm code is available in the Git repository `slurm-charms
 <https://github.com/omnivector-solutions/slurm-charms>`_, it contains all the
 nuts and bolts of all Slurm Charms as well as a helper ``Makefile`` to build
 the charms. To clone and build:
@@ -136,46 +140,63 @@ the charms. To clone and build:
    $ cd slurm-charms
    $ make charms
 
-You can manually deploy the charms and add the relations or use the
-``slurm-core/charms/local-development.yaml`` overlay for your bundle. The
-`slurm-bundles` repository contains a helper ``Makefile`` that uses this
-overlay for all the targets. To deploy OSD locally in an LXD cluster running
-Ubuntu 20.04, use the command ``make lxd-ubuntu``. And to deploy locally with
-CentOS7: ``make lxd-centos``.
+After the ``.charm`` artifacts have been produced, ``juju`` can be used to
+deploy the built charms to a cloud environment of your choosing. There are two
+primary ways to deploy the charms after building them:
+- use Juju to deploy the built charms directly e.g.
+  ``juju deploy ./slurmd.charm``
+- deploy the local development bundle contained in `slurm-bundles
+  <https://github.com/omnivector-solutions/slurm-bundles>`_. The slurm-bundles
+  contain a helper Makefile that provide a way to easily deploy the built
+  charms to a local LXD cloud by using the command ``make lxd-focal``, or for
+  CentOS7, ``make lxd-centos``. See :ref:`installation` for more details
 
 Slurm-ops-manager
 ^^^^^^^^^^^^^^^^^
 
-Common code used in all charms should not be repeated. Instead, they should
-live in this project.
+The `slurm-ops-manager
+<https://github.com/omnivector-solutions/slurm-bundles>`_ is a codebase that
+contains common methods and attributes used across multiple slurm charms. Code
+that is used in more than one slurm charm should not be repeated, it should
+live in this project instead.
 
-After a new release of ``slurm-ops-manager``, all ``slurm-charms`` should have
-a new commit to:
+After making a new ``slurm-ops-manager`` release, the slurm-charms project
+should have a new commit in which the ``slurm-ops-manager`` version is
+incremented:
 
-- update the version of ``slurm-ops-manager`` in the ``requirements.txt`` file.
+- update the version of ``slurm-ops-manager`` in the ``requirements.txt`` file
+  for each charm
 - update the :ref:`changelog`.
 
 Slurm-charms
 ^^^^^^^^^^^^
 
-Specific code for each charm is handled in each charm.
+Find below the standards and conventions used when contributing code to the
+`slurm-charms <https://github.com/omnivector-solutions/slurm-charms>`_.
 
 Actions and Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-All Juju actions, configurations, and their parameters should have a
-description. This is the description that appears in the documentation pages,
-after a pre-processing. Wrap the lines in the YAML files at 80 columns.
+In an effort to keep the OSD documentation current and accurate, we generate
+the documentation for charm actions and charm configurations dynamically. OSD
+documentation is built in such a way that the actions and configurations that
+exist in each slurm charm are what end up in the documentation.
 
-The documentation translates the ``description`` field of the actions and
-configurations in the following ways:
+All actions, configurations, and their parameters _should_ have a
+description. A few things to note around the description field:
 
-- inline markdown code is translated to inline reStructuredText code.
+- inline markdown code is translated to inline reStructuredText code
 - if there is a ``Note:`` text, this paragraph becomes a Sphinx ``note::``
-  directive. This should be used to inform the end users of important
-  information related to that action/config.
-- if there is a ``Example usage:`` text, that paragraph becomes a Sphinx
+  directive (this should be used to inform the end users of important
+  information related to that action/config)
+- if there is an ``Example usage:`` text, that paragraph becomes a Sphinx
   ``code-block::`` with the example given.
+
+There are a few standards around YAML formatting that we closely follow in the
+slurm charms:
+
+- wrap the lines at 80 columns
+- use multi-line strings
 
 .. _changelog:
 
