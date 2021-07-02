@@ -151,6 +151,11 @@
   </ul>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="contributing.html">
+   Contributing to OSD
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="changelog.html">
    Changelog
   </a>
@@ -316,13 +321,6 @@
   <a class="reference internal nav-link" href="#deploy-slurm">
    Deploy Slurm
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#local-charms">
-     Local charms
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -492,7 +490,7 @@ the possible options are CentOS7 and Ubuntu Focal (20.04).</p></li>
 default, the bundle gets the <code class="docutils literal notranslate"><span class="pre">latest/stable</span></code> channel from Charmhub. The
 overlays in this directory allows ut to change the source to either
 <code class="docutils literal notranslate"><span class="pre">latest/edge</span></code> channel or from your local machine. The latter one is
-specially useful for development.</p></li>
+specially useful for development, see <a class="reference internal" href="contributing.html#charm-development"><span class="std std-ref">Charm development</span></a> for details.</p></li>
 </ul>
 <p>For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal, using the
 <code class="docutils literal notranslate"><span class="pre">latest/stable</span></code> charms:</p>
@@ -560,24 +558,6 @@ juju-compute-GsLk    up   infinite      <span class="m">1</span>   idle juju-01a
 </div>
 <p>Please refer to our <a class="reference internal" href="operations/overview.html#operations"><span class="std std-ref">Operations</span></a> section for detailed instructions on how
 to manage the cluster.</p>
-<div class="section" id="local-charms">
-<h3>Local charms<a class="headerlink" href="#local-charms" title="Permalink to this headline">¶</a></h3>
-<p>First we need to build a <em>charm</em>. That's what Juju will deploy to our cloud.
-Charms are built with <code class="docutils literal notranslate"><span class="pre">charmcraft</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo snap install --edge charmcraft
-</pre></div>
-</div>
-<p>Clone the <a class="reference external" href="https://github.com/omnivector-solutions/slurm-charms">slurm-charms</a>
-git repository, it contains all the nuts and bolts to build the charms and then
-invoke the <cite>make charms</cite> command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/omnivector-solutions/slurm-charms
-$ <span class="nb">cd</span> slurm-charms
-$ make charms
-</pre></div>
-</div>
-<p>Now you can use the <code class="docutils literal notranslate"><span class="pre">slurm-core/charms/local-development.yaml</span></code> overlay for
-your bundle.</p>
-</div>
 </div>
 </div>
 

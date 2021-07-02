@@ -179,7 +179,6 @@ following command to add the model that will house the OSD.
    $ juju add-model slurm
 
 
-
 Deploy Slurm
 ============
 
@@ -207,7 +206,7 @@ basic Slurm cluster:
   default, the bundle gets the ``latest/stable`` channel from Charmhub. The
   overlays in this directory allows ut to change the source to either
   ``latest/edge`` channel or from your local machine. The latter one is
-  specially useful for development.
+  specially useful for development, see :ref:`charm-development` for details.
 
 For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal, using the
 ``latest/stable`` charms:
@@ -288,29 +287,3 @@ After setting the node up, to bring it back you need to run a Juju *action*:
 
 Please refer to our :ref:`operations` section for detailed instructions on how
 to manage the cluster.
-
-Local charms
-############
-
-.. this section should be moved to the CONTRIBUTING guide later, right now we
-.. leave it here until that section is done
-
-First we need to build a *charm*. That's what Juju will deploy to our cloud.
-Charms are built with ``charmcraft``:
-
-.. code-block:: bash
-
-   $ sudo snap install --edge charmcraft
-
-Clone the `slurm-charms <https://github.com/omnivector-solutions/slurm-charms>`_
-git repository, it contains all the nuts and bolts to build the charms and then
-invoke the `make charms` command:
-
-.. code-block:: bash
-
-   $ git clone https://github.com/omnivector-solutions/slurm-charms
-   $ cd slurm-charms
-   $ make charms
-
-Now you can use the ``slurm-core/charms/local-development.yaml`` overlay for
-your bundle.
