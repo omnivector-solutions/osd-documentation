@@ -26,10 +26,10 @@ So, edit the bundle file to add a new entry in the ``applications`` section:
 
    applications:
      slurmd:
-       charm: ./../../slurm-charms/slurmd.charm
+       charm: slurmd
        num_units: 1
      slurmd-debug:
-       charm: ./../../slurm-charms/slurmd.charm
+       charm: slurmd
        num_units: 1
      ...
 
@@ -63,7 +63,7 @@ Alternatively, you can set the partition name in the bundle file:
 ::
 
    slurmd-debug:
-     charm: ./../../slurm-charms/slurmd.charm
+     charm: slurmd
      num_units: 1
      options:
        partition-name: debug
@@ -82,7 +82,7 @@ Alternatively, you can set the partition name in the bundle file:
 ::
 
    slurmdctld:
-     charm: ./../../slurm-charms/slurmctld.charm
+     charm: slurmctld
      num_units: 1
      options:
        default-partition: debug
