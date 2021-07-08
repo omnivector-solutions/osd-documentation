@@ -305,7 +305,7 @@ install and configure dependencies before the node can run jobs.</p>
 <div class="section" id="draining-nodes">
 <h2>Draining nodes<a class="headerlink" href="#draining-nodes" title="Permalink to this headline">¶</a></h2>
 <p>We provide an action in the <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm to drain nodes. You need to
-know in advance the hostname of the nodes you want to drain. You need to
+know in advance the hostname of the nodes you want to drain and also
 specify a <em>reason</em> to drain. You can specify more than one node, by using the
 Slurm convention:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmctld/leader drain <span class="nv">nodename</span><span class="o">=</span>juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span> <span class="nv">reason</span><span class="o">=</span><span class="s2">&quot;Maintenance - drive failure&quot;</span> --wait
@@ -326,7 +326,12 @@ unit-slurmctld-0:
 </pre></div>
 </div>
 <p>We recommend running this action in the <em>leader</em> of <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> application
-instead of using the number.</p>
+instead of using the number, just for convenience.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This action is to drain nodes only. To drain partitions, see
+<a class="reference internal" href="partitions.html#changing-partition-state"><span class="std std-ref">Changing partition state</span></a>.</p>
+</div>
 </div>
 <div class="section" id="resuming-nodes">
 <h2>Resuming nodes<a class="headerlink" href="#resuming-nodes" title="Permalink to this headline">¶</a></h2>

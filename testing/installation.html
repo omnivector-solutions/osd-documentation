@@ -536,7 +536,7 @@ cluster is ready for use.</p>
 <p>You can see the status of your cluster by running the <code class="docutils literal notranslate"><span class="pre">sinfo</span></code> command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run --unit slurmcltd/0 sinfo
 PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
-juju-compute-GsLk    up   infinite      <span class="m">1</span>   down juju-01ab62-3
+osd-slurmd           up   infinite      <span class="m">1</span>   down juju-01ab62-3
 </pre></div>
 </div>
 <p>The nodes start in <em>down</em> state with a <code class="docutils literal notranslate"><span class="pre">Reason</span> <span class="pre">=</span> <span class="pre">New</span> <span class="pre">node</span></code>, so when you add
@@ -553,7 +553,7 @@ New node             root      <span class="m">2021</span>-03-09T20:24:09 ip-172
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmd/1 node-configured
 $ juju run --unit slurmcltd/0 sinfo
 PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
-juju-compute-GsLk    up   infinite      <span class="m">1</span>   idle juju-01ab62-3
+osd-slurmd           up   infinite      <span class="m">1</span>   idle juju-01ab62-3
 </pre></div>
 </div>
 <p>Please refer to our <a class="reference internal" href="operations/overview.html#operations"><span class="std std-ref">Operations</span></a> section for detailed instructions on how

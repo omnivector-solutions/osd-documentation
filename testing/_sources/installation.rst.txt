@@ -262,7 +262,7 @@ You can see the status of your cluster by running the ``sinfo`` command:
 
    $ juju run --unit slurmcltd/0 sinfo
    PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
-   juju-compute-GsLk    up   infinite      1   down juju-01ab62-3
+   osd-slurmd           up   infinite      1   down juju-01ab62-3
 
 The nodes start in *down* state with a ``Reason = New node``, so when you add
 more nodes to the cluster, they will not execute the jobs from que queue. This
@@ -283,7 +283,7 @@ After setting the node up, to bring it back you need to run a Juju *action*:
    $ juju run-action slurmd/1 node-configured
    $ juju run --unit slurmcltd/0 sinfo
    PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
-   juju-compute-GsLk    up   infinite      1   idle juju-01ab62-3
+   osd-slurmd           up   infinite      1   idle juju-01ab62-3
 
 Please refer to our :ref:`operations` section for detailed instructions on how
 to manage the cluster.

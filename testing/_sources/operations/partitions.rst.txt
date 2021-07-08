@@ -26,10 +26,10 @@ So, edit the bundle file to add a new entry in the ``applications`` section:
 
    applications:
      slurmd:
-       charm: ./../../slurm-charms/slurmd.charm
+       charm: slurmd
        num_units: 1
      slurmd-debug:
-       charm: ./../../slurm-charms/slurmd.charm
+       charm: slurmd
        num_units: 1
      ...
 
@@ -50,8 +50,9 @@ also copy those bindings to the new application.
 Changing partition name
 #######################
 
-By default, the charms create a randomly unique name for each partition. You
-can change the partition name with a juju configuration command:
+By default, the charms create a unique name for each partition, based on the
+name of the Juju Application. You can change the partition name with a Juju
+configuration command:
 
 .. code-block:: bash
 
@@ -62,7 +63,7 @@ Alternatively, you can set the partition name in the bundle file:
 ::
 
    slurmd-debug:
-     charm: ./../../slurm-charms/slurmd.charm
+     charm: slurmd
      num_units: 1
      options:
        partition-name: debug
@@ -81,10 +82,12 @@ Alternatively, you can set the partition name in the bundle file:
 ::
 
    slurmdctld:
-     charm: ./../../slurm-charms/slurmctld.charm
+     charm: slurmctld
      num_units: 1
      options:
        default-partition: debug
+
+.. _changing-partition-state:
 
 Changing partition state
 ########################
