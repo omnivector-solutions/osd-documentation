@@ -296,10 +296,10 @@ with a new <em>Juju application name</em>.</p>
 <p>So, edit the bundle file to add a new entry in the <code class="docutils literal notranslate"><span class="pre">applications</span></code> section:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">applications</span><span class="p">:</span>
   <span class="n">slurmd</span><span class="p">:</span>
-    <span class="n">charm</span><span class="p">:</span> <span class="o">./../../</span><span class="n">slurm</span><span class="o">-</span><span class="n">charms</span><span class="o">/</span><span class="n">slurmd</span><span class="o">.</span><span class="n">charm</span>
+    <span class="n">charm</span><span class="p">:</span> <span class="n">slurmd</span>
     <span class="n">num_units</span><span class="p">:</span> <span class="mi">1</span>
   <span class="n">slurmd</span><span class="o">-</span><span class="n">debug</span><span class="p">:</span>
-    <span class="n">charm</span><span class="p">:</span> <span class="o">./../../</span><span class="n">slurm</span><span class="o">-</span><span class="n">charms</span><span class="o">/</span><span class="n">slurmd</span><span class="o">.</span><span class="n">charm</span>
+    <span class="n">charm</span><span class="p">:</span> <span class="n">slurmd</span>
     <span class="n">num_units</span><span class="p">:</span> <span class="mi">1</span>
   <span class="o">...</span>
 </pre></div>
@@ -318,14 +318,15 @@ also copy those bindings to the new application.</p>
 </div>
 <div class="section" id="changing-partition-name">
 <h2>Changing partition name<a class="headerlink" href="#changing-partition-name" title="Permalink to this headline">¶</a></h2>
-<p>By default, the charms create a randomly unique name for each partition. You
-can change the partition name with a juju configuration command:</p>
+<p>By default, the charms create a unique name for each partition, based on the
+name of the Juju Application. You can change the partition name with a Juju
+configuration command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmd-debug partition-name<span class="o">=</span>debug
 </pre></div>
 </div>
 <p>Alternatively, you can set the partition name in the bundle file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">slurmd</span><span class="o">-</span><span class="n">debug</span><span class="p">:</span>
-  <span class="n">charm</span><span class="p">:</span> <span class="o">./../../</span><span class="n">slurm</span><span class="o">-</span><span class="n">charms</span><span class="o">/</span><span class="n">slurmd</span><span class="o">.</span><span class="n">charm</span>
+  <span class="n">charm</span><span class="p">:</span> <span class="n">slurmd</span>
   <span class="n">num_units</span><span class="p">:</span> <span class="mi">1</span>
   <span class="n">options</span><span class="p">:</span>
     <span class="n">partition</span><span class="o">-</span><span class="n">name</span><span class="p">:</span> <span class="n">debug</span>
@@ -340,7 +341,7 @@ can change the partition name with a juju configuration command:</p>
 </div>
 <p>Alternatively, you can set the partition name in the bundle file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">slurmdctld</span><span class="p">:</span>
-  <span class="n">charm</span><span class="p">:</span> <span class="o">./../../</span><span class="n">slurm</span><span class="o">-</span><span class="n">charms</span><span class="o">/</span><span class="n">slurmctld</span><span class="o">.</span><span class="n">charm</span>
+  <span class="n">charm</span><span class="p">:</span> <span class="n">slurmctld</span>
   <span class="n">num_units</span><span class="p">:</span> <span class="mi">1</span>
   <span class="n">options</span><span class="p">:</span>
     <span class="n">default</span><span class="o">-</span><span class="n">partition</span><span class="p">:</span> <span class="n">debug</span>
