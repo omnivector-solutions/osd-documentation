@@ -30,6 +30,9 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['build', 'Thumbs.db', '.DS_Store', 'venv']
 
+# The name of the Pygments (syntax highlighting) style to use.
+pygments_style = 'rainbow_dash'
+
 
 # -- Options for HTML output -------------------------------------------------
 

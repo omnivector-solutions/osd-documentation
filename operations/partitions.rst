@@ -50,8 +50,9 @@ also copy those bindings to the new application.
 Changing partition name
 #######################
 
-By default, the charms create a randomly unique name for each partition. You
-can change the partition name with a juju configuration command:
+By default, the charms create a unique name for each partition, based on the
+name of the Juju Application. You can change the partition name with a Juju
+configuration command:
 
 .. code-block:: bash
 
