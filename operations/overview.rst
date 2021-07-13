@@ -17,7 +17,7 @@ configuration options. There is no need to manually update this file in all
 compute nodes: OSD combines the power of Juju operations with SLURM in
 configless mode (see :ref:`architecture` for details) to configure all the
 nodes in the cluster with one single command. This also means that any
-modification to a node's ``slurmc.conf`` file will be discarded.
+modification to a node's ``slurm.conf`` file will be discarded.
 
 Alongside the capability to manage the ``slurm.conf``, the charms also provide a set of operational
 tools called *actions*.
