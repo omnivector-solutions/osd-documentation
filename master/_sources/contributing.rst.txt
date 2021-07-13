@@ -143,8 +143,10 @@ the charms. To clone and build:
 After the ``.charm`` artifacts have been produced, ``juju`` can be used to
 deploy the built charms to a cloud environment of your choosing. There are two
 primary ways to deploy the charms after building them:
+
 - use Juju to deploy the built charms directly e.g.
   ``juju deploy ./slurmd.charm``
+
 - deploy the local development bundle contained in `slurm-bundles
   <https://github.com/omnivector-solutions/slurm-bundles>`_. The slurm-bundles
   contain a helper Makefile that provide a way to easily deploy the built

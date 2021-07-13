@@ -252,15 +252,22 @@
                 
   <div class="section" id="operations">
 <span id="id1"></span><h1>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h1>
-<p>The Omnivector Slurm Distribution can be configured to the extent that you can configure slurm itself.
-Meaning that all upstream slurm configurations are supported by OSD.</p>
+<p>The Omnivector Slurm Distribution can be configured to the extent that you can configure SLURM itself.
+Meaning that all upstream SLURM configurations are supported by OSD.</p>
 <p>The operational magic in OSD is encapsulated in ops code called <strong>charms</strong>. We have curated a suite
-of automation for each Slurm component: <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code>, <code class="docutils literal notranslate"><span class="pre">slurmd</span></code>, <code class="docutils literal notranslate"><span class="pre">slurmdbd</span></code>, and <code class="docutils literal notranslate"><span class="pre">slurmrestd</span></code>.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code> file can be customized through the slurm charm configuration options.
-Each slurm component charm provides a set of options that enable operators/administrators to operate the cluster.</p>
+of automation for each SLURM component: <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code>, <code class="docutils literal notranslate"><span class="pre">slurmd</span></code>, <code class="docutils literal notranslate"><span class="pre">slurmdbd</span></code>, and <code class="docutils literal notranslate"><span class="pre">slurmrestd</span></code>.</p>
+<p>Each slurm component charm provides a set of options that enable operators/administrators to operate the cluster.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code> file can be customized through the <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm
+configuration options. There is no need to manually update this file in all
+compute nodes: OSD combines the power of Juju operations with SLURM in
+configless mode (see <a class="reference internal" href="../architecture.html#architecture"><span class="std std-ref">OSD Architecture</span></a> for details) to configure all the
+nodes in the cluster with one single command. This also means that any
+modification to a node's <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code> file will be discarded.</p>
 <p>Alongside the capability to manage the <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code>, the charms also provide a set of operational
 tools called <em>actions</em>.</p>
-<p>Find below a list of operations on how to manage and configure OSD:</p>
+<p>Find below a list of operations on how to manage and configure OSD. Refer to
+<a class="reference internal" href="../configuration/configuration.html#configuration-and-administration"><span class="std std-ref">Configuration and Administration</span></a> for a complete list of all
+configuration options and actions.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="nodes.html">Nodes operations</a><ul>

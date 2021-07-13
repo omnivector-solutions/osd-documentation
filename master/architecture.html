@@ -276,11 +276,14 @@
   <div class="section" id="osd-architecture">
 <span id="architecture"></span><h1>OSD Architecture<a class="headerlink" href="#osd-architecture" title="Permalink to this headline">¶</a></h1>
 <p>The Omnivector SLURM Distribution is built on a suite of automations called
-&quot;charms&quot;.  Charms are the operational components that describe the lifecycle of
-a SLURM cluster.  A full SLURM deployment comes in the form of multiple charms, one
-for each component of SLURM. A &quot;bundle&quot; is a yaml file where multiple charms
-can be defined. We use bundles to describe the interconnectivity and
+&quot;charms&quot;. Charms are the operational components that describe the lifecycle of
+a SLURM cluster. A full SLURM deployment comes in the form of multiple charms,
+one for each component of SLURM. A &quot;bundle&quot; is a YAML file where multiple
+charms can be defined. We use bundles to describe the interconnectivity and
 configuration of groups of charms.</p>
+<p>OSD provisions SLURM to operate in configless mode
+&lt;<a class="reference external" href="https://slurm.schedmd.com/configless_slurm.html">https://slurm.schedmd.com/configless_slurm.html</a>&gt;`_. In this mode, the <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> process does the work of
+distributing the <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code> file to the nodes running <code class="docutils literal notranslate"><span class="pre">slurmd</span></code>.</p>
 <div class="section" id="slurm-charms">
 <h2>Slurm Charms<a class="headerlink" href="#slurm-charms" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference external" href="https://github.com/omnivector-solutions/slurm-charms/">slurm-charms</a>
@@ -298,13 +301,17 @@ operating systems.</p>
 <p>The Omnivector Slurm Distribution supports the following charm components
 as part of the slurm-core offering:</p>
 <ul class="simple">
-<li><p>Compute nodes (running <code class="docutils literal notranslate"><span class="pre">slurmd</span></code>)</p></li>
-<li><p>SLURM database node (running <code class="docutils literal notranslate"><span class="pre">slurmdbd</span></code>)</p></li>
-<li><p>SLURM control node (running <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code>)</p></li>
-<li><p>SLURM REST service (running <code class="docutils literal notranslate"><span class="pre">slurmrestd</span></code>)</p></li>
+<li><p><a class="reference external" href="https://charmhub.io/slurmd">slurmd</a>: Compute and login nodes (running
+<code class="docutils literal notranslate"><span class="pre">slurmd</span></code>)</p></li>
+<li><p><a class="reference external" href="https://charmhub.io/slurmdbd">slurmdbd</a>: SLURM database node (running
+<code class="docutils literal notranslate"><span class="pre">slurmdbd</span></code>)</p></li>
+<li><p><a class="reference external" href="https://charmhub.io/slurmctld">slurmctld</a>: SLURM control node (running
+<code class="docutils literal notranslate"><span class="pre">slurmctld</span></code>)</p></li>
+<li><p><a class="reference external" href="https://charmhub.io/slurmrestd">slurmrestd</a>: SLURM REST service (running
+<code class="docutils literal notranslate"><span class="pre">slurmrestd</span></code>)</p></li>
 </ul>
 <p>Additionally we include the <a class="reference external" href="https://github.com/mej/nhc">Node Health Check (NHC)</a> with a minimal configuration and checks to
-ensure the <code class="docutils literal notranslate"><span class="pre">slurm</span></code> and <code class="docutils literal notranslate"><span class="pre">munge</span></code> processes are active.  It is possible, and
+ensure the <code class="docutils literal notranslate"><span class="pre">slurm</span></code> and <code class="docutils literal notranslate"><span class="pre">munge</span></code> processes are active. It is possible, and
 recommended, that the cluster administrator extends these checks. Check
 <a class="reference internal" href="operations/nhc.html#nhc"><span class="std std-ref">NHC</span></a> section for details on how to configure it.</p>
 <p>The easiest way to install Infiniband drivers on the compute nodes is to use

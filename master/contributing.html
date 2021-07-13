@@ -472,12 +472,10 @@ $ make charms
 </div>
 <p>After the <code class="docutils literal notranslate"><span class="pre">.charm</span></code> artifacts have been produced, <code class="docutils literal notranslate"><span class="pre">juju</span></code> can be used to
 deploy the built charms to a cloud environment of your choosing. There are two
-primary ways to deploy the charms after building them:
-- use Juju to deploy the built charms directly e.g.</p>
-<blockquote>
-<div><p><code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">deploy</span> <span class="pre">./slurmd.charm</span></code></p>
-</div></blockquote>
+primary ways to deploy the charms after building them:</p>
 <ul class="simple">
+<li><p>use Juju to deploy the built charms directly e.g.
+<code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">deploy</span> <span class="pre">./slurmd.charm</span></code></p></li>
 <li><p>deploy the local development bundle contained in <a class="reference external" href="https://github.com/omnivector-solutions/slurm-bundles">slurm-bundles</a>. The slurm-bundles
 contain a helper Makefile that provide a way to easily deploy the built
 charms to a local LXD cloud by using the command <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">lxd-focal</span></code>, or for
