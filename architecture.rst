@@ -11,9 +11,10 @@ one for each component of SLURM. A "bundle" is a YAML file where multiple
 charms can be defined. We use bundles to describe the interconnectivity and
 configuration of groups of charms.
 
-OSD provisions SLURM to operate in configless mode
-<https://slurm.schedmd.com/configless_slurm.html>`_. In this mode, the ``slurmctld`` process does the work of
-distributing the ``slurm.conf`` file to the nodes running ``slurmd``.
+OSD provisions SLURM to operate in `configless mode
+<https://slurm.schedmd.com/configless_slurm.html>`_. In this mode, the
+``slurmctld`` process does the work of distributing the ``slurm.conf`` file to
+the nodes running ``slurmd``.
 
 Slurm Charms
 ------------
