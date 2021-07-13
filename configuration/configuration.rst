@@ -1,3 +1,5 @@
+.. _configuration-and-administration:
+
 ================================
 Configuration and Administration
 ================================
