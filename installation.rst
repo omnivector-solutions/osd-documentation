@@ -208,6 +208,12 @@ basic Slurm cluster:
   ``latest/edge`` channel or from your local machine. The latter one is
   specially useful for development, see :ref:`charm-development` for details.
 
+The ``slurm-addons`` directory contains overlays to extend SLURM with plugins:
+
+- ``slurm-addons/influxdb.yaml``: overlay to relate ``slurmctld`` to InfluxDB,
+  to collect profiling information about the jobs. See
+  :ref:`influxdb-profiling` for details on usage.
+
 For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal, using the
 ``latest/stable`` charms:
 
