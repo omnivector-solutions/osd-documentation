@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -114,6 +114,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="upgrading-osd.html">
      Upgrade OSD
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="accounting-profiling.html">
+     Accounting And Profiling
     </a>
    </li>
   </ul>
@@ -261,7 +266,8 @@ of automation for each SLURM component: <code class="docutils literal notranslat
 configuration options. There is no need to manually update this file in all
 compute nodes: OSD combines the power of Juju operations with SLURM in
 configless mode (see <a class="reference internal" href="../architecture.html#architecture"><span class="std std-ref">OSD Architecture</span></a> for details) to configure all the
-nodes in the cluster with one single command.</p>
+nodes in the cluster with one single command. This also means that any
+modification to a node's <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code> file will be discarded.</p>
 <p>Alongside the capability to manage the <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code>, the charms also provide a set of operational
 tools called <em>actions</em>.</p>
 <p>Find below a list of operations on how to manage and configure OSD. Refer to
@@ -288,6 +294,11 @@ configuration options and actions.</p>
 <li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and restore the slurm database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="upgrading-osd.html">Upgrade OSD</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="upgrading-osd.html#charm-upgrades">Charm Upgrades</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="accounting-profiling.html">Accounting And Profiling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="accounting-profiling.html#slurmdbd">Slurmdbd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accounting-profiling.html#influxdb-profiling-plugin">InfluxDB profiling plugin</a></li>
 </ul>
 </li>
 </ul>

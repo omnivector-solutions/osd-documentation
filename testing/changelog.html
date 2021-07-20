@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
     
   <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -113,6 +113,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="operations/upgrading-osd.html">
      Upgrade OSD
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="operations/accounting-profiling.html">
+     Accounting And Profiling
     </a>
    </li>
   </ul>
@@ -302,13 +307,19 @@
 <p>This file keeps track of all notable changes to the Slurm Charms.</p>
 <div class="section" id="unreleased">
 <h2>Unreleased<a class="headerlink" href="#unreleased" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>handle update-status hook to constantly give feedback about charms' status</p></li>
+<li><p>add .jujuignore to reduce size of final charm files</p></li>
+<li><p>fix cache of partition_name in slurmd charm</p></li>
+<li><p>improve description of charm's state in juju status</p></li>
+<li><p>fix race condition on relation data exchange between slurmctld and slurmdbd</p></li>
+<li><p>change default partition name from juju-compute-random to osd-appname</p></li>
+<li><p>fix slurmctld crashing when removing a slurmd application</p></li>
+</ul>
 </div>
 <div class="section" id="id1">
 <h2>0.6.6 - 2021-07-01<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>fix race condition on relation data exchange between slurmctld and slurmdbd</p></li>
-<li><p>change default partition name from juju-compute-random to osd-appname</p></li>
-<li><p>fix slurmctld crashing when removing a slurmd application</p></li>
 <li><p>fix checks for munge when the code can't run subprocess as another UID</p></li>
 </ul>
 </div>
