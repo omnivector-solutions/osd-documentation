@@ -35,3 +35,4 @@ configuration options and actions.
    nhc
    backup-restore
    upgrading-osd
+   accounting-profiling

@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -114,6 +114,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../operations/upgrading-osd.html">
      Upgrade OSD
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../operations/accounting-profiling.html">
+     Accounting And Profiling
     </a>
    </li>
   </ul>
@@ -287,6 +292,16 @@
      health-check-state
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#acct-gather-frequency">
+     acct-gather-frequency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#acct-gather-custom">
+     acct-gather-custom
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -307,6 +322,11 @@
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#resume">
      resume
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#influxdb-info">
+     influxdb-info
     </a>
    </li>
   </ul>
@@ -393,6 +413,31 @@
 <li><p>default-value: <code class="docutils literal notranslate"><span class="pre">ANY,CYCLE</span></code></p></li>
 </ul>
 </div>
+<div class="section" id="acct-gather-frequency">
+<h3>acct-gather-frequency<a class="headerlink" href="#acct-gather-frequency" title="Permalink to this headline">¶</a></h3>
+<p>Accounting and profiling sampling intervals for the acct_gather plugins.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>a value of <code class="docutils literal notranslate"><span class="pre">0</span></code> disables the periodic sampling. In this case, the accounting information is collected when the job terminates.</p>
+</div>
+<p>Example Usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmcltd acct-gather-frequency<span class="o">=</span><span class="s2">&quot;task=30,network=30&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>type: string</p></li>
+<li><p>default-value: <code class="docutils literal notranslate"><span class="pre">task=30</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="acct-gather-custom">
+<h3>acct-gather-custom<a class="headerlink" href="#acct-gather-custom" title="Permalink to this headline">¶</a></h3>
+<p>User supplied <code class="docutils literal notranslate"><span class="pre">acct_gather.conf</span></code> configuration.</p>
+<p>This value supplements the charm supplied <code class="docutils literal notranslate"><span class="pre">acct_gather.conf</span></code> file that is used for configuring the acct_gather plugins.</p>
+<ul class="simple">
+<li><p>type: string</p></li>
+<li><p>default-value: empty</p></li>
+</ul>
+</div>
 </div>
 <div class="section" id="actions">
 <h2>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h2>
@@ -452,6 +497,11 @@
 </ul>
 </li>
 </ul>
+</div>
+<div class="section" id="influxdb-info">
+<h3>influxdb-info<a class="headerlink" href="#influxdb-info" title="Permalink to this headline">¶</a></h3>
+<p>Get InfluxDB info.</p>
+<p>This action returns the host, port, username, password, database, and retention policy regarding to InfluxDB.</p>
 </div>
 </div>
 </div>

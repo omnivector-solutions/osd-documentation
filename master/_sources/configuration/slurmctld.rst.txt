@@ -105,6 +105,40 @@ Only run the Health Check on nodes in this state.
 * type: string
 * default-value: ``ANY,CYCLE``
 
+acct-gather-frequency
+---------------------
+
+Accounting and profiling sampling intervals for the acct_gather plugins.
+
+.. note::
+
+   a value of ``0`` disables the periodic sampling. In this case, the accounting information is collected when the job terminates.
+
+Example Usage:
+
+.. code-block:: bash
+
+   $ juju config slurmcltd acct-gather-frequency="task=30,network=30"
+
+
+
+
+* type: string
+* default-value: ``task=30``
+
+acct-gather-custom
+------------------
+
+User supplied ``acct_gather.conf`` configuration.
+
+This value supplements the charm supplied ``acct_gather.conf`` file that is used for configuring the acct_gather plugins.
+
+
+
+
+* type: string
+* default-value: empty
+
 
 
 
@@ -195,6 +229,18 @@ Parameters:
 
 
   * type: string
+
+
+
+
+
+influxdb-info
+-------------
+
+Get InfluxDB info.
+
+This action returns the host, port, username, password, database, and retention policy regarding to InfluxDB.
+
 
 
 

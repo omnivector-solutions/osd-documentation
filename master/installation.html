@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
     
   <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -114,6 +114,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="operations/upgrading-osd.html">
      Upgrade OSD
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="operations/accounting-profiling.html">
+     Accounting And Profiling
     </a>
    </li>
   </ul>
@@ -491,6 +496,12 @@ default, the bundle gets the <code class="docutils literal notranslate"><span cl
 overlays in this directory allows ut to change the source to either
 <code class="docutils literal notranslate"><span class="pre">latest/edge</span></code> channel or from your local machine. The latter one is
 specially useful for development, see <a class="reference internal" href="contributing.html#charm-development"><span class="std std-ref">Charm development</span></a> for details.</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">slurm-addons</span></code> directory contains overlays to extend SLURM with plugins:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">slurm-addons/influxdb.yaml</span></code>: overlay to relate <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> to InfluxDB,
+to collect profiling information about the jobs. See
+<a class="reference internal" href="operations/accounting-profiling.html#influxdb-profiling"><span class="std std-ref">InfluxDB profiling plugin</span></a> for details on usage.</p></li>
 </ul>
 <p>For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal, using the
 <code class="docutils literal notranslate"><span class="pre">latest/stable</span></code> charms:</p>

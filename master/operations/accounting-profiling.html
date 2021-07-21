@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>slurmdbd &#8212; Omnivector Slurm Distribution  documentation</title>
+    <title>Accounting And Profiling &#8212; Omnivector Slurm Distribution  documentation</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -34,8 +34,8 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="slurmctld" href="slurmctld.html" />
-    <link rel="prev" title="slurmd" href="slurmd.html" />
+    <link rel="next" title="Configuration and Administration" href="../configuration/configuration.html" />
+    <link rel="prev" title="Upgrade OSD" href="upgrading-osd.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -76,80 +76,80 @@
    Installation overview
   </a>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../operations/overview.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="overview.html">
    Operations Overview
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../operations/nodes.html">
-     Nodes operations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../operations/partitions.html">
-     Partitions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../operations/infiniband.html">
-     Infiniband
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../operations/nhc.html">
-     NHC
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../operations/backup-restore.html">
-     Backup and restore the slurm database
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../operations/upgrading-osd.html">
-     Upgrade OSD
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../operations/accounting-profiling.html">
-     Accounting And Profiling
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="configuration.html">
-   Configuration and Administration
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="slurmd.html">
-     slurmd
+    <a class="reference internal" href="nodes.html">
+     Nodes operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="partitions.html">
+     Partitions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="infiniband.html">
+     Infiniband
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nhc.html">
+     NHC
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="backup-restore.html">
+     Backup and restore the slurm database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="upgrading-osd.html">
+     Upgrade OSD
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
+     Accounting And Profiling
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../configuration/configuration.html">
+   Configuration and Administration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../configuration/slurmd.html">
+     slurmd
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../configuration/slurmdbd.html">
      slurmdbd
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="slurmctld.html">
+    <a class="reference internal" href="../configuration/slurmctld.html">
      slurmctld
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="slurmrestd.html">
+    <a class="reference internal" href="../configuration/slurmrestd.html">
      slurmrestd
     </a>
    </li>
@@ -206,7 +206,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/configuration/slurmdbd.rst.txt"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/operations/accounting-profiling.rst.txt"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.rst</button></a>
         <!-- Download PDF via print -->
@@ -226,7 +226,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/omnivector-solutions/osd-documentation//issues/new?title=Issue%20on%20page%20%2Fconfiguration/slurmdbd.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/omnivector-solutions/osd-documentation//issues/new?title=Issue%20on%20page%20%2Foperations/accounting-profiling.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -253,16 +253,14 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#configurations">
-   Configurations
+  <a class="reference internal nav-link" href="#slurmdbd">
+   Slurmdbd
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#slurmdbd-debug">
-     slurmdbd-debug
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#influxdb-profiling-plugin">
+   InfluxDB profiling plugin
+  </a>
  </li>
 </ul>
 
@@ -275,22 +273,78 @@
         
               <div>
                 
-  <div class="section" id="slurmdbd">
-<span id="operations-slurmdbd"></span><h1>slurmdbd<a class="headerlink" href="#slurmdbd" title="Permalink to this headline">¶</a></h1>
-<p>The SLURM database node.</p>
-<div class="section" id="configurations">
-<h2>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline">¶</a></h2>
-<p>To change a configuration for this charm, use the Juju command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmdbd <span class="nv">configuration</span><span class="o">=</span>value
+  <div class="section" id="accounting-and-profiling">
+<span id="accounting-profiling"></span><h1>Accounting And Profiling<a class="headerlink" href="#accounting-and-profiling" title="Permalink to this headline">¶</a></h1>
+<p>SLURM can collect accounting and profiling information about jobs and job
+steps. Please find below instructions on how to setup accounting for the
+different plugins, as well as the <a class="reference external" href="https://slurm.schedmd.com/accounting.html">official documentation about accounting</a>.</p>
+<div class="section" id="slurmdbd">
+<h2>Slurmdbd<a class="headerlink" href="#slurmdbd" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">slurmdbd</span></code> is used for job accounting.</p>
+</div>
+<div class="section" id="influxdb-profiling-plugin">
+<span id="influxdb-profiling"></span><h2>InfluxDB profiling plugin<a class="headerlink" href="#influxdb-profiling-plugin" title="Permalink to this headline">¶</a></h2>
+<p>SLURM provides a profiling gathering plugin to collect metrics and send them to
+<a class="reference external" href="https://www.influxdata.com/products/influxdb/">InfluxDB</a>. OSD encapsulates
+the configuration of this plugin in a <em>Juju relation</em> between <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> and
+<code class="docutils literal notranslate"><span class="pre">influxdb</span></code> charms.</p>
+<p>A basic setup involves the following steps:</p>
+<ol class="arabic simple">
+<li><p>Deploy InfluxDB charm.</p></li>
+<li><p>Relate <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> and <code class="docutils literal notranslate"><span class="pre">influxdb</span></code>.</p></li>
+<li><p>[optional] Configure the accounting frequency.</p></li>
+</ol>
+<p>The Juju commands to accomplish these steps are:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy influxdb
+$ juju relate slurmctld influxdb
+$ juju config slurmctld acct-gather-frequency<span class="o">=</span><span class="s2">&quot;task=30&quot;</span>
 </pre></div>
 </div>
-<div class="section" id="slurmdbd-debug">
-<h3>slurmdbd-debug<a class="headerlink" href="#slurmdbd-debug" title="Permalink to this headline">¶</a></h3>
-<p>The level of detail to provide slurmdbd daemon's logs. The default value is <code class="docutils literal notranslate"><span class="pre">info</span></code>. If the slurmdbd daemon is initiated with <code class="docutils literal notranslate"><span class="pre">-v</span></code> or <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> options, that debug level will be preserve or restored upon reconfiguration.</p>
-<ul class="simple">
-<li><p>type: string</p></li>
-<li><p>default-value: <code class="docutils literal notranslate"><span class="pre">info</span></code></p></li>
-</ul>
+<p>In this scenario, <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> will setup everything needed to collect and
+save the metrics, which include creating a <code class="docutils literal notranslate"><span class="pre">slurm</span></code> database in InfluxDB.</p>
+<p>The following field keys are saved for the tasks:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">CPUFrequency</span></code></dt><dd><p>CPU Frequency at time of sample.</p>
+<p>Field type: <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">CPUTime</span></code></dt><dd><p>Seconds of CPU time used during the sample.</p>
+<p>Field type: <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">CPUUtilization</span></code></dt><dd><p>CPU Utilization during the interval.</p>
+<p>Field type: <code class="docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">RSS</span></code></dt><dd><p>Value of RSS at time of sample.</p>
+<p>Field type: <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">VMSize</span></code></dt><dd><p>Value of VM Size at time of sample.</p>
+<p>Field type: <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Pages</span></code></dt><dd><p>Pages used in sample.</p>
+<p>Field type: <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ReadMB</span></code></dt><dd><p>Number of megabytes read from local disk.</p>
+<p>Field type: <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">WriteMB</span></code></dt><dd><p>Number of megabytes written to local disk.</p>
+<p>Field type: <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
+</dd>
+</dl>
+<p>OSD <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm provides a convenient Juju Action to export the
+InfluxDB parameters to setup a Grafana Data Source:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmctld/leader influxdb-info --wait
+unit-slurmctld-13:
+  UnitId: slurmctld/13
+  id: <span class="s2">&quot;573&quot;</span>
+  results:
+    influxdb: <span class="s1">&#39;{&#39;&#39;ingress&#39;&#39;: &#39;&#39;10.220.130.30&#39;&#39;, &#39;&#39;port&#39;&#39;: &#39;&#39;8086&#39;&#39;, &#39;&#39;user&#39;&#39;: &#39;&#39;slurm&#39;&#39;,</span>
+<span class="s1">      &#39;&#39;password&#39;&#39;: &#39;&#39;LeCZSef2IzyOp3GAnYNC&#39;&#39;, &#39;&#39;database&#39;&#39;: &#39;&#39;slurm&#39;&#39;, &#39;&#39;retention_policy&#39;&#39;:</span>
+<span class="s1">      &#39;&#39;autogen&#39;&#39;}&#39;</span>
+  status: completed
+  timing:
+    completed: <span class="m">2021</span>-07-20 <span class="m">13</span>:00:35 +0000 UTC
+    enqueued: <span class="m">2021</span>-07-20 <span class="m">13</span>:00:31 +0000 UTC
+    started: <span class="m">2021</span>-07-20 <span class="m">13</span>:00:34 +0000 UTC
+</pre></div>
 </div>
 </div>
 </div>
@@ -301,8 +355,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="slurmd.html" title="previous page">slurmd</a>
-    <a class='right-next' id="next-link" href="slurmctld.html" title="next page">slurmctld</a>
+    <a class='left-prev' id="prev-link" href="upgrading-osd.html" title="previous page">Upgrade OSD</a>
+    <a class='right-next' id="next-link" href="../configuration/configuration.html" title="next page">Configuration and Administration</a>
 
         </div>
         
