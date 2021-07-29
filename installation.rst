@@ -86,6 +86,8 @@ You can now bootstrap your local cloud:
 Following a successful bootstrap, ``juju controllers`` will show your newly
 provisioned lxd controller.
 
+.. _centos7-image:
+
 CentOS7 Deploys on LXD clouds
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
