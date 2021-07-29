@@ -213,6 +213,10 @@ The ``slurm-addons`` directory contains overlays to extend SLURM with plugins:
 - ``slurm-addons/influxdb.yaml``: overlay to relate ``slurmctld`` to InfluxDB,
   to collect profiling information about the jobs. See
   :ref:`influxdb-profiling` for details on usage.
+- ``slurm-addons/monitoring.yaml``: overlay to deploy `prometheus2
+  <https://charmhub.io/prometheus2>`_ and `prometheus-node-exporter
+  <https://charmhub.io/prometheus-node-exporter>`_ for cluster monitoring. See
+  :ref:`monitoring` for details on usage.
 
 For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal, using the
 ``latest/stable`` charms:
