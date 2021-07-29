@@ -229,20 +229,42 @@ Bats tests
 The Slurm Charms have an extensive suite of tests using
 `Bats <https://github.com/bats-core/bats-core/>`_.
 
-Install it with ``npm``:
+To run the tests, you need two additional dependencies:
+- ``npm`` and ``npx`` (``sudo apt install npm``)
+- ``juju-wait`` (``sudo snap install juju-wait --classic``)
+
+And then proceed to install Bats with ``npm``:
 
 .. code-block::
 
    $ npm install -g bats
 
-To run the tests, enter in the directory of the ``slurm-charms`` and specify
-the name of the Juju model used:
+To run all the tests, enter in the directory of the ``slurm-charms`` and
+specify the name of the Juju model used:
 
 .. code-block::
 
    $ JUJU_MODEL=default npx bats tests/
 
 .. note:: This will take a some minutes to run.
+
+You can also run specific test-files manually:
+
+.. code-block::
+
+   $ JUJU_MODEL=default npx bats tests/15-acct-gather.bats
+
+The ``Makefile`` contains a ``tests`` target that creates two Juju models on
+the active controller (be sure to be using a localhost LXD controller), one for
+CentOS7 and one for Ubuntu Focal, deploys the charms, and runs all the tests.
+This target does not remove these new models and takes a considerable amount of
+time to run.
+
+.. note::
+
+   To run the ``make tests`` target, you need a custom CentOS7 image on your
+   LXD installation. Please refer to :ref:`centos7-image` for details on
+   building one.
 
 .. _versioning:
 

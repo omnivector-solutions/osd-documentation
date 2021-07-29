@@ -556,18 +556,36 @@ documentation <a class="reference external" href="changelog.html">Changelog page
 <h5>Bats tests<a class="headerlink" href="#bats-tests" title="Permalink to this headline">¶</a></h5>
 <p>The Slurm Charms have an extensive suite of tests using
 <a class="reference external" href="https://github.com/bats-core/bats-core/">Bats</a>.</p>
-<p>Install it with <code class="docutils literal notranslate"><span class="pre">npm</span></code>:</p>
+<p>To run the tests, you need two additional dependencies:
+- <code class="docutils literal notranslate"><span class="pre">npm</span></code> and <code class="docutils literal notranslate"><span class="pre">npx</span></code> (<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">npm</span></code>)
+- <code class="docutils literal notranslate"><span class="pre">juju-wait</span></code> (<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">snap</span> <span class="pre">install</span> <span class="pre">juju-wait</span> <span class="pre">--classic</span></code>)</p>
+<p>And then proceed to install Bats with <code class="docutils literal notranslate"><span class="pre">npm</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ npm install -g bats
 </pre></div>
 </div>
-<p>To run the tests, enter in the directory of the <code class="docutils literal notranslate"><span class="pre">slurm-charms</span></code> and specify
-the name of the Juju model used:</p>
+<p>To run all the tests, enter in the directory of the <code class="docutils literal notranslate"><span class="pre">slurm-charms</span></code> and
+specify the name of the Juju model used:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ JUJU_MODEL=default npx bats tests/
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This will take a some minutes to run.</p>
+</div>
+<p>You can also run specific test-files manually:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ JUJU_MODEL=default npx bats tests/15-acct-gather.bats
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> contains a <code class="docutils literal notranslate"><span class="pre">tests</span></code> target that creates two Juju models on
+the active controller (be sure to be using a localhost LXD controller), one for
+CentOS7 and one for Ubuntu Focal, deploys the charms, and runs all the tests.
+This target does not remove these new models and takes a considerable amount of
+time to run.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To run the <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">tests</span></code> target, you need a custom CentOS7 image on your
+LXD installation. Please refer to <a class="reference internal" href="installation.html#centos7-image"><span class="std std-ref">CentOS7 Deploys on LXD clouds</span></a> for details on
+building one.</p>
 </div>
 </div>
 </div>
