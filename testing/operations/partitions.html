@@ -121,6 +121,11 @@
      Accounting And Profiling
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="monitoring.html">
+     Monitoring
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -320,6 +325,23 @@ them in this file or in the used overlay file. For example, we provide
 constraints and bindings for AWS clouds as an overlay in
 <code class="docutils literal notranslate"><span class="pre">slurm-bundles/slurm-core/clouds/aws.yaml</span></code>. If deploying to AWS, you should
 also copy those bindings to the new application.</p>
+<p>After that, re-reploy the bundle:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy ./path/to/bundle.yaml
+</pre></div>
+</div>
+<p>Alternatively, it is possible to manually add a new partition without a bundle
+file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy slurmd slurmd-debug
+</pre></div>
+</div>
+<p>This command will pull the <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm from Charmhub and create a new
+application named <code class="docutils literal notranslate"><span class="pre">slurmd-debug</span></code>. It is possible to specify the operating
+system to use for this application with the flag <code class="docutils literal notranslate"><span class="pre">--series</span> <span class="pre">centos7</span></code> or
+<code class="docutils literal notranslate"><span class="pre">--series</span> <span class="pre">focal</span></code>. This approach requires issuing another command to relate
+this new application to <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju relate slurmd-debug slurmctld
+</pre></div>
+</div>
 </div>
 <div class="section" id="changing-partition-name">
 <h2>Changing partition name<a class="headerlink" href="#changing-partition-name" title="Permalink to this headline">¶</a></h2>

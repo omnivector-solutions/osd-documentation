@@ -34,7 +34,7 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Configuration and Administration" href="../configuration/configuration.html" />
+    <link rel="next" title="Monitoring" href="monitoring.html" />
     <link rel="prev" title="Upgrade OSD" href="upgrading-osd.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -119,6 +119,11 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Accounting And Profiling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="monitoring.html">
+     Monitoring
     </a>
    </li>
   </ul>
@@ -275,7 +280,7 @@
                 
   <div class="section" id="accounting-and-profiling">
 <span id="accounting-profiling"></span><h1>Accounting And Profiling<a class="headerlink" href="#accounting-and-profiling" title="Permalink to this headline">¶</a></h1>
-<p>SLURM can collect accounting and profiling information about the jobs and job
+<p>SLURM can collect accounting and profiling information about jobs and job
 steps. Please find below instructions on how to setup accounting for the
 different plugins, as well as the <a class="reference external" href="https://slurm.schedmd.com/accounting.html">official documentation about accounting</a>.</p>
 <div class="section" id="slurmdbd">
@@ -284,7 +289,7 @@ different plugins, as well as the <a class="reference external" href="https://sl
 </div>
 <div class="section" id="influxdb-profiling-plugin">
 <span id="influxdb-profiling"></span><h2>InfluxDB profiling plugin<a class="headerlink" href="#influxdb-profiling-plugin" title="Permalink to this headline">¶</a></h2>
-<p>SLURM provides a profiling gathering plugin to collect metrics and send to
+<p>SLURM provides a profiling gathering plugin to collect metrics and send them to
 <a class="reference external" href="https://www.influxdata.com/products/influxdb/">InfluxDB</a>. OSD encapsulates
 the configuration of this plugin in a <em>Juju relation</em> between <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> and
 <code class="docutils literal notranslate"><span class="pre">influxdb</span></code> charms.</p>
@@ -356,7 +361,7 @@ unit-slurmctld-13:
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="upgrading-osd.html" title="previous page">Upgrade OSD</a>
-    <a class='right-next' id="next-link" href="../configuration/configuration.html" title="next page">Configuration and Administration</a>
+    <a class='right-next' id="next-link" href="monitoring.html" title="next page">Monitoring</a>
 
         </div>
         

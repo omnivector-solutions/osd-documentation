@@ -47,6 +47,29 @@ constraints and bindings for AWS clouds as an overlay in
 ``slurm-bundles/slurm-core/clouds/aws.yaml``. If deploying to AWS, you should
 also copy those bindings to the new application.
 
+After that, re-reploy the bundle:
+
+.. code-block:: bash
+
+   $ juju deploy ./path/to/bundle.yaml
+
+Alternatively, it is possible to manually add a new partition without a bundle
+file:
+
+.. code-block:: bash
+
+   $ juju deploy slurmd slurmd-debug
+
+This command will pull the ``slurmd`` charm from Charmhub and create a new
+application named ``slurmd-debug``. It is possible to specify the operating
+system to use for this application with the flag ``--series centos7`` or
+``--series focal``. This approach requires issuing another command to relate
+this new application to ``slurmctld``:
+
+.. code-block:: bash
+
+   $ juju relate slurmd-debug slurmctld
+
 Changing partition name
 #######################
 

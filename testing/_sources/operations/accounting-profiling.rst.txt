@@ -4,7 +4,7 @@
 Accounting And Profiling
 ========================
 
-SLURM can collect accounting and profiling information about the jobs and job
+SLURM can collect accounting and profiling information about jobs and job
 steps. Please find below instructions on how to setup accounting for the
 different plugins, as well as the `official documentation about accounting
 <https://slurm.schedmd.com/accounting.html>`_.
@@ -22,7 +22,7 @@ Slurmdbd
 InfluxDB profiling plugin
 =========================
 
-SLURM provides a profiling gathering plugin to collect metrics and send to
+SLURM provides a profiling gathering plugin to collect metrics and send them to
 `InfluxDB <https://www.influxdata.com/products/influxdb/>`_. OSD encapsulates
 the configuration of this plugin in a *Juju relation* between ``slurmctld`` and
 ``influxdb`` charms.

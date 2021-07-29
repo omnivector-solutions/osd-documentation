@@ -36,3 +36,4 @@ configuration options and actions.
    backup-restore
    upgrading-osd
    accounting-profiling
+   monitoring
