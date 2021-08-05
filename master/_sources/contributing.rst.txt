@@ -145,7 +145,15 @@ deploy the built charms to a cloud environment of your choosing. There are two
 primary ways to deploy the charms after building them:
 
 - use Juju to deploy the built charms directly e.g.
-  ``juju deploy ./slurmd.charm``
+  ``juju deploy ./slurmd.charm``.
+
+  .. note::
+
+     ``slurmctld`` requires an ``etcd`` resource to be deployed. Download it
+     from `etcd releases <https://github.com/etcd-io/etcd/releases/>`_ and
+     specify it in the deploy command, e.g. ``juju deploy ./slurmctld
+     --resource etcd=etcd-v3.5.0-linux-amd64.tar.gz``. This is not necesssary
+     if using the ``slurm-bundles`` Makefile.
 
 - deploy the local development bundle contained in `slurm-bundles
   <https://github.com/omnivector-solutions/slurm-bundles>`_. The slurm-bundles

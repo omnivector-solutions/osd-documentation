@@ -483,9 +483,18 @@ $ make charms
 <p>After the <code class="docutils literal notranslate"><span class="pre">.charm</span></code> artifacts have been produced, <code class="docutils literal notranslate"><span class="pre">juju</span></code> can be used to
 deploy the built charms to a cloud environment of your choosing. There are two
 primary ways to deploy the charms after building them:</p>
-<ul class="simple">
+<ul>
 <li><p>use Juju to deploy the built charms directly e.g.
-<code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">deploy</span> <span class="pre">./slurmd.charm</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">deploy</span> <span class="pre">./slurmd.charm</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> requires an <code class="docutils literal notranslate"><span class="pre">etcd</span></code> resource to be deployed. Download it
+from <a class="reference external" href="https://github.com/etcd-io/etcd/releases/">etcd releases</a> and
+specify it in the deploy command, e.g. <code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">deploy</span> <span class="pre">./slurmctld</span>
+<span class="pre">--resource</span> <span class="pre">etcd=etcd-v3.5.0-linux-amd64.tar.gz</span></code>. This is not necesssary
+if using the <code class="docutils literal notranslate"><span class="pre">slurm-bundles</span></code> Makefile.</p>
+</div>
+</li>
 <li><p>deploy the local development bundle contained in <a class="reference external" href="https://github.com/omnivector-solutions/slurm-bundles">slurm-bundles</a>. The slurm-bundles
 contain a helper Makefile that provide a way to easily deploy the built
 charms to a local LXD cloud by using the command <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">lxd-focal</span></code>, or for
