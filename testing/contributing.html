@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
     
   <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -483,9 +483,18 @@ $ make charms
 <p>After the <code class="docutils literal notranslate"><span class="pre">.charm</span></code> artifacts have been produced, <code class="docutils literal notranslate"><span class="pre">juju</span></code> can be used to
 deploy the built charms to a cloud environment of your choosing. There are two
 primary ways to deploy the charms after building them:</p>
-<ul class="simple">
+<ul>
 <li><p>use Juju to deploy the built charms directly e.g.
-<code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">deploy</span> <span class="pre">./slurmd.charm</span></code></p></li>
+<code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">deploy</span> <span class="pre">./slurmd.charm</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> requires an <code class="docutils literal notranslate"><span class="pre">etcd</span></code> resource to be deployed. Download it
+from <a class="reference external" href="https://github.com/etcd-io/etcd/releases/">etcd releases</a> and
+specify it in the deploy command, e.g. <code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">deploy</span> <span class="pre">./slurmctld</span>
+<span class="pre">--resource</span> <span class="pre">etcd=etcd-v3.5.0-linux-amd64.tar.gz</span></code>. This is not necesssary
+if using the <code class="docutils literal notranslate"><span class="pre">slurm-bundles</span></code> Makefile.</p>
+</div>
+</li>
 <li><p>deploy the local development bundle contained in <a class="reference external" href="https://github.com/omnivector-solutions/slurm-bundles">slurm-bundles</a>. The slurm-bundles
 contain a helper Makefile that provide a way to easily deploy the built
 charms to a local LXD cloud by using the command <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">lxd-focal</span></code>, or for
@@ -556,18 +565,36 @@ documentation <a class="reference external" href="changelog.html">Changelog page
 <h5>Bats tests<a class="headerlink" href="#bats-tests" title="Permalink to this headline">¶</a></h5>
 <p>The Slurm Charms have an extensive suite of tests using
 <a class="reference external" href="https://github.com/bats-core/bats-core/">Bats</a>.</p>
-<p>Install it with <code class="docutils literal notranslate"><span class="pre">npm</span></code>:</p>
+<p>To run the tests, you need two additional dependencies:
+- <code class="docutils literal notranslate"><span class="pre">npm</span></code> and <code class="docutils literal notranslate"><span class="pre">npx</span></code> (<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">npm</span></code>)
+- <code class="docutils literal notranslate"><span class="pre">juju-wait</span></code> (<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">snap</span> <span class="pre">install</span> <span class="pre">juju-wait</span> <span class="pre">--classic</span></code>)</p>
+<p>And then proceed to install Bats with <code class="docutils literal notranslate"><span class="pre">npm</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ npm install -g bats
 </pre></div>
 </div>
-<p>To run the tests, enter in the directory of the <code class="docutils literal notranslate"><span class="pre">slurm-charms</span></code> and specify
-the name of the Juju model used:</p>
+<p>To run all the tests, enter in the directory of the <code class="docutils literal notranslate"><span class="pre">slurm-charms</span></code> and
+specify the name of the Juju model used:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ JUJU_MODEL=default npx bats tests/
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This will take a some minutes to run.</p>
+</div>
+<p>You can also run specific test-files manually:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ JUJU_MODEL=default npx bats tests/15-acct-gather.bats
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> contains a <code class="docutils literal notranslate"><span class="pre">tests</span></code> target that creates two Juju models on
+the active controller (be sure to be using a localhost LXD controller), one for
+CentOS7 and one for Ubuntu Focal, deploys the charms, and runs all the tests.
+This target does not remove these new models and takes a considerable amount of
+time to run.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To run the <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">tests</span></code> target, you need a custom CentOS7 image on your
+LXD installation. Please refer to <a class="reference internal" href="installation.html#centos7-image"><span class="std std-ref">CentOS7 Deploys on LXD clouds</span></a> for details on
+building one.</p>
 </div>
 </div>
 </div>

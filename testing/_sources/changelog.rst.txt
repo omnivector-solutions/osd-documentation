@@ -7,6 +7,14 @@ This file keeps track of all notable changes to the Slurm Charms.
 Unreleased
 ----------
 
+- allow installing Slurm from different repositories on Ubuntu
+- use Omnivector's PPA for installing Slurm on Ubuntu
+
+0.7.0 - 2021-08-09
+------------------
+
+- fix: reduce number of events when a slurmd unit is added/removed
+- fix #111: install bullseye gpg keys from files
 - add support for Ubuntu partitions on CentOS deploys
 - add influxdb-info action to slurmctld
 - add grafana relation for slurmctld

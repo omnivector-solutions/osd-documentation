@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -252,6 +252,26 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configurations">
+   Configurations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#custom-slurm-repo">
+     custom-slurm-repo
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -263,6 +283,26 @@
   <div class="section" id="slurmrestd">
 <span id="operations-slurmrestd"></span><h1>slurmrestd<a class="headerlink" href="#slurmrestd" title="Permalink to this headline">¶</a></h1>
 <p>Interface to SLURM via a REST api.</p>
+<div class="section" id="configurations">
+<h2>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline">¶</a></h2>
+<p>To change a configuration for this charm, use the Juju command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmrestd <span class="nv">configuration</span><span class="o">=</span>value
+</pre></div>
+</div>
+<div class="section" id="custom-slurm-repo">
+<h3>custom-slurm-repo<a class="headerlink" href="#custom-slurm-repo" title="Permalink to this headline">¶</a></h3>
+<p>Use a custom repository for Slurm installation.</p>
+<p>This can be set to the Organization's locall mirror/cache of packages and superseeds the Omnivector repositories. Alternatively, it can be used to track a <code class="docutils literal notranslate"><span class="pre">testing</span></code> Slurm version, e.g. by setting to <code class="docutils literal notranslate"><span class="pre">ppa:omnivector/osd-testing</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>currently supported for Ubuntu only.</p>
+</div>
+<ul class="simple">
+<li><p>type: string</p></li>
+<li><p>default-value: empty</p></li>
+</ul>
+</div>
+</div>
 </div>
 
 

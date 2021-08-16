@@ -29,10 +29,12 @@ This charm exposes by default all the metrics on endpoint ``/metrics`` using
 the port ``9100``.
 
 The charm ``prometheus-node-exporter`` can be related to the `prometheus2
-<https://charmhub.io/prometheus2>`_ charm to automatically scrape all units:
+<https://charmhub.io/prometheus2>`_ charm to automatically scrape all units.
+Deploy Prometheus and relate it to node exporter to access this functionality:
 
 .. code-block:: bash
 
+   $ juju deploy prometheus2
    $ juju relate prometheus-node-exporter prometheus2
 
 Please refer to these charm's documentation for configuration details.

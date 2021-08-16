@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -293,8 +293,10 @@ $ juju relate prometheus-node-exporter slurmdbd
 </div>
 <p>This charm exposes by default all the metrics on endpoint <code class="docutils literal notranslate"><span class="pre">/metrics</span></code> using
 the port <code class="docutils literal notranslate"><span class="pre">9100</span></code>.</p>
-<p>The charm <code class="docutils literal notranslate"><span class="pre">prometheus-node-exporter</span></code> can be related to the <a class="reference external" href="https://charmhub.io/prometheus2">prometheus2</a> charm to automatically scrape all units:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju relate prometheus-node-exporter prometheus2
+<p>The charm <code class="docutils literal notranslate"><span class="pre">prometheus-node-exporter</span></code> can be related to the <a class="reference external" href="https://charmhub.io/prometheus2">prometheus2</a> charm to automatically scrape all units.
+Deploy Prometheus and relate it to node exporter to access this functionality:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy prometheus2
+$ juju relate prometheus-node-exporter prometheus2
 </pre></div>
 </div>
 <p>Please refer to these charm's documentation for configuration details.</p>

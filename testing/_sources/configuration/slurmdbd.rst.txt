@@ -22,6 +22,23 @@ To change a configuration for this charm, use the Juju command:
    $ juju config slurmdbd configuration=value
 
 
+custom-slurm-repo
+-----------------
+
+Use a custom repository for Slurm installation.
+
+This can be set to the Organization's locall mirror/cache of packages and superseeds the Omnivector repositories. Alternatively, it can be used to track a ``testing`` Slurm version, e.g. by setting to ``ppa:omnivector/osd-testing``.
+
+.. note::
+
+   currently supported for Ubuntu only.
+
+
+
+
+* type: string
+* default-value: empty
+
 slurmdbd-debug
 --------------
 
