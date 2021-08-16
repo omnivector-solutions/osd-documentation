@@ -204,10 +204,10 @@ basic Slurm cluster:
   cloud environment. Currently available ones are AWS and LXD.
 - ``slurm-core/series/``: overlays to define the OS of the Slurm components,
   the possible options are CentOS7 and Ubuntu Focal (20.04).
-- ``slurm-core/charms/``: overlays to change the source of the charm. By
-  default, the bundle gets the ``latest/stable`` channel from Charmhub. The
-  overlays in this directory allows ut to change the source to either
-  ``latest/edge`` channel or from your local machine. The latter one is
+- ``slurm-core/charms/``: overlays to change the source of the charms. By
+  default, the bundle gets them from the ``latest/stable`` channel from
+  Charmhub.  The overlays in this directory allows us to change the source to
+  either ``latest/edge`` channel or from your local machine. The latter one is
   specially useful for development, see :ref:`charm-development` for details.
 
 The ``slurm-addons`` directory contains overlays to extend SLURM with plugins:
@@ -233,8 +233,18 @@ Juju will then download the charms from Charmhub, create the applications,
 configurations, and LXD containers described in the respective files, which
 will comprise the model.
 
+.. note::
+
+   The slurm-charms install SLURM from `Omnivector's OSD PPA
+   <https://launchpad.net/~omnivector/+archive/ubuntu/osd>`_ on Ubuntu. It is
+   possible to change the source to `Omnivector's Testing PPA
+   <https://launchpad.net/~omnivector/+archive/ubuntu/osd-testing>`_ (or to a
+   local cache server as well) whith the configuration ``custom-slurm-repo``.
+   Setting this value to repositories other than Omnivector's PPAs is not
+   supported and might result in a broken system.
+
 It will take a moment get everything ready. You can check the status of your
-model with juju's status:
+model with ``juju status``:
 
 .. code-block:: bash
 
