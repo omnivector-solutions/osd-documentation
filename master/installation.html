@@ -496,10 +496,10 @@ basic Slurm cluster:</p>
 cloud environment. Currently available ones are AWS and LXD.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">slurm-core/series/</span></code>: overlays to define the OS of the Slurm components,
 the possible options are CentOS7 and Ubuntu Focal (20.04).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">slurm-core/charms/</span></code>: overlays to change the source of the charm. By
-default, the bundle gets the <code class="docutils literal notranslate"><span class="pre">latest/stable</span></code> channel from Charmhub. The
-overlays in this directory allows ut to change the source to either
-<code class="docutils literal notranslate"><span class="pre">latest/edge</span></code> channel or from your local machine. The latter one is
+<li><p><code class="docutils literal notranslate"><span class="pre">slurm-core/charms/</span></code>: overlays to change the source of the charms. By
+default, the bundle gets them from the <code class="docutils literal notranslate"><span class="pre">latest/stable</span></code> channel from
+Charmhub.  The overlays in this directory allows us to change the source to
+either <code class="docutils literal notranslate"><span class="pre">latest/edge</span></code> channel or from your local machine. The latter one is
 specially useful for development, see <a class="reference internal" href="contributing.html#charm-development"><span class="std std-ref">Charm development</span></a> for details.</p></li>
 </ul>
 <p>The <code class="docutils literal notranslate"><span class="pre">slurm-addons</span></code> directory contains overlays to extend SLURM with plugins:</p>
@@ -520,8 +520,16 @@ to collect profiling information about the jobs. See
 <p>Juju will then download the charms from Charmhub, create the applications,
 configurations, and LXD containers described in the respective files, which
 will comprise the model.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The slurm-charms install SLURM from <a class="reference external" href="https://launchpad.net/~omnivector/+archive/ubuntu/osd">Omnivector's OSD PPA</a> on Ubuntu. It is
+possible to change the source to <a class="reference external" href="https://launchpad.net/~omnivector/+archive/ubuntu/osd-testing">Omnivector's Testing PPA</a> (or to a
+local cache server as well) whith the configuration <code class="docutils literal notranslate"><span class="pre">custom-slurm-repo</span></code>.
+Setting this value to repositories other than Omnivector's PPAs is not
+supported and might result in a broken system.</p>
+</div>
 <p>It will take a moment get everything ready. You can check the status of your
-model with juju's status:</p>
+model with <code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">status</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ watch -n <span class="m">1</span> -c juju status --color
 
 Model    Controller  Cloud/Region         Version  SLA          Timestamp

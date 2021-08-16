@@ -263,6 +263,11 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#custom-slurm-repo">
+     custom-slurm-repo
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#slurmdbd-debug">
      slurmdbd-debug
     </a>
@@ -288,6 +293,19 @@
 <p>To change a configuration for this charm, use the Juju command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmdbd <span class="nv">configuration</span><span class="o">=</span>value
 </pre></div>
+</div>
+<div class="section" id="custom-slurm-repo">
+<h3>custom-slurm-repo<a class="headerlink" href="#custom-slurm-repo" title="Permalink to this headline">¶</a></h3>
+<p>Use a custom repository for Slurm installation.</p>
+<p>This can be set to the Organization's locall mirror/cache of packages and superseeds the Omnivector repositories. Alternatively, it can be used to track a <code class="docutils literal notranslate"><span class="pre">testing</span></code> Slurm version, e.g. by setting to <code class="docutils literal notranslate"><span class="pre">ppa:omnivector/osd-testing</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>currently supported for Ubuntu only.</p>
+</div>
+<ul class="simple">
+<li><p>type: string</p></li>
+<li><p>default-value: empty</p></li>
+</ul>
 </div>
 <div class="section" id="slurmdbd-debug">
 <h3>slurmdbd-debug<a class="headerlink" href="#slurmdbd-debug" title="Permalink to this headline">¶</a></h3>
