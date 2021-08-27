@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -63,7 +63,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
@@ -255,7 +255,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#adding-nodes">
@@ -294,13 +294,24 @@
 compute nodes.</p>
 <div class="section" id="adding-nodes">
 <h2>Adding nodes<a class="headerlink" href="#adding-nodes" title="Permalink to this headline">¶</a></h2>
-<p>New nodes are added in <code class="docutils literal notranslate"><span class="pre">down</span></code> state. This allows the cluster administrator to
+<p>When adding nodes to the cluster, they always join SLURM in <code class="docutils literal notranslate"><span class="pre">down</span></code> state,
+with <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">node</span></code> as the reason. This allows the cluster administrator to
 install and configure dependencies before the node can run jobs.</p>
-<p>To add 10 nodes to application <code class="docutils literal notranslate"><span class="pre">slurmd</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju add-unit slurmd -n10
+<p>To add an additional compute node, use <code class="docutils literal notranslate"><span class="pre">juju</span></code>. Assuming the name of your
+slurmd application is <code class="docutils literal notranslate"><span class="pre">slurmd</span></code>, run the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju add-unit slurmd
 </pre></div>
 </div>
-<p>After the node is added and properly configured, you can then enlist it:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you need to add multiple units at the same time, you can specify the
+<code class="docutils literal notranslate"><span class="pre">--num-units</span></code> flag. For example, to add 10 compute nodes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju add-unit slurmd --num-units<span class="o">=</span><span class="m">10</span>
+</pre></div>
+</div>
+</div>
+<p>After a newly added node has been prepared and is ready to join the cluster,
+you can enlist the node to change its state from <code class="docutils literal notranslate"><span class="pre">down</span></code> to <code class="docutils literal notranslate"><span class="pre">idle</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmd/1 node-configured
 </pre></div>
 </div>
@@ -369,12 +380,32 @@ unit-slurmctld-0:
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="overview.html" title="previous page">Operations</a>
-    <a class='right-next' id="next-link" href="partitions.html" title="next page">Partitions</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="overview.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Operations</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="partitions.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Partitions</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>

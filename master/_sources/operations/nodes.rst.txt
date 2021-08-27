@@ -10,16 +10,28 @@ compute nodes.
 Adding nodes
 ############
 
-New nodes are added in ``down`` state. This allows the cluster administrator to
+When adding nodes to the cluster, they always join SLURM in ``down`` state,
+with ``New node`` as the reason. This allows the cluster administrator to
 install and configure dependencies before the node can run jobs.
 
-To add 10 nodes to application ``slurmd``:
+To add an additional compute node, use ``juju``. Assuming the name of your
+slurmd application is ``slurmd``, run the following command:
 
 .. code-block:: bash
 
-   $ juju add-unit slurmd -n10
+   $ juju add-unit slurmd
 
-After the node is added and properly configured, you can then enlist it:
+.. note::
+
+   If you need to add multiple units at the same time, you can specify the
+   ``--num-units`` flag. For example, to add 10 compute nodes:
+
+   .. code-block:: bash
+
+      $ juju add-unit slurmd --num-units=10
+
+After a newly added node has been prepared and is ready to join the cluster,
+you can enlist the node to change its state from ``down`` to ``idle``:
 
 .. code-block:: bash
 
