@@ -356,7 +356,8 @@ instead of using the number, just for convenience.</p>
 </div>
 <div class="section" id="resuming-nodes">
 <h2>Resuming nodes<a class="headerlink" href="#resuming-nodes" title="Permalink to this headline">¶</a></h2>
-<p>We provide an action to resume nodes in <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm:</p>
+<p>We provide an action in <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm to resume nodes. The <code class="docutils literal notranslate"><span class="pre">resume</span></code>
+action has a syntax similar to <code class="docutils literal notranslate"><span class="pre">update</span></code> command of SLURM's <code class="docutils literal notranslate"><span class="pre">scontrol</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmctld/leader resume <span class="nv">nodename</span><span class="o">=</span>juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span> --wait
 unit-slurmctld-0:
   UnitId: slurmctld/0
@@ -372,6 +373,14 @@ unit-slurmctld-0:
     enqueued: <span class="m">2021</span>-04-28 <span class="m">20</span>:17:18 +0000 UTC
     started: <span class="m">2021</span>-04-28 <span class="m">20</span>:17:23 +0000 UTC
 </pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is the administrator's responsibility to ensure that the node is ready to
+run jobs. Please double check that <code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">status</span></code> output is all green for
+the node, as well as all custom configuration and dependencies are set up.</p>
+<p>If the node is not ready to run jobs and is resumed, it might crash queued
+jobs.</p>
 </div>
 </div>
 </div>

@@ -83,7 +83,8 @@ instead of using the number, just for convenience.
 Resuming nodes
 ##############
 
-We provide an action to resume nodes in ``slurmctld`` charm:
+We provide an action in ``slurmctld`` charm to resume nodes. The ``resume``
+action has a syntax similar to ``update`` command of SLURM's ``scontrol``:
 
 .. code-block:: bash
 
@@ -102,4 +103,11 @@ We provide an action to resume nodes in ``slurmctld`` charm:
        enqueued: 2021-04-28 20:17:18 +0000 UTC
        started: 2021-04-28 20:17:23 +0000 UTC
 
+.. warning::
 
+   It is the administrator's responsibility to ensure that the node is ready to
+   run jobs. Please double check that ``juju status`` output is all green for
+   the node, as well as all custom configuration and dependencies are set up.
+
+   If the node is not ready to run jobs and is resumed, it might crash queued
+   jobs.
