@@ -46,13 +46,27 @@ Removing nodes are as simple as:
 
    $ juju remove-unit slurmd/4
 
+.. warning::
+
+   This is a destructive operation. If the node is running a job, this job will
+   be killed and SLURM will not requeue it. It is the system administrator's
+   responsibility to ensure that the node can be safely removed.
+
+We recommend placing nodes in the *drain* state before removing them from the
+cluster (see :ref:`draining-nodes`). Placing a node in the *drain* state will
+prevent if from being allocated to incoming jobs and provides a method for a
+safe removal.
+
+
+.. _draining-nodes:
+
 Draining nodes
 ##############
 
 We provide an action in the ``slurmctld`` charm to drain nodes. You need to
 know in advance the hostname of the nodes you want to drain and also
 specify a *reason* to drain. You can specify more than one node, by using the
-Slurm convention:
+SLURM convention:
 
 .. code-block:: bash
 
