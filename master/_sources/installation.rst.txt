@@ -282,7 +282,7 @@ You can see the status of your cluster by running the ``sinfo`` command:
 
 .. code-block:: bash
 
-   $ juju run --unit slurmcltd/0 sinfo
+   $ juju run --unit slurmctld/0 sinfo
    PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
    osd-slurmd           up   infinite      1   down juju-01ab62-3
 
@@ -294,7 +294,7 @@ some other reason with ``sinfo -R``:
 
 .. code-block:: bash
 
-   $ juju run --unit slurmcltd/0 "sinfo -R"
+   $ juju run --unit slurmctld/0 "sinfo -R"
    REASON               USER      TIMESTAMP           NODELIST
    New node             root      2021-03-09T20:24:09 ip-172-31-83-4
 
@@ -303,7 +303,7 @@ After setting the node up, to bring it back you need to run a Juju *action*:
 .. code-block:: bash
 
    $ juju run-action slurmd/1 node-configured
-   $ juju run --unit slurmcltd/0 sinfo
+   $ juju run --unit slurmctld/0 sinfo
    PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
    osd-slurmd           up   infinite      1   idle juju-01ab62-3
 
