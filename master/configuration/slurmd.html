@@ -91,6 +91,11 @@
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../operations/installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../operations/nodes.html">
      Nodes operations
     </a>
@@ -383,10 +388,10 @@
 <div class="section" id="custom-slurm-repo">
 <h3>custom-slurm-repo<a class="headerlink" href="#custom-slurm-repo" title="Permalink to this headline">¶</a></h3>
 <p>Use a custom repository for Slurm installation.</p>
-<p>This can be set to the Organization's locall mirror/cache of packages and superseeds the Omnivector repositories. Alternatively, it can be used to track a <code class="docutils literal notranslate"><span class="pre">testing</span></code> Slurm version, e.g. by setting to <code class="docutils literal notranslate"><span class="pre">ppa:omnivector/osd-testing</span></code>.</p>
+<p>This can be set to the Organization's locall mirror/cache of packages and superseeds the Omnivector repositories. Alternatively, it can be used to track a <code class="docutils literal notranslate"><span class="pre">testing</span></code> Slurm version, e.g. by setting to <code class="docutils literal notranslate"><span class="pre">ppa:omnivector/osd-testing</span></code> (on Ubuntu), or <code class="docutils literal notranslate"><span class="pre">https://omnivector-solutions.github.io/repo/centos7/stable/$basearch</span></code> (on CentOS).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>currently supported for Ubuntu only.</p>
+<p>The configuration <code class="docutils literal notranslate"><span class="pre">custom-slurm-repo</span></code> must be set <em>before</em> deploying the units. Changing this value after deploying the units will not reinstall Slurm.</p>
 </div>
 <ul class="simple">
 <li><p>type: string</p></li>

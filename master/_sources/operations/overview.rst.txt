@@ -29,6 +29,7 @@ configuration options and actions.
 .. toctree::
    :maxdepth: 2
 
+   installation
    nodes
    partitions
    infiniband
