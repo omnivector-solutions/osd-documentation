@@ -29,6 +29,19 @@ This documentation is built using `Sphinx <https://sphinx-doc.org/>`_ and
 and is hosted in
 `GitHub <https://github.com/omnivector-solutions/osd-documentation>`_.
 
+The ``master`` branch is rebuilt at every commit and published automatically
+`online <https://omnivector-solutions.github.io/osd-documentation/master/>`_.
+If you want to test/show any specific branch, you can do so by "reseting" the
+``testing`` branch. This branch is automatically built and published to
+`omnivector-solutions.github.io/osd-documentation/testing/ <https://omnivector-solutions.github.io/osd-documentation/testing/>`_.
+One way to achieve that is:
+
+.. code-block:: bash
+
+   $ git checkout testing
+   $ git reset --hard <my-branch>
+   $ git push --force
+
 General Recommendations
 -----------------------
 
@@ -94,10 +107,18 @@ Git usage
 ---------
 
 - all commits should be atomic
+- all commits should have a proper commit message:
+
+  - the first line should be a brief summary of the changes, no longer than 52
+    characters
+  - second line should be empty
+  - subsequent lines should describe the changes and explain why they are
+    needed
+
 - linear history
 
   - always rebase with master
-  - fast forward merge
+  - fast forward merge or squash merge
 
 - keep user related changes in the :ref:`changelog`
 - annotated tags for releases, see :ref:`release-process` below for details
@@ -171,12 +192,14 @@ that is used in more than one slurm charm should not be repeated, it should
 live in this project instead.
 
 After making a new ``slurm-ops-manager`` release, the slurm-charms project
-should have a new commit in which the ``slurm-ops-manager`` version is
+should have one new commit in which the ``slurm-ops-manager`` version is
 incremented:
 
 - update the version of ``slurm-ops-manager`` in the ``requirements.txt`` file
   for each charm
 - update the :ref:`changelog`.
+- this should be a single commit. If there are any necessary changes in the
+  charms, these should live in separate commits.
 
 Slurm-charms
 ^^^^^^^^^^^^
@@ -247,8 +270,8 @@ And then proceed to install Bats with ``npm``:
 
    $ npm install -g bats
 
-To run all the tests, enter in the directory of the ``slurm-charms`` and
-specify the name of the Juju model used:
+To run all the tests, deploy the base bundle for OSD, then enter in the
+directory of the ``slurm-charms`` and specify the name of the Juju model used:
 
 .. code-block::
 
@@ -262,11 +285,12 @@ You can also run specific test-files manually:
 
    $ JUJU_MODEL=default npx bats tests/15-acct-gather.bats
 
-The ``Makefile`` contains a ``tests`` target that creates two Juju models on
-the active controller (be sure to be using a localhost LXD controller), one for
-CentOS7 and one for Ubuntu Focal, deploys the charms, and runs all the tests.
-This target does not remove these new models and takes a considerable amount of
-time to run.
+Alternatively, the ``Makefile`` contains a ``tests`` target that packs the
+charms, deploys them, and run the tests. The test script creates two Juju
+models on the active controller (be sure to be using a localhost LXD
+controller), one for CentOS7 and one for Ubuntu Focal, deploys the charms, and
+runs all the tests. This target does not remove these new models after the
+tests finish and takes a considerable amount of time to run.
 
 .. note::
 
@@ -306,5 +330,13 @@ The release process for ``slurm-ops-manager`` is straightforward:
 - create a new annotated Git tag: ``git tag --annotate --sign x.y.z``. The tag
   name should be the new version of the library, as explained in
   :ref:`versioning`.
-- the message should contain a summary of the changes for that release.
-- push to GitHub.
+- the tag message should contain a summary of the changes for that release. For
+  example:
+
+  ..
+
+     Release 0.7.1
+
+     - use Omnivector's repo for rpm installation
+
+- push to GitHub: ``git push --tags``.
