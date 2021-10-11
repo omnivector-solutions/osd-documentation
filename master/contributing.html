@@ -396,6 +396,17 @@ developers, engineers, system administrators, and users in general.</p>
 <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">reStructuredText</a>,
 and is hosted in
 <a class="reference external" href="https://github.com/omnivector-solutions/osd-documentation">GitHub</a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">master</span></code> branch is rebuilt at every commit and published automatically
+<a class="reference external" href="https://omnivector-solutions.github.io/osd-documentation/master/">online</a>.
+If you want to test/show any specific branch, you can do so by &quot;reseting&quot; the
+<code class="docutils literal notranslate"><span class="pre">testing</span></code> branch. This branch is automatically built and published to
+<a class="reference external" href="https://omnivector-solutions.github.io/osd-documentation/testing/">omnivector-solutions.github.io/osd-documentation/testing/</a>.
+One way to achieve that is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout testing
+$ git reset --hard &lt;my-branch&gt;
+$ git push --force
+</pre></div>
+</div>
 <div class="section" id="general-recommendations">
 <h3>General Recommendations<a class="headerlink" href="#general-recommendations" title="Permalink to this headline">¶</a></h3>
 <p>Use US English.</p>
@@ -453,10 +464,19 @@ agreeing to your code contributions being governed by this license too.</p>
 <h3>Git usage<a class="headerlink" href="#git-usage" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>all commits should be atomic</p></li>
+<li><p>all commits should have a proper commit message:</p>
+<ul>
+<li><p>the first line should be a brief summary of the changes, no longer than 52
+characters</p></li>
+<li><p>second line should be empty</p></li>
+<li><p>subsequent lines should describe the changes and explain why they are
+needed</p></li>
+</ul>
+</li>
 <li><p>linear history</p>
 <ul>
 <li><p>always rebase with master</p></li>
-<li><p>fast forward merge</p></li>
+<li><p>fast forward merge or squash merge</p></li>
 </ul>
 </li>
 <li><p>keep user related changes in the <a class="reference internal" href="#changelog"><span class="std std-ref">CHANGELOG</span></a></p></li>
@@ -517,12 +537,14 @@ contains common methods and attributes used across multiple slurm charms. Code
 that is used in more than one slurm charm should not be repeated, it should
 live in this project instead.</p>
 <p>After making a new <code class="docutils literal notranslate"><span class="pre">slurm-ops-manager</span></code> release, the slurm-charms project
-should have a new commit in which the <code class="docutils literal notranslate"><span class="pre">slurm-ops-manager</span></code> version is
+should have one new commit in which the <code class="docutils literal notranslate"><span class="pre">slurm-ops-manager</span></code> version is
 incremented:</p>
 <ul class="simple">
 <li><p>update the version of <code class="docutils literal notranslate"><span class="pre">slurm-ops-manager</span></code> in the <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file
 for each charm</p></li>
 <li><p>update the <a class="reference internal" href="#changelog"><span class="std std-ref">CHANGELOG</span></a>.</p></li>
+<li><p>this should be a single commit. If there are any necessary changes in the
+charms, these should live in separate commits.</p></li>
 </ul>
 </div>
 <div class="section" id="id3">
@@ -581,8 +603,8 @@ documentation <a class="reference external" href="changelog.html">Changelog page
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ npm install -g bats
 </pre></div>
 </div>
-<p>To run all the tests, enter in the directory of the <code class="docutils literal notranslate"><span class="pre">slurm-charms</span></code> and
-specify the name of the Juju model used:</p>
+<p>To run all the tests, deploy the base bundle for OSD, then enter in the
+directory of the <code class="docutils literal notranslate"><span class="pre">slurm-charms</span></code> and specify the name of the Juju model used:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ JUJU_MODEL=default npx bats tests/
 </pre></div>
 </div>
@@ -594,11 +616,12 @@ specify the name of the Juju model used:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ JUJU_MODEL=default npx bats tests/15-acct-gather.bats
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> contains a <code class="docutils literal notranslate"><span class="pre">tests</span></code> target that creates two Juju models on
-the active controller (be sure to be using a localhost LXD controller), one for
-CentOS7 and one for Ubuntu Focal, deploys the charms, and runs all the tests.
-This target does not remove these new models and takes a considerable amount of
-time to run.</p>
+<p>Alternatively, the <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> contains a <code class="docutils literal notranslate"><span class="pre">tests</span></code> target that packs the
+charms, deploys them, and run the tests. The test script creates two Juju
+models on the active controller (be sure to be using a localhost LXD
+controller), one for CentOS7 and one for Ubuntu Focal, deploys the charms, and
+runs all the tests. This target does not remove these new models after the
+tests finish and takes a considerable amount of time to run.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To run the <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">tests</span></code> target, you need a custom CentOS7 image on your
@@ -627,12 +650,20 @@ Charmhub.</p>
 <div class="section" id="id9">
 <h4>Slurm-ops-manager<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <p>The release process for <code class="docutils literal notranslate"><span class="pre">slurm-ops-manager</span></code> is straightforward:</p>
-<ul class="simple">
+<ul>
 <li><p>create a new annotated Git tag: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">tag</span> <span class="pre">--annotate</span> <span class="pre">--sign</span> <span class="pre">x.y.z</span></code>. The tag
 name should be the new version of the library, as explained in
 <a class="reference internal" href="#versioning"><span class="std std-ref">Versioning</span></a>.</p></li>
-<li><p>the message should contain a summary of the changes for that release.</p></li>
-<li><p>push to GitHub.</p></li>
+<li><p>the tag message should contain a summary of the changes for that release. For
+example:</p>
+<blockquote>
+<div><p>Release 0.7.1</p>
+<ul class="simple">
+<li><p>use Omnivector's repo for rpm installation</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>push to GitHub: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">--tags</span></code>.</p></li>
 </ul>
 </div>
 </div>
