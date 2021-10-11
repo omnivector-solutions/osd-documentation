@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     
   <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -53,6 +53,10 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="_static/logo.png" class="logo" alt="logo">
       
@@ -86,6 +90,11 @@
    </i>
   </label>
   <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="operations/installation.html">
+     Installation
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="operations/nodes.html">
      Nodes operations
@@ -560,7 +569,7 @@ Machine  State    DNS            Inst id        Series  AZ  Message
 <p>Once the workload status is <em>active</em> and the agent status is <em>idle</em>, the SLURM
 cluster is ready for use.</p>
 <p>You can see the status of your cluster by running the <code class="docutils literal notranslate"><span class="pre">sinfo</span></code> command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run --unit slurmcltd/0 sinfo
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run --unit slurmctld/0 sinfo
 PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
 osd-slurmd           up   infinite      <span class="m">1</span>   down juju-01ab62-3
 </pre></div>
@@ -570,14 +579,14 @@ more nodes to the cluster, they will not execute the jobs from que queue. This
 way it is possible to do some post installation before setting the nodes as
 <em>idle</em>. You can double check that your nodes are down because of this and not
 some other reason with <code class="docutils literal notranslate"><span class="pre">sinfo</span> <span class="pre">-R</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run --unit slurmcltd/0 <span class="s2">&quot;sinfo -R&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run --unit slurmctld/0 <span class="s2">&quot;sinfo -R&quot;</span>
 REASON               USER      TIMESTAMP           NODELIST
 New node             root      <span class="m">2021</span>-03-09T20:24:09 ip-172-31-83-4
 </pre></div>
 </div>
 <p>After setting the node up, to bring it back you need to run a Juju <em>action</em>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmd/1 node-configured
-$ juju run --unit slurmcltd/0 sinfo
+$ juju run --unit slurmctld/0 sinfo
 PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
 osd-slurmd           up   infinite      <span class="m">1</span>   idle juju-01ab62-3
 </pre></div>
@@ -620,7 +629,7 @@ to manage the cluster.</p>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

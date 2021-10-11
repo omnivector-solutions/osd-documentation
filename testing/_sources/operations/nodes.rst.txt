@@ -52,8 +52,10 @@ Removing nodes are as simple as:
    be killed and SLURM will not requeue it. It is the system administrator's
    responsibility to ensure that the node can be safely removed.
 
-It is recommended to first *drain* nodes before removing them from the cluster
-(see :ref:`draining-nodes`), as to not destroy running jobs.
+We recommend placing nodes in the *drain* state before removing them from the
+cluster (see :ref:`draining-nodes`). Placing a node in the *drain* state will
+prevent if from being allocated to incoming jobs and provides a method for a
+safe removal.
 
 
 .. _draining-nodes:

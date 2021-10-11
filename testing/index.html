@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     
   <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -52,6 +52,10 @@
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="#">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="_static/logo.png" class="logo" alt="logo">
       
@@ -85,6 +89,11 @@
    </i>
   </label>
   <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="operations/installation.html">
+     Installation
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="operations/nodes.html">
      Nodes operations
@@ -303,6 +312,7 @@ Slurm Distribution!</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="operations/overview.html">Operations Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="operations/installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="operations/nodes.html">Nodes operations</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="operations/nodes.html#adding-nodes">Adding nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="operations/nodes.html#removing-nodes">Removing nodes</a></li>
@@ -375,14 +385,16 @@ Slurm Distribution!</p>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="changelog.html#unreleased">Unreleased</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#id1">0.7.0 - 2021-08-09</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#id2">0.6.6 - 2021-07-01</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#id3">0.6.5 - 2021-06-28</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#id4">0.6.4 - 2021-06-11</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#id5">0.6.3 - 2021-06-02</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#id6">0.6.2 - 2021-06-02</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#id7">0.6.1 - 2021-05-31</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changelog.html#id8">0.6.0 - 2021-05-28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id1">0.8.1 - 2021-10-07</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id2">0.8.0 - 2021-09-13</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id3">0.7.0 - 2021-08-09</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id4">0.6.6 - 2021-07-01</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id5">0.6.5 - 2021-06-28</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id6">0.6.4 - 2021-06-11</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id7">0.6.3 - 2021-06-02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id8">0.6.2 - 2021-06-02</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id9">0.6.1 - 2021-05-31</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#id10">0.6.0 - 2021-05-28</a></li>
 </ul>
 </li>
 </ul>
@@ -414,7 +426,7 @@ Slurm Distribution!</p>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Upgrade OSD &#8212; Omnivector Slurm Distribution  documentation</title>
+    <title>Installation &#8212; Omnivector Slurm Distribution  documentation</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -34,8 +34,8 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Accounting And Profiling" href="accounting-profiling.html" />
-    <link rel="prev" title="Backup and restore the slurm database" href="backup-restore.html" />
+    <link rel="next" title="Nodes operations" href="nodes.html" />
+    <link rel="prev" title="Operations" href="overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -90,8 +90,8 @@
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="installation.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Installation
     </a>
    </li>
@@ -120,8 +120,8 @@
      Backup and restore the slurm database
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="upgrading-osd.html">
      Upgrade OSD
     </a>
    </li>
@@ -220,7 +220,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/operations/upgrading-osd.rst.txt"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/operations/installation.rst.txt"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.rst</button></a>
         <!-- Download PDF via print -->
@@ -240,7 +240,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/omnivector-solutions/osd-documentation//issues/new?title=Issue%20on%20page%20%2Foperations/upgrading-osd.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/omnivector-solutions/osd-documentation//issues/new?title=Issue%20on%20page%20%2Foperations/installation.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -261,19 +261,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#charm-upgrades">
-   Charm Upgrades
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -282,25 +269,42 @@
         
               <div>
                 
-  <div class="section" id="upgrade-osd">
-<span id="operations-upgrading-osd"></span><h1>Upgrade OSD<a class="headerlink" href="#upgrade-osd" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="charm-upgrades">
-<h2>Charm Upgrades<a class="headerlink" href="#charm-upgrades" title="Permalink to this headline">¶</a></h2>
-<p>To upgrade the operations code, the slurm charms, you can follow the example
-(the order in which charms are upgraded does not matter here):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> application <span class="k">in</span> slurmctld <span class="se">\</span>
-                   slurmd <span class="se">\</span>
-                   slurmdbd <span class="se">\</span>
-                   slurmrestd<span class="p">;</span> <span class="k">do</span>
-
-    juju upgrade-charm <span class="nv">$application</span>
-
-<span class="k">done</span>
+  <div class="section" id="installation">
+<span id="installation-operation"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>Omnivector Solutions provides a repository for Slurm packages, for both CentOS7
+and Ubuntu 20.04. This is used to ensure the charms install a supported Slurm
+version. The currently supported Slurm version is <code class="docutils literal notranslate"><span class="pre">20.11.8</span></code> on CentOS 7 and
+<code class="docutils literal notranslate"><span class="pre">20.11.7</span></code> on Ubuntu Focal.</p>
+<p>Omnivector Slurm Distribution allows one to use a custom repository URL to
+install Slurm from. This is specially useful to allow using a local
+mirror/cache of packages to speedup installation.</p>
+<p>All of the Slurm charms have a configuration value <code class="docutils literal notranslate"><span class="pre">custom-slurm-repo</span></code>
+to specify a different repository URL.</p>
+<p>To use a custom package repository, set the value of <code class="docutils literal notranslate"><span class="pre">custom-slurm-repo</span></code> in
+your <em>bundle</em> file for each charm, <em>before</em> deploying the system. For Ubuntu
+units, the URL must be a valid PPA URL. For CentOS 7 units, the URL can contain
+a <code class="docutils literal notranslate"><span class="pre">$basearch</span></code> variable. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>applications:
+  slurmd-centos:
+    charm: slurmd
+    num_units: 1
+    series: centos7
+    custom-slurm-repo: https://omnivector-solutions.github.io/repo/centos7/stable/$basearch
+  slurmd-ubuntu:
+    charm: slurmd
+    num_units: 1
+    series: focal
+    custom-slurm-repo: ppa:omnivector/osd-testing
+  ...
 </pre></div>
 </div>
-<p>Juju will reach out to the charmhub and pull down the latest charm code (if a
-more recent revisions exists then what is running on the machine) and run the
-<code class="docutils literal notranslate"><span class="pre">upgrade-charm</span></code> hook event.</p>
+<p>This also allows one to specify different repositories for testing new Slurm
+versions, or upgrading only specific charms.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The configuration <code class="docutils literal notranslate"><span class="pre">custom-slurm-repo</span></code> must be set <em>before</em> deploying the
+units. Changing this value after deploying the units will not reinstall
+Slurm.</p>
 </div>
 </div>
 
@@ -315,19 +319,19 @@ more recent revisions exists then what is running on the machine) and run the
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="backup-restore.html" title="previous page">
+        <a class="left-prev" href="overview.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Backup and restore the slurm database</p>
+                <p class="prevnext-title">Operations</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="accounting-profiling.html" title="next page">
+        <a class="right-next" href="nodes.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Accounting And Profiling</p>
+                <p class="prevnext-title">Nodes operations</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
