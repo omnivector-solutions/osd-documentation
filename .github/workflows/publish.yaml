@@ -23,6 +23,9 @@ jobs:
 
       - name: "Setup Python"
         uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+          archictecture: 'x86'
       - name: "Install dependencies"
         run: |
           sudo apt update
