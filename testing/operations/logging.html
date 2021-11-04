@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nodes operations &#8212; Omnivector Slurm Distribution  documentation</title>
+    <title>Logging &#8212; Omnivector Slurm Distribution  documentation</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -34,8 +34,8 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Partitions" href="partitions.html" />
-    <link rel="prev" title="Installation" href="installation.html" />
+    <link rel="next" title="Configuration and Administration" href="../configuration/configuration.html" />
+    <link rel="prev" title="Monitoring" href="monitoring.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -95,8 +95,8 @@
      Installation
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="nodes.html">
      Nodes operations
     </a>
    </li>
@@ -135,8 +135,8 @@
      Monitoring
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="logging.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Logging
     </a>
    </li>
@@ -225,7 +225,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/operations/nodes.rst.txt"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/operations/logging.rst.txt"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.rst</button></a>
         <!-- Download PDF via print -->
@@ -245,7 +245,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/omnivector-solutions/osd-documentation//issues/new?title=Issue%20on%20page%20%2Foperations/nodes.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/omnivector-solutions/osd-documentation//issues/new?title=Issue%20on%20page%20%2Foperations/logging.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -272,24 +272,35 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adding-nodes">
-   Adding nodes
+  <a class="reference internal nav-link" href="#id2">
+   Fluentbit
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#removing-nodes">
-   Removing nodes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#draining-nodes">
-   Draining nodes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resuming-nodes">
-   Resuming nodes
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deploy">
+     Deploy
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#configuration">
+     Configuration
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#output">
+       Output
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#graylog">
+         Graylog
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -302,109 +313,75 @@
         
               <div>
                 
-  <div class="section" id="nodes-operations">
-<span id="nodes"></span><h1>Nodes operations<a class="headerlink" href="#nodes-operations" title="Permalink to this headline">¶</a></h1>
-<p>This section walks through configurations and actions dealing with Slurm
-compute nodes.</p>
-<div class="section" id="adding-nodes">
-<h2>Adding nodes<a class="headerlink" href="#adding-nodes" title="Permalink to this headline">¶</a></h2>
-<p>When adding nodes to the cluster, they always join SLURM in <code class="docutils literal notranslate"><span class="pre">down</span></code> state,
-with <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">node</span></code> as the reason. This allows the cluster administrator to
-install and configure dependencies before the node can run jobs.</p>
-<p>To add an additional compute node, use <code class="docutils literal notranslate"><span class="pre">juju</span></code>. Assuming the name of your
-slurmd application is <code class="docutils literal notranslate"><span class="pre">slurmd</span></code>, run the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju add-unit slurmd
+  <div class="section" id="logging">
+<span id="id1"></span><h1>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h1>
+<p>OSD can forward internal logs to a centralized place using the built-in
+integration (a <em>Juju relation</em>) to <a class="reference external" href="https://fluentbit.io">Fluentbit</a>.</p>
+<div class="section" id="id2">
+<h2>Fluentbit<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Fluentbit is a lightweight and high-performance log processor and forwarder,
+and is available as a Juju charm: <a class="reference external" href="https://charmhub.io/fluentbit">charm-fluentbit</a></p>
+<p>OSD configures Fluentbit to automatically forward the following logs:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="nhc.html#nhc"><span class="std std-ref">NHC</span></a> logs (<code class="docutils literal notranslate"><span class="pre">/var/log/nhc.log</span></code>), only on the compute nodes (running
+<code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm)</p></li>
+<li><p>internal Slurm logs:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">/var/log/slurm/slurmctld.log</span></code> on the nodes running <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/var/log/slurm/slurmd.log</span></code> on the nodes running <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/var/log/slurm/slurmdbd.log</span></code> on the nodes running <code class="docutils literal notranslate"><span class="pre">slurmdbd</span></code> charm</p></li>
+</ul>
+</li>
+</ul>
+<p>Each log entry is enriched with:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cluster-name</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hostname</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">service</span></code> (one of <code class="docutils literal notranslate"><span class="pre">nhc</span></code>, <code class="docutils literal notranslate"><span class="pre">slurmd</span></code>, <code class="docutils literal notranslate"><span class="pre">slurmdbd</span></code>, <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">partition-name</span></code> (only for nodes running the <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm)</p></li>
+</ul>
+<div class="section" id="deploy">
+<h3>Deploy<a class="headerlink" href="#deploy" title="Permalink to this headline">¶</a></h3>
+<p>To deploy the <a class="reference external" href="https://charmhub.io/fluentbit">fluentbit charm</a> and relate it
+to the other components:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy fluentbit
+$ juju relate fluentbit:fluentbit slurmd
+$ juju relate fluentbit:fluentbit slurmdbd
+$ juju relate fluentbit:fluentbit slurmctld
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you need to add multiple units at the same time, you can specify the
-<code class="docutils literal notranslate"><span class="pre">--num-units</span></code> flag. For example, to add 10 compute nodes:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju add-unit slurmd --num-units<span class="o">=</span><span class="m">10</span>
+<p>This configures everything needed to read, parse, and filter the log files.</p>
+</div>
+<div class="section" id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="output">
+<h4>Output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h4>
+<p>The Juju relation between Fluentbit and the Slurm charms setup the <em>source</em>
+logs to be forwarded, but does not define the output. This has to be done
+either manually (via a Fluentbit charm configuration) or via a centralized
+logging system that can be related to it.</p>
+<p>Fluentbit support many and multiple outputs. Please consult the online
+documentation for details: <a class="reference external" href="https://docs.fluentbit.io/manual/pipeline/outputs">Fluentbit Outputs</a>.</p>
+<div class="section" id="graylog">
+<h5>Graylog<a class="headerlink" href="#graylog" title="Permalink to this headline">¶</a></h5>
+<p>To configure Fluentbit to forward logs to a Graylog cluster running, first
+setup a Graylog GELF Input, then create a <code class="docutils literal notranslate"><span class="pre">graylog.fluentbit</span></code> text file with
+the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[{</span><span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;gelf&quot;</span><span class="p">],</span>
+             <span class="p">[</span><span class="s2">&quot;match&quot;</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">],</span>
+             <span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">,</span> <span class="s2">&quot;10.220.130.119&quot;</span><span class="p">],</span>
+             <span class="p">[</span><span class="s2">&quot;port&quot;</span><span class="p">,</span> <span class="s2">&quot;12201&quot;</span><span class="p">],</span>
+             <span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">,</span> <span class="s2">&quot;udp&quot;</span><span class="p">],</span>
+             <span class="p">[</span><span class="s2">&quot;Gelf_Short_Message_Key&quot;</span><span class="p">,</span> <span class="s2">&quot;log&quot;</span><span class="p">]]}]</span>
+</pre></div>
+</div>
+<p>Modify the <code class="docutils literal notranslate"><span class="pre">host</span></code>, <code class="docutils literal notranslate"><span class="pre">port</span></code>, and <code class="docutils literal notranslate"><span class="pre">mode</span></code> accordingly.</p>
+<p>Then, configure Fluentbit to use this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config fluentbit custom-config<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>cat graylog.fluentbit<span class="k">)</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
 </div>
-<p>After a newly added node has been prepared and is ready to join the cluster,
-you can enlist the node to change its state from <code class="docutils literal notranslate"><span class="pre">down</span></code> to <code class="docutils literal notranslate"><span class="pre">idle</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmd/1 node-configured
-</pre></div>
 </div>
-</div>
-<div class="section" id="removing-nodes">
-<h2>Removing nodes<a class="headerlink" href="#removing-nodes" title="Permalink to this headline">¶</a></h2>
-<p>Removing nodes are as simple as:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju remove-unit slurmd/4
-</pre></div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This is a destructive operation. If the node is running a job, this job will
-be killed and SLURM will not requeue it. It is the system administrator's
-responsibility to ensure that the node can be safely removed.</p>
-</div>
-<p>We recommend placing nodes in the <em>drain</em> state before removing them from the
-cluster (see <a class="reference internal" href="#draining-nodes"><span class="std std-ref">Draining nodes</span></a>). Placing a node in the <em>drain</em> state will
-prevent if from being allocated to incoming jobs and provides a method for a
-safe removal.</p>
-</div>
-<div class="section" id="draining-nodes">
-<span id="id1"></span><h2>Draining nodes<a class="headerlink" href="#draining-nodes" title="Permalink to this headline">¶</a></h2>
-<p>We provide an action in the <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm to drain nodes. You need to
-know in advance the hostname of the nodes you want to drain and also
-specify a <em>reason</em> to drain. You can specify more than one node, by using the
-SLURM convention:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmctld/leader drain <span class="nv">nodename</span><span class="o">=</span>juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span> <span class="nv">reason</span><span class="o">=</span><span class="s2">&quot;Maintenance - drive failure&quot;</span> --wait
-unit-slurmctld-0:
-  UnitId: slurmctld/0
-  id: <span class="s2">&quot;26&quot;</span>
-  log:
-  - <span class="m">2021</span>-04-28 <span class="m">17</span>:13:06 -0300 -03 Draining juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span> because Maintenance -
-    drive failure.
-  results:
-    nodes: juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span>
-    status: draining
-  status: completed
-  timing:
-    completed: <span class="m">2021</span>-04-28 <span class="m">20</span>:13:07 +0000 UTC
-    enqueued: <span class="m">2021</span>-04-28 <span class="m">20</span>:13:04 +0000 UTC
-    started: <span class="m">2021</span>-04-28 <span class="m">20</span>:13:06 +0000 UTC
-</pre></div>
-</div>
-<p>We recommend running this action in the <em>leader</em> of <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> application
-instead of using the number, just for convenience.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This action is to drain nodes only. To drain partitions, see
-<a class="reference internal" href="partitions.html#changing-partition-state"><span class="std std-ref">Changing partition state</span></a>.</p>
-</div>
-</div>
-<div class="section" id="resuming-nodes">
-<h2>Resuming nodes<a class="headerlink" href="#resuming-nodes" title="Permalink to this headline">¶</a></h2>
-<p>We provide an action in <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm to resume nodes. The <code class="docutils literal notranslate"><span class="pre">resume</span></code>
-action has a syntax similar to <code class="docutils literal notranslate"><span class="pre">update</span></code> command of SLURM's <code class="docutils literal notranslate"><span class="pre">scontrol</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmctld/leader resume <span class="nv">nodename</span><span class="o">=</span>juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span> --wait
-unit-slurmctld-0:
-  UnitId: slurmctld/0
-  id: <span class="s2">&quot;32&quot;</span>
-  log:
-  - <span class="m">2021</span>-04-28 <span class="m">17</span>:17:23 -0300 -03 Resuming juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span>.
-  results:
-    nodes: juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span>
-    status: resuming
-  status: completed
-  timing:
-    completed: <span class="m">2021</span>-04-28 <span class="m">20</span>:17:23 +0000 UTC
-    enqueued: <span class="m">2021</span>-04-28 <span class="m">20</span>:17:18 +0000 UTC
-    started: <span class="m">2021</span>-04-28 <span class="m">20</span>:17:23 +0000 UTC
-</pre></div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>It is the administrator's responsibility to ensure that the node is ready to
-run jobs. Please double check that <code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">status</span></code> output is all green for
-the node, as well as all custom configuration and dependencies are set up.</p>
-<p>If the node is not ready to run jobs and is resumed, it might crash queued
-jobs.</p>
 </div>
 </div>
 </div>
@@ -420,19 +397,19 @@ jobs.</p>
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="installation.html" title="previous page">
+        <a class="left-prev" href="monitoring.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Installation</p>
+                <p class="prevnext-title">Monitoring</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="partitions.html" title="next page">
+        <a class="right-next" href="../configuration/configuration.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Partitions</p>
+                <p class="prevnext-title">Configuration and Administration</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

@@ -38,3 +38,4 @@ configuration options and actions.
    upgrading-osd
    accounting-profiling
    monitoring
+   logging
