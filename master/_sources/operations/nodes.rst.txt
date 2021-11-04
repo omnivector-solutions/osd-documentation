@@ -87,12 +87,18 @@ SLURM convention:
        started: 2021-04-28 20:13:06 +0000 UTC
 
 We recommend running this action in the *leader* of ``slurmctld`` application
-instead of using the number, just for convenience.
+instead of using the unit number, just for convenience.
 
 .. note::
 
    This action is to drain nodes only. To drain partitions, see
    :ref:`changing-partition-state`.
+
+.. warning::
+
+   Although it is possible to change the node state with ``scontrol``, that
+   change will be overwriten by the charms whenever OSD needs to update the
+   Slurm configuration file.
 
 Resuming nodes
 ##############
@@ -125,3 +131,9 @@ action has a syntax similar to ``update`` command of SLURM's ``scontrol``:
 
    If the node is not ready to run jobs and is resumed, it might crash queued
    jobs.
+
+.. warning::
+
+   Although it is possible to change the node state with ``scontrol``, that
+   change will be overwriten by the charms whenever OSD needs to update the
+   Slurm configuration file.

@@ -123,3 +123,9 @@ To change the partition state to one of ``UP``, ``DOWN``, ``DRAIN``, or
    $ juju config slurmd-debug partition-state=DRAIN
 
 By default, the partition is in the ``UP`` state.
+
+.. warning::
+
+   Although it is possible to change the partition state with ``scontrol``,
+   that change will be overwriten by the charms whenever OSD needs to update
+   the Slurm configuration file.

@@ -371,11 +371,17 @@ unit-slurmctld-0:
 </pre></div>
 </div>
 <p>We recommend running this action in the <em>leader</em> of <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> application
-instead of using the number, just for convenience.</p>
+instead of using the unit number, just for convenience.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This action is to drain nodes only. To drain partitions, see
 <a class="reference internal" href="partitions.html#changing-partition-state"><span class="std std-ref">Changing partition state</span></a>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Although it is possible to change the node state with <code class="docutils literal notranslate"><span class="pre">scontrol</span></code>, that
+change will be overwriten by the charms whenever OSD needs to update the
+Slurm configuration file.</p>
 </div>
 </div>
 <div class="section" id="resuming-nodes">
@@ -405,6 +411,12 @@ run jobs. Please double check that <code class="docutils literal notranslate"><s
 the node, as well as all custom configuration and dependencies are set up.</p>
 <p>If the node is not ready to run jobs and is resumed, it might crash queued
 jobs.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Although it is possible to change the node state with <code class="docutils literal notranslate"><span class="pre">scontrol</span></code>, that
+change will be overwriten by the charms whenever OSD needs to update the
+Slurm configuration file.</p>
 </div>
 </div>
 </div>

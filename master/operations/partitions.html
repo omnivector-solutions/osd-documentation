@@ -397,6 +397,12 @@ configuration command:</p>
 </pre></div>
 </div>
 <p>By default, the partition is in the <code class="docutils literal notranslate"><span class="pre">UP</span></code> state.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Although it is possible to change the partition state with <code class="docutils literal notranslate"><span class="pre">scontrol</span></code>,
+that change will be overwriten by the charms whenever OSD needs to update
+the Slurm configuration file.</p>
+</div>
 </div>
 </div>
 
