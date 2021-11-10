@@ -57,7 +57,13 @@ Name by which the partition may be referenced (e.g. ``Interactive``).
 partition-config
 ----------------
 
-Extra partition configuration specified as a space separated ``key=value`` single line.
+Extra partition configuration, specified as a space separated ``key=value`` in a single line.
+
+Example Usage:
+
+.. code-block:: bash
+
+   $ juju config slurmd partition-config="DefaultTime=45:00 MaxTime=1:00:00"
 
 
 

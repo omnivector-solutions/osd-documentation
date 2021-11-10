@@ -291,6 +291,11 @@
    Changing partition state
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extra-partition-configuration-options">
+   Extra partition configuration options
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -402,6 +407,26 @@ configuration command:</p>
 <p>Although it is possible to change the partition state with <code class="docutils literal notranslate"><span class="pre">scontrol</span></code>,
 that change will be overwriten by the charms whenever OSD needs to update
 the Slurm configuration file.</p>
+</div>
+</div>
+<div class="section" id="extra-partition-configuration-options">
+<h2>Extra partition configuration options<a class="headerlink" href="#extra-partition-configuration-options" title="Permalink to this headline">¶</a></h2>
+<p>OSD allows the administrator to set any partition configuration, using the
+<em>charm configuration</em> <code class="docutils literal notranslate"><span class="pre">partition-config</span></code>. Please refer to the official Slurm
+documentation for <a class="reference external" href="https://slurm.schedmd.com/slurm.conf.html#SECTION_PARTITION-CONFIGURATION">configuring partitions</a>
+for details on all options available. The partition name and state should not
+be set with this configuration, please refer to <a class="reference internal" href="../configuration/slurmd.html#operations-slurmd"><span class="std std-ref">Configuration - Slurmd</span></a> for details on all configuration options.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">partition-config</span></code> option should be one line, with each configuration in
+the format <code class="docutils literal notranslate"><span class="pre">key=value</span></code> separated by a space.</p>
+<p>For example, to set the <code class="docutils literal notranslate"><span class="pre">DefaultTime</span></code> for a partition to 45 minutes and the
+<code class="docutils literal notranslate"><span class="pre">MaxTime</span></code> to 2 hours:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmd partition-config<span class="o">=</span><span class="s2">&quot;DefaultTime=45:00 MaxTime=1:00:00&quot;</span>
+
+<span class="c1"># running sinfo to check the partition TIMELIMIT</span>
+$ juju run --unit slurmctld/leader sinfo
+PARTITION  AVAIL  TIMELIMIT  NODES  STATE NODELIST
+osd-slurmd    up    <span class="m">1</span>:00:00      <span class="m">1</span>   down juju-f48c73-262
+</pre></div>
 </div>
 </div>
 </div>

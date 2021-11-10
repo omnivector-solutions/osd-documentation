@@ -417,7 +417,11 @@
 </div>
 <div class="section" id="partition-config">
 <h3>partition-config<a class="headerlink" href="#partition-config" title="Permalink to this headline">¶</a></h3>
-<p>Extra partition configuration specified as a space separated <code class="docutils literal notranslate"><span class="pre">key=value</span></code> single line.</p>
+<p>Extra partition configuration, specified as a space separated <code class="docutils literal notranslate"><span class="pre">key=value</span></code> in a single line.</p>
+<p>Example Usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmd partition-config<span class="o">=</span><span class="s2">&quot;DefaultTime=45:00 MaxTime=1:00:00&quot;</span>
+</pre></div>
+</div>
 <ul class="simple">
 <li><p>type: string</p></li>
 <li><p>default-value: empty</p></li>

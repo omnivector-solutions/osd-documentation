@@ -118,7 +118,7 @@ Changing partition state
 To change the partition state to one of ``UP``, ``DOWN``, ``DRAIN``, or
 ``INACTIVE``:
 
-.. code-blocK:: bash
+.. code-block:: bash
 
    $ juju config slurmd-debug partition-state=DRAIN
 
@@ -129,3 +129,29 @@ By default, the partition is in the ``UP`` state.
    Although it is possible to change the partition state with ``scontrol``,
    that change will be overwriten by the charms whenever OSD needs to update
    the Slurm configuration file.
+
+Extra partition configuration options
+#####################################
+
+OSD allows the administrator to set any partition configuration, using the
+*charm configuration* ``partition-config``. Please refer to the official Slurm
+documentation for `configuring partitions
+<https://slurm.schedmd.com/slurm.conf.html#SECTION_PARTITION-CONFIGURATION>`_
+for details on all options available. The partition name and state should not
+be set with this configuration, please refer to :ref:`Configuration - Slurmd
+<operations-slurmd>` for details on all configuration options.
+
+The ``partition-config`` option should be one line, with each configuration in
+the format ``key=value`` separated by a space.
+
+For example, to set the ``DefaultTime`` for a partition to 45 minutes and the
+``MaxTime`` to 2 hours:
+
+.. code-block:: bash
+
+   $ juju config slurmd partition-config="DefaultTime=45:00 MaxTime=1:00:00"
+
+   # running sinfo to check the partition TIMELIMIT
+   $ juju run --unit slurmctld/leader sinfo
+   PARTITION  AVAIL  TIMELIMIT  NODES  STATE NODELIST
+   osd-slurmd    up    1:00:00      1   down juju-f48c73-262
