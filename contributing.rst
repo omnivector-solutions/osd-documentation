@@ -327,6 +327,7 @@ Slurm-ops-manager
 
 The release process for ``slurm-ops-manager`` is straightforward:
 
+- bump the version string in the ``setup.py`` file
 - create a new annotated Git tag: ``git tag --annotate --sign x.y.z``. The tag
   name should be the new version of the library, as explained in
   :ref:`versioning`.
