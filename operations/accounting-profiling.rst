@@ -29,7 +29,7 @@ the configuration of this plugin in a *Juju relation* between ``slurmctld`` and
 
 A basic setup involves the following steps:
 
-1. Deploy InfluxDB charm.
+1. Deploy `InfluxDB charm <https://charmhub.io/influxdb>`_.
 2. Relate ``slurmctld`` and ``influxdb``.
 3. [optional] Configure the accounting frequency.
 
@@ -42,9 +42,16 @@ The Juju commands to accomplish these steps are:
    $ juju config slurmctld acct-gather-frequency="task=30"
 
 In this scenario, ``slurmctld`` will setup everything needed to collect and
-save the metrics, which include creating a ``slurm`` database in InfluxDB.
+save the metrics, which include creating a database in InfluxDB. The name of
+the database is the name of the cluster, as set in ``slurmctld``'s
+configuration ``cluster-name``.
 
-The following field keys are saved for the tasks:
+Data saved
+----------
+
+Slurm collects profiling metrics at a frequency specified in ``slurmctld``
+configuration option ``acct-gather-frequency``.  The following field keys are
+saved for the tasks:
 
 ``CPUFrequency``
     CPU Frequency at time of sample.
@@ -86,7 +93,11 @@ The following field keys are saved for the tasks:
 
     Field type: ``float``.
 
-OSD ``slurmctld`` charm provides a convenient Juju Action to export the
+
+Accessing the data
+------------------
+
+The ``slurmctld`` charm provides a convenient Juju Action to export the
 InfluxDB parameters to setup a Grafana Data Source:
 
 .. code-block:: bash
@@ -97,7 +108,7 @@ InfluxDB parameters to setup a Grafana Data Source:
      id: "573"
      results:
        influxdb: '{''ingress'': ''10.220.130.30'', ''port'': ''8086'', ''user'': ''slurm'',
-         ''password'': ''LeCZSef2IzyOp3GAnYNC'', ''database'': ''slurm'', ''retention_policy'':
+         ''password'': ''LeCZSef2IzyOp3GAnYNC'', ''database'': ''osd-cluster'', ''retention_policy'':
          ''autogen''}'
      status: completed
      timing:
