@@ -42,14 +42,15 @@ The Juju commands to accomplish these steps are:
    $ juju config slurmctld acct-gather-frequency="task=30"
 
 In this scenario, ``slurmctld`` will setup everything needed to collect and
-save the metrics, which include creating a database in InfluxDB. The name of
-the database is the name of the cluster, as set in ``slurmctld``'s
+save the metrics. This includes creating an user and a database in InfluxDB.
+The username is ``slurm`` and the password is generated at random, while name
+of the database is the name of the cluster, as set in ``slurmctld``'s
 configuration ``cluster-name``.
 
 Data saved
 ----------
 
-Slurm collects profiling metrics at a frequency specified in ``slurmctld``
+Slurm collects profiling metrics at a frequency specified in the ``slurmctld``
 configuration option ``acct-gather-frequency``.  The following field keys are
 saved for the tasks:
 
