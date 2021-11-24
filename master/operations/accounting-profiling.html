@@ -283,6 +283,18 @@
   <a class="reference internal nav-link" href="#influxdb-profiling-plugin">
    InfluxDB profiling plugin
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-saved">
+     Data saved
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accessing-the-data">
+     Accessing the data
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -312,7 +324,7 @@ the configuration of this plugin in a <em>Juju relation</em> between <code class
 <code class="docutils literal notranslate"><span class="pre">influxdb</span></code> charms.</p>
 <p>A basic setup involves the following steps:</p>
 <ol class="arabic simple">
-<li><p>Deploy InfluxDB charm.</p></li>
+<li><p>Deploy <a class="reference external" href="https://charmhub.io/influxdb">InfluxDB charm</a>.</p></li>
 <li><p>Relate <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> and <code class="docutils literal notranslate"><span class="pre">influxdb</span></code>.</p></li>
 <li><p>[optional] Configure the accounting frequency.</p></li>
 </ol>
@@ -323,8 +335,15 @@ $ juju config slurmctld acct-gather-frequency<span class="o">=</span><span class
 </pre></div>
 </div>
 <p>In this scenario, <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> will setup everything needed to collect and
-save the metrics, which include creating a <code class="docutils literal notranslate"><span class="pre">slurm</span></code> database in InfluxDB.</p>
-<p>The following field keys are saved for the tasks:</p>
+save the metrics. This includes creating an user and a database in InfluxDB.
+The username is <code class="docutils literal notranslate"><span class="pre">slurm</span></code> and the password is generated at random, while name
+of the database is the name of the cluster, as set in <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code>'s
+configuration <code class="docutils literal notranslate"><span class="pre">cluster-name</span></code>.</p>
+<div class="section" id="data-saved">
+<h3>Data saved<a class="headerlink" href="#data-saved" title="Permalink to this headline">¶</a></h3>
+<p>Slurm collects profiling metrics at a frequency specified in the <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code>
+configuration option <code class="docutils literal notranslate"><span class="pre">acct-gather-frequency</span></code>.  The following field keys are
+saved for the tasks:</p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">CPUFrequency</span></code></dt><dd><p>CPU Frequency at time of sample.</p>
 <p>Field type: <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
@@ -351,7 +370,10 @@ save the metrics, which include creating a <code class="docutils literal notrans
 <p>Field type: <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
 </dd>
 </dl>
-<p>OSD <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm provides a convenient Juju Action to export the
+</div>
+<div class="section" id="accessing-the-data">
+<h3>Accessing the data<a class="headerlink" href="#accessing-the-data" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm provides a convenient Juju Action to export the
 InfluxDB parameters to setup a Grafana Data Source:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmctld/leader influxdb-info --wait
 unit-slurmctld-13:
@@ -359,7 +381,7 @@ unit-slurmctld-13:
   id: <span class="s2">&quot;573&quot;</span>
   results:
     influxdb: <span class="s1">&#39;{&#39;&#39;ingress&#39;&#39;: &#39;&#39;10.220.130.30&#39;&#39;, &#39;&#39;port&#39;&#39;: &#39;&#39;8086&#39;&#39;, &#39;&#39;user&#39;&#39;: &#39;&#39;slurm&#39;&#39;,</span>
-<span class="s1">      &#39;&#39;password&#39;&#39;: &#39;&#39;LeCZSef2IzyOp3GAnYNC&#39;&#39;, &#39;&#39;database&#39;&#39;: &#39;&#39;slurm&#39;&#39;, &#39;&#39;retention_policy&#39;&#39;:</span>
+<span class="s1">      &#39;&#39;password&#39;&#39;: &#39;&#39;LeCZSef2IzyOp3GAnYNC&#39;&#39;, &#39;&#39;database&#39;&#39;: &#39;&#39;osd-cluster&#39;&#39;, &#39;&#39;retention_policy&#39;&#39;:</span>
 <span class="s1">      &#39;&#39;autogen&#39;&#39;}&#39;</span>
   status: completed
   timing:
@@ -367,6 +389,7 @@ unit-slurmctld-13:
     enqueued: <span class="m">2021</span>-07-20 <span class="m">13</span>:00:31 +0000 UTC
     started: <span class="m">2021</span>-07-20 <span class="m">13</span>:00:34 +0000 UTC
 </pre></div>
+</div>
 </div>
 </div>
 </div>
