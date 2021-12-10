@@ -280,61 +280,66 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   0.8.3 - 2021-11-05
+   0.8.4 - 2021-12-10
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   0.8.2 - 2021-10-13
+   0.8.3 - 2021-11-05
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   0.8.1 - 2021-10-07
+   0.8.2 - 2021-10-13
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   0.8.0 - 2021-09-13
+   0.8.1 - 2021-10-07
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   0.7.0 - 2021-08-09
+   0.8.0 - 2021-09-13
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   0.6.6 - 2021-07-01
+   0.7.0 - 2021-08-09
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   0.6.5 - 2021-06-28
+   0.6.6 - 2021-07-01
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id8">
-   0.6.4 - 2021-06-11
+   0.6.5 - 2021-06-28
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id9">
-   0.6.3 - 2021-06-02
+   0.6.4 - 2021-06-11
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id10">
-   0.6.2 - 2021-06-02
+   0.6.3 - 2021-06-02
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id11">
-   0.6.1 - 2021-05-31
+   0.6.2 - 2021-06-02
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id12">
+   0.6.1 - 2021-05-31
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
    0.6.0 - 2021-05-28
   </a>
  </li>
@@ -356,39 +361,46 @@
 <h2>Unreleased<a class="headerlink" href="#unreleased" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="id1">
-<h2>0.8.3 - 2021-11-05<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2>0.8.4 - 2021-12-10<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li><p>use the cluster name as the database name for InfluxDB</p></li>
+<li><p>improve logrotate profiles for Slurm and NHC logs</p></li>
 <li><p>add epilog-prolog relation</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>0.8.3 - 2021-11-05<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
 <li><p>add labels to Fluentbit logs: cluster-name, partition-name, hostname, service</p></li>
 <li><p>add user-group relation to create user and group on the system</p></li>
 <li><p>fix typos in unit status</p></li>
 </ul>
 </div>
-<div class="section" id="id2">
-<h2>0.8.2 - 2021-10-13<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2>0.8.2 - 2021-10-13<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>fix changing infiniband repos on Ubuntu</p></li>
 <li><p>fix fluentbit parser for slurm logs</p></li>
 <li><p>fix creation of user and group when those already exist</p></li>
 </ul>
 </div>
-<div class="section" id="id3">
-<h2>0.8.1 - 2021-10-07<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2>0.8.1 - 2021-10-07<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>use Omnivector Solutions' RPM repository to install Slurm</p></li>
 <li><p>add Fluentbit relation to forward logs from all the Slurm Charms</p></li>
 </ul>
 </div>
-<div class="section" id="id4">
-<h2>0.8.0 - 2021-09-13<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h2>0.8.0 - 2021-09-13<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>fix slurmd crashing when etcd in slurmctld is down/not-started/unreachable</p></li>
 <li><p>allow installing Slurm from different repositories on Ubuntu</p></li>
 <li><p>use Omnivector's PPA for installing Slurm on Ubuntu</p></li>
 </ul>
 </div>
-<div class="section" id="id5">
-<h2>0.7.0 - 2021-08-09<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2>0.7.0 - 2021-08-09<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>fix: reduce number of events when a slurmd unit is added/removed</p></li>
 <li><p>fix #111: install bullseye gpg keys from files</p></li>
@@ -407,14 +419,14 @@ InfluxDB plugin</p></li>
 <li><p>fix slurmctld crashing when removing a slurmd application</p></li>
 </ul>
 </div>
-<div class="section" id="id6">
-<h2>0.6.6 - 2021-07-01<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>0.6.6 - 2021-07-01<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>fix checks for munge when the code can't run subprocess as another UID</p></li>
 </ul>
 </div>
-<div class="section" id="id7">
-<h2>0.6.5 - 2021-06-28<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h2>0.6.5 - 2021-06-28<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>fix race condition on inventory synchronization between slurmd and slurmctld
 before starting slurmd</p></li>
@@ -425,8 +437,8 @@ before starting slurmd</p></li>
 <li><p>fix slurmrestd Systemd environment variables to enable jwt auth</p></li>
 </ul>
 </div>
-<div class="section" id="id8">
-<h2>0.6.4 - 2021-06-11<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h2>0.6.4 - 2021-06-11<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>improve checks on Systemd commands to start/restart daemons, as to guarantee
 correct Charm initialization</p></li>
@@ -436,15 +448,15 @@ correct Charm initialization</p></li>
 <li><p>fix slurmrestd version in Juju status breaking the line.</p></li>
 </ul>
 </div>
-<div class="section" id="id9">
-<h2>0.6.3 - 2021-06-02<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h2>0.6.3 - 2021-06-02<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>fix systemd command to restart munge</p></li>
 <li><p>improve slurmdbd logs when restarting munge</p></li>
 </ul>
 </div>
-<div class="section" id="id10">
-<h2>0.6.2 - 2021-06-02<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h2>0.6.2 - 2021-06-02<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>handle charm upgrade</p></li>
 <li><p>improve juju status' message to display failure when munge/slurm does not
@@ -453,16 +465,16 @@ start correctly</p></li>
 <li><p>enable munge system service, so it always start when the machine boots</p></li>
 </ul>
 </div>
-<div class="section" id="id11">
-<h2>0.6.1 - 2021-05-31<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h2>0.6.1 - 2021-05-31<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>changed charm's status message to have consistent capitalization.</p></li>
 <li><p>fixed initialization order of the charms, to ensure database and controller
 start before compute nodes and REST server.</p></li>
 </ul>
 </div>
-<div class="section" id="id12">
-<h2>0.6.0 - 2021-05-28<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id13">
+<h2>0.6.0 - 2021-05-28<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
