@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nodes operations &#8212; Omnivector Slurm Distribution  documentation</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -37,7 +37,10 @@
     <link rel="next" title="Partitions" href="partitions.html" />
     <link rel="prev" title="Installation" href="installation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -177,6 +180,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../contributing.html">
    Contributing to OSD
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../acknowledgements.html">
+   Acknowledgements
   </a>
  </li>
  <li class="toctree-l1">
@@ -371,11 +379,17 @@ unit-slurmctld-0:
 </pre></div>
 </div>
 <p>We recommend running this action in the <em>leader</em> of <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> application
-instead of using the number, just for convenience.</p>
+instead of using the unit number, just for convenience.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This action is to drain nodes only. To drain partitions, see
 <a class="reference internal" href="partitions.html#changing-partition-state"><span class="std std-ref">Changing partition state</span></a>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Although it is possible to change the node state with <code class="docutils literal notranslate"><span class="pre">scontrol</span></code>, that
+change will be overwriten by the charms whenever OSD needs to update the
+Slurm configuration file.</p>
 </div>
 </div>
 <div class="section" id="resuming-nodes">
@@ -406,6 +420,12 @@ the node, as well as all custom configuration and dependencies are set up.</p>
 <p>If the node is not ready to run jobs and is resumed, it might crash queued
 jobs.</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Although it is possible to change the node state with <code class="docutils literal notranslate"><span class="pre">scontrol</span></code>, that
+change will be overwriten by the charms whenever OSD needs to update the
+Slurm configuration file.</p>
+</div>
 </div>
 </div>
 
@@ -413,31 +433,22 @@ jobs.</p>
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="installation.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Installation</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="installation.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Installation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="partitions.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Partitions</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="partitions.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Partitions</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -458,8 +469,7 @@ jobs.</p>
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
