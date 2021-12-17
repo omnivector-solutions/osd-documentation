@@ -24,4 +24,5 @@ Slurm Distribution!
    Operations Overview <operations/overview>
    configuration/configuration
    contributing
+   acknowledgements
    Changelog <changelog>
