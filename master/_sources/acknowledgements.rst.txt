@@ -27,9 +27,12 @@ Past OSD project members that are no longer active include:
 
 We had significant community contributions from:
 
+- Dmitrii Shcherbakov
 - Erik Lönröth
+- Johan Hallbäck
 - Mohamad Rezaei
 - Oscar Franzén
+- Zoltan Zeestraten
 
 We also thank to SchedMD team for the development of Slurm, as well as to the
 Slurm community for the friendly interactions, discussions, and support.
