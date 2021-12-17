@@ -288,7 +288,7 @@
 operations.</p>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm actions we can configure a repository and install
 Infiniband drivers from it.</p>
-<p>The general workflow for installing infiniband drivers from a custom repository
+<p>The general workflow for installing Infiniband drivers from a custom repository
 includes setting up the driver repository, installing the drivers, and
 rebooting the node (in that order).</p>
 <p>By default, OSD uses the Mellanox repository for OFED 5.3. If you want a
@@ -324,7 +324,50 @@ install the drivers in a loop to cover all 150 compute nodes:</p>
 </div>
 <p>The charm will install a package named <code class="docutils literal notranslate"><span class="pre">mlnx-ofed-all</span></code>. Note that this
 procedure takes some time. After the drivers are installed, you need to reboot
-the nodes.</p>
+the nodes. An example to reboot all those 150 nodes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> i <span class="k">in</span> <span class="o">{{</span><span class="m">0</span>..150<span class="o">}}</span><span class="p">;</span> <span class="k">do</span>
+     juju ssh compute/<span class="nv">$i</span> sudo reboot
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>After the node reboots, the Infiniband service should be enabled and active. To
+query its state, use the <code class="docutils literal notranslate"><span class="pre">is-active-infiband</span></code> action for the compute node:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action compute/42 is-active-infiniband --wait
+unit-compute-42:
+  UnitId: compute/42
+  id: <span class="s2">&quot;899&quot;</span>
+  results:
+    infiniband-is-active: <span class="s2">&quot;True&quot;</span>
+  status: completed
+  timing:
+    completed: <span class="m">2021</span>-12-17 <span class="m">16</span>:32:40 +0000 UTC
+    enqueued: <span class="m">2021</span>-12-17 <span class="m">16</span>:32:38 +0000 UTC
+    started: <span class="m">2021</span>-12-17 <span class="m">16</span>:32:39 +0000 UTC
+</pre></div>
+</div>
+<p>It is also possible to run the <code class="docutils literal notranslate"><span class="pre">ibstat</span></code> utility over a <code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">ssh</span></code> command
+to query the Infiniband capabilities and double check the link is up:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju ssh compute/42 /usr/sbin/ibstat
+CA <span class="s1">&#39;mlx5_0&#39;</span>
+     CA type: MT4115
+     Number of ports: <span class="m">1</span>
+     Firmware version: <span class="m">12</span>.25.1020
+     Hardware version: <span class="m">0</span>
+     Node GUID: 0x506b4b0fabede600
+     System image GUID: 0x
+     Port <span class="m">1</span>:
+             State: Active
+             Physical state: LinkUp
+             Rate: <span class="m">100</span>
+             Base lid: <span class="m">43</span>
+             LMC: <span class="m">0</span>
+             SM lid: <span class="m">3</span>
+             Capability mask: 0x2651e000
+             Port GUID: 0x506b4b0fabede600
+             Link layer: InfiniBand
+Connection to <span class="m">10</span>.14.192.42 closed.
+</pre></div>
+</div>
 </div>
 
 
