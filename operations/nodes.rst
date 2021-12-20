@@ -97,7 +97,7 @@ instead of using the unit number, just for convenience.
 .. warning::
 
    Although it is possible to change the node state with ``scontrol``, that
-   change will be overwriten by the charms whenever OSD needs to update the
+   change will be overwritten by the charms whenever OSD needs to update the
    Slurm configuration file.
 
 Resuming nodes
@@ -135,5 +135,5 @@ action has a syntax similar to ``update`` command of SLURM's ``scontrol``:
 .. warning::
 
    Although it is possible to change the node state with ``scontrol``, that
-   change will be overwriten by the charms whenever OSD needs to update the
+   change will be overwritten by the charms whenever OSD needs to update the
    Slurm configuration file.

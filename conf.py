@@ -20,6 +20,7 @@ smartquotes = False
 extensions = [
     'sphinx.ext.githubpages',
     'sphinxcontrib.httpdomain',
+    'sphinxcontrib.spelling',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -52,6 +53,12 @@ html_logo = 'images/logo.png'
 # so a file named "default.css" will overwrite the builtin "default.css".
 #html_static_path = ['_static']
 
+# spell checker configurations
+spelling_lang = 'en_us'
+spelling_show_suggestions = True
+spelling_word_list_filename = 'new_words_spell_checker.txt'
+spelling_exclude_patterns = ['changelog.rst']
+
 
 # -- Preprocessing steps -----------------------------------------------------
 import shutil
@@ -64,10 +71,10 @@ import yaml
 from jinja2 import Environment, FileSystemLoader
 
 environment = Environment(loader=FileSystemLoader("templates"))
-descripts = {"slurmd": "The SLURM compute node.",
-             "slurmdbd": "The SLURM database node.",
+descripts = {"slurmd": "The Slurm compute node.",
+             "slurmdbd": "The Slurm database node.",
              "slurmctld": "The central management charm.",
-             "slurmrestd": "Interface to SLURM via a REST api."}
+             "slurmrestd": "Interface to Slurm via a REST API."}
 
 def parse_description(description: str):
     """Parse action/config description to translate to rst.

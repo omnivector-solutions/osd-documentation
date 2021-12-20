@@ -10,11 +10,11 @@ Meaning that all upstream SLURM configurations are supported by OSD.
 The operational magic in OSD is encapsulated in ops code called **charms**. We have curated a suite
 of automation for each SLURM component: ``slurmctld``, ``slurmd``, ``slurmdbd``, and ``slurmrestd``.
 
-Each slurm component charm provides a set of options that enable operators/administrators to operate the cluster.
+Each Slurm component charm provides a set of options that enable operators/administrators to operate the cluster.
 
 The ``slurm.conf`` file can be customized through the ``slurmctld`` charm
 configuration options. There is no need to manually update this file in all
-compute nodes: OSD combines the power of Juju operations with SLURM in
+compute nodes: OSD combines the power of Juju operations with Slurm in
 configless mode (see :ref:`architecture` for details) to configure all the
 nodes in the cluster with one single command. This also means that any
 modification to a node's ``slurm.conf`` file will be discarded.

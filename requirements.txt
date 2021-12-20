@@ -1,3 +1,4 @@
 sphinx<4
 sphinxcontrib-httpdomain
 sphinx-book-theme
+sphinxcontrib-spelling

@@ -6,7 +6,7 @@ Upgrade OSD
 
 Charm Upgrades
 **************
-To upgrade the operations code, the slurm charms, you can follow the example
+To upgrade the operations code, the Slurm charms, you can follow the example
 (the order in which charms are upgraded does not matter here):
 
 .. code-block:: bash
@@ -20,6 +20,6 @@ To upgrade the operations code, the slurm charms, you can follow the example
 
     done
 
-Juju will reach out to the charmhub and pull down the latest charm code (if a
+Juju will reach out to the Charmhub and pull down the latest charm code (if a
 more recent revisions exists then what is running on the machine) and run the
 ``upgrade-charm`` hook event.

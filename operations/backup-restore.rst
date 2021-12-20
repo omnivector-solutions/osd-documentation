@@ -1,20 +1,20 @@
 .. _operations-backup-restore:
 
 =====================================
-Backup and restore the slurm database
+Backup and restore the Slurm database
 =====================================
 
 
-**Backup the slurm database**
-In order to backup a slurm cluster, we first need to create a backup of its database.
+**Backup the Slurm database**
+In order to backup a Slurm cluster, we first need to create a backup of its database.
 
 .. code-block:: bash
 
     juju run
 
 
-**Restore the slurm database**
-In order to restore a slurm cluster, we first need to restore a backup of its database.
+**Restore the Slurm database**
+In order to restore a Slurm cluster, we first need to restore a backup of its database.
 
 .. code-block:: bash
 

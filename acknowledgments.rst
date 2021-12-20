@@ -1,8 +1,8 @@
-.. _acknowledgements:
+.. _acknowledgments:
 
-================
-Acknowledgements
-================
+===============
+Acknowledgments
+===============
 
 The Omnivector Slurm Distribution and this documentation would not be possible
 without a great team of developers, engineers, contributors, and customers. We

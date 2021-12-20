@@ -22,8 +22,9 @@ To change a configuration for this charm, use the Juju command:
    $ juju config {{ charm }} configuration=value
 
 {% for configuration in options %}
-{{ configuration }}
-{{ configuration|length * "-" }}
+{% set len = configuration|length + 4 %}
+``{{ configuration }}``
+{{ "{}".format(len * "-")}}
 
 {{ options[configuration].description }}
 
@@ -45,8 +46,9 @@ To run an action for this charm, use the Juju ``run-action`` command:
    $ juju run-action {{ charm }}/leader action-name [parameters=value]
 
 {% for action in actions %}
-{{ action }}
-{{ action|length * "-" }}
+{% set len = action|length + 4 %}
+``{{ action }}``
+{{ "{}".format(len * "-")}}
 
 {{ actions[action].description }}
 
