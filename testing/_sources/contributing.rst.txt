@@ -31,7 +31,7 @@ and is hosted in
 
 The ``master`` branch is rebuilt at every commit and published automatically
 `online <https://omnivector-solutions.github.io/osd-documentation/master/>`_.
-If you want to test/show any specific branch, you can do so by "reseting" the
+If you want to test/show any specific branch, you can do so by "resetting" the
 ``testing`` branch. This branch is automatically built and published to
 `omnivector-solutions.github.io/osd-documentation/testing/ <https://omnivector-solutions.github.io/osd-documentation/testing/>`_.
 One way to achieve that is:
@@ -78,8 +78,8 @@ Naming conventions
 Throughout the documentation and code (specially in logs), we stick to these
 naming conventions with regards to Slurm:
 
-``SLURM``
-   Schedmd Slurm project.
+``Slurm``
+   SchedMD Slurm project.
 
 ``slurmXXXd``
    The daemons for the Slurm component.
@@ -87,7 +87,7 @@ naming conventions with regards to Slurm:
    For example, ``slurmd`` refers to the daemon for the compute nodes, while
    ``slurmctld`` refers to the daemon for the controller node.
 
-``Slurm``
+``Slurm-charms``
    Omnivector charms.
 
 
@@ -99,8 +99,8 @@ OSD source-code is hosted in GitHub repositories. All the charms are in
 and a common code shared among them, called ``slurm-ops-mananger``, is hosted at
 `omnivector-solutions/slurm-ops-manager <https://github.com/omnivector-solutions/slurm-ops-manager>`_.
 
-The slurm-charms source code is developed under the ``MIT`` license. By
-contributing to the slurm-charms project or affiliated code you are implicitly
+The Slurm-charms source code is developed under the ``MIT`` license. By
+contributing to the Slurm-charms project or affiliated code you are implicitly
 agreeing to your code contributions being governed by this license too.
 
 Git usage
@@ -173,11 +173,11 @@ primary ways to deploy the charms after building them:
      ``slurmctld`` requires an ``etcd`` resource to be deployed. Download it
      from `etcd releases <https://github.com/etcd-io/etcd/releases/>`_ and
      specify it in the deploy command, e.g. ``juju deploy ./slurmctld
-     --resource etcd=etcd-v3.5.0-linux-amd64.tar.gz``. This is not necesssary
+     --resource etcd=etcd-v3.5.0-linux-amd64.tar.gz``. This is not necessary
      if using the ``slurm-bundles`` Makefile.
 
 - deploy the local development bundle contained in `slurm-bundles
-  <https://github.com/omnivector-solutions/slurm-bundles>`_. The slurm-bundles
+  <https://github.com/omnivector-solutions/slurm-bundles>`_. The Slurm-bundles
   contain a helper Makefile that provide a way to easily deploy the built
   charms to a local LXD cloud by using the command ``make lxd-focal``, or for
   CentOS7, ``make lxd-centos``. See :ref:`installation` for more details
@@ -186,12 +186,12 @@ Slurm-ops-manager
 ^^^^^^^^^^^^^^^^^
 
 The `slurm-ops-manager
-<https://github.com/omnivector-solutions/slurm-bundles>`_ is a codebase that
-contains common methods and attributes used across multiple slurm charms. Code
-that is used in more than one slurm charm should not be repeated, it should
+<https://github.com/omnivector-solutions/slurm-bundles>`_ is a code base that
+contains common methods and attributes used across multiple Slurm charms. Code
+that is used in more than one Slurm charm should not be repeated, it should
 live in this project instead.
 
-After making a new ``slurm-ops-manager`` release, the slurm-charms project
+After making a new ``slurm-ops-manager`` release, the Slurm-charms project
 should have one new commit in which the ``slurm-ops-manager`` version is
 incremented:
 
@@ -213,7 +213,7 @@ Actions and Configurations
 In an effort to keep the OSD documentation current and accurate, we generate
 the documentation for charm actions and charm configurations dynamically. OSD
 documentation is built in such a way that the actions and configurations that
-exist in each slurm charm are what end up in the documentation.
+exist in each Slurm charm are what end up in the documentation.
 
 All actions, configurations, and their parameters _should_ have a
 description. A few things to note around the description field:
@@ -221,12 +221,12 @@ description. A few things to note around the description field:
 - inline markdown code is translated to inline reStructuredText code
 - if there is a ``Note:`` text, this paragraph becomes a Sphinx ``note::``
   directive (this should be used to inform the end users of important
-  information related to that action/config)
+  information related to that action/configuration)
 - if there is an ``Example usage:`` text, that paragraph becomes a Sphinx
   ``code-block::`` with the example given.
 
 There are a few standards around YAML formatting that we closely follow in the
-slurm charms:
+Slurm charms:
 
 - wrap the lines at 80 columns
 - use multi-line strings
@@ -338,6 +338,6 @@ The release process for ``slurm-ops-manager`` is straightforward:
 
      Release 0.7.1
 
-     - use Omnivector's repo for rpm installation
+     - use Omnivector's repository for rpm installation
 
 - push to GitHub: ``git push --tags``.

@@ -5,7 +5,7 @@ Installation overview
 =====================
 
 The OSD can be installed on a cloud of your choosing. The only common component
-used across deployments is juju_ itself.  You must have the juju client
+used across deployments is juju_ itself. You must have the Juju client
 installed on your local system in order to administer the installation and
 deployment of the Slurm charms.
 
@@ -20,7 +20,7 @@ Install Juju
    $ sudo snap install juju --classic
 
 
-Once the juju client is installed you will be ready to proceed with deploying
+Once the Juju client is installed you will be ready to proceed with deploying
 Slurm to a cloud of your choosing.
 
 
@@ -33,11 +33,11 @@ AWS
 ###
 
 
-Login to a juju controller
+Login to a Juju controller
 --------------------------
 
-In any deployment scenario we will need to be logged into a juju controller.
-For this example we will login to the public juju controller, Jaas.
+In any deployment scenario we will need to be logged into a Juju controller.
+For this example we will login to the public Juju controller, JAAS.
 
 .. code-block:: bash
 
@@ -47,7 +47,7 @@ For this example we will login to the public juju controller, Jaas.
 Add a model
 -----------
 
-Once you are logged into a juju controller you need to add a model. Run the
+Once you are logged into a Juju controller you need to add a model. Run the
 following command to add the model that will house the OSD.
 
 .. code-block:: bash
@@ -61,8 +61,8 @@ LXD
 Bootstrap a localhost LXD Juju controller
 -----------------------------------------
 
-In any deployment scenario we will need to be logged into a juju controller.
-For this example we will bootstrap a juju controller in a LXD container on our
+In any deployment scenario we will need to be logged into a Juju controller.
+For this example we will bootstrap a Juju controller in a LXD container on our
 local machine.
 
 Install and configure LXD, if you haven't already:
@@ -84,7 +84,7 @@ You can now bootstrap your local cloud:
    $ juju bootstrap localhost
 
 Following a successful bootstrap, ``juju controllers`` will show your newly
-provisioned lxd controller.
+provisioned LXD controller.
 
 .. _centos7-image:
 
@@ -147,7 +147,7 @@ You can check that the image was correctly imported to LXD with
 Add a model
 -----------
 
-Once you have created your juju controller you need to add a model. Run the
+Once you have created your Juju controller you need to add a model. Run the
 following command to add the model that will house the OSD.
 
 .. code-block:: bash
@@ -159,10 +159,10 @@ MAAS
 ####
 
 
-Login to a juju controller
+Login to a Juju controller
 --------------------------
 
-If you don't already have a juju controller, bootstrap juju by creating a juju
+If you don't already have a Juju controller, bootstrap Juju by creating a Juju
 controller machine.
 
 .. code-block:: bash
@@ -173,7 +173,7 @@ controller machine.
 Add a model
 -----------
 
-Once you are logged into a juju controller you need to add a model. Run the
+Once you are logged into a Juju controller you need to add a model. Run the
 following command to add the model that will house the OSD.
 
 .. code-block:: bash
@@ -235,11 +235,11 @@ will comprise the model.
 
 .. note::
 
-   The slurm-charms install SLURM from `Omnivector's OSD PPA
+   The Slurm-charms install Slurm from `Omnivector's OSD PPA
    <https://launchpad.net/~omnivector/+archive/ubuntu/osd>`_ on Ubuntu. It is
    possible to change the source to `Omnivector's Testing PPA
    <https://launchpad.net/~omnivector/+archive/ubuntu/osd-testing>`_ (or to a
-   local cache server as well) whith the configuration ``custom-slurm-repo``.
+   local cache server as well) with the configuration ``custom-slurm-repo``.
    Setting this value to repositories other than Omnivector's PPAs is not
    supported and might result in a broken system.
 
@@ -287,10 +287,10 @@ You can see the status of your cluster by running the ``sinfo`` command:
    osd-slurmd           up   infinite      1   down juju-01ab62-3
 
 The nodes start in *down* state with a ``Reason = New node``, so when you add
-more nodes to the cluster, they will not execute the jobs from que queue. This
-way it is possible to do some post installation before setting the nodes as
-*idle*. You can double check that your nodes are down because of this and not
-some other reason with ``sinfo -R``:
+more nodes to the cluster, they will not execute the jobs from queue. This way
+it is possible to do some post installation before setting the nodes as *idle*.
+You can double check that your nodes are down because of this and not some
+other reason with ``sinfo -R``:
 
 .. code-block:: bash
 

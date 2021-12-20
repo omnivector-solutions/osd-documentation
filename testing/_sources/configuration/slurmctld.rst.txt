@@ -22,12 +22,13 @@ To change a configuration for this charm, use the Juju command:
    $ juju config slurmctld configuration=value
 
 
-custom-slurm-repo
------------------
+
+``custom-slurm-repo``
+---------------------
 
 Use a custom repository for Slurm installation.
 
-This can be set to the Organization's locall mirror/cache of packages and superseeds the Omnivector repositories. Alternatively, it can be used to track a ``testing`` Slurm version, e.g. by setting to ``ppa:omnivector/osd-testing`` (on Ubuntu), or ``https://omnivector-solutions.github.io/repo/centos7/stable/$basearch`` (on CentOS).
+This can be set to the Organization's local mirror/cache of packages and supersedes the Omnivector repositories. Alternatively, it can be used to track a ``testing`` Slurm version, e.g. by setting to ``ppa:omnivector/osd-testing`` (on Ubuntu), or ``https://omnivector-solutions.github.io/repo/centos7/stable/$basearch`` (on CentOS).
 
 .. note::
 
@@ -39,8 +40,9 @@ This can be set to the Organization's locall mirror/cache of packages and supers
 * type: string
 * default-value: empty
 
-cluster-name
-------------
+
+``cluster-name``
+----------------
 
 Name to be recorded in database for jobs from this cluster.
 
@@ -52,8 +54,9 @@ This is important if a single database is used to record information from multip
 * type: string
 * default-value: ``osd-cluster``
 
-default-partition
------------------
+
+``default-partition``
+---------------------
 
 Default Slurm partition. This is only used if defined, and must match an existing partition.
 
@@ -63,8 +66,9 @@ Default Slurm partition. This is only used if defined, and must match an existin
 * type: string
 * default-value: empty
 
-custom-config
--------------
+
+``custom-config``
+-----------------
 
 User supplied Slurm configuration.
 
@@ -82,8 +86,9 @@ Example Usage:
 * type: string
 * default-value: empty
 
-proctrack-type
---------------
+
+``proctrack-type``
+------------------
 
 Identifies the plugin to be used for process tracking on a job step basis.
 
@@ -93,8 +98,9 @@ Identifies the plugin to be used for process tracking on a job step basis.
 * type: string
 * default-value: ``proctrack/cgroup``
 
-cgroup-config
--------------
+
+``cgroup-config``
+-----------------
 
 Configuration content for ``cgroup.conf``.
 
@@ -104,8 +110,9 @@ Configuration content for ``cgroup.conf``.
 * type: string
 * default-value: ``CgroupAutomount=yes\nConstrainCores=yes\n``
 
-health-check-interval
----------------------
+
+``health-check-interval``
+-------------------------
 
 Interval in seconds between executions of the Health Check.
 
@@ -113,8 +120,9 @@ Interval in seconds between executions of the Health Check.
 * type: int
 * default-value: ``600``
 
-health-check-state
-------------------
+
+``health-check-state``
+----------------------
 
 Only run the Health Check on nodes in this state.
 
@@ -122,8 +130,9 @@ Only run the Health Check on nodes in this state.
 * type: string
 * default-value: ``ANY,CYCLE``
 
-acct-gather-frequency
----------------------
+
+``acct-gather-frequency``
+-------------------------
 
 Accounting and profiling sampling intervals for the acct_gather plugins.
 
@@ -143,8 +152,9 @@ Example Usage:
 * type: string
 * default-value: ``task=30``
 
-acct-gather-custom
-------------------
+
+``acct-gather-custom``
+----------------------
 
 User supplied ``acct_gather.conf`` configuration.
 
@@ -170,8 +180,9 @@ To run an action for this charm, use the Juju ``run-action`` command:
    $ juju run-action slurmctld/leader action-name [parameters=value]
 
 
-show-current-config
--------------------
+
+``show-current-config``
+-----------------------
 
 Display the currently used ``slurm.conf``.
 
@@ -190,8 +201,9 @@ Example Usage:
 
 
 
-drain
------
+
+``drain``
+---------
 
 Drain specified nodes.
 
@@ -220,8 +232,9 @@ Parameters:
 
 
 
-resume
-------
+
+``resume``
+----------
 
 Resume specified nodes.
 
@@ -251,8 +264,9 @@ Parameters:
 
 
 
-influxdb-info
--------------
+
+``influxdb-info``
+-----------------
 
 Get InfluxDB info.
 

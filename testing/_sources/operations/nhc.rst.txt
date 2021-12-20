@@ -6,17 +6,17 @@ NHC
 
 OSD installs `LBNL Node Health Check (NHC) <https://github.com/mej/nhc>`_ by
 default in the ``slurmd`` charm. The base configuration file contains only
-basic checks to ensure slurm and munge processes are active. You
+basic checks to ensure Slurm and munge processes are active. You
 can easily extend the NHC configuration to match your setup.
 
 .. note::
 
-   OSD uses short hostnames (``hostname -s``) as node identifiers in slurm.
+   OSD uses short hostnames (``hostname -s``) as node identifiers in Slurm.
    Because of this, the NHC configuration needs to use the short hostname
    also. The base NHC configuration provided in the slurmd charm takes care of
-   this by setting ``* || HOSTNAME="$HOSTNAME_S"`` at the top of the NHC config
-   file. This value will not be overridden by any custom user supplied NHC
-   config.
+   this by setting ``* || HOSTNAME="$HOSTNAME_S"`` at the top of the NHC
+   configuration file. This value will not be overridden by any custom user
+   supplied NHC configuration.
 
    This is specially important if running checks on specific nodes on the cluster. For example, to only run the Nvidia monitoring on the ``gpu-*`` nodes:
 
