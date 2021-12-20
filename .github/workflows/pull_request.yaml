@@ -1,0 +1,32 @@
+name: Spell Check
+
+on: pull_request
+
+jobs:
+  spell-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout docs"
+        uses: actions/checkout@v2
+      - name: "Checkout slurm-charms"
+        run: |
+          git clone https://github.com/omnivector-solutions/slurm-charms.git \
+                    ../slurm-charms
+
+      - name: "Setup Python"
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+          archictecture: 'x86'
+      - name: "Install dependencies"
+        run: |
+          sudo apt update
+          sudo apt install -y graphviz enchant python3-enchant hunspell
+          pip install -r requirements.txt
+
+      - name: "Run spell checker"
+        run: sphinx-build -b spelling -nW . spelling/
+
+      - name: "Build the HTML docs"
+        run: |
+          make html

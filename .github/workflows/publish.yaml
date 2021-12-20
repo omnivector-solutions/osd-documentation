@@ -3,11 +3,6 @@ name: Publish Docs
 on:
   push:
     branches: [master, release/**, testing]
-  workflow_dispatch:
-    inputs:
-      branch:
-        description: Branch to rebuild the docs
-        required: true
 
 jobs:
   publish-docs:
@@ -31,9 +26,6 @@ jobs:
           sudo apt update
           sudo apt install -y graphviz enchant python3-enchant hunspell
           pip install -r requirements.txt
-
-      - name: "Run spell checker"
-        run: sphinx-build -b spelling -nW . spelling/
 
       - name: "Build the HTML docs"
         run: |
