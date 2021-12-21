@@ -32,7 +32,7 @@ We had significant community contributions from:
 - Johan Hallbäck
 - Mohamad Rezaei
 - Oscar Franzén
-- Soltan Zeestraten
+- Sandor Zeestraten
 
 We also thank to SchedMD team for the development of Slurm, as well as to the
 Slurm community for the friendly interactions, discussions, and support.

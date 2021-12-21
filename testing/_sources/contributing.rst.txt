@@ -177,10 +177,11 @@ primary ways to deploy the charms after building them:
      if using the ``slurm-bundles`` Makefile.
 
 - deploy the local development bundle contained in `slurm-bundles
-  <https://github.com/omnivector-solutions/slurm-bundles>`_. The Slurm-bundles
-  contain a helper Makefile that provide a way to easily deploy the built
-  charms to a local LXD cloud by using the command ``make lxd-focal``, or for
-  CentOS7, ``make lxd-centos``. See :ref:`installation` for more details
+  <https://github.com/omnivector-solutions/slurm-bundles>`_. The
+  ``slurm-bundles`` contain a helper Makefile that provide a way to easily
+  deploy the built charms to a local LXD cloud by using the command ``make
+  lxd-focal``, or for CentOS7, ``make lxd-centos``. See :ref:`installation` for
+  more details
 
 Slurm-ops-manager
 ^^^^^^^^^^^^^^^^^
