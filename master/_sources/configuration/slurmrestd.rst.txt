@@ -8,7 +8,7 @@
 slurmrestd
 ==========
 
-Interface to SLURM via a REST api.
+Interface to Slurm via a REST API.
 
 
 
@@ -22,8 +22,9 @@ To change a configuration for this charm, use the Juju command:
    $ juju config slurmrestd configuration=value
 
 
-custom-slurm-repo
------------------
+
+``custom-slurm-repo``
+---------------------
 
 Use a custom repository for Slurm installation.
 

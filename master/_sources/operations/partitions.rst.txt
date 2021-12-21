@@ -47,7 +47,7 @@ constraints and bindings for AWS clouds as an overlay in
 ``slurm-bundles/slurm-core/clouds/aws.yaml``. If deploying to AWS, you should
 also copy those bindings to the new application.
 
-After that, re-reploy the bundle:
+After that, re-deploy the bundle:
 
 .. code-block:: bash
 
@@ -127,7 +127,7 @@ By default, the partition is in the ``UP`` state.
 .. warning::
 
    Although it is possible to change the partition state with ``scontrol``,
-   that change will be overwriten by the charms whenever OSD needs to update
+   that change will be overwritten by the charms whenever OSD needs to update
    the Slurm configuration file.
 
 Extra partition configuration options

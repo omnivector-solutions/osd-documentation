@@ -8,7 +8,7 @@
 slurmd
 ======
 
-The SLURM compute node.
+The Slurm compute node.
 
 
 
@@ -22,8 +22,9 @@ To change a configuration for this charm, use the Juju command:
    $ juju config slurmd configuration=value
 
 
-custom-slurm-repo
------------------
+
+``custom-slurm-repo``
+---------------------
 
 Use a custom repository for Slurm installation.
 
@@ -39,8 +40,9 @@ This can be set to the Organization's local mirror/cache of packages and superse
 * type: string
 * default-value: empty
 
-partition-name
---------------
+
+``partition-name``
+------------------
 
 Name by which the partition may be referenced (e.g. ``Interactive``).
 
@@ -54,8 +56,9 @@ Name by which the partition may be referenced (e.g. ``Interactive``).
 * type: string
 * default-value: ``None``
 
-partition-config
-----------------
+
+``partition-config``
+--------------------
 
 Extra partition configuration, specified as a space separated ``key=value`` in a single line.
 
@@ -71,8 +74,9 @@ Example Usage:
 * type: string
 * default-value: empty
 
-partition-state
----------------
+
+``partition-state``
+-------------------
 
 State of partition or availability for use. Possible values are ``UP``, ``DOWN``, ``DRAIN`` and ``INACTIVE``. The default value is ``UP``. See also the related ``Alternate`` keyword.
 
@@ -82,8 +86,9 @@ State of partition or availability for use. Possible values are ``UP``, ``DOWN``
 * type: string
 * default-value: ``UP``
 
-nhc-conf
---------
+
+``nhc-conf``
+------------
 
 Custom extra configuration to use for Node Health Check.
 
@@ -109,40 +114,45 @@ To run an action for this charm, use the Juju ``run-action`` command:
    $ juju run-action slurmd/leader action-name [parameters=value]
 
 
-version
--------
+
+``version``
+-----------
 
 Return version of installed software.
 
 
 
 
-node-configured
----------------
+
+``node-configured``
+-------------------
 
 Remove a node from DownNodes when the reason is ``New node``.
 
 
 
 
-get-node-inventory
-------------------
+
+``get-node-inventory``
+----------------------
 
 Return node inventory.
 
 
 
 
-show-nhc-config
----------------
+
+``show-nhc-config``
+-------------------
 
 Display the currently used ``nhc.conf``.
 
 
 
 
-get-infiniband-repo
--------------------
+
+``get-infiniband-repo``
+-----------------------
 
 Display the currently configured repository for Infiniband drivers.
 
@@ -151,8 +161,9 @@ Display the currently configured repository for Infiniband drivers.
 
 
 
-set-infiniband-repo
--------------------
+
+``set-infiniband-repo``
+-----------------------
 
 Overrides the repository file with a custom repository for Infiniband installation.
 
@@ -178,8 +189,9 @@ Parameters:
 
 
 
-install-infiniband
-------------------
+
+``install-infiniband``
+----------------------
 
 Install Mellanox Infiniband drivers. This might take a few minutes to complete.
 
@@ -190,40 +202,45 @@ If no custom repository was specified before, this action will set the Mellanox 
 
 
 
-uninstall-infiniband
---------------------
+
+``uninstall-infiniband``
+------------------------
 
 Uninstall Mellanox Infiniband drivers.
 
 
 
 
-start-infiniband
-----------------
+
+``start-infiniband``
+--------------------
 
 Start Infiniband systemd service.
 
 
 
 
-enable-infiniband
------------------
+
+``enable-infiniband``
+---------------------
 
 Enable Infiniband systemd service.
 
 
 
 
-stop-infiniband
----------------
+
+``stop-infiniband``
+-------------------
 
 Stop Infiniband systemd service.
 
 
 
 
-is-active-infiniband
---------------------
+
+``is-active-infiniband``
+------------------------
 
 Check if Infiniband systemd service is active.
 

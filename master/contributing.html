@@ -34,7 +34,7 @@
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Acknowledgements" href="acknowledgements.html" />
+    <link rel="next" title="Acknowledgments" href="acknowledgments.html" />
     <link rel="prev" title="slurmrestd" href="configuration/slurmrestd.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -120,7 +120,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="operations/backup-restore.html">
-     Backup and restore the slurm database
+     Backup and restore the Slurm database
     </a>
    </li>
    <li class="toctree-l2">
@@ -183,8 +183,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="acknowledgements.html">
-   Acknowledgements
+  <a class="reference internal" href="acknowledgments.html">
+   Acknowledgments
   </a>
  </li>
  <li class="toctree-l1">
@@ -411,7 +411,7 @@ and is hosted in
 <a class="reference external" href="https://github.com/omnivector-solutions/osd-documentation">GitHub</a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">master</span></code> branch is rebuilt at every commit and published automatically
 <a class="reference external" href="https://omnivector-solutions.github.io/osd-documentation/master/">online</a>.
-If you want to test/show any specific branch, you can do so by &quot;reseting&quot; the
+If you want to test/show any specific branch, you can do so by &quot;resetting&quot; the
 <code class="docutils literal notranslate"><span class="pre">testing</span></code> branch. This branch is automatically built and published to
 <a class="reference external" href="https://omnivector-solutions.github.io/osd-documentation/testing/">omnivector-solutions.github.io/osd-documentation/testing/</a>.
 One way to achieve that is:</p>
@@ -453,13 +453,13 @@ document:</p>
 <p>Throughout the documentation and code (specially in logs), we stick to these
 naming conventions with regards to Slurm:</p>
 <dl>
-<dt><code class="docutils literal notranslate"><span class="pre">SLURM</span></code></dt><dd><p>Schedmd Slurm project.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">Slurm</span></code></dt><dd><p>SchedMD Slurm project.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">slurmXXXd</span></code></dt><dd><p>The daemons for the Slurm component.</p>
 <p>For example, <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> refers to the daemon for the compute nodes, while
 <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> refers to the daemon for the controller node.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">Slurm</span></code></dt><dd><p>Omnivector charms.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">Slurm-charms</span></code></dt><dd><p>Omnivector charms.</p>
 </dd>
 </dl>
 </div>
@@ -470,8 +470,8 @@ naming conventions with regards to Slurm:</p>
 <a class="reference external" href="https://github.com/omnivector-solutions/slurm-charms">omnivector-solutions/slurm-charms</a>,
 and a common code shared among them, called <code class="docutils literal notranslate"><span class="pre">slurm-ops-mananger</span></code>, is hosted at
 <a class="reference external" href="https://github.com/omnivector-solutions/slurm-ops-manager">omnivector-solutions/slurm-ops-manager</a>.</p>
-<p>The slurm-charms source code is developed under the <code class="docutils literal notranslate"><span class="pre">MIT</span></code> license. By
-contributing to the slurm-charms project or affiliated code you are implicitly
+<p>The Slurm-charms source code is developed under the <code class="docutils literal notranslate"><span class="pre">MIT</span></code> license. By
+contributing to the Slurm-charms project or affiliated code you are implicitly
 agreeing to your code contributions being governed by this license too.</p>
 <div class="section" id="git-usage">
 <h3>Git usage<a class="headerlink" href="#git-usage" title="Permalink to this headline">¶</a></h3>
@@ -533,23 +533,24 @@ primary ways to deploy the charms after building them:</p>
 <p><code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> requires an <code class="docutils literal notranslate"><span class="pre">etcd</span></code> resource to be deployed. Download it
 from <a class="reference external" href="https://github.com/etcd-io/etcd/releases/">etcd releases</a> and
 specify it in the deploy command, e.g. <code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">deploy</span> <span class="pre">./slurmctld</span>
-<span class="pre">--resource</span> <span class="pre">etcd=etcd-v3.5.0-linux-amd64.tar.gz</span></code>. This is not necesssary
+<span class="pre">--resource</span> <span class="pre">etcd=etcd-v3.5.0-linux-amd64.tar.gz</span></code>. This is not necessary
 if using the <code class="docutils literal notranslate"><span class="pre">slurm-bundles</span></code> Makefile.</p>
 </div>
 </li>
-<li><p>deploy the local development bundle contained in <a class="reference external" href="https://github.com/omnivector-solutions/slurm-bundles">slurm-bundles</a>. The slurm-bundles
-contain a helper Makefile that provide a way to easily deploy the built
-charms to a local LXD cloud by using the command <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">lxd-focal</span></code>, or for
-CentOS7, <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">lxd-centos</span></code>. See <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installation overview</span></a> for more details</p></li>
+<li><p>deploy the local development bundle contained in <a class="reference external" href="https://github.com/omnivector-solutions/slurm-bundles">slurm-bundles</a>. The
+<code class="docutils literal notranslate"><span class="pre">slurm-bundles</span></code> contain a helper Makefile that provide a way to easily
+deploy the built charms to a local LXD cloud by using the command <code class="docutils literal notranslate"><span class="pre">make</span>
+<span class="pre">lxd-focal</span></code>, or for CentOS7, <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">lxd-centos</span></code>. See <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installation overview</span></a> for
+more details</p></li>
 </ul>
 </div>
 <div class="section" id="slurm-ops-manager">
 <h4>Slurm-ops-manager<a class="headerlink" href="#slurm-ops-manager" title="Permalink to this headline">¶</a></h4>
-<p>The <a class="reference external" href="https://github.com/omnivector-solutions/slurm-bundles">slurm-ops-manager</a> is a codebase that
-contains common methods and attributes used across multiple slurm charms. Code
-that is used in more than one slurm charm should not be repeated, it should
+<p>The <a class="reference external" href="https://github.com/omnivector-solutions/slurm-bundles">slurm-ops-manager</a> is a code base that
+contains common methods and attributes used across multiple Slurm charms. Code
+that is used in more than one Slurm charm should not be repeated, it should
 live in this project instead.</p>
-<p>After making a new <code class="docutils literal notranslate"><span class="pre">slurm-ops-manager</span></code> release, the slurm-charms project
+<p>After making a new <code class="docutils literal notranslate"><span class="pre">slurm-ops-manager</span></code> release, the Slurm-charms project
 should have one new commit in which the <code class="docutils literal notranslate"><span class="pre">slurm-ops-manager</span></code> version is
 incremented:</p>
 <ul class="simple">
@@ -569,19 +570,19 @@ charms, these should live in separate commits.</p></li>
 <p>In an effort to keep the OSD documentation current and accurate, we generate
 the documentation for charm actions and charm configurations dynamically. OSD
 documentation is built in such a way that the actions and configurations that
-exist in each slurm charm are what end up in the documentation.</p>
+exist in each Slurm charm are what end up in the documentation.</p>
 <p>All actions, configurations, and their parameters _should_ have a
 description. A few things to note around the description field:</p>
 <ul class="simple">
 <li><p>inline markdown code is translated to inline reStructuredText code</p></li>
 <li><p>if there is a <code class="docutils literal notranslate"><span class="pre">Note:</span></code> text, this paragraph becomes a Sphinx <code class="docutils literal notranslate"><span class="pre">note::</span></code>
 directive (this should be used to inform the end users of important
-information related to that action/config)</p></li>
+information related to that action/configuration)</p></li>
 <li><p>if there is an <code class="docutils literal notranslate"><span class="pre">Example</span> <span class="pre">usage:</span></code> text, that paragraph becomes a Sphinx
 <code class="docutils literal notranslate"><span class="pre">code-block::</span></code> with the example given.</p></li>
 </ul>
 <p>There are a few standards around YAML formatting that we closely follow in the
-slurm charms:</p>
+Slurm charms:</p>
 <ul class="simple">
 <li><p>wrap the lines at 80 columns</p></li>
 <li><p>use multi-line strings</p></li>
@@ -673,7 +674,7 @@ example:</p>
 <blockquote>
 <div><p>Release 0.7.1</p>
 <ul class="simple">
-<li><p>use Omnivector's repo for rpm installation</p></li>
+<li><p>use Omnivector's repository for rpm installation</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -697,10 +698,10 @@ example:</p>
             <p class="prev-next-title">slurmrestd</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="acknowledgements.html" title="next page">
+    <a class='right-next' id="next-link" href="acknowledgments.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Acknowledgements</p>
+        <p class="prev-next-title">Acknowledgments</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

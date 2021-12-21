@@ -8,7 +8,7 @@
 slurmdbd
 ========
 
-The SLURM database node.
+The Slurm database node.
 
 
 
@@ -22,8 +22,9 @@ To change a configuration for this charm, use the Juju command:
    $ juju config slurmdbd configuration=value
 
 
-custom-slurm-repo
------------------
+
+``custom-slurm-repo``
+---------------------
 
 Use a custom repository for Slurm installation.
 
@@ -39,8 +40,9 @@ This can be set to the Organization's local mirror/cache of packages and superse
 * type: string
 * default-value: empty
 
-slurmdbd-debug
---------------
+
+``slurmdbd-debug``
+------------------
 
 The level of detail to provide slurmdbd daemon's logs. The default value is ``info``. If the slurmdbd daemon is initiated with ``-v`` or ``--verbose`` options, that debug level will be preserve or restored upon reconfiguration.
 

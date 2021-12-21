@@ -8,7 +8,7 @@ Welcome to the documentation for the Omnivector Slurm Distribution!
 This documentation is the source of truth for information pertaining
 to the deployment and operation of the Omnivector Slurm Distribution (OSD).
 The Omnivector Slurm Distribution stands on a suite of codified operations
-to asssemble, install, deploy, and operate SLURM.
+to assemble, install, deploy, and operate SLURM.
 
 Getting Started
 ---------------
@@ -24,5 +24,5 @@ Slurm Distribution!
    Operations Overview <operations/overview>
    configuration/configuration
    contributing
-   acknowledgements
+   acknowledgments
    Changelog <changelog>

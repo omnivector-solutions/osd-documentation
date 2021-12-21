@@ -4,7 +4,7 @@
 Configuration and Administration
 ================================
 
-Each slurm component charm exposes a set of zero or more administrative actions and
+Each Slurm component charm exposes a set of zero or more administrative actions and
 charm configuration options. Some configuration options are represented across charms
 and others are charm specific.
 

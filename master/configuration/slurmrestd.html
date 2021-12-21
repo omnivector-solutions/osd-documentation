@@ -120,7 +120,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../operations/backup-restore.html">
-     Backup and restore the slurm database
+     Backup and restore the Slurm database
     </a>
    </li>
    <li class="toctree-l2">
@@ -183,8 +183,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../acknowledgements.html">
-   Acknowledgements
+  <a class="reference internal" href="../acknowledgments.html">
+   Acknowledgments
   </a>
  </li>
  <li class="toctree-l1">
@@ -286,7 +286,11 @@
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#custom-slurm-repo">
-     custom-slurm-repo
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       custom-slurm-repo
+      </span>
+     </code>
     </a>
    </li>
   </ul>
@@ -304,7 +308,7 @@
                 
   <div class="section" id="slurmrestd">
 <span id="operations-slurmrestd"></span><h1>slurmrestd<a class="headerlink" href="#slurmrestd" title="Permalink to this headline">¶</a></h1>
-<p>Interface to SLURM via a REST api.</p>
+<p>Interface to Slurm via a REST API.</p>
 <div class="section" id="configurations">
 <h2>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline">¶</a></h2>
 <p>To change a configuration for this charm, use the Juju command:</p>
@@ -312,7 +316,7 @@
 </pre></div>
 </div>
 <div class="section" id="custom-slurm-repo">
-<h3>custom-slurm-repo<a class="headerlink" href="#custom-slurm-repo" title="Permalink to this headline">¶</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">custom-slurm-repo</span></code><a class="headerlink" href="#custom-slurm-repo" title="Permalink to this headline">¶</a></h3>
 <p>Use a custom repository for Slurm installation.</p>
 <p>This can be set to the Organization's local mirror/cache of packages and supersedes the Omnivector repositories. Alternatively, it can be used to track a <code class="docutils literal notranslate"><span class="pre">testing</span></code> Slurm version, e.g. by setting to <code class="docutils literal notranslate"><span class="pre">ppa:omnivector/osd-testing</span></code> (on Ubuntu), or <code class="docutils literal notranslate"><span class="pre">https://omnivector-solutions.github.io/repo/centos7/stable/$basearch</span></code> (on CentOS).</p>
 <div class="admonition note">
