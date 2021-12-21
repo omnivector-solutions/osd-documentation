@@ -524,7 +524,7 @@ Charmhub.  The overlays in this directory allows us to change the source to
 either <code class="docutils literal notranslate"><span class="pre">latest/edge</span></code> channel or from your local machine. The latter one is
 specially useful for development, see <a class="reference internal" href="contributing.html#charm-development"><span class="std std-ref">Charm development</span></a> for details.</p></li>
 </ul>
-<p>The <code class="docutils literal notranslate"><span class="pre">slurm-addons</span></code> directory contains overlays to extend SLURM with plugins:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">slurm-addons</span></code> directory contains overlays to extend Slurm with plugins:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">slurm-addons/influxdb.yaml</span></code>: overlay to relate <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> to InfluxDB,
 to collect profiling information about the jobs. See
@@ -579,7 +579,7 @@ Machine  State    DNS            Inst id        Series  AZ  Message
 <span class="m">5</span>        started  <span class="m">10</span>.34.166.66   juju-01ab62-5  focal       Running
 </pre></div>
 </div>
-<p>Once the workload status is <em>active</em> and the agent status is <em>idle</em>, the SLURM
+<p>Once the workload status is <em>active</em> and the agent status is <em>idle</em>, the Slurm
 cluster is ready for use.</p>
 <p>You can see the status of your cluster by running the <code class="docutils literal notranslate"><span class="pre">sinfo</span></code> command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run --unit slurmctld/0 sinfo

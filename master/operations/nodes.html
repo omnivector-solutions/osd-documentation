@@ -316,7 +316,7 @@
 compute nodes.</p>
 <div class="section" id="adding-nodes">
 <h2>Adding nodes<a class="headerlink" href="#adding-nodes" title="Permalink to this headline">¶</a></h2>
-<p>When adding nodes to the cluster, they always join SLURM in <code class="docutils literal notranslate"><span class="pre">down</span></code> state,
+<p>When adding nodes to the cluster, they always join Slurm in <code class="docutils literal notranslate"><span class="pre">down</span></code> state,
 with <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">node</span></code> as the reason. This allows the cluster administrator to
 install and configure dependencies before the node can run jobs.</p>
 <p>To add an additional compute node, use <code class="docutils literal notranslate"><span class="pre">juju</span></code>. Assuming the name of your
@@ -347,7 +347,7 @@ you can enlist the node to change its state from <code class="docutils literal n
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This is a destructive operation. If the node is running a job, this job will
-be killed and SLURM will not requeue it. It is the system administrator's
+be killed and Slurm will not requeue it. It is the system administrator's
 responsibility to ensure that the node can be safely removed.</p>
 </div>
 <p>We recommend placing nodes in the <em>drain</em> state before removing them from the
@@ -360,7 +360,7 @@ safe removal.</p>
 <p>We provide an action in the <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm to drain nodes. You need to
 know in advance the hostname of the nodes you want to drain and also
 specify a <em>reason</em> to drain. You can specify more than one node, by using the
-SLURM convention:</p>
+Slurm convention:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmctld/leader drain <span class="nv">nodename</span><span class="o">=</span>juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span> <span class="nv">reason</span><span class="o">=</span><span class="s2">&quot;Maintenance - drive failure&quot;</span> --wait
 unit-slurmctld-0:
   UnitId: slurmctld/0
@@ -395,7 +395,7 @@ Slurm configuration file.</p>
 <div class="section" id="resuming-nodes">
 <h2>Resuming nodes<a class="headerlink" href="#resuming-nodes" title="Permalink to this headline">¶</a></h2>
 <p>We provide an action in <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm to resume nodes. The <code class="docutils literal notranslate"><span class="pre">resume</span></code>
-action has a syntax similar to <code class="docutils literal notranslate"><span class="pre">update</span></code> command of SLURM's <code class="docutils literal notranslate"><span class="pre">scontrol</span></code>:</p>
+action has a syntax similar to <code class="docutils literal notranslate"><span class="pre">update</span></code> command of Slurm's <code class="docutils literal notranslate"><span class="pre">scontrol</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmctld/leader resume <span class="nv">nodename</span><span class="o">=</span>juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span> --wait
 unit-slurmctld-0:
   UnitId: slurmctld/0

@@ -4,7 +4,7 @@
 Accounting And Profiling
 ========================
 
-SLURM can collect accounting and profiling information about jobs and job
+Slurm can collect accounting and profiling information about jobs and job
 steps. Please find below instructions on how to setup accounting for the
 different plugins, as well as the `official documentation about accounting
 <https://slurm.schedmd.com/accounting.html>`_.
@@ -17,12 +17,149 @@ Slurmdbd
 
 ``slurmdbd`` is used for job accounting.
 
+
+.. _elasticsearch-paccounting:
+
+ElasticSearch plugin
+=====================
+
+The `Slurm Elastic Search Plugin
+<https://slurm.schedmd.com/elasticsearch.html>`_ stores accounting data for
+finished jobs.
+
+This plugin can be automatically enabled by relating the ``slurmctld`` charm
+with the `Elastic Search Charm <https://charmhub.io/elasticsearch/>`_:
+
+.. code-block:: bash
+
+   $ juju relate slurmctld elasticsearch
+
+The ``slurmctld`` will create a new index with the name of the cluster and the
+document type is named ``jobcomp``.
+
+Data Saved
+----------
+
+An example to get all the documents saved in the ``osd-cluster`` index from the
+Elastic Search server at ``10.220.130.6`` is:
+
+.. code-block:: bash
+
+   $ curl -XGET 'http://10.220.130.6:9200/osd-cluster/_search?pretty=true&q=*:*'
+   {
+     "took" : 2,
+     "timed_out" : false,
+     "_shards" : {
+       "total" : 5,
+       "successful" : 5,
+       "skipped" : 0,
+       "failed" : 0
+     },
+     "hits" : {
+       "total" : 2,
+       "max_score" : 1.0,
+       "hits" : [
+         {
+           "_index" : "osd-cluster",
+           "_type" : "jobcomp",
+           "_id" : "bnhJ3n0BaChVi1VR3viV",
+           "_score" : 1.0,
+           "_source" : {
+             "jobid" : 24,
+             "username" : "john",
+             "user_id" : 1200,
+             "groupname" : "john",
+             "group_id" : 1200,
+             "@start" : "2021-12-21T18:37:02",
+             "@end" : "2021-12-21T18:37:02",
+             "elapsed" : 0,
+             "partition" : "osd-slurmd",
+             "alloc_node" : "juju-f48c73-285",
+             "nodes" : "juju-f48c73-286",
+             "total_cpus" : 16,
+             "total_nodes" : 1,
+             "derived_ec" : "0:0",
+             "exit_code" : "0:0",
+             "state" : "COMPLETED",
+             "cpu_hours" : 0.0,
+             "pack_job_id" : 0,
+             "pack_job_offset" : 0,
+             "het_job_id" : 0,
+             "het_job_offset" : 0,
+             "@submit" : "2021-12-21T18:37:02",
+             "@eligible" : "2021-12-21T18:37:02",
+             "queue_wait" : 0,
+             "work_dir" : "/home/john/project/foo",
+             "cluster" : "osd-cluster",
+             "qos" : "normal",
+             "ntasks" : 0,
+             "ntasks_per_node" : 0,
+             "ntasks_per_tres" : 0,
+             "cpus_per_task" : 1,
+             "job_name" : "hostname",
+             "tres_req" : "cpu=1,mem=15921M,node=1,billing=1",
+             "tres_alloc" : "cpu=16,node=1,billing=16",
+             "account" : "john",
+             "parent_accounts" : "/users/user"
+           }
+         },
+         {
+           "_index" : "osd-cluster",
+           "_type" : "jobcomp",
+           "_id" : "b3hJ3n0BaChVi1VR3vi0",
+           "_score" : 1.0,
+           "_source" : {
+             "jobid" : 25,
+             "username" : "root",
+             "user_id" : 0,
+             "groupname" : "root",
+             "group_id" : 0,
+             "@start" : "2021-12-21T18:37:25",
+             "@end" : "2021-12-21T18:37:25",
+             "elapsed" : 0,
+             "partition" : "osd-slurmd",
+             "alloc_node" : "juju-f48c73-285",
+             "nodes" : "juju-f48c73-286",
+             "total_cpus" : 16,
+             "total_nodes" : 1,
+             "derived_ec" : "0:0",
+             "exit_code" : "0:0",
+             "state" : "COMPLETED",
+             "cpu_hours" : 0.0,
+             "pack_job_id" : 0,
+             "pack_job_offset" : 0,
+             "het_job_id" : 0,
+             "het_job_offset" : 0,
+             "@submit" : "2021-12-21T18:37:25",
+             "@eligible" : "2021-12-21T18:37:25",
+             "queue_wait" : 0,
+             "work_dir" : "/root",
+             "cluster" : "osd-cluster",
+             "qos" : "normal",
+             "ntasks" : 0,
+             "ntasks_per_node" : 0,
+             "ntasks_per_tres" : 0,
+             "cpus_per_task" : 1,
+             "job_name" : "hostname",
+             "tres_req" : "cpu=1,mem=15921M,node=1,billing=1",
+             "tres_alloc" : "cpu=16,node=1,billing=16",
+             "account" : "root",
+             "parent_accounts" : "/root/root"
+           }
+         }
+       ]
+     }
+   }
+
+
+
+
 .. _influxdb-profiling:
 
 InfluxDB profiling plugin
 =========================
 
-SLURM provides a profiling gathering plugin to collect metrics and send them to
+Slurm provides a profiling gathering plugin to collect metrics and send them to
 `InfluxDB <https://www.influxdata.com/products/influxdb/>`_. OSD encapsulates
 the configuration of this plugin in a *Juju relation* between ``slurmctld`` and
 ``influxdb`` charms.
@@ -90,7 +227,7 @@ saved for the tasks:
     Field type: ``float``.
 
 ``WriteMB``
-    Number of megabytes written to local disk. 
+    Number of megabytes written to local disk.
 
     Field type: ``float``.
 
