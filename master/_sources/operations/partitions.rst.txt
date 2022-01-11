@@ -98,13 +98,13 @@ To set the default partition, you must configure ``slurmctld``:
 
 .. code-block:: bash
 
-   $ juju config slurmdctld default-partition=debug
+   $ juju config slurmctld default-partition=debug
 
 Alternatively, you can set the partition name in the bundle file:
 
 ::
 
-   slurmdctld:
+   slurmctld:
      charm: slurmctld
      num_units: 1
      options:
