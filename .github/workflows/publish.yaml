@@ -3,6 +3,7 @@ name: Publish Docs
 on:
   push:
     branches: [master, release/**, testing]
+  workflow_dispatch:
 
 jobs:
   publish-docs:
