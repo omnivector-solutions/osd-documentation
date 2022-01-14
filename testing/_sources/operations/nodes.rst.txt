@@ -10,7 +10,7 @@ compute nodes.
 Adding nodes
 ############
 
-When adding nodes to the cluster, they always join SLURM in ``down`` state,
+When adding nodes to the cluster, they always join Slurm in ``down`` state,
 with ``New node`` as the reason. This allows the cluster administrator to
 install and configure dependencies before the node can run jobs.
 
@@ -49,7 +49,7 @@ Removing nodes are as simple as:
 .. warning::
 
    This is a destructive operation. If the node is running a job, this job will
-   be killed and SLURM will not requeue it. It is the system administrator's
+   be killed and Slurm will not requeue it. It is the system administrator's
    responsibility to ensure that the node can be safely removed.
 
 We recommend placing nodes in the *drain* state before removing them from the
@@ -66,7 +66,7 @@ Draining nodes
 We provide an action in the ``slurmctld`` charm to drain nodes. You need to
 know in advance the hostname of the nodes you want to drain and also
 specify a *reason* to drain. You can specify more than one node, by using the
-SLURM convention:
+Slurm convention:
 
 .. code-block:: bash
 
@@ -104,7 +104,7 @@ Resuming nodes
 ##############
 
 We provide an action in ``slurmctld`` charm to resume nodes. The ``resume``
-action has a syntax similar to ``update`` command of SLURM's ``scontrol``:
+action has a syntax similar to ``update`` command of Slurm's ``scontrol``:
 
 .. code-block:: bash
 

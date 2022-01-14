@@ -210,7 +210,7 @@ basic Slurm cluster:
   either ``latest/edge`` channel or from your local machine. The latter one is
   specially useful for development, see :ref:`charm-development` for details.
 
-The ``slurm-addons`` directory contains overlays to extend SLURM with plugins:
+The ``slurm-addons`` directory contains overlays to extend Slurm with plugins:
 
 - ``slurm-addons/influxdb.yaml``: overlay to relate ``slurmctld`` to InfluxDB,
   to collect profiling information about the jobs. See
@@ -275,7 +275,7 @@ model with ``juju status``:
    5        started  10.34.166.66   juju-01ab62-5  focal       Running
 
 
-Once the workload status is *active* and the agent status is *idle*, the SLURM
+Once the workload status is *active* and the agent status is *idle*, the Slurm
 cluster is ready for use.
 
 You can see the status of your cluster by running the ``sinfo`` command:

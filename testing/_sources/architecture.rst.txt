@@ -34,17 +34,10 @@ OSD Components
 The Omnivector Slurm Distribution supports the following charm components
 as part of the Slurm-core offering:
 
-* `slurmd <https://charmhub.io/slurmd>`_: Compute and login nodes (running
-  ``slurmd``)
-
-* `slurmdbd <https://charmhub.io/slurmdbd>`_: Slurm database node (running
-  ``slurmdbd``)
-
-* `slurmctld <https://charmhub.io/slurmctld>`_: Slurm control node (running
-  ``slurmctld``)
-
-* `slurmrestd <https://charmhub.io/slurmrestd>`_: Slurm REST service (running
-  ``slurmrestd``)
+* |slurmd-badge|: Compute and login nodes (running ``slurmd``)
+* |slurmdbd-badge|: Slurm database node (running ``slurmdbd``)
+* |slurmctld-badge|: Slurm control node (running ``slurmctld``)
+* |slurmrestd-badge|: Slurm REST service (running ``slurmrestd``)
 
 Additionally we include the `Node Health Check (NHC)
 <https://github.com/mej/nhc>`_ with a minimal configuration and checks to
@@ -56,3 +49,15 @@ The easiest way to install Infiniband drivers on the compute nodes is to use
 the charm supplied actions related to Infiniband management. Check
 :ref:`infiniband` section for more details on Infiniband driver lifecycle
 operations.
+
+.. |slurmd-badge| image:: https://charmhub.io/slurmd/badge.svg
+   :target: https://charmhub.io/slurmd
+
+.. |slurmdbd-badge| image:: https://charmhub.io/slurmdbd/badge.svg
+   :target: https://charmhub.io/slurmdbd
+
+.. |slurmctld-badge| image:: https://charmhub.io/slurmctld/badge.svg
+   :target: https://charmhub.io/slurmctld
+
+.. |slurmrestd-badge| image:: https://charmhub.io/slurmrestd/badge.svg
+   :target: https://charmhub.io/slurmrestd
