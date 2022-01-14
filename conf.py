@@ -2,8 +2,11 @@
 
 # -- Project information -----------------------------------------------------
 
+from datetime import datetime
+
+current_year = datetime.today().year
 project = 'Omnivector Slurm Distribution'
-copyright = '2021, Omnivector Solutions'
+copyright = f'2021-{current_year}, Omnivector Solutions'
 author = 'Omnivector Solutions'
 repo_url = 'https://github.com/omnivector-solutions/osd-documentation/'
 
