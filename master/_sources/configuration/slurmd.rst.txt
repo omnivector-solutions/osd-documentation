@@ -48,7 +48,7 @@ Name by which the partition may be referenced (e.g. ``Interactive``).
 
 .. note::
 
-   the partition name should only contain letters, numbers, and hyphens. Spaces are not allowed.
+   The partition name should only contain letters, numbers, and hyphens. Spaces are not allowed.
 
 
 
@@ -169,7 +169,7 @@ Overrides the repository file with a custom repository for Infiniband installati
 
 .. note::
 
-   this file should be base64 encoded.
+   This file should be base64 encoded.
 
 On CentOS, the file is placed at ``/etc/yum.repos.d/infiniband.repo``, while on Ubuntu it is at ``/etc/apt/sources.list.d/infiniband.list``.
 
