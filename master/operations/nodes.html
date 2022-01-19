@@ -304,6 +304,11 @@
    Resuming nodes
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rebooting-nodes">
+   Rebooting Nodes
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -342,6 +347,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#resuming-nodes">
    Resuming nodes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rebooting-nodes">
+   Rebooting Nodes
   </a>
  </li>
 </ul>
@@ -469,6 +479,44 @@ jobs.</p>
 change will be overwritten by the charms whenever OSD needs to update the
 Slurm configuration file.</p>
 </div>
+</div>
+<div class="section" id="rebooting-nodes">
+<span id="id2"></span><h2>Rebooting Nodes<a class="headerlink" href="#rebooting-nodes" title="Permalink to this headline">¶</a></h2>
+<p>There are multiple ways of rebooting machines controlled via Juju. Our
+suggestion to reboot a specific unit is to run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">reboot</span></code> via a <code class="docutils literal notranslate"><span class="pre">juju</span>
+<span class="pre">ssh</span></code> command, either specifying a <em>unit</em> or a <em>machine number</em>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju ssh foo/2 <span class="s2">&quot;sudo reboot&quot;</span>
+$ juju ssh <span class="m">42</span> <span class="s2">&quot;sudo reboot&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command will return with an non-zero status code, because the SSH
+connection will be interrupted when the machines turns off. This is
+expected:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju ssh slurmd/leader <span class="s2">&quot;sudo reboot&quot;</span>
+Connection to <span class="m">10</span>.220.130.124 closed by remote host.
+Connection to <span class="m">10</span>.220.130.124 closed.
+ERROR subprocess encountered error code <span class="m">255</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This command will immediately reboot the nodes. If there are any jobs
+running, they will be forcefully terminated. Be sure to have the nodes in
+<code class="docutils literal notranslate"><span class="pre">down</span></code> state before running this command (if rebooting compute nodes).</p>
+</div>
+<p>Another options, when all that is needed is to reboot a Slurm <em>compute node</em>
+(any unit running the Slurmd charm), is to use Slurm's <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">reboot</span></code>
+command, wrapped in <code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">run</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run --unit slurmctld/leader <span class="s2">&quot;scontrol reboot ASAP c-01,g-01&quot;</span>
+</pre></div>
+</div>
+<p>The advantage of this approach is that it will not reboot the node if there are
+any jobs running.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">reboot</span></code> command has other optional parameters that can be
+useful, check the <a class="reference external" href="https://slurm.schedmd.com/scontrol.html#OPT_reboot">Slurm documentation for more details</a>.</p>
 </div>
 </div>
 
