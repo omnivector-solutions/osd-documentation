@@ -33,6 +33,7 @@ configuration options and actions.
    nodes
    partitions
    infiniband
+   gpu
    nhc
    backup-restore
    upgrading-osd
