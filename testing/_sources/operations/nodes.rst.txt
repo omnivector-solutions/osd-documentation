@@ -137,3 +137,51 @@ action has a syntax similar to ``update`` command of Slurm's ``scontrol``:
    Although it is possible to change the node state with ``scontrol``, that
    change will be overwritten by the charms whenever OSD needs to update the
    Slurm configuration file.
+
+.. _rebooting-nodes:
+
+Rebooting Nodes
+###############
+
+There are multiple ways of rebooting machines controlled via Juju. Our
+suggestion to reboot a specific unit is to run ``sudo reboot`` via a ``juju
+ssh`` command, either specifying a *unit* or a *machine number*:
+
+.. code-block:: bash
+
+   $ juju ssh foo/2 "sudo reboot"
+   $ juju ssh 42 "sudo reboot"
+
+.. note::
+
+   This command will return with an non-zero status code, because the SSH
+   connection will be interrupted when the machines turns off. This is
+   expected:
+
+   .. code-block:: bash
+
+      $ juju ssh slurmd/leader "sudo reboot"
+      Connection to 10.220.130.124 closed by remote host.
+      Connection to 10.220.130.124 closed.
+      ERROR subprocess encountered error code 255
+
+.. warning::
+
+   This command will immediately reboot the nodes. If there are any jobs
+   running, they will be forcefully terminated. Be sure to have the nodes in
+   ``down`` state before running this command (if rebooting compute nodes).
+
+Another options, when all that is needed is to reboot a Slurm *compute node*
+(any unit running the Slurmd charm), is to use Slurm's ``scontrol reboot``
+command, wrapped in ``juju run``:
+
+.. code-block:: bash
+
+   $ juju run --unit slurmctld/leader "scontrol reboot ASAP c-01,g-01"
+
+The advantage of this approach is that it will not reboot the node if there are
+any jobs running.
+
+The ``scontrol reboot`` command has other optional parameters that can be
+useful, check the `Slurm documentation for more details
+<https://slurm.schedmd.com/scontrol.html#OPT_reboot>`_.

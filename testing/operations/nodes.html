@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=84ace793992934648b4de8eed757e5a2" type="text/css" />
     
   <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
@@ -31,7 +31,7 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Partitions" href="partitions.html" />
@@ -52,7 +52,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<div class="col-12 col-md-3 bd-sidebar site-navigation " id="site-navigation">
     
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
@@ -111,6 +116,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="infiniband.html">
      Infiniband
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gpu.html">
+     GPU Support
     </a>
    </li>
    <li class="toctree-l2">
@@ -208,22 +218,22 @@
 
 
           
+<!-- This is an invisible pixel that we watch to see if we've scrolled. -->
+<div class="sbt-scroll-pixel-helper"></div>
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
     <div class="topbar container-xl fixed-top">
     <div class="topbar-contents row">
         <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
         <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
+            <div class="topbar-left">
+                
+                <label class="nav-toggle-button" for="__navigation">
+                    <div class="visually-hidden">Toggle navigation</div>
+                    <i class="fas fa-bars"></i>
+                </label>
+                
+            </div>
             
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
@@ -299,6 +309,11 @@
    Resuming nodes
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rebooting-nodes">
+   Rebooting Nodes
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -337,6 +352,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#resuming-nodes">
    Resuming nodes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rebooting-nodes">
+   Rebooting Nodes
   </a>
  </li>
 </ul>
@@ -464,6 +484,44 @@ jobs.</p>
 change will be overwritten by the charms whenever OSD needs to update the
 Slurm configuration file.</p>
 </div>
+</div>
+<div class="section" id="rebooting-nodes">
+<span id="id2"></span><h2>Rebooting Nodes<a class="headerlink" href="#rebooting-nodes" title="Permalink to this headline">¶</a></h2>
+<p>There are multiple ways of rebooting machines controlled via Juju. Our
+suggestion to reboot a specific unit is to run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">reboot</span></code> via a <code class="docutils literal notranslate"><span class="pre">juju</span>
+<span class="pre">ssh</span></code> command, either specifying a <em>unit</em> or a <em>machine number</em>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju ssh foo/2 <span class="s2">&quot;sudo reboot&quot;</span>
+$ juju ssh <span class="m">42</span> <span class="s2">&quot;sudo reboot&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command will return with an non-zero status code, because the SSH
+connection will be interrupted when the machines turns off. This is
+expected:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju ssh slurmd/leader <span class="s2">&quot;sudo reboot&quot;</span>
+Connection to <span class="m">10</span>.220.130.124 closed by remote host.
+Connection to <span class="m">10</span>.220.130.124 closed.
+ERROR subprocess encountered error code <span class="m">255</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This command will immediately reboot the nodes. If there are any jobs
+running, they will be forcefully terminated. Be sure to have the nodes in
+<code class="docutils literal notranslate"><span class="pre">down</span></code> state before running this command (if rebooting compute nodes).</p>
+</div>
+<p>Another options, when all that is needed is to reboot a Slurm <em>compute node</em>
+(any unit running the Slurmd charm), is to use Slurm's <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">reboot</span></code>
+command, wrapped in <code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">run</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run --unit slurmctld/leader <span class="s2">&quot;scontrol reboot ASAP c-01,g-01&quot;</span>
+</pre></div>
+</div>
+<p>The advantage of this approach is that it will not reboot the node if there are
+any jobs running.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">reboot</span></code> command has other optional parameters that can be
+useful, check the <a class="reference external" href="https://slurm.schedmd.com/scontrol.html#OPT_reboot">Slurm documentation for more details</a>.</p>
 </div>
 </div>
 

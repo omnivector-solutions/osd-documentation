@@ -138,7 +138,7 @@ Accounting and profiling sampling intervals for the acct_gather plugins.
 
 .. note::
 
-   a value of ``0`` disables the periodic sampling. In this case, the accounting information is collected when the job terminates.
+   A value of ``0`` disables the periodic sampling. In this case, the accounting information is collected when the job terminates.
 
 Example Usage:
 
@@ -188,7 +188,7 @@ Display the currently used ``slurm.conf``.
 
 .. note::
 
-   this file only exists in ``slurmctld`` charm and is automatically distributed to all compute nodes by Slurm.
+   This file only exists in ``slurmctld`` charm and is automatically distributed to all compute nodes by Slurm.
 
 Example Usage:
 
@@ -240,7 +240,7 @@ Resume specified nodes.
 
 .. note::
 
-   newly added nodes will remain in the ``down`` state until configured, with the ``node-configured`` action.
+   Newly added nodes will remain in the ``down`` state until configured, with the ``node-configured`` action.
 
 Example Usage:
 

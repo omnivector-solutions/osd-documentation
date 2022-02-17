@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Operations &#8212; Omnivector Slurm Distribution  documentation</title>
+    <title>GPU Support &#8212; Omnivector Slurm Distribution  documentation</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -34,8 +34,8 @@
     <script src="../_static/sphinx-book-theme.9d8b4a8b9bb19db25eeaddc40d639ba2.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Installation" href="installation.html" />
-    <link rel="prev" title="Installation overview" href="../installation.html" />
+    <link rel="next" title="NHC" href="nhc.html" />
+    <link rel="prev" title="Infiniband" href="infiniband.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -89,7 +89,7 @@
   </a>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+  <a class="reference internal" href="overview.html">
    Operations Overview
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -97,7 +97,7 @@
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="installation.html">
      Installation
@@ -118,8 +118,8 @@
      Infiniband
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="gpu.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      GPU Support
     </a>
    </li>
@@ -243,7 +243,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/operations/overview.rst.txt"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/operations/gpu.rst.txt"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.rst</button></a>
         <!-- Download PDF via print -->
@@ -263,7 +263,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/omnivector-solutions/osd-documentation//issues/new?title=Issue%20on%20page%20%2Foperations/overview.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/omnivector-solutions/osd-documentation//issues/new?title=Issue%20on%20page%20%2Foperations/gpu.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -284,6 +284,19 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nvidia">
+   Nvidia
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -291,80 +304,54 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Operations</h1>
+                <h1>GPU Support</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nvidia">
+   Nvidia
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="section" id="operations">
-<span id="id1"></span><h1>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h1>
-<p>The Omnivector Slurm Distribution can be configured to the extent that you can configure Slurm itself.
-Meaning that all upstream Slurm configurations are supported by OSD.</p>
-<p>The operational magic in OSD is encapsulated in ops code called <strong>charms</strong>. We have curated a suite
-of automation for each Slurm component: <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code>, <code class="docutils literal notranslate"><span class="pre">slurmd</span></code>, <code class="docutils literal notranslate"><span class="pre">slurmdbd</span></code>, and <code class="docutils literal notranslate"><span class="pre">slurmrestd</span></code>.</p>
-<p>Each Slurm component charm provides a set of options that enable operators/administrators to operate the cluster.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code> file can be customized through the <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm
-configuration options. There is no need to manually update this file in all
-compute nodes: OSD combines the power of Juju operations with Slurm in
-configless mode (see <a class="reference internal" href="../architecture.html#architecture"><span class="std std-ref">OSD Architecture</span></a> for details) to configure all the
-nodes in the cluster with one single command. This also means that any
-modification to a node's <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code> file will be discarded.</p>
-<p>Alongside the capability to manage the <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code>, the charms also provide a set of operational
-tools called <em>actions</em>.</p>
-<p>Find below a list of operations on how to manage and configure OSD. Refer to
-<a class="reference internal" href="../configuration/configuration.html#configuration-and-administration"><span class="std std-ref">Configuration and Administration</span></a> for a complete list of all
-configuration options and actions.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nodes.html">Nodes operations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="nodes.html#adding-nodes">Adding nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nodes.html#removing-nodes">Removing nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nodes.html#draining-nodes">Draining nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nodes.html#resuming-nodes">Resuming nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="nodes.html#rebooting-nodes">Rebooting Nodes</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="partitions.html">Partitions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="partitions.html#adding-partitions">Adding partitions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="partitions.html#changing-partition-name">Changing partition name</a></li>
-<li class="toctree-l2"><a class="reference internal" href="partitions.html#setting-the-default-partition">Setting the default partition</a></li>
-<li class="toctree-l2"><a class="reference internal" href="partitions.html#changing-partition-state">Changing partition state</a></li>
-<li class="toctree-l2"><a class="reference internal" href="partitions.html#extra-partition-configuration-options">Extra partition configuration options</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="infiniband.html">Infiniband</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Support</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="gpu.html#nvidia">Nvidia</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="nhc.html">NHC</a></li>
-<li class="toctree-l1"><a class="reference internal" href="backup-restore.html">Backup and restore the Slurm database</a></li>
-<li class="toctree-l1"><a class="reference internal" href="upgrading-osd.html">Upgrade OSD</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="upgrading-osd.html#charm-upgrades">Charm Upgrades</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="accounting-profiling.html">Accounting And Profiling</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="accounting-profiling.html#slurmdbd">Slurmdbd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="accounting-profiling.html#elasticsearch-plugin">ElasticSearch plugin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="accounting-profiling.html#influxdb-profiling-plugin">InfluxDB profiling plugin</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="monitoring.html">Monitoring</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="monitoring.html#id2">Prometheus node_exporter</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="logging.html#id2">Fluentbit</a></li>
-</ul>
-</li>
-</ul>
+  <div class="section" id="gpu-support">
+<span id="gpu"></span><h1>GPU Support<a class="headerlink" href="#gpu-support" title="Permalink to this headline">¶</a></h1>
+<p>OSD supports installing GPU drivers for the compute nodes via a set of Juju
+Actions.</p>
+<p>We currently support Nvidia GPUs only.</p>
+<div class="section" id="nvidia">
+<h2>Nvidia<a class="headerlink" href="#nvidia" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm provides an <code class="docutils literal notranslate"><span class="pre">install-nvidia</span></code> action to install the
+Nvidia drivers easily:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmd/leader install-nvidia
+</pre></div>
+</div>
+<p>This action, by default, pulls the latest drivers from official Nvidia
+repositories. If you need to install older drivers, you should specify them
+with the action <code class="docutils literal notranslate"><span class="pre">nvidia-package</span></code> _before_ installing the drivers:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmd/leader nvidia-package <span class="nv">package</span><span class="o">=</span><span class="s2">&quot;nvidia-driver-branch-470&quot;</span> <span class="c1"># for CentOS7</span>
+$ juju run-action slurmd/leader nvidia-package <span class="nv">package</span><span class="o">=</span><span class="s2">&quot;cuda-drivers-470&quot;</span> <span class="c1"># for Ubuntu 20.04</span>
+$ juju run-action slurmd/leader install-nvidia
+</pre></div>
+</div>
+<p>Please check the official <a class="reference external" href="https://docs.nvidia.com/deploy/cuda-compatibility/#faq">Nvidia documentation about compatibility</a> before installing
+the drivers.</p>
+<p>After installing GPU Drivers, one should reboot them. Check
+<a class="reference internal" href="nodes.html#rebooting-nodes"><span class="std std-ref">Rebooting Nodes</span></a> section for details on how to do that.</p>
 </div>
 </div>
 
@@ -374,17 +361,17 @@ configuration options and actions.</p>
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../installation.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="infiniband.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Installation overview</p>
+            <p class="prev-next-title">Infiniband</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="installation.html" title="next page">
+    <a class='right-next' id="next-link" href="nhc.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Installation</p>
+        <p class="prev-next-title">NHC</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
