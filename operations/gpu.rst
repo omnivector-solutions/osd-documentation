@@ -42,5 +42,5 @@ the drivers.
    <https://docs.nvidia.com/deploy/cuda-compatibility/#faq>`_ to guide you on
    installing the correct version.
 
-After installing GPU Drivers, your should reboot the nodes using them. Check
-:ref:`rebooting-nodes` section for details on how to do that.
+After installing GPU Drivers, your need to reboot the node. Check
+:ref:`rebooting-nodes` section for details on rebooting them.
