@@ -330,9 +330,9 @@
                 
   <div class="section" id="gpu-support">
 <span id="gpu"></span><h1>GPU Support<a class="headerlink" href="#gpu-support" title="Permalink to this headline">¶</a></h1>
-<p>OSD supports installing GPU drivers for the compute nodes via a set of Juju
-Actions.</p>
-<p>We currently support Nvidia GPUs only.</p>
+<p>OSD supports the installation of GPU drivers for the compute nodes via a set of
+Juju Actions.</p>
+<p>We currently only support Nvidia GPUs.</p>
 <div class="section" id="nvidia">
 <h2>Nvidia<a class="headerlink" href="#nvidia" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm provides an <code class="docutils literal notranslate"><span class="pre">install-nvidia</span></code> action to install the
@@ -342,7 +342,8 @@ Nvidia drivers easily:</p>
 </div>
 <p>This action, by default, pulls the latest drivers from official Nvidia
 repositories. If you need to install older drivers, you should specify them
-with the action <code class="docutils literal notranslate"><span class="pre">nvidia-package</span></code> _before_ installing the drivers:</p>
+with the action <code class="docutils literal notranslate"><span class="pre">nvidia-package</span></code> <em>before</em> installing the drivers. For
+example, to install the version <code class="docutils literal notranslate"><span class="pre">470</span></code> for the Kepler GPUs:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmd/leader nvidia-package <span class="nv">package</span><span class="o">=</span><span class="s2">&quot;nvidia-driver-branch-470&quot;</span> <span class="c1"># for CentOS7</span>
 $ juju run-action slurmd/leader nvidia-package <span class="nv">package</span><span class="o">=</span><span class="s2">&quot;cuda-drivers-470&quot;</span> <span class="c1"># for Ubuntu 20.04</span>
 $ juju run-action slurmd/leader install-nvidia
@@ -350,7 +351,14 @@ $ juju run-action slurmd/leader install-nvidia
 </div>
 <p>Please check the official <a class="reference external" href="https://docs.nvidia.com/deploy/cuda-compatibility/#faq">Nvidia documentation about compatibility</a> before installing
 the drivers.</p>
-<p>After installing GPU Drivers, one should reboot them. Check
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, OSD will install the latest drivers from Nvidia. This might not
+be the drivers your graphics card need. Please double check the versions
+before installing the drivers. Nvidia website has a <a class="reference external" href="https://docs.nvidia.com/deploy/cuda-compatibility/#faq">compatibility page</a> to guide you on
+installing the correct version.</p>
+</div>
+<p>After installing GPU Drivers, your should reboot the nodes using them. Check
 <a class="reference internal" href="nodes.html#rebooting-nodes"><span class="std std-ref">Rebooting Nodes</span></a> section for details on how to do that.</p>
 </div>
 </div>
