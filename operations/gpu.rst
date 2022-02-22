@@ -21,7 +21,8 @@ Nvidia drivers easily:
 
 This action, by default, pulls the latest drivers from official Nvidia
 repositories. If you need to install older drivers, you should specify them
-with the action ``nvidia-package`` *before* installing the drivers:
+with the action ``nvidia-package`` *before* installing the drivers. For
+example, to install the version ``470`` for the Kepler GPUs:
 
 .. code-block:: bash
 
@@ -32,6 +33,14 @@ with the action ``nvidia-package`` *before* installing the drivers:
 Please check the official `Nvidia documentation about compatibility
 <https://docs.nvidia.com/deploy/cuda-compatibility/#faq>`_ before installing
 the drivers.
+
+.. note::
+
+   By default, OSD will install the latest drivers from Nvidia. This might not
+   be the drivers your graphics card need. Please double check the versions
+   before installing the drivers. Nvidia website has a `compatibility page
+   <https://docs.nvidia.com/deploy/cuda-compatibility/#faq>`_ to guide you on
+   installing the correct version.
 
 After installing GPU Drivers, your should reboot the nodes using them. Check
 :ref:`rebooting-nodes` section for details on how to do that.
