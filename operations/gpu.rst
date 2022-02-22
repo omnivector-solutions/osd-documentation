@@ -12,12 +12,12 @@ We currently only support Nvidia GPUs.
 Nvidia
 ======
 
-The ``slurmd`` charm provides an ``install-nvidia`` action to install the
+The ``slurmd`` charm provides an ``nvidia-install`` action to install the
 Nvidia drivers easily:
 
 .. code-block:: bash
 
-   $ juju run-action slurmd/leader install-nvidia
+   $ juju run-action slurmd/leader nvidia-install
 
 This action, by default, pulls the latest drivers from official Nvidia
 repositories. If you need to install older drivers, you should specify them
@@ -28,7 +28,7 @@ example, to install the version ``470`` for the Kepler GPUs:
 
    $ juju run-action slurmd/leader nvidia-package package="nvidia-driver-branch-470" # for CentOS7
    $ juju run-action slurmd/leader nvidia-package package="cuda-drivers-470" # for Ubuntu 20.04
-   $ juju run-action slurmd/leader install-nvidia
+   $ juju run-action slurmd/leader nvidia-install
 
 Please check the official `Nvidia documentation about compatibility
 <https://docs.nvidia.com/deploy/cuda-compatibility/#faq>`_ before installing
