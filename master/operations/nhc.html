@@ -279,6 +279,19 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuration">
+   Configuration
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -291,6 +304,19 @@
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuration">
+   Configuration
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -300,9 +326,17 @@
   <div class="section" id="nhc">
 <span id="id1"></span><h1>NHC<a class="headerlink" href="#nhc" title="Permalink to this headline">¶</a></h1>
 <p>OSD installs <a class="reference external" href="https://github.com/mej/nhc">LBNL Node Health Check (NHC)</a> by
-default in the <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm. The base configuration file contains only
-basic checks to ensure Slurm and munge processes are active. You
-can easily extend the NHC configuration to match your setup.</p>
+default in the <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm. NHC is an utility to help to prevent jobs to
+run on unhealthy nodes. In order to identify if a node is healthy or not, NHC
+runs checks periodically. These health checks can be customized and tuned to
+each particular cluster, node, and/or hardware.</p>
+<p>The base configuration file contains only basic checks to ensure Slurm and
+Munge processes are active. You can easily extend the NHC configuration to
+match your setup.</p>
+<p>When NHC identifies a node to be unhealthy, NHC drains this node to prevent
+future jobs from running on it.</p>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>OSD uses short hostnames (<code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-s</span></code>) as node identifiers in Slurm.
@@ -311,7 +345,9 @@ also. The base NHC configuration provided in the slurmd charm takes care of
 this by setting <code class="docutils literal notranslate"><span class="pre">*</span> <span class="pre">||</span> <span class="pre">HOSTNAME=&quot;$HOSTNAME_S&quot;</span></code> at the top of the NHC
 configuration file. This value will not be overridden by any custom user
 supplied NHC configuration.</p>
-<p>This is specially important if running checks on specific nodes on the cluster. For example, to only run the Nvidia monitoring on the <code class="docutils literal notranslate"><span class="pre">gpu-*</span></code> nodes:</p>
+<p>This is specially important if running checks on specific nodes on the
+cluster. For example, to only run the Nvidia monitoring on the <code class="docutils literal notranslate"><span class="pre">gpu-*</span></code>
+nodes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gpu</span><span class="o">-*</span> <span class="o">||</span> <span class="n">NVIDIA_HEALTHMON</span><span class="o">=...</span>
 </pre></div>
 </div>
@@ -340,7 +376,19 @@ contains our base checks in addition to your custom ones:</p>
 <span class="n">HealthCheckNodeState</span><span class="o">=</span><span class="n">ANY</span><span class="p">,</span><span class="n">CYCLE</span>
 </pre></div>
 </div>
-<p>It is possible to change the interval (in seconds) and the node states:</p>
+<p>These values implies that NHC will run at every 600 seconds (10 minutes), on
+all compute nodes regardless of their state (even on allocated nodes), but it
+will not run on all of them at the same time.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>NHC does not <em>undrain</em> a node. If a node was drained and NHC runs on that
+node, the node will continue on the drained state, regardless of the checks
+passing or failing.</p>
+<p>This ensures that if someone drained a node for troubleshooting, this node
+will not be resumed before the administrator finishes their tasks</p>
+</div>
+<p>It is possible to change the interval (in seconds) that NHC runs and the node
+states to perform the checks:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmd health-check-interval<span class="o">=</span><span class="m">300</span>
 $ juju config slurmd health-check-state<span class="o">=</span><span class="s2">&quot;CYCLE,ANY&quot;</span>
 </pre></div>
@@ -348,6 +396,7 @@ $ juju config slurmd health-check-state<span class="o">=</span><span class="s2">
 <p>Please refer to the
 <a class="reference external" href="https://slurm.schedmd.com/slurm.conf.html">slurm.conf documentation</a> for
 configuration details.</p>
+</div>
 </div>
 
 

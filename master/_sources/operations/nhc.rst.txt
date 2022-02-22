@@ -5,9 +5,20 @@ NHC
 ===
 
 OSD installs `LBNL Node Health Check (NHC) <https://github.com/mej/nhc>`_ by
-default in the ``slurmd`` charm. The base configuration file contains only
-basic checks to ensure Slurm and munge processes are active. You
-can easily extend the NHC configuration to match your setup.
+default in the ``slurmd`` charm. NHC is an utility to help to prevent jobs to
+run on unhealthy nodes. In order to identify if a node is healthy or not, NHC
+runs checks periodically. These health checks can be customized and tuned to
+each particular cluster, node, and/or hardware.
+
+The base configuration file contains only basic checks to ensure Slurm and
+Munge processes are active. You can easily extend the NHC configuration to
+match your setup.
+
+When NHC identifies a node to be unhealthy, NHC drains this node to prevent
+future jobs from running on it.
+
+Configuration
+=============
 
 .. note::
 
@@ -18,7 +29,9 @@ can easily extend the NHC configuration to match your setup.
    configuration file. This value will not be overridden by any custom user
    supplied NHC configuration.
 
-   This is specially important if running checks on specific nodes on the cluster. For example, to only run the Nvidia monitoring on the ``gpu-*`` nodes:
+   This is specially important if running checks on specific nodes on the
+   cluster. For example, to only run the Nvidia monitoring on the ``gpu-*``
+   nodes:
 
    ::
 
@@ -57,7 +70,21 @@ The default settings used in ``slurm.conf`` for NHC are as follows:
    HealthCheckInterval=600
    HealthCheckNodeState=ANY,CYCLE
 
-It is possible to change the interval (in seconds) and the node states:
+These values implies that NHC will run at every 600 seconds (10 minutes), on
+all compute nodes regardless of their state (even on allocated nodes), but it
+will not run on all of them at the same time.
+
+.. note::
+
+   NHC does not *undrain* a node. If a node was drained and NHC runs on that
+   node, the node will continue on the drained state, regardless of the checks
+   passing or failing.
+
+   This ensures that if someone drained a node for troubleshooting, this node
+   will not be resumed before the administrator finishes their tasks
+
+It is possible to change the interval (in seconds) that NHC runs and the node
+states to perform the checks:
 
 .. code-block:: bash
 
