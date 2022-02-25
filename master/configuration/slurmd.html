@@ -119,6 +119,11 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../operations/gpu.html">
+     GPU Support
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../operations/nhc.html">
      NHC
     </a>
@@ -449,6 +454,33 @@
      </code>
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nvidia-repo">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       nvidia-repo
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nvidia-package">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       nvidia-package
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nvidia-install">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       nvidia-install
+      </span>
+     </code>
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -636,6 +668,33 @@
      </code>
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nvidia-repo">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       nvidia-repo
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nvidia-package">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       nvidia-package
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nvidia-install">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       nvidia-install
+      </span>
+     </code>
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -778,6 +837,41 @@
 <div class="section" id="is-active-infiniband">
 <h3><code class="docutils literal notranslate"><span class="pre">is-active-infiniband</span></code><a class="headerlink" href="#is-active-infiniband" title="Permalink to this headline">¶</a></h3>
 <p>Check if Infiniband systemd service is active.</p>
+</div>
+<div class="section" id="nvidia-repo">
+<h3><code class="docutils literal notranslate"><span class="pre">nvidia-repo</span></code><a class="headerlink" href="#nvidia-repo" title="Permalink to this headline">¶</a></h3>
+<p>Get or set the repository used to install Nvidia drivers.</p>
+<p>This value must be set <strong>before</strong> installing the drivers. Changing it afterwards has no impact on the system.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The repository file must be base64 encoded when using this action.</p>
+</div>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">repo</span></code>: If specified, set the repository to the value specified.</p>
+<ul>
+<li><p>type: string</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="nvidia-package">
+<h3><code class="docutils literal notranslate"><span class="pre">nvidia-package</span></code><a class="headerlink" href="#nvidia-package" title="Permalink to this headline">¶</a></h3>
+<p>Get or set the Nvidia driver package name.</p>
+<p>This value must be set <strong>before</strong> installing the drivers. Changing it afterwards has no impact on the system.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">package</span></code>: If specified, set the package name to the value specified</p>
+<ul>
+<li><p>type: string</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="nvidia-install">
+<h3><code class="docutils literal notranslate"><span class="pre">nvidia-install</span></code><a class="headerlink" href="#nvidia-install" title="Permalink to this headline">¶</a></h3>
+<p>Install Nvidia GPU drivers. This might take a few minutes to complete.</p>
+<p>If no custom repository was specified before, this action will set the Nvidia repository as the default and install the latest drivers from it.</p>
 </div>
 </div>
 </div>
