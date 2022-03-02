@@ -219,6 +219,9 @@ The ``slurm-addons`` directory contains overlays to extend Slurm with plugins:
   <https://charmhub.io/prometheus2>`_ and `prometheus-node-exporter
   <https://charmhub.io/prometheus-node-exporter>`_ for cluster monitoring. See
   :ref:`monitoring` for details on usage.
+- ``slurm-addons/elasticsearch-acct.yaml``: overlay to deploy `elasticsearch`
+  and relate it to ``slurmctld`` to collect accounting information about the
+  jobs. See :ref:`elasticsearch-accounting` for details.
 
 For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal, using the
 ``latest/stable`` charms:
