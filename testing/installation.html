@@ -634,6 +634,12 @@ to collect profiling information about the jobs. See
 <a class="reference internal" href="operations/accounting-profiling.html#influxdb-profiling"><span class="std std-ref">InfluxDB profiling plugin</span></a> for details on usage.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">slurm-addons/monitoring.yaml</span></code>: overlay to deploy <a class="reference external" href="https://charmhub.io/prometheus2">prometheus2</a> and <a class="reference external" href="https://charmhub.io/prometheus-node-exporter">prometheus-node-exporter</a> for cluster monitoring. See
 <a class="reference internal" href="operations/monitoring.html#monitoring"><span class="std std-ref">Monitoring</span></a> for details on usage.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slurm-addons/elasticsearch-acct.yaml</span></code>: overlay to deploy <cite>elasticsearch</cite>
+and relate it to <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> to collect accounting information about the
+jobs. See <a class="reference internal" href="operations/accounting-profiling.html#elasticsearch-accounting"><span class="std std-ref">ElasticSearch plugin</span></a> for details.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slurm-addons/fluentbit.yaml</span></code>: overlay to deploy <cite>fluentbit</cite> and relate it
+to the Slurm-charms to forward logs to a centralized system. See
+<a class="reference internal" href="operations/logging.html#logging"><span class="std std-ref">Logging</span></a> for details.</p></li>
 </ul>
 <p>For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal, using the
 <code class="docutils literal notranslate"><span class="pre">latest/stable</span></code> charms:</p>

@@ -26,7 +26,7 @@ OSD configures Fluentbit to automatically forward the following logs:
 
 Each log entry is enriched with:
 
-*  ``cluster-name``
+* ``cluster-name``
 * ``hostname``
 * ``service`` (one of ``nhc``, ``slurmd``, ``slurmdbd``, ``slurmctld``)
 * ``partition-name`` (only for nodes running the ``slurmd`` charm)
