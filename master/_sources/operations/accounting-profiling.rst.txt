@@ -18,7 +18,7 @@ Slurmdbd
 ``slurmdbd`` is used for job accounting.
 
 
-.. _elasticsearch-paccounting:
+.. _elasticsearch-accounting:
 
 ElasticSearch plugin
 =====================
