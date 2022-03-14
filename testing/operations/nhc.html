@@ -293,6 +293,18 @@
   <a class="reference internal nav-link" href="#configuration">
    Configuration
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#health-checks">
+     Health Checks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nhc-options">
+     NHC options
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -318,6 +330,18 @@
   <a class="reference internal nav-link" href="#configuration">
    Configuration
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#health-checks">
+     Health Checks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nhc-options">
+     NHC options
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -342,6 +366,8 @@ match your setup.</p>
 future jobs from running on it.</p>
 <div class="section" id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="health-checks">
+<h3>Health Checks<a class="headerlink" href="#health-checks" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>OSD uses short hostnames (<code class="docutils literal notranslate"><span class="pre">hostname</span> <span class="pre">-s</span></code>) as node identifiers in Slurm.
@@ -375,8 +401,11 @@ contains our base checks in addition to your custom ones:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmd/leader show-nhc-config --wait
 </pre></div>
 </div>
+</div>
+<div class="section" id="nhc-options">
+<h3>NHC options<a class="headerlink" href="#nhc-options" title="Permalink to this headline">¶</a></h3>
 <p>The default settings used in <code class="docutils literal notranslate"><span class="pre">slurm.conf</span></code> for NHC are as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HealthCheckProgram</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">nhc</span><span class="o">-</span><span class="n">wrapper</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HealthCheckProgram</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">omni</span><span class="o">-</span><span class="n">nhc</span><span class="o">-</span><span class="n">wrapper</span>
 <span class="n">HealthCheckInterval</span><span class="o">=</span><span class="mi">600</span>
 <span class="n">HealthCheckNodeState</span><span class="o">=</span><span class="n">ANY</span><span class="p">,</span><span class="n">CYCLE</span>
 </pre></div>
@@ -384,6 +413,21 @@ contains our base checks in addition to your custom ones:</p>
 <p>These values implies that NHC will run at every 600 seconds (10 minutes), on
 all compute nodes regardless of their state (even on allocated nodes), but it
 will not run on all of them at the same time.</p>
+<p>The script <code class="docutils literal notranslate"><span class="pre">/usr/sbin/omin-nhc-wrapper</span></code> allows you to supply custom arguments
+to change how Slurm invokes the Health Check scripts via a <code class="docutils literal notranslate"><span class="pre">charm-slurmctld</span></code>
+configuration. For example, for NHC to send an e-mail to <code class="docutils literal notranslate"><span class="pre">admin&#64;company.com</span></code>
+with the subject header <code class="docutils literal notranslate"><span class="pre">NHC</span> <span class="pre">errors</span></code> when it detects an error:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmctld health-check-params<span class="o">=</span><span class="s1">&#39;-M admin@company.com -S &quot;NHC errors&quot;&#39;</span>
+</pre></div>
+</div>
+<p>Please check the <a class="reference external" href="https://github.com/mej/nhc">documentation for NHC</a> for
+configuration details.</p>
+<p>It is possible to change the interval (in seconds) that NHC runs and the node
+states to perform the checks:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmd health-check-interval<span class="o">=</span><span class="m">300</span>
+$ juju config slurmd health-check-state<span class="o">=</span><span class="s2">&quot;CYCLE,ANY&quot;</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>NHC does not <em>undrain</em> a node. If a node was drained and NHC runs on that
@@ -392,15 +436,10 @@ passing or failing.</p>
 <p>This ensures that if someone drained a node for troubleshooting, this node
 will not be resumed before the administrator finishes their tasks</p>
 </div>
-<p>It is possible to change the interval (in seconds) that NHC runs and the node
-states to perform the checks:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju config slurmd health-check-interval<span class="o">=</span><span class="m">300</span>
-$ juju config slurmd health-check-state<span class="o">=</span><span class="s2">&quot;CYCLE,ANY&quot;</span>
-</pre></div>
-</div>
 <p>Please refer to the
 <a class="reference external" href="https://slurm.schedmd.com/slurm.conf.html">slurm.conf documentation</a> for
 configuration details.</p>
+</div>
 </div>
 </div>
 

@@ -223,7 +223,7 @@ The ``slurm-addons`` directory contains overlays to extend Slurm with plugins:
   and relate it to ``slurmctld`` to collect accounting information about the
   jobs. See :ref:`elasticsearch-accounting` for details.
 - ``slurm-addons/fluentbit.yaml``: overlay to deploy `fluentbit` and relate it
-  to the Slurm-charms to forward logs to a centralized system. See
+  to the ``slurm-charms`` to forward logs to a centralized system. See
   :ref:`logging` for details.
 
 For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal, using the

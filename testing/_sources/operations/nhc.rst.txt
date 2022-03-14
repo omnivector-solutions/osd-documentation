@@ -20,6 +20,9 @@ future jobs from running on it.
 Configuration
 =============
 
+Health Checks
+-------------
+
 .. note::
 
    OSD uses short hostnames (``hostname -s``) as node identifiers in Slurm.
@@ -62,17 +65,40 @@ contains our base checks in addition to your custom ones:
 
         $ juju run-action slurmd/leader show-nhc-config --wait
 
+NHC options
+-----------
+
 The default settings used in ``slurm.conf`` for NHC are as follows:
 
 ::
 
-   HealthCheckProgram=/usr/sbin/nhc-wrapper
+   HealthCheckProgram=/usr/sbin/omni-nhc-wrapper
    HealthCheckInterval=600
    HealthCheckNodeState=ANY,CYCLE
 
 These values implies that NHC will run at every 600 seconds (10 minutes), on
 all compute nodes regardless of their state (even on allocated nodes), but it
 will not run on all of them at the same time.
+
+The script ``/usr/sbin/omin-nhc-wrapper`` allows you to supply custom arguments
+to change how Slurm invokes the Health Check scripts via a ``charm-slurmctld``
+configuration. For example, for NHC to send an e-mail to ``admin@company.com``
+with the subject header ``NHC errors`` when it detects an error:
+
+.. code-block:: bash
+
+   $ juju config slurmctld health-check-params='-M admin@company.com -S "NHC errors"'
+
+Please check the `documentation for NHC <https://github.com/mej/nhc>`_ for
+configuration details.
+
+It is possible to change the interval (in seconds) that NHC runs and the node
+states to perform the checks:
+
+.. code-block:: bash
+
+   $ juju config slurmd health-check-interval=300
+   $ juju config slurmd health-check-state="CYCLE,ANY"
 
 .. note::
 
@@ -82,14 +108,6 @@ will not run on all of them at the same time.
 
    This ensures that if someone drained a node for troubleshooting, this node
    will not be resumed before the administrator finishes their tasks
-
-It is possible to change the interval (in seconds) that NHC runs and the node
-states to perform the checks:
-
-.. code-block:: bash
-
-   $ juju config slurmd health-check-interval=300
-   $ juju config slurmd health-check-state="CYCLE,ANY"
 
 Please refer to the
 `slurm.conf documentation <https://slurm.schedmd.com/slurm.conf.html>`_ for
