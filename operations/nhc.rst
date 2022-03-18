@@ -20,6 +20,9 @@ future jobs from running on it.
 Configuration
 =============
 
+Health Checks
+-------------
+
 .. note::
 
    OSD uses short hostnames (``hostname -s``) as node identifiers in Slurm.
@@ -62,11 +65,14 @@ contains our base checks in addition to your custom ones:
 
         $ juju run-action slurmd/leader show-nhc-config --wait
 
+NHC options
+-----------
+
 The default settings used in ``slurm.conf`` for NHC are as follows:
 
 ::
 
-   HealthCheckProgram=/usr/sbin/nhc-wrapper
+   HealthCheckProgram=/usr/sbin/omni-nhc-wrapper
    HealthCheckInterval=600
    HealthCheckNodeState=ANY,CYCLE
 
@@ -74,14 +80,18 @@ These values implies that NHC will run at every 600 seconds (10 minutes), on
 all compute nodes regardless of their state (even on allocated nodes), but it
 will not run on all of them at the same time.
 
-.. note::
+The ``/usr/sbin/omin-nhc-wrapper`` script allows you to supply custom arguments
+to change how Slurm invokes the Health Check scripts via a ``charm-slurmctld``
+configuration. For example, to configure NHC to send an e-mail to
+``admin@company.com`` with the subject header ``NHC errors`` when it detects an
+error, change the ``health-check-params`` configuration to:
 
-   NHC does not *undrain* a node. If a node was drained and NHC runs on that
-   node, the node will continue on the drained state, regardless of the checks
-   passing or failing.
+.. code-block:: bash
 
-   This ensures that if someone drained a node for troubleshooting, this node
-   will not be resumed before the administrator finishes their tasks
+   $ juju config slurmctld health-check-params='-M admin@company.com -S "NHC errors"'
+
+Please check the `documentation for NHC <https://github.com/mej/nhc>`_ for
+configuration details.
 
 It is possible to change the interval (in seconds) that NHC runs and the node
 states to perform the checks:
@@ -90,6 +100,15 @@ states to perform the checks:
 
    $ juju config slurmd health-check-interval=300
    $ juju config slurmd health-check-state="CYCLE,ANY"
+
+.. note::
+
+   NHC does not *undrain* a node. If a node was drained and NHC runs on that
+   node, the node will continue on the drained state, regardless of the checks
+   passing or failing.
+
+   This ensures that if someone drained a node for troubleshooting, it will not
+   be resumed before the administrator finishes their tasks.
 
 Please refer to the
 `slurm.conf documentation <https://slurm.schedmd.com/slurm.conf.html>`_ for
