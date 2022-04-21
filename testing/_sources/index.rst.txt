@@ -12,7 +12,7 @@ to assemble, install, deploy, and operate Slurm.
 
 .. raw:: html
 
-   <script src="https://asciinema.org/a/14.js" id="asciicast-lTih2dfTInWFFmha3W8BvUaNh" async data-cols="101" data-rows="40"></script>
+   <script src="https://asciinema.org/a/14.js" id="asciicast-jbynVdd6zlN5FPKSslDn1dBw7" async data-cols="101" data-rows="35" data-loop="1"></script>
 
 Getting Started
 ---------------
