@@ -111,6 +111,20 @@ Configuration content for ``cgroup.conf``.
 * default-value: ``CgroupAutomount=yes\nConstrainCores=yes\n``
 
 
+``health-check-params``
+-----------------------
+
+Extra parameters for NHC command.
+
+This option can be used to customize how NHC is called, e.g. to send an e-mail to an admin when NHC detects an error set this value to ``-M admin@domain.com``.
+
+
+
+
+* type: string
+* default-value: empty
+
+
 ``health-check-interval``
 -------------------------
 

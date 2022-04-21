@@ -80,10 +80,11 @@ These values implies that NHC will run at every 600 seconds (10 minutes), on
 all compute nodes regardless of their state (even on allocated nodes), but it
 will not run on all of them at the same time.
 
-The script ``/usr/sbin/omin-nhc-wrapper`` allows you to supply custom arguments
+The ``/usr/sbin/omin-nhc-wrapper`` script allows you to supply custom arguments
 to change how Slurm invokes the Health Check scripts via a ``charm-slurmctld``
-configuration. For example, for NHC to send an e-mail to ``admin@company.com``
-with the subject header ``NHC errors`` when it detects an error:
+configuration. For example, to configure NHC to send an e-mail to
+``admin@company.com`` with the subject header ``NHC errors`` when it detects an
+error, change the ``health-check-params`` configuration to:
 
 .. code-block:: bash
 
@@ -106,8 +107,8 @@ states to perform the checks:
    node, the node will continue on the drained state, regardless of the checks
    passing or failing.
 
-   This ensures that if someone drained a node for troubleshooting, this node
-   will not be resumed before the administrator finishes their tasks
+   This ensures that if someone drained a node for troubleshooting, it will not
+   be resumed before the administrator finishes their tasks.
 
 Please refer to the
 `slurm.conf documentation <https://slurm.schedmd.com/slurm.conf.html>`_ for
