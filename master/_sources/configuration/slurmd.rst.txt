@@ -142,6 +142,24 @@ Return node inventory.
 
 
 
+``set-node-inventory``
+----------------------
+
+Modify node inventory.
+
+
+Parameters:
+
+
+* ``real-memory``: Total amount of memory of the node, in MB.
+
+  * type: integer
+
+
+
+
+
+
 ``show-nhc-config``
 -------------------
 
