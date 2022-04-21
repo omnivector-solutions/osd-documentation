@@ -10,6 +10,10 @@ to the deployment and operation of the Omnivector Slurm Distribution (OSD).
 The Omnivector Slurm Distribution stands on a suite of codified operations
 to assemble, install, deploy, and operate Slurm.
 
+.. raw:: html
+
+   <script src="https://asciinema.org/a/14.js" id="asciicast-5BjkSSEASiQ74SzLZyiGWKECK" async data-cols="101" data-rows="22" data-loop="1"></script>
+
 Getting Started
 ---------------
 Follow the documentation below to better understand how to get up and running
