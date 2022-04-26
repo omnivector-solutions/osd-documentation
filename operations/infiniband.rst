@@ -15,7 +15,7 @@ The general workflow for installing Infiniband drivers from a custom repository
 includes setting up the driver repository, installing the drivers, and
 rebooting the node (in that order).
 
-By default, OSD uses the Mellanox repository for OFED 5.3. If you want a
+By default, OSD uses the Mellanox repository for OFED 5.4. If you want a
 different version, or a different repository, you can create a text file
 describing the repository and configure the charms to use it. If a custom
 repository is not set, the charms will use the Mellanox repository. For
