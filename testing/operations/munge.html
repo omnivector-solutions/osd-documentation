@@ -1,0 +1,639 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Munge operations &#8212; Omnivector Slurm Distribution  documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Infiniband" href="infiniband.html" />
+    <link rel="prev" title="Partitions" href="partitions.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Omnivector Slurm Distribution  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../architecture.html">
+   OSD Architecture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../installation.html">
+   Installation overview
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="overview.html">
+   Operations Overview
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="installation.html">
+     Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nodes.html">
+     Nodes operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="partitions.html">
+     Partitions
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Munge operations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="infiniband.html">
+     Infiniband
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gpu.html">
+     GPU Support
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nhc.html">
+     NHC
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="backup-restore.html">
+     Backup and restore the Slurm database
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="upgrading-osd.html">
+     Upgrade OSD
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="accounting-profiling.html">
+     Accounting And Profiling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="monitoring.html">
+     Monitoring
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="logging.html">
+     Logging
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../configuration/configuration.html">
+   Configuration and Administration
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../configuration/slurmd.html">
+     slurmd
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../configuration/slurmdbd.html">
+     slurmdbd
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../configuration/slurmctld.html">
+     slurmctld
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../configuration/slurmrestd.html">
+     slurmrestd
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../contributing.html">
+   Contributing to OSD
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../acknowledgments.html">
+   Acknowledgments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../changelog.html">
+   Changelog
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/omnivector-solutions/osd-documentation/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/omnivector-solutions/osd-documentation//issues/new?title=Issue%20on%20page%20%2Foperations/munge.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/operations/munge.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-an-etcd-account">
+   Creating an etcd account
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#querying-the-munge-key">
+   Querying the munge key
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-bash">
+     Using Bash
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-python">
+     Using Python
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Munge operations</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-an-etcd-account">
+   Creating an etcd account
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#querying-the-munge-key">
+   Querying the munge key
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-bash">
+     Using Bash
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-python">
+     Using Python
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="section" id="munge-operations">
+<span id="munge-ops"></span><h1>Munge operations<a class="headerlink" href="#munge-operations" title="Permalink to this headline">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm contains an internal <a class="reference external" href="https://etcd.io">etcd3</a> server
+that, among other uses, stores the <a class="reference external" href="https://github.com/dun/munge/">Munge</a>
+key.</p>
+<p>The etcd server has authentication enabled by default, to protect the Munge
+key. In order to be able to retrieve the Munge key, one needs an etcd account.
+OSD provides Juju action <code class="docutils literal notranslate"><span class="pre">etcd-create-munge-account</span></code> on the <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code>
+charm to automate the creation of such account.</p>
+<div class="section" id="creating-an-etcd-account">
+<h2>Creating an etcd account<a class="headerlink" href="#creating-an-etcd-account" title="Permalink to this headline">#</a></h2>
+<p>To create an etcd account to query the Munge key requires a desired username
+and password:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmctld/leader etcd-create-munge-account <span class="nv">user</span><span class="o">=</span><span class="s2">&quot;theusername&quot;</span> <span class="nv">password</span><span class="o">=</span><span class="s2">&quot;aVerySafePassword!&quot;</span> --wait
+unit-slurmctld-7:
+  UnitId: slurmctld/7
+  id: <span class="s2">&quot;654&quot;</span>
+  results:
+    Stdout: <span class="p">|</span>
+      User theusername created
+      Role munge-readers is granted to user theusername
+    created-new-user: theusername
+  status: completed
+  timing:
+    completed: <span class="m">2022</span>-05-12 <span class="m">17</span>:57:44 +0000 UTC
+    enqueued: <span class="m">2022</span>-05-12 <span class="m">17</span>:57:41 +0000 UTC
+    started: <span class="m">2022</span>-05-12 <span class="m">17</span>:57:44 +0000 UTC
+</pre></div>
+</div>
+</div>
+<div class="section" id="querying-the-munge-key">
+<h2>Querying the munge key<a class="headerlink" href="#querying-the-munge-key" title="Permalink to this headline">#</a></h2>
+<p>The etcd server is running on the <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> node and listening on the port
+<code class="docutils literal notranslate"><span class="pre">2379</span></code>. The Munge key is stored at <code class="docutils literal notranslate"><span class="pre">munge/key</span></code> entry. Please find below
+examples on how to query the secret key.</p>
+<div class="section" id="using-bash">
+<h3>Using Bash<a class="headerlink" href="#using-bash" title="Permalink to this headline">#</a></h3>
+<p>It is possible to get the Munge key using Bash, with <code class="docutils literal notranslate"><span class="pre">curl</span></code> and <code class="docutils literal notranslate"><span class="pre">jq</span></code>. Firs,
+you need to get an access token for your username and then query the key:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">user</span><span class="o">=</span>theusername
+<span class="nv">pass</span><span class="o">=</span>aVerySafePassword!
+<span class="nv">host</span><span class="o">=</span><span class="m">10</span>.107.185.126
+<span class="nv">port</span><span class="o">=</span><span class="m">2379</span>
+
+<span class="nv">token</span><span class="o">=</span><span class="k">$(</span>curl -L -s -X POST <span class="s2">&quot;</span><span class="nv">$host</span><span class="s2">:</span><span class="nv">$port</span><span class="s2">/v3/auth/authenticate&quot;</span> -d <span class="s1">&#39;{&quot;name&quot;:&quot;&#39;</span><span class="s2">&quot;</span><span class="nv">$user</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;, &quot;password&quot;:&quot;&#39;</span><span class="s2">&quot;</span><span class="nv">$pass</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;}&#39;</span> <span class="p">|</span> jq .token<span class="k">)</span>
+<span class="nv">token</span><span class="o">=</span><span class="si">${</span><span class="nv">token</span><span class="p">//</span><span class="se">\&quot;</span><span class="p">/</span><span class="si">}</span>
+<span class="nv">key</span><span class="o">=</span><span class="k">$(</span><span class="nb">printf</span> munge/key <span class="p">|</span> base64<span class="k">)</span>
+
+<span class="nv">munge_key</span><span class="o">=</span><span class="k">$(</span>curl -L -s -X POST <span class="s2">&quot;</span><span class="nv">$host</span><span class="s2">:</span><span class="nv">$port</span><span class="s2">/v3/kv/range&quot;</span> -H <span class="s2">&quot;Authorization: </span><span class="si">${</span><span class="nv">token</span><span class="si">}</span><span class="s2">&quot;</span> -d <span class="s1">&#39;{&quot;key&quot;:&quot;&#39;</span><span class="nv">$key</span><span class="s1">&#39;&quot;}&#39;</span> <span class="p">|</span> jq .kvs<span class="o">[</span><span class="m">0</span><span class="o">]</span>.value<span class="k">)</span>
+</pre></div>
+</div>
+<p>As an example, running the above commands will result in:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="nv">$munge_key</span>
+<span class="s2">&quot;NzI5dVpXcysrWlEvYjNzWUFNbGluaWxITm44eGlLRStLWWtpTzRNNHIwT3lKV05sandVRFVsTHZTTjRkQ2dkWXA1R0t6VGk4Nks3blZvaHBXVy9EMEE1TTNOdGlpMjF0SEN4QW1zTm1VdFYxa01tYTd3UlVEcGxGRnBGYmR6MkZwa3daUGtreW5YUzY1U000dEptdWdBSGV5eGg1eHM1Q2Ryc3l3VERQL1VTOXNDdm5TalBncGtPdTNUc2xMQmVVcEtzYnJ6cUtTbTZLaFBlZWNZYXEwTGMwTzRJYnNqTEpNbTZEWXpQbkU5UGFSL2ZMdDMxU29PRjZsTHgyMzRpaCtmZm5MODlSNXc3SjAvcnVxZGZvU3NlQkNvekRHMlRjZG1LeXRPWUgxNndqUWdPUW96eHJ2SVFmUllQRlBDVkxHMTlHUndDSzBWRDRWR09CRGRFZEtwUTl5Q2QxcjFYUzhjTkdhTUNuRHFQenJsTDBNbzlncldUU3g4ZTZHTnhOeDZWT2FvL3E3SmFXWllMd1lLRHpkUHZ5bkUzVXBpS2lBTlNQbDd2a1JVYTFYNDNKUWFQdS8yTGtybUczOWUzK2tpS2JVRjJWMjV3aExEeHA2a2d1NDRWbE1jdGErcFZuR2Q2Zk1vYmdBVDd1eHJSMUJuUDAzUHhhTXE4YzlzNjVmNzlDUXpaZkt1V3drYm1pTmxOL3lsaU5ueDNnMjJOQ2JhVGgvcUdWdVB3Yk94bU9yMkNGTFgvbjJuV1U2ZkhGK285QUpROVpVa1VqWkt4WWJLUUlxdG9Ga29KWnMxKzRGa0FGSUNSMEk4YkNZSTAyU3hIZkx4cGpJWTNuY1IvQUx2OUlHSkVjTjNWVHRnVlJ5UlRWeTZUYXEweFZxT2JGWHlBUGwybWltS3RVZWlSNEc5RTZtL0w1ZGdIUVA0TkRRYzNqVnRBeTRDSzFXQUZhVE0yNWVEai9zOUNuV3lBOVRPekJwbVYvZE9kN0xCR3JFNE9wM3NQSUg4Nk1TTkpNaFY3TFl2dmhJT2FYdUlJSTAwZjAweVVENUV4Y0hVOEdMT1VmUDlMTkFCS1FiMFhDWVVXS1NaTWtSUUx1UzI2MGxuWFhBUkIxd2xLWVo0dTdZZ2IzWnE3WGh2L3BqblZOV2FvUjR0dWJBQlJBS2JiRUxJMlZmazNpNTRtdkxvdnRyN1hXRzMwUGNIbXRQRE1hdFliWlQ5TFVDTUZ6NzZ3MjFlK3ZhY3cvREZLd0ZwNEdIV29BRzRSYUxORHBxM1FjVzZ0WXdVd0FpbXFDNitwblJhTjNsZ1ExNXpCNWo4MGQzTUJMaHZnZDVweExhS0ZoeHFRWmU2QXdGQ0xWTFJBY2Q0b0Zkb3RNMzNGUUVGYjFDV2tFNUNMVFQwZU1yYm1zWFdsMVlWdVlkWW0vYWc4bkpYdC9VMDJNeHV0bG80N1Z6aXhDSmdvUzd3dmFCaXhzL1Q4MlJzWlhSSWNvN2Y1cVdkdW0wMm5kT0FJK2NtbUZjd1Z4b1hnZ2hvYVIzbEJ6M3A1NUZmc0pteVVpci9GUHVTekR5eG1DS3A0eUs5aUxmakwxL3VPK2ltK0VQdUNSWHgwRS9aL1BSZkJuQ29jbk5RUlZlV0lSNWtDK1piK2FlN0ZzRVhEazVJcHU5eDRZcm5KUHhSTGY0L3JVTVBRRGEzaDB3TlU2N3BwL1JuN1VlWHRCNXdLanorUUJWNGI5aEljb0U0bHpHRVdUTkg2QXlTb1NNc0tYblQ1VDliWk9SRTFsVzdnZVY4VHptK0hTbjhDNWJmMzA4NmhFRE81dG1EcmlTdz09&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The etcd key must be base64 encoded when using <code class="docutils literal notranslate"><span class="pre">curl</span></code>.</p>
+</div>
+</div>
+<div class="section" id="using-python">
+<h3>Using Python<a class="headerlink" href="#using-python" title="Permalink to this headline">#</a></h3>
+<p>To get the Munge key in Python, we suggest using the <a class="reference external" href="https://opendev.org/openstack/etcd3gw">etcd3gw</a> as a starting point:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">etcd3gw.client</span> <span class="kn">import</span> <span class="n">Etcd3Client</span>
+<span class="kn">from</span> <span class="nn">etcd3gw.exceptions</span> <span class="kn">import</span> <span class="n">Etcd3Exception</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Etcd3AuthClient</span><span class="p">(</span><span class="n">Etcd3Client</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Handle etcd3 requests with auth.&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">2379</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s2">&quot;http&quot;</span><span class="p">,</span>
+                 <span class="n">ca_cert</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cert_key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cert_cert</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">username</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">api_path</span><span class="o">=</span><span class="s2">&quot;/v3/&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize class.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Etcd3AuthClient</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span>
+                                              <span class="n">protocol</span><span class="o">=</span><span class="n">protocol</span><span class="p">,</span>
+                                              <span class="n">ca_cert</span><span class="o">=</span><span class="n">ca_cert</span><span class="p">,</span>
+                                              <span class="n">cert_key</span><span class="o">=</span><span class="n">cert_key</span><span class="p">,</span>
+                                              <span class="n">cert_cert</span><span class="o">=</span><span class="n">cert_cert</span><span class="p">,</span>
+                                              <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+                                              <span class="n">api_path</span><span class="o">=</span><span class="n">api_path</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="o">=</span> <span class="n">username</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">password</span>
+
+    <span class="k">def</span> <span class="nf">authenticate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Authenticate the client.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s1">&#39;Authorization&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Authorization&#39;</span><span class="p">]</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Etcd3AuthClient</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">get_url</span><span class="p">(</span><span class="s1">&#39;/auth/authenticate&#39;</span><span class="p">),</span>
+            <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">}</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s1">&#39;Authorization&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Wrap the internal post function with authentication.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">Etcd3AuthClient</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">Etcd3Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;## etcd: Might need to (re)authenticate: </span><span class="si">%r</span><span class="s2">:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                            <span class="n">e</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">detail_text</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">authenticate</span><span class="p">()</span>
+                <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">Etcd3AuthClient</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">raise</span>
+
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">Etcd3AuthClient</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;10.107.185.126&quot;</span><span class="p">,</span>
+                         <span class="n">username</span><span class="o">=</span><span class="s2">&quot;theusername&quot;</span><span class="p">,</span>
+                         <span class="n">password</span><span class="o">=</span><span class="s2">&quot;aVerySafePassword!&quot;</span><span class="p">)</span>
+<span class="n">munge_key</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;munge/key&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="partitions.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Partitions</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="infiniband.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Infiniband</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Omnivector Solutions<br/>
+  
+      &copy; Copyright 2021-2022, Omnivector Solutions.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

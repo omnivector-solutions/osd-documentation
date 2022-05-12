@@ -8,7 +8,9 @@ Unreleased
 ----------
 
 - added set-node-inventory slurmd action
+- updated default Mellanox Infiniband drivers to version 5.4
 - fix get-node-inventory action
+- fix influxdb-info slurmctld action
 
 0.9.0 - 2022-04-12
 ------------------
