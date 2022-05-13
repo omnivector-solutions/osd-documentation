@@ -9,16 +9,16 @@ that, among other uses, stores the `Munge <https://github.com/dun/munge/>`_
 key.
 
 The etcd server has authentication enabled by default, to protect the Munge
-key. In order to be able to retrieve the Munge key, one needs an etcd account.
-OSD provides Juju action ``etcd-create-munge-account`` on the ``slurmctld``
-charm to automate the creation of such account.
+key. In order to be able to retrieve the Munge key, an etcd account is
+required.  OSD provides Juju action ``etcd-create-munge-account`` on the
+``slurmctld`` charm to automate the creation of such an account.
 
 
 Creating an etcd account
 ========================
 
-To create an etcd account to query the Munge key requires a desired username
-and password:
+To create an etcd account to query the Munge key requires a username and
+password to be specified:
 
 .. code-block:: bash
 
@@ -42,14 +42,15 @@ Querying the munge key
 ======================
 
 The etcd server is running on the ``slurmctld`` node and listening on the port
-``2379``. The Munge key is stored at ``munge/key`` entry. Please find below
-examples on how to query the secret key.
+``2379``. The Munge key is stored at ``munge/key`` entry. The examples below
+demonstrate how to query the secret key.
 
 Using Bash
 ----------
 
-It is possible to get the Munge key using Bash, with ``curl`` and ``jq``. Firs,
-you need to get an access token for your username and then query the key:
+It is possible to get the Munge key using Bash, with ``curl`` and ``jq``.
+First, you need to get an access token for your username and then query the
+key:
 
 .. code-block:: bash
 
@@ -85,12 +86,8 @@ To get the Munge key in Python, we suggest using the `etcd3gw
 
 .. code-block:: python
 
-   import logging
-
    from etcd3gw.client import Etcd3Client
    from etcd3gw.exceptions import Etcd3Exception
-
-   logger = logging.getLogger(__name__)
 
 
    class Etcd3AuthClient(Etcd3Client):
@@ -127,8 +124,8 @@ To get the Munge key in Python, we suggest using the `etcd3gw
                return super(Etcd3AuthClient, self).post(*args, **kwargs)
            except Etcd3Exception as e:
                if self.username and self.password:
-                   logger.info("## etcd: Might need to (re)authenticate: %r:\n%s",
-                               e, e.detail_text)
+                   print("# etcd: Might need to (re)authenticate: %r:\n%s",
+                         e, e.detail_text)
                    self.authenticate()
                    return super(Etcd3AuthClient, self).post(*args, **kwargs)
                raise
