@@ -32,6 +32,7 @@ configuration options and actions.
    installation
    nodes
    partitions
+   munge
    infiniband
    gpu
    nhc
