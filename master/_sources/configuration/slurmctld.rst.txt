@@ -291,3 +291,50 @@ This action returns the host, port, username, password, database, and retention 
 
 
 
+
+``etcd-get-root-password``
+--------------------------
+
+Get the password for the etcd root account.
+
+
+
+
+
+
+
+``etcd-get-slurmd-password``
+----------------------------
+
+Get the password for the etcd slurmd account.
+
+
+
+
+
+
+
+``etcd-create-munge-account``
+-----------------------------
+
+Create a new etcd account to be able to query the munge key.
+
+
+
+
+Parameters:
+
+
+* ``user``: Desired username
+
+  * type: string
+
+
+* ``password``: Desired account password
+
+  * type: string
+
+
+
+
+
