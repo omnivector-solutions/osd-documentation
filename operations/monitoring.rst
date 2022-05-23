@@ -14,8 +14,6 @@ and each individual node.
 Prometheus node_exporter
 ========================
 
-"in all nodes of the cluster"
-
 The subordinate charm `prometheus-node-exporter <https://charmhub.io/prometheus-node-exporter>`_
 can be used to to export machine metrics to a Prometheus instance. To monitor
 all nodes in the cluster, first deploy the application
@@ -40,14 +38,14 @@ Deploy Prometheus and relate it to node exporter to access this functionality:
    $ juju deploy prometheus2
    $ juju relate prometheus-node-exporter:prometheus prometheus2:scrape
 
-Please refer to these charm's documentation for configuration details.
+Please refer to these charms' documentation for configuration details.
 
 
 Prometheus Slurm exporter
 =========================
 
 The subordinate charm `slurm-exporter
-<https://charmhub.io/slurm-exporter>`_ exports metrics about Slurm:
+<https://charmhub.io/slurm-exporter>`_ exports metrics about Slurm, such as the
 state of nodes, jobs, partitions, accounts, scheduler, CPUs, and GPUs. To
 monitor the cluster, deploy the application and relate it to
 ``slurmrestd-charm``:
@@ -75,8 +73,8 @@ functionality:
    $ juju deploy prometheus2
    $ juju relate prometheus-node-exporter:prometheus prometheus2:scrape
 
-Please refer to these charm's documentation for configuration details.
+Please refer to these charms' documentation for configuration details.
 
 You can use the `Grafana Dashboard 4323
-<https://grafana.com/dashboards/4323>`_.to visualize the metrics exported via
+<https://grafana.com/dashboards/4323>`_ to visualize the metrics exported via
 ``slurm-exporter``.
