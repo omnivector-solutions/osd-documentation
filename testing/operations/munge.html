@@ -472,13 +472,13 @@ title="Print to PDF"
 that, among other uses, stores the <a class="reference external" href="https://github.com/dun/munge/">Munge</a>
 key.</p>
 <p>The etcd server has authentication enabled by default, to protect the Munge
-key. In order to be able to retrieve the Munge key, one needs an etcd account.
-OSD provides Juju action <code class="docutils literal notranslate"><span class="pre">etcd-create-munge-account</span></code> on the <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code>
-charm to automate the creation of such account.</p>
+key. In order to be able to retrieve the Munge key, an etcd account is
+required.  OSD provides Juju action <code class="docutils literal notranslate"><span class="pre">etcd-create-munge-account</span></code> on the
+<code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm to automate the creation of such an account.</p>
 <div class="section" id="creating-an-etcd-account">
 <h2>Creating an etcd account<a class="headerlink" href="#creating-an-etcd-account" title="Permalink to this headline">#</a></h2>
-<p>To create an etcd account to query the Munge key requires a desired username
-and password:</p>
+<p>To create an etcd account to query the Munge key requires a username and
+password to be specified:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmctld/leader etcd-create-munge-account <span class="nv">user</span><span class="o">=</span><span class="s2">&quot;theusername&quot;</span> <span class="nv">password</span><span class="o">=</span><span class="s2">&quot;aVerySafePassword!&quot;</span> --wait
 unit-slurmctld-7:
   UnitId: slurmctld/7
@@ -499,27 +499,27 @@ unit-slurmctld-7:
 <div class="section" id="querying-the-munge-key">
 <h2>Querying the munge key<a class="headerlink" href="#querying-the-munge-key" title="Permalink to this headline">#</a></h2>
 <p>The etcd server is running on the <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> node and listening on the port
-<code class="docutils literal notranslate"><span class="pre">2379</span></code>. The Munge key is stored at <code class="docutils literal notranslate"><span class="pre">munge/key</span></code> entry. Please find below
-examples on how to query the secret key.</p>
+<code class="docutils literal notranslate"><span class="pre">2379</span></code>. The Munge key is stored at <code class="docutils literal notranslate"><span class="pre">munge/key</span></code> entry. The examples below
+demonstrate how to query the secret key.</p>
 <div class="section" id="using-bash">
 <h3>Using Bash<a class="headerlink" href="#using-bash" title="Permalink to this headline">#</a></h3>
-<p>It is possible to get the Munge key using Bash, with <code class="docutils literal notranslate"><span class="pre">curl</span></code> and <code class="docutils literal notranslate"><span class="pre">jq</span></code>. Firs,
-you need to get an access token for your username and then query the key:</p>
+<p>It is possible to get the Munge key using Bash, with <code class="docutils literal notranslate"><span class="pre">curl</span></code> and <code class="docutils literal notranslate"><span class="pre">jq</span></code>.
+First, you need to get an access token for your username and then query the
+key:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">user</span><span class="o">=</span>theusername
 <span class="nv">pass</span><span class="o">=</span>aVerySafePassword!
 <span class="nv">host</span><span class="o">=</span><span class="m">10</span>.107.185.126
 <span class="nv">port</span><span class="o">=</span><span class="m">2379</span>
 
-<span class="nv">token</span><span class="o">=</span><span class="k">$(</span>curl -L -s -X POST <span class="s2">&quot;</span><span class="nv">$host</span><span class="s2">:</span><span class="nv">$port</span><span class="s2">/v3/auth/authenticate&quot;</span> -d <span class="s1">&#39;{&quot;name&quot;:&quot;&#39;</span><span class="s2">&quot;</span><span class="nv">$user</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;, &quot;password&quot;:&quot;&#39;</span><span class="s2">&quot;</span><span class="nv">$pass</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;}&#39;</span> <span class="p">|</span> jq .token<span class="k">)</span>
-<span class="nv">token</span><span class="o">=</span><span class="si">${</span><span class="nv">token</span><span class="p">//</span><span class="se">\&quot;</span><span class="p">/</span><span class="si">}</span>
+<span class="nv">token</span><span class="o">=</span><span class="k">$(</span>curl -L -s -X POST <span class="s2">&quot;</span><span class="nv">$host</span><span class="s2">:</span><span class="nv">$port</span><span class="s2">/v3/auth/authenticate&quot;</span> -d <span class="s1">&#39;{&quot;name&quot;:&quot;&#39;</span><span class="s2">&quot;</span><span class="nv">$user</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;, &quot;password&quot;:&quot;&#39;</span><span class="s2">&quot;</span><span class="nv">$pass</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;}&#39;</span> <span class="p">|</span> jq .token <span class="p">|</span> tr -d <span class="s1">&#39;&quot;&#39;</span><span class="k">)</span>
 <span class="nv">key</span><span class="o">=</span><span class="k">$(</span><span class="nb">printf</span> munge/key <span class="p">|</span> base64<span class="k">)</span>
 
-<span class="nv">munge_key</span><span class="o">=</span><span class="k">$(</span>curl -L -s -X POST <span class="s2">&quot;</span><span class="nv">$host</span><span class="s2">:</span><span class="nv">$port</span><span class="s2">/v3/kv/range&quot;</span> -H <span class="s2">&quot;Authorization: </span><span class="si">${</span><span class="nv">token</span><span class="si">}</span><span class="s2">&quot;</span> -d <span class="s1">&#39;{&quot;key&quot;:&quot;&#39;</span><span class="nv">$key</span><span class="s1">&#39;&quot;}&#39;</span> <span class="p">|</span> jq .kvs<span class="o">[</span><span class="m">0</span><span class="o">]</span>.value<span class="k">)</span>
+<span class="nv">munge_key</span><span class="o">=</span><span class="k">$(</span>curl -L -s -X POST <span class="s2">&quot;</span><span class="nv">$host</span><span class="s2">:</span><span class="nv">$port</span><span class="s2">/v3/kv/range&quot;</span> -H <span class="s2">&quot;Authorization: </span><span class="si">${</span><span class="nv">token</span><span class="si">}</span><span class="s2">&quot;</span> -d <span class="s1">&#39;{&quot;key&quot;:&quot;&#39;</span><span class="nv">$key</span><span class="s1">&#39;&quot;}&#39;</span> <span class="p">|</span> jq .kvs<span class="o">[</span><span class="m">0</span><span class="o">]</span>.value <span class="p">|</span> tr -d <span class="s1">&#39;&quot;&#39;</span><span class="k">)</span>
 </pre></div>
 </div>
 <p>As an example, running the above commands will result in:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="nv">$munge_key</span>
-<span class="s2">&quot;NzI5dVpXcysrWlEvYjNzWUFNbGluaWxITm44eGlLRStLWWtpTzRNNHIwT3lKV05sandVRFVsTHZTTjRkQ2dkWXA1R0t6VGk4Nks3blZvaHBXVy9EMEE1TTNOdGlpMjF0SEN4QW1zTm1VdFYxa01tYTd3UlVEcGxGRnBGYmR6MkZwa3daUGtreW5YUzY1U000dEptdWdBSGV5eGg1eHM1Q2Ryc3l3VERQL1VTOXNDdm5TalBncGtPdTNUc2xMQmVVcEtzYnJ6cUtTbTZLaFBlZWNZYXEwTGMwTzRJYnNqTEpNbTZEWXpQbkU5UGFSL2ZMdDMxU29PRjZsTHgyMzRpaCtmZm5MODlSNXc3SjAvcnVxZGZvU3NlQkNvekRHMlRjZG1LeXRPWUgxNndqUWdPUW96eHJ2SVFmUllQRlBDVkxHMTlHUndDSzBWRDRWR09CRGRFZEtwUTl5Q2QxcjFYUzhjTkdhTUNuRHFQenJsTDBNbzlncldUU3g4ZTZHTnhOeDZWT2FvL3E3SmFXWllMd1lLRHpkUHZ5bkUzVXBpS2lBTlNQbDd2a1JVYTFYNDNKUWFQdS8yTGtybUczOWUzK2tpS2JVRjJWMjV3aExEeHA2a2d1NDRWbE1jdGErcFZuR2Q2Zk1vYmdBVDd1eHJSMUJuUDAzUHhhTXE4YzlzNjVmNzlDUXpaZkt1V3drYm1pTmxOL3lsaU5ueDNnMjJOQ2JhVGgvcUdWdVB3Yk94bU9yMkNGTFgvbjJuV1U2ZkhGK285QUpROVpVa1VqWkt4WWJLUUlxdG9Ga29KWnMxKzRGa0FGSUNSMEk4YkNZSTAyU3hIZkx4cGpJWTNuY1IvQUx2OUlHSkVjTjNWVHRnVlJ5UlRWeTZUYXEweFZxT2JGWHlBUGwybWltS3RVZWlSNEc5RTZtL0w1ZGdIUVA0TkRRYzNqVnRBeTRDSzFXQUZhVE0yNWVEai9zOUNuV3lBOVRPekJwbVYvZE9kN0xCR3JFNE9wM3NQSUg4Nk1TTkpNaFY3TFl2dmhJT2FYdUlJSTAwZjAweVVENUV4Y0hVOEdMT1VmUDlMTkFCS1FiMFhDWVVXS1NaTWtSUUx1UzI2MGxuWFhBUkIxd2xLWVo0dTdZZ2IzWnE3WGh2L3BqblZOV2FvUjR0dWJBQlJBS2JiRUxJMlZmazNpNTRtdkxvdnRyN1hXRzMwUGNIbXRQRE1hdFliWlQ5TFVDTUZ6NzZ3MjFlK3ZhY3cvREZLd0ZwNEdIV29BRzRSYUxORHBxM1FjVzZ0WXdVd0FpbXFDNitwblJhTjNsZ1ExNXpCNWo4MGQzTUJMaHZnZDVweExhS0ZoeHFRWmU2QXdGQ0xWTFJBY2Q0b0Zkb3RNMzNGUUVGYjFDV2tFNUNMVFQwZU1yYm1zWFdsMVlWdVlkWW0vYWc4bkpYdC9VMDJNeHV0bG80N1Z6aXhDSmdvUzd3dmFCaXhzL1Q4MlJzWlhSSWNvN2Y1cVdkdW0wMm5kT0FJK2NtbUZjd1Z4b1hnZ2hvYVIzbEJ6M3A1NUZmc0pteVVpci9GUHVTekR5eG1DS3A0eUs5aUxmakwxL3VPK2ltK0VQdUNSWHgwRS9aL1BSZkJuQ29jbk5RUlZlV0lSNWtDK1piK2FlN0ZzRVhEazVJcHU5eDRZcm5KUHhSTGY0L3JVTVBRRGEzaDB3TlU2N3BwL1JuN1VlWHRCNXdLanorUUJWNGI5aEljb0U0bHpHRVdUTkg2QXlTb1NNc0tYblQ1VDliWk9SRTFsVzdnZVY4VHptK0hTbjhDNWJmMzA4NmhFRE81dG1EcmlTdz09&quot;</span>
+NzI5dVpXcysrWlEvYjNzWUFNbGluaWxITm44eGlLRStLWWtpTzRNNHIwT3lKV05sandVRFVsTHZTTjRkQ2dkWXA1R0t6VGk4Nks3blZvaHBXVy9EMEE1TTNOdGlpMjF0SEN4QW1zTm1VdFYxa01tYTd3UlVEcGxGRnBGYmR6MkZwa3daUGtreW5YUzY1U000dEptdWdBSGV5eGg1eHM1Q2Ryc3l3VERQL1VTOXNDdm5TalBncGtPdTNUc2xMQmVVcEtzYnJ6cUtTbTZLaFBlZWNZYXEwTGMwTzRJYnNqTEpNbTZEWXpQbkU5UGFSL2ZMdDMxU29PRjZsTHgyMzRpaCtmZm5MODlSNXc3SjAvcnVxZGZvU3NlQkNvekRHMlRjZG1LeXRPWUgxNndqUWdPUW96eHJ2SVFmUllQRlBDVkxHMTlHUndDSzBWRDRWR09CRGRFZEtwUTl5Q2QxcjFYUzhjTkdhTUNuRHFQenJsTDBNbzlncldUU3g4ZTZHTnhOeDZWT2FvL3E3SmFXWllMd1lLRHpkUHZ5bkUzVXBpS2lBTlNQbDd2a1JVYTFYNDNKUWFQdS8yTGtybUczOWUzK2tpS2JVRjJWMjV3aExEeHA2a2d1NDRWbE1jdGErcFZuR2Q2Zk1vYmdBVDd1eHJSMUJuUDAzUHhhTXE4YzlzNjVmNzlDUXpaZkt1V3drYm1pTmxOL3lsaU5ueDNnMjJOQ2JhVGgvcUdWdVB3Yk94bU9yMkNGTFgvbjJuV1U2ZkhGK285QUpROVpVa1VqWkt4WWJLUUlxdG9Ga29KWnMxKzRGa0FGSUNSMEk4YkNZSTAyU3hIZkx4cGpJWTNuY1IvQUx2OUlHSkVjTjNWVHRnVlJ5UlRWeTZUYXEweFZxT2JGWHlBUGwybWltS3RVZWlSNEc5RTZtL0w1ZGdIUVA0TkRRYzNqVnRBeTRDSzFXQUZhVE0yNWVEai9zOUNuV3lBOVRPekJwbVYvZE9kN0xCR3JFNE9wM3NQSUg4Nk1TTkpNaFY3TFl2dmhJT2FYdUlJSTAwZjAweVVENUV4Y0hVOEdMT1VmUDlMTkFCS1FiMFhDWVVXS1NaTWtSUUx1UzI2MGxuWFhBUkIxd2xLWVo0dTdZZ2IzWnE3WGh2L3BqblZOV2FvUjR0dWJBQlJBS2JiRUxJMlZmazNpNTRtdkxvdnRyN1hXRzMwUGNIbXRQRE1hdFliWlQ5TFVDTUZ6NzZ3MjFlK3ZhY3cvREZLd0ZwNEdIV29BRzRSYUxORHBxM1FjVzZ0WXdVd0FpbXFDNitwblJhTjNsZ1ExNXpCNWo4MGQzTUJMaHZnZDVweExhS0ZoeHFRWmU2QXdGQ0xWTFJBY2Q0b0Zkb3RNMzNGUUVGYjFDV2tFNUNMVFQwZU1yYm1zWFdsMVlWdVlkWW0vYWc4bkpYdC9VMDJNeHV0bG80N1Z6aXhDSmdvUzd3dmFCaXhzL1Q4MlJzWlhSSWNvN2Y1cVdkdW0wMm5kT0FJK2NtbUZjd1Z4b1hnZ2hvYVIzbEJ6M3A1NUZmc0pteVVpci9GUHVTekR5eG1DS3A0eUs5aUxmakwxL3VPK2ltK0VQdUNSWHgwRS9aL1BSZkJuQ29jbk5RUlZlV0lSNWtDK1piK2FlN0ZzRVhEazVJcHU5eDRZcm5KUHhSTGY0L3JVTVBRRGEzaDB3TlU2N3BwL1JuN1VlWHRCNXdLanorUUJWNGI5aEljb0U0bHpHRVdUTkg2QXlTb1NNc0tYblQ1VDliWk9SRTFsVzdnZVY4VHptK0hTbjhDNWJmMzA4NmhFRE81dG1EcmlTdz09
 </pre></div>
 </div>
 <div class="admonition note">
@@ -530,12 +530,8 @@ you need to get an access token for your username and then query the key:</p>
 <div class="section" id="using-python">
 <h3>Using Python<a class="headerlink" href="#using-python" title="Permalink to this headline">#</a></h3>
 <p>To get the Munge key in Python, we suggest using the <a class="reference external" href="https://opendev.org/openstack/etcd3gw">etcd3gw</a> as a starting point:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
-
-<span class="kn">from</span> <span class="nn">etcd3gw.client</span> <span class="kn">import</span> <span class="n">Etcd3Client</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">etcd3gw.client</span> <span class="kn">import</span> <span class="n">Etcd3Client</span>
 <span class="kn">from</span> <span class="nn">etcd3gw.exceptions</span> <span class="kn">import</span> <span class="n">Etcd3Exception</span>
-
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">Etcd3AuthClient</span><span class="p">(</span><span class="n">Etcd3Client</span><span class="p">):</span>
@@ -572,8 +568,8 @@ you need to get an access token for your username and then query the key:</p>
             <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">Etcd3AuthClient</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">except</span> <span class="n">Etcd3Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">username</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">:</span>
-                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;## etcd: Might need to (re)authenticate: </span><span class="si">%r</span><span class="s2">:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
-                            <span class="n">e</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">detail_text</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# etcd: Might need to (re)authenticate: </span><span class="si">%r</span><span class="s2">:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                      <span class="n">e</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">detail_text</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">authenticate</span><span class="p">()</span>
                 <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">Etcd3AuthClient</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
             <span class="k">raise</span>

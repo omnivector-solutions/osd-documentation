@@ -540,6 +540,33 @@ title="Print to PDF"
      </code>
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#etcd-get-root-password">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       etcd-get-root-password
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#etcd-get-slurmd-password">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       etcd-get-slurmd-password
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#etcd-create-munge-account">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       etcd-create-munge-account
+      </span>
+     </code>
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -704,6 +731,33 @@ title="Print to PDF"
      <code class="docutils literal notranslate">
       <span class="pre">
        influxdb-info
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#etcd-get-root-password">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       etcd-get-root-password
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#etcd-get-slurmd-password">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       etcd-get-slurmd-password
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#etcd-create-munge-account">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       etcd-create-munge-account
       </span>
      </code>
     </a>
@@ -902,6 +956,31 @@ title="Print to PDF"
 <h3><code class="docutils literal notranslate"><span class="pre">influxdb-info</span></code><a class="headerlink" href="#influxdb-info" title="Permalink to this headline">#</a></h3>
 <p>Get InfluxDB info.</p>
 <p>This action returns the host, port, username, password, database, and retention policy regarding to InfluxDB.</p>
+</div>
+<div class="section" id="etcd-get-root-password">
+<h3><code class="docutils literal notranslate"><span class="pre">etcd-get-root-password</span></code><a class="headerlink" href="#etcd-get-root-password" title="Permalink to this headline">#</a></h3>
+<p>Get the password for the etcd root account.</p>
+</div>
+<div class="section" id="etcd-get-slurmd-password">
+<h3><code class="docutils literal notranslate"><span class="pre">etcd-get-slurmd-password</span></code><a class="headerlink" href="#etcd-get-slurmd-password" title="Permalink to this headline">#</a></h3>
+<p>Get the password for the etcd slurmd account.</p>
+</div>
+<div class="section" id="etcd-create-munge-account">
+<h3><code class="docutils literal notranslate"><span class="pre">etcd-create-munge-account</span></code><a class="headerlink" href="#etcd-create-munge-account" title="Permalink to this headline">#</a></h3>
+<p>Create a new etcd account to be able to query the munge key.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">user</span></code>: Desired username</p>
+<ul>
+<li><p>type: string</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">password</span></code>: Desired account password</p>
+<ul>
+<li><p>type: string</p></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 </div>

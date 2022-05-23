@@ -398,6 +398,11 @@ title="Print to PDF"
    Prometheus node_exporter
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prometheus-slurm-exporter">
+   Prometheus Slurm exporter
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -422,6 +427,11 @@ title="Print to PDF"
    Prometheus node_exporter
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prometheus-slurm-exporter">
+   Prometheus Slurm exporter
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -435,15 +445,17 @@ title="Print to PDF"
   <div class="section" id="monitoring">
 <span id="id1"></span><h1>Monitoring<a class="headerlink" href="#monitoring" title="Permalink to this headline">#</a></h1>
 <p>We provide a bundle overlay to simplify deploying
-<a class="reference external" href="https://prometheus.io/">Prometheus</a> and
-<a class="reference external" href="https://github.com/prometheus/node_exporter">Prometheus node_exporter</a> in
-all nodes of the cluster.</p>
+<a class="reference external" href="https://prometheus.io/">Prometheus</a>,
+<a class="reference external" href="https://github.com/prometheus/node_exporter">Prometheus node_exporter</a> and
+<a class="reference external" href="https://charmhub.io/slurm-exporter">slurm-exporter</a> to monitor the cluster
+and each individual node.</p>
 <div class="section" id="id2">
 <h2>Prometheus node_exporter<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>&quot;in all nodes of the cluster&quot;</p>
 <p>The subordinate charm <a class="reference external" href="https://charmhub.io/prometheus-node-exporter">prometheus-node-exporter</a>
 can be used to to export machine metrics to a Prometheus instance. To monitor
 all nodes in the cluster, first deploy the application
-<em>prometheus-node-exporter</em> and then relate it to the nodes to be monitored:</p>
+<code class="docutils literal notranslate"><span class="pre">prometheus-node-exporter</span></code> and then relate it to the nodes to be monitored:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy prometheus-node-exporter
 $ juju relate prometheus-node-exporter slurmd
 $ juju relate prometheus-node-exporter slurmctld
@@ -455,10 +467,38 @@ the port <code class="docutils literal notranslate"><span class="pre">9100</span
 <p>The charm <code class="docutils literal notranslate"><span class="pre">prometheus-node-exporter</span></code> can be related to the <a class="reference external" href="https://charmhub.io/prometheus2">prometheus2</a> charm to automatically scrape all units.
 Deploy Prometheus and relate it to node exporter to access this functionality:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy prometheus2
-$ juju relate prometheus-node-exporter prometheus2
+$ juju relate prometheus-node-exporter:prometheus prometheus2:scrape
 </pre></div>
 </div>
 <p>Please refer to these charm's documentation for configuration details.</p>
+</div>
+<div class="section" id="prometheus-slurm-exporter">
+<h2>Prometheus Slurm exporter<a class="headerlink" href="#prometheus-slurm-exporter" title="Permalink to this headline">#</a></h2>
+<p>The subordinate charm <a class="reference external" href="https://charmhub.io/slurm-exporter">slurm-exporter</a> exports metrics about Slurm:
+state of nodes, jobs, partitions, accounts, scheduler, CPUs, and GPUs. To
+monitor the cluster, deploy the application and relate it to
+<code class="docutils literal notranslate"><span class="pre">slurmrestd-charm</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy slurm-exporter
+$ juju relate slurm-exporter slurmrestd
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We recommend deploying <code class="docutils literal notranslate"><span class="pre">slurm-exporter</span></code> in the <code class="docutils literal notranslate"><span class="pre">slurmrestd</span></code> node. This
+component could be deployed in other nodes.</p>
+</div>
+<p>This charm exposes by default all the metrics on endpoint <code class="docutils literal notranslate"><span class="pre">/metrics</span></code> using
+the port <code class="docutils literal notranslate"><span class="pre">9120</span></code>.</p>
+<p>The charm <code class="docutils literal notranslate"><span class="pre">slurm-exporter</span></code> can be related to the <a class="reference external" href="https://charmhub.io/prometheus2">prometheus2</a> charm to automatically scrape its metrics.
+Deploy Prometheus and relate it to <code class="docutils literal notranslate"><span class="pre">slurm-exporter</span></code> to access this
+functionality:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy prometheus2
+$ juju relate prometheus-node-exporter:prometheus prometheus2:scrape
+</pre></div>
+</div>
+<p>Please refer to these charm's documentation for configuration details.</p>
+<p>You can use the <a class="reference external" href="https://grafana.com/dashboards/4323">Grafana Dashboard 4323</a>.to visualize the metrics exported via
+<code class="docutils literal notranslate"><span class="pre">slurm-exporter</span></code>.</p>
 </div>
 </div>
 
