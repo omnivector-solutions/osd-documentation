@@ -216,13 +216,14 @@ The ``slurm-addons`` directory contains overlays to extend Slurm with plugins:
   to collect profiling information about the jobs. See
   :ref:`influxdb-profiling` for details on usage.
 - ``slurm-addons/monitoring.yaml``: overlay to deploy `prometheus2
-  <https://charmhub.io/prometheus2>`_ and `prometheus-node-exporter
-  <https://charmhub.io/prometheus-node-exporter>`_ for cluster monitoring. See
-  :ref:`monitoring` for details on usage.
-- ``slurm-addons/elasticsearch-acct.yaml``: overlay to deploy `elasticsearch`
+  <https://charmhub.io/prometheus2>`_, `prometheus-node-exporter
+  <https://charmhub.io/prometheus-node-exporter>`_ and `slurm-exporter
+  <https://charmhub.io/slurm-exporter>`_ for cluster monitoring. See
+  :ref:`monitoring` for details on usage.  -
+  ``slurm-addons/elasticsearch-acct.yaml``: overlay to deploy `elasticsearch`
   and relate it to ``slurmctld`` to collect accounting information about the
-  jobs. See :ref:`elasticsearch-accounting` for details.
-- ``slurm-addons/fluentbit.yaml``: overlay to deploy `fluentbit` and relate it
+  jobs. See :ref:`elasticsearch-accounting` for details.  -
+  ``slurm-addons/fluentbit.yaml``: overlay to deploy `fluentbit` and relate it
   to the ``slurm-charms`` to forward logs to a centralized system. See
   :ref:`logging` for details.
 
