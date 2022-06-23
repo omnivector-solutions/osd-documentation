@@ -451,7 +451,6 @@ title="Print to PDF"
 and each individual node.</p>
 <div class="section" id="id2">
 <h2>Prometheus node_exporter<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
-<p>&quot;in all nodes of the cluster&quot;</p>
 <p>The subordinate charm <a class="reference external" href="https://charmhub.io/prometheus-node-exporter">prometheus-node-exporter</a>
 can be used to to export machine metrics to a Prometheus instance. To monitor
 all nodes in the cluster, first deploy the application
@@ -470,11 +469,11 @@ Deploy Prometheus and relate it to node exporter to access this functionality:</
 $ juju relate prometheus-node-exporter:prometheus prometheus2:scrape
 </pre></div>
 </div>
-<p>Please refer to these charm's documentation for configuration details.</p>
+<p>Please refer to these charms' documentation for configuration details.</p>
 </div>
 <div class="section" id="prometheus-slurm-exporter">
 <h2>Prometheus Slurm exporter<a class="headerlink" href="#prometheus-slurm-exporter" title="Permalink to this headline">#</a></h2>
-<p>The subordinate charm <a class="reference external" href="https://charmhub.io/slurm-exporter">slurm-exporter</a> exports metrics about Slurm:
+<p>The subordinate charm <a class="reference external" href="https://charmhub.io/slurm-exporter">slurm-exporter</a> exports metrics about Slurm, such as the
 state of nodes, jobs, partitions, accounts, scheduler, CPUs, and GPUs. To
 monitor the cluster, deploy the application and relate it to
 <code class="docutils literal notranslate"><span class="pre">slurmrestd-charm</span></code>:</p>
@@ -496,8 +495,8 @@ functionality:</p>
 $ juju relate prometheus-node-exporter:prometheus prometheus2:scrape
 </pre></div>
 </div>
-<p>Please refer to these charm's documentation for configuration details.</p>
-<p>You can use the <a class="reference external" href="https://grafana.com/dashboards/4323">Grafana Dashboard 4323</a>.to visualize the metrics exported via
+<p>Please refer to these charms' documentation for configuration details.</p>
+<p>You can use the <a class="reference external" href="https://grafana.com/dashboards/4323">Grafana Dashboard 4323</a> to visualize the metrics exported via
 <code class="docutils literal notranslate"><span class="pre">slurm-exporter</span></code>.</p>
 </div>
 </div>

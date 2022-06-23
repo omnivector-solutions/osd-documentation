@@ -415,6 +415,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuring-https">
+   Configuring HTTPS
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -456,6 +461,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configuring-https">
+   Configuring HTTPS
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -473,8 +483,10 @@ that, among other uses, stores the <a class="reference external" href="https://g
 key.</p>
 <p>The etcd server has authentication enabled by default, to protect the Munge
 key. In order to be able to retrieve the Munge key, an etcd account is
-required.  OSD provides Juju action <code class="docutils literal notranslate"><span class="pre">etcd-create-munge-account</span></code> on the
+required. OSD provides the Juju action <code class="docutils literal notranslate"><span class="pre">etcd-create-munge-account</span></code> on the
 <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm to automate the creation of such an account.</p>
+<p>By default, etcd is started using plain HTTP. It is possible to use HTTPS by
+supplying the necessary certificates to <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code>.</p>
 <div class="section" id="creating-an-etcd-account">
 <h2>Creating an etcd account<a class="headerlink" href="#creating-an-etcd-account" title="Permalink to this headline">#</a></h2>
 <p>To create an etcd account to query the Munge key requires a username and
@@ -525,6 +537,12 @@ NzI5dVpXcysrWlEvYjNzWUFNbGluaWxITm44eGlLRStLWWtpTzRNNHIwT3lKV05sandVRFVsTHZTTjRk
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The etcd key must be base64 encoded when using <code class="docutils literal notranslate"><span class="pre">curl</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the server is using HTTPS with a self-signed certificate, or a non-public
+Certificate Authority (CA), you need to supply the public certificate in the
+<code class="docutils literal notranslate"><span class="pre">curl</span></code> commands by adding <code class="docutils literal notranslate"><span class="pre">--cacert</span> <span class="pre">path/to/cert.crt</span></code>.</p>
 </div>
 </div>
 <div class="section" id="using-python">
@@ -578,9 +596,39 @@ NzI5dVpXcysrWlEvYjNzWUFNbGluaWxITm44eGlLRStLWWtpTzRNNHIwT3lKV05sandVRFVsTHZTTjRk
 <span class="n">client</span> <span class="o">=</span> <span class="n">Etcd3AuthClient</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;10.107.185.126&quot;</span><span class="p">,</span>
                          <span class="n">username</span><span class="o">=</span><span class="s2">&quot;theusername&quot;</span><span class="p">,</span>
                          <span class="n">password</span><span class="o">=</span><span class="s2">&quot;aVerySafePassword!&quot;</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">authenticate</span><span class="p">()</span>
 <span class="n">munge_key</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;munge/key&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Python3 code does not automatically identify if the connection uses HTTP
+or HTTPS. By default, the library assumes HTTP. If the server is using HTTPS
+you need to specify <code class="docutils literal notranslate"><span class="pre">protocol=&quot;https&quot;</span></code> when instantiating the client:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">Etcd3AuthClient</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;10.107.185.126&quot;</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s2">&quot;https&quot;</span><span class="p">,</span>
+                         <span class="n">username</span><span class="o">=</span><span class="s2">&quot;theusername&quot;</span><span class="p">,</span>
+                         <span class="n">password</span><span class="o">=</span><span class="s2">&quot;aVerySafePassword!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="configuring-https">
+<h2>Configuring HTTPS<a class="headerlink" href="#configuring-https" title="Permalink to this headline">#</a></h2>
+<p>The use HTTPS for the connection, you need to supply the TLS certificates to
+<code class="docutils literal notranslate"><span class="pre">slurmctld-charm</span></code> via Juju Configuration options. You need to supply the
+public certificate (a <code class="docutils literal notranslate"><span class="pre">.crt</span></code> file) and the private key (a <code class="docutils literal notranslate"><span class="pre">.key</span></code> file).
+Additionally, you must provide the Certificate Authority's (CA) public
+certificate (another <code class="docutils literal notranslate"><span class="pre">.crt</span></code> file) if using self-signed certificates or a
+non-public CA.</p>
+<p>To configure these certificates:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># the public and private TLS files</span>
+$ juju config slurmctld tls-cert<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>cat tls.crt<span class="k">)</span><span class="s2">&quot;</span>
+$ juju config slurmctld tls-key<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>cat tls.key<span class="k">)</span><span class="s2">&quot;</span>
+
+<span class="c1"># the optional CA public certificate</span>
+$ juju config slurmctld tls-ca-cert<span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>cat CA.crt<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
 </div>
 </div>
 </div>
