@@ -159,7 +159,7 @@ To get the Munge key in Python, we suggest using the `etcd3gw
 Configuring HTTPS
 =================
 
-The use HTTPS for the connection, you need to supply the TLS certificates to
+To use HTTPS for the connection, you need to supply the TLS certificates to
 ``slurmctld-charm`` via Juju Configuration options. You need to supply the
 public certificate (a ``.crt`` file) and the private key (a ``.key`` file).
 Additionally, you must provide the Certificate Authority's (CA) public
