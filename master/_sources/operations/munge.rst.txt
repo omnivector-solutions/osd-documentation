@@ -10,8 +10,11 @@ key.
 
 The etcd server has authentication enabled by default, to protect the Munge
 key. In order to be able to retrieve the Munge key, an etcd account is
-required.  OSD provides Juju action ``etcd-create-munge-account`` on the
+required. OSD provides the Juju action ``etcd-create-munge-account`` on the
 ``slurmctld`` charm to automate the creation of such an account.
+
+By default, etcd is started using plain HTTP. It is possible to use HTTPS by
+supplying the necessary certificates to ``slurmctld``.
 
 
 Creating an etcd account
@@ -71,10 +74,15 @@ As an example, running the above commands will result in:
    $ echo $munge_key
    NzI5dVpXcysrWlEvYjNzWUFNbGluaWxITm44eGlLRStLWWtpTzRNNHIwT3lKV05sandVRFVsTHZTTjRkQ2dkWXA1R0t6VGk4Nks3blZvaHBXVy9EMEE1TTNOdGlpMjF0SEN4QW1zTm1VdFYxa01tYTd3UlVEcGxGRnBGYmR6MkZwa3daUGtreW5YUzY1U000dEptdWdBSGV5eGg1eHM1Q2Ryc3l3VERQL1VTOXNDdm5TalBncGtPdTNUc2xMQmVVcEtzYnJ6cUtTbTZLaFBlZWNZYXEwTGMwTzRJYnNqTEpNbTZEWXpQbkU5UGFSL2ZMdDMxU29PRjZsTHgyMzRpaCtmZm5MODlSNXc3SjAvcnVxZGZvU3NlQkNvekRHMlRjZG1LeXRPWUgxNndqUWdPUW96eHJ2SVFmUllQRlBDVkxHMTlHUndDSzBWRDRWR09CRGRFZEtwUTl5Q2QxcjFYUzhjTkdhTUNuRHFQenJsTDBNbzlncldUU3g4ZTZHTnhOeDZWT2FvL3E3SmFXWllMd1lLRHpkUHZ5bkUzVXBpS2lBTlNQbDd2a1JVYTFYNDNKUWFQdS8yTGtybUczOWUzK2tpS2JVRjJWMjV3aExEeHA2a2d1NDRWbE1jdGErcFZuR2Q2Zk1vYmdBVDd1eHJSMUJuUDAzUHhhTXE4YzlzNjVmNzlDUXpaZkt1V3drYm1pTmxOL3lsaU5ueDNnMjJOQ2JhVGgvcUdWdVB3Yk94bU9yMkNGTFgvbjJuV1U2ZkhGK285QUpROVpVa1VqWkt4WWJLUUlxdG9Ga29KWnMxKzRGa0FGSUNSMEk4YkNZSTAyU3hIZkx4cGpJWTNuY1IvQUx2OUlHSkVjTjNWVHRnVlJ5UlRWeTZUYXEweFZxT2JGWHlBUGwybWltS3RVZWlSNEc5RTZtL0w1ZGdIUVA0TkRRYzNqVnRBeTRDSzFXQUZhVE0yNWVEai9zOUNuV3lBOVRPekJwbVYvZE9kN0xCR3JFNE9wM3NQSUg4Nk1TTkpNaFY3TFl2dmhJT2FYdUlJSTAwZjAweVVENUV4Y0hVOEdMT1VmUDlMTkFCS1FiMFhDWVVXS1NaTWtSUUx1UzI2MGxuWFhBUkIxd2xLWVo0dTdZZ2IzWnE3WGh2L3BqblZOV2FvUjR0dWJBQlJBS2JiRUxJMlZmazNpNTRtdkxvdnRyN1hXRzMwUGNIbXRQRE1hdFliWlQ5TFVDTUZ6NzZ3MjFlK3ZhY3cvREZLd0ZwNEdIV29BRzRSYUxORHBxM1FjVzZ0WXdVd0FpbXFDNitwblJhTjNsZ1ExNXpCNWo4MGQzTUJMaHZnZDVweExhS0ZoeHFRWmU2QXdGQ0xWTFJBY2Q0b0Zkb3RNMzNGUUVGYjFDV2tFNUNMVFQwZU1yYm1zWFdsMVlWdVlkWW0vYWc4bkpYdC9VMDJNeHV0bG80N1Z6aXhDSmdvUzd3dmFCaXhzL1Q4MlJzWlhSSWNvN2Y1cVdkdW0wMm5kT0FJK2NtbUZjd1Z4b1hnZ2hvYVIzbEJ6M3A1NUZmc0pteVVpci9GUHVTekR5eG1DS3A0eUs5aUxmakwxL3VPK2ltK0VQdUNSWHgwRS9aL1BSZkJuQ29jbk5RUlZlV0lSNWtDK1piK2FlN0ZzRVhEazVJcHU5eDRZcm5KUHhSTGY0L3JVTVBRRGEzaDB3TlU2N3BwL1JuN1VlWHRCNXdLanorUUJWNGI5aEljb0U0bHpHRVdUTkg2QXlTb1NNc0tYblQ1VDliWk9SRTFsVzdnZVY4VHptK0hTbjhDNWJmMzA4NmhFRE81dG1EcmlTdz09
 
-
 .. note::
 
    The etcd key must be base64 encoded when using ``curl``.
+
+.. note::
+
+   If the server is using HTTPS with a self-signed certificate, or a non-public
+   Certificate Authority (CA), you need to supply the public certificate in the
+   ``curl`` commands by adding ``--cacert path/to/cert.crt``.
 
 
 Using Python
@@ -133,4 +141,38 @@ To get the Munge key in Python, we suggest using the `etcd3gw
    client = Etcd3AuthClient(host="10.107.185.126",
                             username="theusername",
                             password="aVerySafePassword!")
+   client.authenticate()
    munge_key = client.get(key="munge/key")[0]
+
+.. note::
+
+   The Python3 code does not automatically identify if the connection uses HTTP
+   or HTTPS. By default, the library assumes HTTP. If the server is using HTTPS
+   you need to specify ``protocol="https"`` when instantiating the client:
+
+   .. code-block:: python
+
+      client = Etcd3AuthClient(host="10.107.185.126", protocol="https",
+                               username="theusername",
+                               password="aVerySafePassword!")
+
+Configuring HTTPS
+=================
+
+To use HTTPS for the connection, you need to supply the TLS certificates to
+``slurmctld-charm`` via Juju Configuration options. You need to supply the
+public certificate (a ``.crt`` file) and the private key (a ``.key`` file).
+Additionally, you must provide the Certificate Authority's (CA) public
+certificate (another ``.crt`` file) if using self-signed certificates or a
+non-public CA.
+
+To configure these certificates:
+
+.. code-block:: bash
+
+   # the public and private TLS files
+   $ juju config slurmctld tls-cert="$(cat tls.crt)"
+   $ juju config slurmctld tls-key="$(cat tls.key)"
+
+   # the optional CA public certificate
+   $ juju config slurmctld tls-ca-cert="$(cat CA.crt)"

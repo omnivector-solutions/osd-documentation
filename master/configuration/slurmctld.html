@@ -497,6 +497,33 @@ title="Print to PDF"
      </code>
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tls-key">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       tls-key
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tls-cert">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       tls-cert
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tls-ca-cert">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       tls-ca-cert
+      </span>
+     </code>
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -688,6 +715,33 @@ title="Print to PDF"
      <code class="docutils literal notranslate">
       <span class="pre">
        acct-gather-custom
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tls-key">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       tls-key
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tls-cert">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       tls-cert
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tls-ca-cert">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       tls-ca-cert
       </span>
      </code>
     </a>
@@ -887,6 +941,32 @@ title="Print to PDF"
 <h3><code class="docutils literal notranslate"><span class="pre">acct-gather-custom</span></code><a class="headerlink" href="#acct-gather-custom" title="Permalink to this headline">#</a></h3>
 <p>User supplied <code class="docutils literal notranslate"><span class="pre">acct_gather.conf</span></code> configuration.</p>
 <p>This value supplements the charm supplied <code class="docutils literal notranslate"><span class="pre">acct_gather.conf</span></code> file that is used for configuring the acct_gather plugins.</p>
+<ul class="simple">
+<li><p>type: string</p></li>
+<li><p>default-value: empty</p></li>
+</ul>
+</div>
+<div class="section" id="tls-key">
+<h3><code class="docutils literal notranslate"><span class="pre">tls-key</span></code><a class="headerlink" href="#tls-key" title="Permalink to this headline">#</a></h3>
+<p>A TLS server private key (<code class="docutils literal notranslate"><span class="pre">.key</span></code> file) to be used.</p>
+<ul class="simple">
+<li><p>type: string</p></li>
+<li><p>default-value: empty</p></li>
+</ul>
+</div>
+<div class="section" id="tls-cert">
+<h3><code class="docutils literal notranslate"><span class="pre">tls-cert</span></code><a class="headerlink" href="#tls-cert" title="Permalink to this headline">#</a></h3>
+<p>A TLS server certificate (<code class="docutils literal notranslate"><span class="pre">.crt</span></code> file) to be used.</p>
+<ul class="simple">
+<li><p>type: string</p></li>
+<li><p>default-value: empty</p></li>
+</ul>
+</div>
+<div class="section" id="tls-ca-cert">
+<h3><code class="docutils literal notranslate"><span class="pre">tls-ca-cert</span></code><a class="headerlink" href="#tls-ca-cert" title="Permalink to this headline">#</a></h3>
+<p>A CA certificate (<code class="docutils literal notranslate"><span class="pre">.crt</span></code> file) to be used for verification of TLS</p>
+<p>certificates. A CA certificate should only be issued in the case of</p>
+<p>custom CAs and nodes not having it installed.</p>
 <ul class="simple">
 <li><p>type: string</p></li>
 <li><p>default-value: empty</p></li>
