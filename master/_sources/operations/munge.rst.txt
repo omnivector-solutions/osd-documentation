@@ -45,8 +45,9 @@ Querying the munge key
 ======================
 
 The etcd server is running on the ``slurmctld`` node and listening on the port
-``2379``. The Munge key is stored at ``munge/key`` entry. The examples below
-demonstrate how to query the secret key.
+``2379``. The Munge key is stored at ``munge/key`` entry. The Munge key is
+binary data and is stored encoded in a base 64 representation. The examples
+below demonstrate how to query the secret key and decode them to be used.
 
 Using Bash
 ----------
@@ -65,14 +66,16 @@ key:
    token=$(curl -L -s -X POST "$host:$port/v3/auth/authenticate" -d '{"name":"'"$user"'", "password":"'"$pass"'"}' | jq .token | tr -d '"')
    key=$(printf munge/key | base64)
 
-   munge_key=$(curl -L -s -X POST "$host:$port/v3/kv/range" -H "Authorization: ${token}" -d '{"key":"'$key'"}' | jq .kvs[0].value | tr -d '"')
+   munge_key=$(curl -L -s -X POST "$host:$port/v3/kv/range" -H "Authorization: ${token}" -d '{"key":"'$key'"}' | jq .kvs[0].value | tr -d '"' | base64 -d)
 
 As an example, running the above commands will result in:
 
 .. code-block:: bash
 
-   $ echo $munge_key
-   NzI5dVpXcysrWlEvYjNzWUFNbGluaWxITm44eGlLRStLWWtpTzRNNHIwT3lKV05sandVRFVsTHZTTjRkQ2dkWXA1R0t6VGk4Nks3blZvaHBXVy9EMEE1TTNOdGlpMjF0SEN4QW1zTm1VdFYxa01tYTd3UlVEcGxGRnBGYmR6MkZwa3daUGtreW5YUzY1U000dEptdWdBSGV5eGg1eHM1Q2Ryc3l3VERQL1VTOXNDdm5TalBncGtPdTNUc2xMQmVVcEtzYnJ6cUtTbTZLaFBlZWNZYXEwTGMwTzRJYnNqTEpNbTZEWXpQbkU5UGFSL2ZMdDMxU29PRjZsTHgyMzRpaCtmZm5MODlSNXc3SjAvcnVxZGZvU3NlQkNvekRHMlRjZG1LeXRPWUgxNndqUWdPUW96eHJ2SVFmUllQRlBDVkxHMTlHUndDSzBWRDRWR09CRGRFZEtwUTl5Q2QxcjFYUzhjTkdhTUNuRHFQenJsTDBNbzlncldUU3g4ZTZHTnhOeDZWT2FvL3E3SmFXWllMd1lLRHpkUHZ5bkUzVXBpS2lBTlNQbDd2a1JVYTFYNDNKUWFQdS8yTGtybUczOWUzK2tpS2JVRjJWMjV3aExEeHA2a2d1NDRWbE1jdGErcFZuR2Q2Zk1vYmdBVDd1eHJSMUJuUDAzUHhhTXE4YzlzNjVmNzlDUXpaZkt1V3drYm1pTmxOL3lsaU5ueDNnMjJOQ2JhVGgvcUdWdVB3Yk94bU9yMkNGTFgvbjJuV1U2ZkhGK285QUpROVpVa1VqWkt4WWJLUUlxdG9Ga29KWnMxKzRGa0FGSUNSMEk4YkNZSTAyU3hIZkx4cGpJWTNuY1IvQUx2OUlHSkVjTjNWVHRnVlJ5UlRWeTZUYXEweFZxT2JGWHlBUGwybWltS3RVZWlSNEc5RTZtL0w1ZGdIUVA0TkRRYzNqVnRBeTRDSzFXQUZhVE0yNWVEai9zOUNuV3lBOVRPekJwbVYvZE9kN0xCR3JFNE9wM3NQSUg4Nk1TTkpNaFY3TFl2dmhJT2FYdUlJSTAwZjAweVVENUV4Y0hVOEdMT1VmUDlMTkFCS1FiMFhDWVVXS1NaTWtSUUx1UzI2MGxuWFhBUkIxd2xLWVo0dTdZZ2IzWnE3WGh2L3BqblZOV2FvUjR0dWJBQlJBS2JiRUxJMlZmazNpNTRtdkxvdnRyN1hXRzMwUGNIbXRQRE1hdFliWlQ5TFVDTUZ6NzZ3MjFlK3ZhY3cvREZLd0ZwNEdIV29BRzRSYUxORHBxM1FjVzZ0WXdVd0FpbXFDNitwblJhTjNsZ1ExNXpCNWo4MGQzTUJMaHZnZDVweExhS0ZoeHFRWmU2QXdGQ0xWTFJBY2Q0b0Zkb3RNMzNGUUVGYjFDV2tFNUNMVFQwZU1yYm1zWFdsMVlWdVlkWW0vYWc4bkpYdC9VMDJNeHV0bG80N1Z6aXhDSmdvUzd3dmFCaXhzL1Q4MlJzWlhSSWNvN2Y1cVdkdW0wMm5kT0FJK2NtbUZjd1Z4b1hnZ2hvYVIzbEJ6M3A1NUZmc0pteVVpci9GUHVTekR5eG1DS3A0eUs5aUxmakwxL3VPK2ltK0VQdUNSWHgwRS9aL1BSZkJuQ29jbk5RUlZlV0lSNWtDK1piK2FlN0ZzRVhEazVJcHU5eDRZcm5KUHhSTGY0L3JVTVBRRGEzaDB3TlU2N3BwL1JuN1VlWHRCNXdLanorUUJWNGI5aEljb0U0bHpHRVdUTkg2QXlTb1NNc0tYblQ1VDliWk9SRTFsVzdnZVY4VHptK0hTbjhDNWJmMzA4NmhFRE81dG1EcmlTdz09
+   $ echo $munge_key # it is base64 encoded
+   +CzBbB5c+WduA0bSNb5x6+U3Mj/QuladAFH5vqyyQyvyA5YUcUikz64YEakqB852D7Ml5jmCOuxpa0VXoYMeiaRFRw2WFyR+6H66buQeCBClgfk4t0QQKKRZsaPjVojkmhoNTgQz/8mseHDnrOpxyTEsFeAw9kMzhraK1fvHOgMbDDDnkmN1oOscNhBmnreQmcr+gy2NliGiRjCjyMh6TgwJqQCBU/4LCSs+cetbvKLMdj+7X8PbYpSALx8x4JXUjNj9sv1jLLu3f684P/G3unB709hhNvj3NoSPTZ68FhgjxqUFtXF91/Dce0hJForv9EAwgyTHmCJ+WNUI5ag+1P454nWFYqJkXTSX5gvPYBCwTGbOAjgLdyPa+SGOXeHutpCJtPjbpOtL9PkP+T5+mQrgDE1KjkDYLdlIyobVNUXfziPH82uSZft8ZRuke+vP+GpExSWsdj7sYuVAhUu9Utkfiyy1hVdmKoXeppJopjnj2J+Zmaa8/qvxYXNhmrbPdp8hadSdu2XRrNGu0AbYAGUsLrvSOSKc9J8+tkjFa5Qzcn8xR8HSWK12/mjF941NyCxDLqkfD6066KmL3ARqxdU7qVjZSMlIF8UzCiKIH2WDHkZa5LIV7Cj7ZxUTaAIjdAxmwr4ajnRqK1GFI736F+BqTWLRAuXM18S4r7KDjBYSUMNiXdL7qqY3Ao/LkniraGr4CxIBApicV0SuWfMafwoCb59oMNzyaCAiuI/JjFPqxD0Tn36ngtRHgdQnESuZeTSV68b7tOBc+MkzbUhBzmWy9TGSF2gsq6hoxIRj1oYdrTpwPQrfut4VLOkiWnJuJtaKX55z3c/o3bDZ1Ykd/unUL1vdDjlyo6VrNRu+/ijttiWAGm0PJOoMMe3PEqBjDBJAHdudlyez+bsUvH+Mm3Vnuu1gIlQ4vzxNcX1kUQC/8Mef7LjaRhD1DwUhPFw0E/AEhW0wKRuPD5vEGU1nlJLZbGcEy5x6I0qhyV/pr/SbLj5W6fTuQ5XVoHbKe5fh4U7iX7JDb1UlRZWoqZ9jbHqoWwwwkTe1VEr+tXtDFU4PJ8aEcyO4qRrSibKfXd+EYWJQ0Y+BRt+iRohXjy5CV9PMctwuciZhWMP0DGoYPfsObqoCLgLF56Gu6uVOhyC0AFrEm2LAOWzVlsxENCK4jYMtznwrRV4mwPVsFLZqCVIaAwW/KDfse7Bs2Y8RcA6Jl/Rv/kk2byyFhy230GqMcXiNEtCCViJvC/H6+V58IygJkpftrncFXafQ0u+ti/4U3ZRDD4Hfy3tepKxo9Sj9p8BBHZT7jVFYsQh3TVJqZow5lPRuumM0rz2k4izC9nW/TxGe/bmvPGzQxfQDYiEgQg==
+   # decode the key and save it to a file:
+   $ echo $munge_key | base64 -d > munge.key
 
 .. note::
 
@@ -142,7 +145,8 @@ To get the Munge key in Python, we suggest using the `etcd3gw
                             username="theusername",
                             password="aVerySafePassword!")
    client.authenticate()
-   munge_key = client.get(key="munge/key")[0]
+   munge_key_encoded = client.get(key="munge/key")[0]
+   munge_key = b64decode(munge_key_encoded)
 
 .. note::
 
