@@ -250,6 +250,9 @@ will comprise the model.
    Setting this value to repositories other than Omnivector's PPAs is not
    supported and might result in a broken system.
 
+   For a more detailed guide to Slurm installation, see
+   :ref:`installation-operation`.
+
 It will take a moment get everything ready. You can check the status of your
 model with ``juju status``:
 

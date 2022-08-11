@@ -181,6 +181,42 @@ This value supplements the charm supplied ``acct_gather.conf`` file that is used
 * default-value: empty
 
 
+``tls-key``
+-----------
+
+A TLS server private key (``.key`` file) to be used.
+
+
+* type: string
+* default-value: empty
+
+
+``tls-cert``
+------------
+
+A TLS server certificate (``.crt`` file) to be used.
+
+
+* type: string
+* default-value: empty
+
+
+``tls-ca-cert``
+---------------
+
+A CA certificate (``.crt`` file) to be used for verification of TLS
+
+certificates. A CA certificate should only be issued in the case of
+
+custom CAs and nodes not having it installed.
+
+
+
+
+* type: string
+* default-value: empty
+
+
 
 
 
