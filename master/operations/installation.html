@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Installation &#8212; Omnivector Slurm Distribution  documentation</title>
+    <title>Slurm Installation &#8212; Omnivector Slurm Distribution  documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -26,7 +26,7 @@
   <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
@@ -109,7 +109,7 @@
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Installation
+     Slurm Installation
     </a>
    </li>
    <li class="toctree-l2">
@@ -371,23 +371,60 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#changing-the-repository">
+   Changing the repository
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Installation</h1>
+                <h1>Slurm Installation</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#changing-the-repository">
+   Changing the repository
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -395,21 +432,31 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="section" id="installation">
-<span id="installation-operation"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h1>
-<p>Omnivector Solutions provides a repository for Slurm packages, for both CentOS7
-and Ubuntu 20.04. This is used to ensure the charms install a supported Slurm
-version. The currently supported Slurm version is <code class="docutils literal notranslate"><span class="pre">20.11.8</span></code> on CentOS 7 and
-<code class="docutils literal notranslate"><span class="pre">20.11.7</span></code> on Ubuntu Focal.</p>
+  <div class="section" id="slurm-installation">
+<span id="installation-operation"></span><h1>Slurm Installation<a class="headerlink" href="#slurm-installation" title="Permalink to this headline">#</a></h1>
+<p>Omnivector Solutions provides a repository for Slurm packages, for both CentOS
+7 and Ubuntu 20.04. This is used to ensure the charms install a supported and
+stable Slurm version. The currently supported Slurm version is <code class="docutils literal notranslate"><span class="pre">20.11.8</span></code> on
+CentOS 7 and <code class="docutils literal notranslate"><span class="pre">20.11.7</span></code> on Ubuntu Focal.</p>
 <p>Omnivector Slurm Distribution allows one to use a custom repository URL to
 install Slurm from. This is specially useful to allow using a local
-mirror/cache of packages to speedup installation.</p>
-<p>All of the Slurm charms have a configuration value <code class="docutils literal notranslate"><span class="pre">custom-slurm-repo</span></code>
+mirror/cache of packages to speedup installation. This also allows one to
+specify different repositories for testing new Slurm versions, or upgrading
+only specific charms.</p>
+<p>All of the Slurm charms have a configuration option <code class="docutils literal notranslate"><span class="pre">custom-slurm-repo</span></code>
 to specify a different repository URL.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The configuration <code class="docutils literal notranslate"><span class="pre">custom-slurm-repo</span></code> must be set <em>before</em> deploying the
+units. Changing this value after deploying the units will not have any
+effects on the Slurm version.</p>
+</div>
+<div class="section" id="changing-the-repository">
+<h2>Changing the repository<a class="headerlink" href="#changing-the-repository" title="Permalink to this headline">#</a></h2>
 <p>To use a custom package repository, set the value of <code class="docutils literal notranslate"><span class="pre">custom-slurm-repo</span></code> in
-your <em>bundle</em> file for each charm, <em>before</em> deploying the system. For Ubuntu
-units, the URL must be a valid PPA URL. For CentOS 7 units, the URL can contain
-a <code class="docutils literal notranslate"><span class="pre">$basearch</span></code> variable. For example:</p>
+your <em>bundle</em> file for all <code class="docutils literal notranslate"><span class="pre">slurm-charms</span></code>, <em>before</em> deploying the system. For
+Ubuntu units, the URL must be a valid PPA URL. For CentOS 7 units, the URL can
+contain a <code class="docutils literal notranslate"><span class="pre">$basearch</span></code> variable. For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>applications:
   slurmd-centos:
     charm: slurmd
@@ -420,17 +467,22 @@ a <code class="docutils literal notranslate"><span class="pre">$basearch</span><
     charm: slurmd
     num_units: 1
     series: focal
-    custom-slurm-repo: ppa:omnivector/osd-testing
+    custom-slurm-repo: ppa:omnivector/osd
   ...
 </pre></div>
 </div>
-<p>This also allows one to specify different repositories for testing new Slurm
-versions, or upgrading only specific charms.</p>
+<p>Another possibility is to supply the repository URL in the command line when
+deploying the units:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy slurmd --series centos7 --config custom-slurm-repo<span class="o">=</span><span class="s1">&#39;https://omnivector-solutions.github.io/repo/centos7/stable/$basearch&#39;</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The configuration <code class="docutils literal notranslate"><span class="pre">custom-slurm-repo</span></code> must be set <em>before</em> deploying the
-units. Changing this value after deploying the units will not reinstall
-Slurm.</p>
+<p>It is the responsibility of the system administrator to ensure that all
+Slurm components are running a compatible Slurm version, when using a custom
+repository. Omnivector Solutions' repository hosts packages that guarantee
+the compatibility of all components.</p>
+</div>
 </div>
 </div>
 
