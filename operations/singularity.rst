@@ -15,7 +15,7 @@ For example, you can download the appropriate file to your operating system from
 
 .. note:: The .deb or .rpm files must be supplied as Juju resources.
 
-Before running the action, the .deb or .rpm must supplied a Juju resource, according to each operating system:
+Before running the action, the packages must supplied as Juju resources, according to each operating system:
 
 Ubuntu:
 
