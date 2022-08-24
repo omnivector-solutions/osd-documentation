@@ -5,11 +5,8 @@ Singularity
 ===========
 
 
-The ``slurmd`` charm contains support for Singularity installation.
-
-Using the ``slurmd`` charm actions we can install Singularity.
-This action will install singularity using the official .deb (Ubuntu) 
-or .rpm (CentOS) packages retrieved from `GitHub Releases <https://github.com/sylabs/singularity/releases>`_.
+The ``slurmd`` charm support installing Singularity using a Juju action.
+This action will install Singularity using the supplied packages (.deb for Ubuntu or .rpm for CentOS) as Juju Resources. We recommend downloading them  from `GitHub Releases <https://github.com/sylabs/singularity/releases>`_.
 
 For example, you can download the appropriate file to your operating system:
 
