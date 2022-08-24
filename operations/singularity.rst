@@ -8,7 +8,7 @@ Singularity
 The ``slurmd`` charm support installing Singularity using a Juju action.
 This action will install Singularity using the supplied packages (.deb for Ubuntu or .rpm for CentOS) as Juju Resources. We recommend downloading them  from `GitHub Releases <https://github.com/sylabs/singularity/releases>`_.
 
-For example, you can download the appropriate file to your operating system:
+For example, you can download the appropriate file to your operating system from:
 
 - `Ubuntu 20.04 - Singularity CE 3.10.2 <https://github.com/sylabs/singularity/releases/download/v3.10.2/singularity-ce_3.10.2-focal_amd64.deb>`_
 - `CentOS7 - Singularity CE 3.10.2 <https://github.com/sylabs/singularity/releases/download/v3.10.2/singularity-ce-3.10.2-1.el7.x86_64.rpm>`_
