@@ -1,8 +1,8 @@
 .. _singularity:
 
-============
+===========
 Singularity
-============
+===========
 
 
 The ``slurmd`` charm contains support for Singularity installation.
