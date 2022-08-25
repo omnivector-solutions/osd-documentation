@@ -18,7 +18,7 @@ When NHC identifies a node to be unhealthy, NHC drains this node to prevent
 future jobs from running on it.
 
 Acquire and Provide NHC
-============
+==============
 Before the slurmd charm can run NHC must be installed, the .tar.gz must be supplied:
 
 Acquire NHC
