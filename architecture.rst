@@ -42,7 +42,7 @@ as part of the Slurm-core offering:
 Additionally we require the `Node Health Check (NHC)
 <https://github.com/mej/nhc>`_ with a minimal configuration and checks to
 ensure the ``slurm`` and ``munge`` processes are active. The cluster
-administrator mus provide the tar.gz for nhc. It is possible, and
+administrator mus provide the ``tar.gz`` for ``nhc``. It is possible, and
 recommended, that the cluster administrator extends these checks. Check
 :ref:`nhc` section for details on how to configure it.
 
