@@ -17,6 +17,20 @@ match your setup.
 When NHC identifies a node to be unhealthy, NHC drains this node to prevent
 future jobs from running on it.
 
+Acquire and Provide NHC
+============
+Before the slurmd charm can run NHC must be installed, the .tar.gz must be supplied:
+
+Acquire NHC
+------------
+  .. code-block:: bash
+    $ wget https://github.com/mej/nhc/releases/download/1.4.3/lbnl-nhc-1.4.3.tar.gz
+
+Providing NHC
+------------
+  .. code-block:: bash
+    $ juju deploy slurmd --resource nhc=lbnl-nhc-1.4.3.tar.gz
+
 Configuration
 =============
 
