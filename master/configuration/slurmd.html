@@ -143,6 +143,11 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../operations/singularity.html">
+     Singularity
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../operations/backup-restore.html">
      Backup and restore the Slurm database
     </a>
@@ -594,6 +599,15 @@ title="Print to PDF"
      </code>
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#singularity-install">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       singularity-install
+      </span>
+     </code>
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -816,6 +830,15 @@ title="Print to PDF"
      </code>
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#singularity-install">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       singularity-install
+      </span>
+     </code>
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -1006,6 +1029,15 @@ title="Print to PDF"
 <h3><code class="docutils literal notranslate"><span class="pre">nvidia-install</span></code><a class="headerlink" href="#nvidia-install" title="Permalink to this headline">#</a></h3>
 <p>Install Nvidia GPU drivers. This might take a few minutes to complete.</p>
 <p>If no custom repository was specified before, this action will set the Nvidia repository as the default and install the latest drivers from it.</p>
+</div>
+<div class="section" id="singularity-install">
+<h3><code class="docutils literal notranslate"><span class="pre">singularity-install</span></code><a class="headerlink" href="#singularity-install" title="Permalink to this headline">#</a></h3>
+<p>Install Singularity. This might take a few minutes to complete.</p>
+<p>This action will install singularity using the official .deb (Ubuntu)  or .rpm (CentOS) packages retrieved from GitHub Releases.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The .deb or .rpm files must be supplied as Juju resources.</p>
+</div>
 </div>
 </div>
 </div>

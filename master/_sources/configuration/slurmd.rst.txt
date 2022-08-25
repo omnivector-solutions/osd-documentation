@@ -330,3 +330,20 @@ If no custom repository was specified before, this action will set the Nvidia re
 
 
 
+
+``singularity-install``
+-----------------------
+
+Install Singularity. This might take a few minutes to complete.
+
+This action will install singularity using the official .deb (Ubuntu)  or .rpm (CentOS) packages retrieved from GitHub Releases.
+
+.. note::
+
+   The .deb or .rpm files must be supplied as Juju resources.
+
+
+
+
+
+
