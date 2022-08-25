@@ -15,6 +15,7 @@ Gb
 Grafana
 Graylog
 Hallbäck
+Heitor
 hostname
 hostnames
 Infiniband
