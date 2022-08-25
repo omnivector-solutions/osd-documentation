@@ -27,13 +27,15 @@ Acquire NHC
 ------------
 
   .. code-block:: bash
-    $ wget https://github.com/mej/nhc/releases/download/1.4.3/lbnl-nhc-1.4.3.tar.gz
+    
+     $ wget https://github.com/mej/nhc/releases/download/1.4.3/lbnl-nhc-1.4.3.tar.gz
 
 Providing NHC
 -------------
 
   .. code-block:: bash
-    $ juju deploy slurmd --resource nhc=lbnl-nhc-1.4.3.tar.gz
+     
+     $ juju deploy slurmd --resource nhc=lbnl-nhc-1.4.3.tar.gz
 
 Configuration
 =============
