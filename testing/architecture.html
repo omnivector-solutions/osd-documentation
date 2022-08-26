@@ -143,6 +143,11 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="operations/singularity.html">
+     Singularity
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="operations/backup-restore.html">
      Backup and restore the Slurm database
     </a>
@@ -485,8 +490,9 @@ as part of the Slurm-core offering:</p>
 <li><p><a class="reference external" href="https://charmhub.io/slurmctld"><img alt="slurmctld-badge" src="https://charmhub.io/slurmctld/badge.svg" /></a>: Slurm control node (running <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code>)</p></li>
 <li><p><a class="reference external" href="https://charmhub.io/slurmrestd"><img alt="slurmrestd-badge" src="https://charmhub.io/slurmrestd/badge.svg" /></a>: Slurm REST service (running <code class="docutils literal notranslate"><span class="pre">slurmrestd</span></code>)</p></li>
 </ul>
-<p>Additionally we include the <a class="reference external" href="https://github.com/mej/nhc">Node Health Check (NHC)</a> with a minimal configuration and checks to
-ensure the <code class="docutils literal notranslate"><span class="pre">slurm</span></code> and <code class="docutils literal notranslate"><span class="pre">munge</span></code> processes are active. It is possible, and
+<p>Additionally we require the <a class="reference external" href="https://github.com/mej/nhc">Node Health Check (NHC)</a> with a minimal configuration and checks to
+ensure the <code class="docutils literal notranslate"><span class="pre">slurm</span></code> and <code class="docutils literal notranslate"><span class="pre">munge</span></code> processes are active. The cluster
+administrator mus provide the <code class="docutils literal notranslate"><span class="pre">tar.gz</span></code> for <code class="docutils literal notranslate"><span class="pre">nhc</span></code>. It is possible, and
 recommended, that the cluster administrator extends these checks. Check
 <a class="reference internal" href="operations/nhc.html#nhc"><span class="std std-ref">NHC</span></a> section for details on how to configure it.</p>
 <p>The easiest way to install Infiniband drivers on the compute nodes is to use

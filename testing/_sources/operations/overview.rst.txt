@@ -36,6 +36,7 @@ configuration options and actions.
    infiniband
    gpu
    nhc
+   singularity
    backup-restore
    upgrading-osd
    accounting-profiling

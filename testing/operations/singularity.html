@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Configuration and Administration &#8212; Omnivector Slurm Distribution  documentation</title>
+    <title>Singularity &#8212; Omnivector Slurm Distribution  documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -33,8 +33,8 @@
     <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="slurmd" href="slurmd.html" />
-    <link rel="prev" title="Logging" href="../operations/logging.html" />
+    <link rel="next" title="Backup and restore the Slurm database" href="backup-restore.html" />
+    <link rel="prev" title="NHC" href="nhc.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -97,110 +97,110 @@
    Installation overview
   </a>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../operations/overview.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="overview.html">
    Operations Overview
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../operations/installation.html">
+    <a class="reference internal" href="installation.html">
      Slurm Installation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../operations/nodes.html">
+    <a class="reference internal" href="nodes.html">
      Nodes operations
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../operations/partitions.html">
+    <a class="reference internal" href="partitions.html">
      Partitions
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../operations/munge.html">
+    <a class="reference internal" href="munge.html">
      Munge operations
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../operations/infiniband.html">
+    <a class="reference internal" href="infiniband.html">
      Infiniband
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../operations/gpu.html">
+    <a class="reference internal" href="gpu.html">
      GPU Support
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../operations/nhc.html">
+    <a class="reference internal" href="nhc.html">
      NHC
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../operations/singularity.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Singularity
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../operations/backup-restore.html">
+    <a class="reference internal" href="backup-restore.html">
      Backup and restore the Slurm database
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../operations/upgrading-osd.html">
+    <a class="reference internal" href="upgrading-osd.html">
      Upgrade OSD
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../operations/accounting-profiling.html">
+    <a class="reference internal" href="accounting-profiling.html">
      Accounting And Profiling
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../operations/monitoring.html">
+    <a class="reference internal" href="monitoring.html">
      Monitoring
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../operations/logging.html">
+    <a class="reference internal" href="logging.html">
      Logging
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../configuration/configuration.html">
    Configuration and Administration
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="slurmd.html">
+    <a class="reference internal" href="../configuration/slurmd.html">
      slurmd
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="slurmdbd.html">
+    <a class="reference internal" href="../configuration/slurmdbd.html">
      slurmdbd
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="slurmctld.html">
+    <a class="reference internal" href="../configuration/slurmctld.html">
      slurmctld
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="slurmrestd.html">
+    <a class="reference internal" href="../configuration/slurmrestd.html">
      slurmrestd
     </a>
    </li>
@@ -311,7 +311,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/omnivector-solutions/osd-documentation//issues/new?title=Issue%20on%20page%20%2Fconfiguration/configuration.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/omnivector-solutions/osd-documentation//issues/new?title=Issue%20on%20page%20%2Foperations/singularity.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -339,7 +339,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/configuration/configuration.rst.txt"
+        <a href="../_sources/operations/singularity.rst.txt"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -388,7 +388,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Configuration and Administration</h1>
+                <h1>Singularity</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -400,33 +400,50 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="section" id="configuration-and-administration">
-<span id="id1"></span><h1>Configuration and Administration<a class="headerlink" href="#configuration-and-administration" title="Permalink to this headline">#</a></h1>
-<p>Each Slurm component charm exposes a set of zero or more administrative actions and
-charm configuration options. Some configuration options are represented across charms
-and others are charm specific.</p>
-<p>Find a list of each charm's configuration options and administrative actions below.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="slurmd.html">slurmd</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="slurmd.html#configurations">Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slurmd.html#actions">Actions</a></li>
+  <div class="section" id="singularity">
+<span id="id1"></span><h1>Singularity<a class="headerlink" href="#singularity" title="Permalink to this headline">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm support installing Singularity using a Juju action.
+This action will install Singularity using the supplied packages (.deb for Ubuntu or .rpm for CentOS) as Juju Resources. We recommend downloading them  from <a class="reference external" href="https://github.com/sylabs/singularity/releases">GitHub Releases</a>.</p>
+<p>For example, you can download the appropriate file to your operating system from:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/sylabs/singularity/releases/download/v3.10.2/singularity-ce_3.10.2-focal_amd64.deb">Ubuntu 20.04 - Singularity CE 3.10.2</a></p></li>
+<li><p><a class="reference external" href="https://github.com/sylabs/singularity/releases/download/v3.10.2/singularity-ce-3.10.2-1.el7.x86_64.rpm">CentOS7 - Singularity CE 3.10.2</a></p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="slurmdbd.html">slurmdbd</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="slurmdbd.html#configurations">Configurations</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="slurmctld.html">slurmctld</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="slurmctld.html#configurations">Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="slurmctld.html#actions">Actions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="slurmrestd.html">slurmrestd</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="slurmrestd.html#configurations">Configurations</a></li>
-</ul>
-</li>
-</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The .deb or .rpm files must be supplied as Juju resources.</p>
+</div>
+<p>Before running the action, the packages must supplied as Juju resources, according to each operating system:</p>
+<p>Ubuntu:</p>
+<blockquote>
+<div><p>When deploying the charm:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy slurmd --resource singularity-deb<span class="o">=</span>singularity-ce_3.10.2-focal_amd64.deb
+</pre></div>
+</div>
+<p>Or on a deployed charm:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju attach-resource slurmd singularity-deb<span class="o">=</span>singularity-ce_3.10.2-focal_amd64.deb
+</pre></div>
+</div>
+</div></blockquote>
+<p>CentOS7:</p>
+<blockquote>
+<div><p>When deploying the charm:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy slurmd --resource singularity-rpm<span class="o">=</span>singularity-ce-3.10.2-1.el7.x86_64.rpm --series centos7
+</pre></div>
+</div>
+<p>Or on a deployed charm:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju attach-resource slurmd singularity-rpm<span class="o">=</span>singularity-ce-3.10.2-1.el7.x86_64.rpm
+</pre></div>
+</div>
+</div></blockquote>
+<p>With the .deb or .rpm files supplied as Juju resources, we can run the action
+that will install Singularity on the <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> node:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmd/leader singularity-install
+</pre></div>
+</div>
+<p>This might take a few minutes to complete. After that, we can check the installation using:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run --unit slurmd/leader <span class="s2">&quot;singularity --version&quot;</span>
+</pre></div>
 </div>
 </div>
 
@@ -438,17 +455,17 @@ and others are charm specific.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../operations/logging.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="nhc.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Logging</p>
+            <p class="prev-next-title">NHC</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="slurmd.html" title="next page">
+    <a class='right-next' id="next-link" href="backup-restore.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">slurmd</p>
+        <p class="prev-next-title">Backup and restore the Slurm database</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

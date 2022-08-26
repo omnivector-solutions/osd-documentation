@@ -33,7 +33,7 @@
     <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Backup and restore the Slurm database" href="backup-restore.html" />
+    <link rel="next" title="Singularity" href="singularity.html" />
     <link rel="prev" title="GPU Support" href="gpu.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -140,6 +140,11 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      NHC
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="singularity.html">
+     Singularity
     </a>
    </li>
    <li class="toctree-l2">
@@ -394,6 +399,23 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acquire-and-provide-nhc">
+   Acquire and Provide NHC
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#acquire-nhc">
+     Acquire NHC
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#providing-nhc">
+     Providing NHC
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#configuration">
    Configuration
   </a>
@@ -429,6 +451,23 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acquire-and-provide-nhc">
+   Acquire and Provide NHC
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#acquire-nhc">
+     Acquire NHC
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#providing-nhc">
+     Providing NHC
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#configuration">
    Configuration
@@ -468,6 +507,27 @@ Munge processes are active. You can easily extend the NHC configuration to
 match your setup.</p>
 <p>When NHC identifies a node to be unhealthy, NHC drains this node to prevent
 future jobs from running on it.</p>
+<div class="section" id="acquire-and-provide-nhc">
+<h2>Acquire and Provide NHC<a class="headerlink" href="#acquire-and-provide-nhc" title="Permalink to this headline">#</a></h2>
+<p>Before the <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm can run NHC must be installed, the <code class="docutils literal notranslate"><span class="pre">.tar.gz</span></code> must be
+supplied:</p>
+<div class="section" id="acquire-nhc">
+<h3>Acquire NHC<a class="headerlink" href="#acquire-nhc" title="Permalink to this headline">#</a></h3>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget https://github.com/mej/nhc/releases/download/1.4.3/lbnl-nhc-1.4.3.tar.gz
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="providing-nhc">
+<h3>Providing NHC<a class="headerlink" href="#providing-nhc" title="Permalink to this headline">#</a></h3>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy slurmd --resource <span class="nv">nhc</span><span class="o">=</span>lbnl-nhc-1.4.3.tar.gz
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
 <div class="section" id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">#</a></h2>
 <div class="section" id="health-checks">
@@ -563,10 +623,10 @@ configuration details.</p>
             <p class="prev-next-title">GPU Support</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="backup-restore.html" title="next page">
+    <a class='right-next' id="next-link" href="singularity.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Backup and restore the Slurm database</p>
+        <p class="prev-next-title">Singularity</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

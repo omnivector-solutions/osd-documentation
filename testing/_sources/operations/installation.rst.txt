@@ -4,8 +4,8 @@
 Slurm Installation
 ==================
 
-Omnivector Solutions provides a repository for Slurm packages, for both CentOS7
-and Ubuntu 20.04. This is used to ensure the charms install a supported and
+Omnivector Solutions provides a repository for Slurm packages, for both CentOS
+7 and Ubuntu 20.04. This is used to ensure the charms install a supported and
 stable Slurm version. The currently supported Slurm version is ``20.11.8`` on
 CentOS 7 and ``20.11.7`` on Ubuntu Focal.
 
@@ -53,7 +53,7 @@ deploying the units:
 
 .. code-block:: bash
 
-   $ juju deploy slurmd --series centos7 --config custom-slurm-repo="https://omnivector-solutions.github.io/repo/centos7/stable/$basearch"
+   $ juju deploy slurmd --series centos7 --config custom-slurm-repo='https://omnivector-solutions.github.io/repo/centos7/stable/$basearch'
 
 .. note::
 

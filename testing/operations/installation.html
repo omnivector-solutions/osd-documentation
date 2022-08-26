@@ -143,6 +143,11 @@
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="singularity.html">
+     Singularity
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="backup-restore.html">
      Backup and restore the Slurm database
     </a>
@@ -434,8 +439,8 @@ title="Print to PDF"
                 
   <div class="section" id="slurm-installation">
 <span id="installation-operation"></span><h1>Slurm Installation<a class="headerlink" href="#slurm-installation" title="Permalink to this headline">#</a></h1>
-<p>Omnivector Solutions provides a repository for Slurm packages, for both CentOS7
-and Ubuntu 20.04. This is used to ensure the charms install a supported and
+<p>Omnivector Solutions provides a repository for Slurm packages, for both CentOS
+7 and Ubuntu 20.04. This is used to ensure the charms install a supported and
 stable Slurm version. The currently supported Slurm version is <code class="docutils literal notranslate"><span class="pre">20.11.8</span></code> on
 CentOS 7 and <code class="docutils literal notranslate"><span class="pre">20.11.7</span></code> on Ubuntu Focal.</p>
 <p>Omnivector Slurm Distribution allows one to use a custom repository URL to
@@ -473,7 +478,7 @@ contain a <code class="docutils literal notranslate"><span class="pre">$basearch
 </div>
 <p>Another possibility is to supply the repository URL in the command line when
 deploying the units:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy slurmd --series centos7 --config custom-slurm-repo<span class="o">=</span><span class="s2">&quot;https://omnivector-solutions.github.io/repo/centos7/stable/</span><span class="nv">$basearch</span><span class="s2">&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy slurmd --series centos7 --config custom-slurm-repo<span class="o">=</span><span class="s1">&#39;https://omnivector-solutions.github.io/repo/centos7/stable/$basearch&#39;</span>
 </pre></div>
 </div>
 <div class="admonition note">
