@@ -71,7 +71,7 @@ functionality:
 .. code-block:: bash
 
    $ juju deploy prometheus2
-   $ juju relate prometheus-node-exporter:prometheus prometheus2:scrape
+   $ juju relate slurm-exporter:prometheus prometheus2:scrape
 
 Please refer to these charms' documentation for configuration details.
 
