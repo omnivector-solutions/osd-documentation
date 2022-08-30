@@ -497,7 +497,7 @@ the port <code class="docutils literal notranslate"><span class="pre">9120</span
 Deploy Prometheus and relate it to <code class="docutils literal notranslate"><span class="pre">slurm-exporter</span></code> to access this
 functionality:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy prometheus2
-$ juju relate prometheus-node-exporter:prometheus prometheus2:scrape
+$ juju relate slurm-exporter:prometheus prometheus2:scrape
 </pre></div>
 </div>
 <p>Please refer to these charms' documentation for configuration details.</p>
