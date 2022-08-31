@@ -28,14 +28,36 @@ The `Slurm Elastic Search Plugin
 finished jobs.
 
 This plugin can be automatically enabled by relating the ``slurmctld`` charm
-with the `Elastic Search Charm <https://charmhub.io/elasticsearch/>`_:
-
-.. code-block:: bash
-
-   $ juju relate slurmctld elasticsearch
+with the `Elastic Search Charm <https://charmhub.io/elasticsearch/>`_.
 
 The ``slurmctld`` will create a new index with the name of the cluster and the
 document type is named ``jobcomp``.
+
+A basic setup involves the following steps:
+
+1. Deploy `Elasticsearch charm <https://charmhub.io/elasticsearch>`_.
+2. Relate ``slurmctld`` and ``elasticsearch``.
+
+The Juju commands to accomplish these steps are:
+
+.. code-block:: bash
+
+   $ juju deploy elasticsearch
+   $ juju relate slurmctld influxdb
+
+
+Note
+----
+If ``juju`` reports "elasticsearch service not running" for the elasticsearch charm,
+See this related `bug <https://bugs.launchpad.net/charm-elasticsearch/+bug/1980384>`_. 
+
+Try running the following to increase the max virutal memory areas on the host:
+
+.. code-block:: bash
+
+   $ sysctl -w vm.max_map_count=262144
+
+
 
 Data Saved
 ----------
