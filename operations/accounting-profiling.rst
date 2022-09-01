@@ -43,7 +43,7 @@ The Juju commands to accomplish these steps are:
 .. code-block:: bash
 
    $ juju deploy elasticsearch
-   $ juju relate slurmctld influxdb
+   $ juju relate slurmctld elasticsearch
 
 
 Note
