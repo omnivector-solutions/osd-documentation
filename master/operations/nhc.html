@@ -399,6 +399,11 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   Installation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#configuration">
    Configuration
   </a>
@@ -434,6 +439,11 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   Installation
+  </a>
+ </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#configuration">
    Configuration
@@ -473,6 +483,20 @@ Munge processes are active. You can easily extend the NHC configuration to
 match your setup.</p>
 <p>When NHC identifies a node to be unhealthy, NHC drains this node to prevent
 future jobs from running on it.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm installs NHC using from a tarball acquired from the official project page.</p>
+<p>When deploying the charm directly from CharmHub, the tarball with be automatically provided. It is only necessary to acquire the file locally when the charm is deployed from a local file, or when you want to install a specific NHC version.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The NHC tarball must be provided _before_ deploying the charm. Attaching a different tarball after the charm is deployed will have no effect.</p>
+</div>
+<p>And example to download a tarball for NHC and deploy the <code class="docutils literal notranslate"><span class="pre">slurmd</span></code> charm using it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget https://github.com/mej/nhc/releases/download/1.4.3/lbnl-nhc-1.4.3.tar.gz
+$ juju deploy slurmd --resource <span class="nv">nhc</span><span class="o">=</span>lbnl-nhc-1.4.3.tar.gz
+</pre></div>
+</div>
+</div>
 <div class="section" id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">#</a></h2>
 <div class="section" id="health-checks">

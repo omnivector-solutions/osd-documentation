@@ -17,6 +17,24 @@ match your setup.
 When NHC identifies a node to be unhealthy, NHC drains this node to prevent
 future jobs from running on it.
 
+Installation
+============
+
+The ``slurmd`` charm installs NHC using from a tarball acquired from the official project page.
+
+When deploying the charm directly from CharmHub, the tarball with be automatically provided. It is only necessary to acquire the file locally when the charm is deployed from a local file, or when you want to install a specific NHC version.
+
+.. note::
+
+   The NHC tarball must be provided _before_ deploying the charm. Attaching a different tarball after the charm is deployed will have no effect.
+
+And example to download a tarball for NHC and deploy the ``slurmd`` charm using it:
+
+.. code-block:: bash
+    
+     $ wget https://github.com/mej/nhc/releases/download/1.4.3/lbnl-nhc-1.4.3.tar.gz
+     $ juju deploy slurmd --resource nhc=lbnl-nhc-1.4.3.tar.gz
+
 Configuration
 =============
 
