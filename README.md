@@ -48,24 +48,11 @@
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [About The Project](#about-the-project)
 - [Prerequisites](#prerequisites)
 - [Building the documentation](#Building-the-documentation)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
-
-<!-- ABOUT THE PROJECT -->
-
-## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-`<charm_name>` allows `<insert_target_audience/service/package>` to do `<action/task_it_does>`.
-
-Additional information text about what the charm does. Your introduction should be around 2 or 3 sentences. Don't go overboard, people won't read it.
 
 ## Prerequisites
 
@@ -74,54 +61,25 @@ Before you begin, ensure you have met the following requirements:
 - A modern Python installation
 - [sphinx](https://sphinx-doc.org/)
 
-<!-- GETTING STARTED -->
-
 ## Building the documentation
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/your_username_/Charm-Name.git
+    $ git clone https://github.com/omnivector-solutions/osd-documentation.git
     ```
 1. Install the dependencies:
     ```sh
-    virtualenv venv
-    source venv/bin/activate
-    pip install -r requirements.txt
+    $ python3 -m venv venv
+    $ source venv/bin/activate
+    $ pip install -r requirements.txt
     ```
 1. Build the HTML docs:
     ```sh
-    make html
+    $ make html
     ```
 
 The result is in the `build/html/` directory. Use your favorite browser to open
 the [index.html](build/html/index.html).
-
-<!-- ROADMAP -->
-
-## Roadmap
-
-See the [open issues](https://github.com/omnivector-solutions/osd-documentation/issues) for a list of proposed features (and known issues).
-
-<!-- CONTRIBUTING -->
-
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. #### Fork the Project
-2. #### Create your Feature Branch:
-   ```sh
-   git checkout -b feature/AmazingFeature
-   ```
-3. #### Commit your Changes:
-   ```sh
-   git commit -m 'Add some AmazingFeature'
-   ```
-4. #### Push to the Branch:
-   ```sh
-   git push origin feature/AmazingFeature
-   ```
-5. #### Open a Pull Request!
 
 <!-- LICENSE -->
 

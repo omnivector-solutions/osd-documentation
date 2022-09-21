@@ -6,6 +6,9 @@ Contributing to OSD
 
 OSD is an open-source project, and as such we welcome contributions from
 developers, engineers, system administrators, and users in general.
+Contributions are what make the open source community such an amazing place to
+learn, inspire, and create. Any contributions you make are **greatly
+appreciated**.
 
 There are many ways to contribute:
 
@@ -29,6 +32,9 @@ This documentation is built using `Sphinx <https://sphinx-doc.org/>`_ and
 and is hosted in
 `GitHub <https://github.com/omnivector-solutions/osd-documentation>`_.
 
+Git branches
+------------
+
 The ``master`` branch is rebuilt at every commit and published automatically
 `online <https://omnivector-solutions.github.io/osd-documentation/master/>`_.
 If you want to test/show any specific branch, you can do so by "resetting" the
@@ -45,7 +51,11 @@ One way to achieve that is:
 General Recommendations
 -----------------------
 
-Use US English.
+Use US English for writing documentation and always run a spell checker. The
+GitHub project will spell check the project on every Pull Request. In case the
+spell checker gives an error due to a word not available in the US dictionary,
+add this word to the ``new_words_spell_checker.txt``. Please keep this file in
+alphabetical order.
 
 Wrap the lines at 80 columns when writing documentation.
 
@@ -114,14 +124,18 @@ Git usage
   - second line should be empty
   - subsequent lines should describe the changes and explain why they are
     needed
+  - See `How to Write a Git Commit Message <https://cbea.ms/git-commit/>`_ for
+    a detailed guide on this subject
 
 - linear history
 
-  - always rebase with master
-  - fast forward merge or squash merge
+  - always rebase your branch with master
+  - use fast forward merge or squash merge, when merging the Pull Requests
 
 - keep user related changes in the :ref:`changelog`
-- annotated tags for releases, see :ref:`release-process` below for details
+- create annotated tags for releases, see :ref:`release-process` below for
+  details
+- use meaningful names for branches
 - do not include merge commits in new branches. New branches should contain
   only new code.
 
@@ -148,12 +162,12 @@ installed as a classical snap:
 
 .. code-block:: bash
 
-   $ sudo snap install --edge charmcraft --classic
+   $ sudo snap install charmcraft --classic
 
 The OSD charm code is available in the Git repository `slurm-charms
 <https://github.com/omnivector-solutions/slurm-charms>`_, it contains all the
-nuts and bolts of all Slurm Charms as well as a helper ``Makefile`` to build
-the charms. To clone and build:
+nuts and bolts of all Slurm-charms as well as a helper ``Makefile`` to build
+them. To clone and build:
 
 .. code-block:: bash
 
@@ -216,7 +230,7 @@ the documentation for charm actions and charm configurations dynamically. OSD
 documentation is built in such a way that the actions and configurations that
 exist in each Slurm charm are what end up in the documentation.
 
-All actions, configurations, and their parameters _should_ have a
+All actions, configurations, and their parameters *should* have a
 description. A few things to note around the description field:
 
 - inline markdown code is translated to inline reStructuredText code
@@ -311,6 +325,10 @@ The Slurm-charms and ``slurm-ops-manager`` follow a semantic versioning scheme.
 Release process
 ---------------
 
+The release process is a different process than writing code to add new
+features or to fix issues. Crafting a new release means building a new version
+of the product and making it available to clients and end users.
+
 Slurm-charms
 ^^^^^^^^^^^^
 
@@ -320,8 +338,8 @@ new release, create a new commit with the changes, and create a new Git tag
 with a description of the new release. This script intentionally does not push
 to GitHub, this way one can review the changes before ``git push``.
 
-After the new release is made in GitHub, pack and release the charms in
-Charmhub.
+The ``slurm-charms`` are always updated in the ``latest/edge`` channel in
+CharmHub after every Pull Request is merged.
 
 Slurm-ops-manager
 ^^^^^^^^^^^^^^^^^
