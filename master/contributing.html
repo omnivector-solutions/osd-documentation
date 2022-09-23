@@ -409,6 +409,11 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#git-branches">
+     Git branches
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#general-recommendations">
      General Recommendations
     </a>
@@ -486,11 +491,6 @@ title="Print to PDF"
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id8">
-       Slurm-charms
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id9">
        Slurm-ops-manager
       </a>
      </li>
@@ -528,6 +528,11 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#git-branches">
+     Git branches
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#general-recommendations">
      General Recommendations
     </a>
@@ -605,11 +610,6 @@ title="Print to PDF"
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id8">
-       Slurm-charms
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id9">
        Slurm-ops-manager
       </a>
      </li>
@@ -630,7 +630,10 @@ title="Print to PDF"
   <div class="section" id="contributing-to-osd">
 <span id="contributing"></span><h1>Contributing to OSD<a class="headerlink" href="#contributing-to-osd" title="Permalink to this headline">#</a></h1>
 <p>OSD is an open-source project, and as such we welcome contributions from
-developers, engineers, system administrators, and users in general.</p>
+developers, engineers, system administrators, and users in general.
+Contributions are what make the open source community such an amazing place to
+learn, inspire, and create. Any contributions you make are <strong>greatly
+appreciated</strong>.</p>
 <p>There are many ways to contribute:</p>
 <div class="section" id="feedback">
 <h2>Feedback<a class="headerlink" href="#feedback" title="Permalink to this headline">#</a></h2>
@@ -646,6 +649,8 @@ developers, engineers, system administrators, and users in general.</p>
 <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">reStructuredText</a>,
 and is hosted in
 <a class="reference external" href="https://github.com/omnivector-solutions/osd-documentation">GitHub</a>.</p>
+<div class="section" id="git-branches">
+<h3>Git branches<a class="headerlink" href="#git-branches" title="Permalink to this headline">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">master</span></code> branch is rebuilt at every commit and published automatically
 <a class="reference external" href="https://omnivector-solutions.github.io/osd-documentation/master/">online</a>.
 If you want to test/show any specific branch, you can do so by &quot;resetting&quot; the
@@ -657,9 +662,14 @@ $ git reset --hard &lt;my-branch&gt;
 $ git push --force
 </pre></div>
 </div>
+</div>
 <div class="section" id="general-recommendations">
 <h3>General Recommendations<a class="headerlink" href="#general-recommendations" title="Permalink to this headline">#</a></h3>
-<p>Use US English.</p>
+<p>Use US English for writing documentation and always run a spell checker. The
+GitHub project will spell check the project on every Pull Request. In case the
+spell checker gives an error due to a word not available in the US dictionary,
+add this word to the <code class="docutils literal notranslate"><span class="pre">new_words_spell_checker.txt</span></code>. Please keep this file in
+alphabetical order.</p>
 <p>Wrap the lines at 80 columns when writing documentation.</p>
 </div>
 <div class="section" id="sections">
@@ -721,16 +731,20 @@ characters</p></li>
 <li><p>second line should be empty</p></li>
 <li><p>subsequent lines should describe the changes and explain why they are
 needed</p></li>
+<li><p>See <a class="reference external" href="https://cbea.ms/git-commit/">How to Write a Git Commit Message</a> for
+a detailed guide on this subject</p></li>
 </ul>
 </li>
 <li><p>linear history</p>
 <ul>
-<li><p>always rebase with master</p></li>
-<li><p>fast forward merge or squash merge</p></li>
+<li><p>always rebase your branch with master</p></li>
+<li><p>When merging the Pull Requests, use fast forward merge or squash merge.</p></li>
 </ul>
 </li>
 <li><p>keep user related changes in the <a class="reference internal" href="#changelog"><span class="std std-ref">CHANGELOG</span></a></p></li>
-<li><p>annotated tags for releases, see <a class="reference internal" href="#release-process"><span class="std std-ref">Release process</span></a> below for details</p></li>
+<li><p>create annotated tags for releases, see <a class="reference internal" href="#release-process"><span class="std std-ref">Release process</span></a> below for
+details</p></li>
+<li><p>use meaningful names for branches</p></li>
 <li><p>do not include merge commits in new branches. New branches should contain
 only new code.</p></li>
 </ul>
@@ -748,12 +762,12 @@ This section assumes the system is Linux-based and has support for <cite>snaps</
 <p>The tool used to build a charm is
 <a class="reference external" href="https://github.com/canonical/charmcraft/">charmcraft</a>, and it should be
 installed as a classical snap:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo snap install --edge charmcraft --classic
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo snap install charmcraft --classic
 </pre></div>
 </div>
 <p>The OSD charm code is available in the Git repository <a class="reference external" href="https://github.com/omnivector-solutions/slurm-charms">slurm-charms</a>, it contains all the
-nuts and bolts of all Slurm Charms as well as a helper <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> to build
-the charms. To clone and build:</p>
+nuts and bolts of all Slurm-charms as well as a helper <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> to build
+them. To clone and build:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/omnivector-solutions/slurm-charms
 $ <span class="nb">cd</span> slurm-charms
 $ make charms
@@ -808,7 +822,7 @@ charms, these should live in separate commits.</p></li>
 the documentation for charm actions and charm configurations dynamically. OSD
 documentation is built in such a way that the actions and configurations that
 exist in each Slurm charm are what end up in the documentation.</p>
-<p>All actions, configurations, and their parameters _should_ have a
+<p>All actions, configurations, and their parameters <em>should</em> have a
 description. A few things to note around the description field:</p>
 <ul class="simple">
 <li><p>inline markdown code is translated to inline reStructuredText code</p></li>
@@ -888,18 +902,21 @@ building one.</p>
 </div>
 <div class="section" id="release-process">
 <span id="id7"></span><h3>Release process<a class="headerlink" href="#release-process" title="Permalink to this headline">#</a></h3>
-<div class="section" id="id8">
-<h4>Slurm-charms<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h4>
+<p>The release process is separated from the development process.
+The development process includes writing code to add features and or
+fixing issues. The release process involves building a new version of the
+product and making it available to clients and end users.
+Slurm-charms
+^^^^^^^^^^^^</p>
 <p>To make a new release of the Slurm-charms, use the <code class="docutils literal notranslate"><span class="pre">script/release.sh</span></code>
 script. This script will update the <a class="reference internal" href="#changelog"><span class="std std-ref">CHANGELOG</span></a> with the version of the
 new release, create a new commit with the changes, and create a new Git tag
 with a description of the new release. This script intentionally does not push
 to GitHub, this way one can review the changes before <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>.</p>
-<p>After the new release is made in GitHub, pack and release the charms in
-Charmhub.</p>
-</div>
-<div class="section" id="id9">
-<h4>Slurm-ops-manager<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">slurm-charms</span></code> are always updated in the <code class="docutils literal notranslate"><span class="pre">latest/edge</span></code> channel in
+CharmHub after every Pull Request is merged.</p>
+<div class="section" id="id8">
+<h4>Slurm-ops-manager<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h4>
 <p>The release process for <code class="docutils literal notranslate"><span class="pre">slurm-ops-manager</span></code> is straightforward:</p>
 <ul>
 <li><p>bump the version string in the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file</p></li>
