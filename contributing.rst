@@ -130,7 +130,7 @@ Git usage
 - linear history
 
   - always rebase your branch with master
-  - use fast forward merge or squash merge, when merging the Pull Requests
+  - When merging the Pull Requests, use fast forward merge or squash merge.
 
 - keep user related changes in the :ref:`changelog`
 - create annotated tags for releases, see :ref:`release-process` below for
@@ -325,10 +325,10 @@ The Slurm-charms and ``slurm-ops-manager`` follow a semantic versioning scheme.
 Release process
 ---------------
 
-The release process is a different process than writing code to add new
-features or to fix issues. Crafting a new release means building a new version
-of the product and making it available to clients and end users.
-
+The release process is separated from the development process.
+The development process includes writing code to add features and or
+fixing issues. The release process involves building a new version of the
+product and making it available to clients and end users.
 Slurm-charms
 ^^^^^^^^^^^^
 

@@ -69,6 +69,7 @@ Before you begin, ensure you have met the following requirements:
     ```
 1. Install the dependencies:
     ```sh
+    $ cd ./osd-documentation
     $ python3 -m venv venv
     $ source venv/bin/activate
     $ pip install -r requirements.txt
