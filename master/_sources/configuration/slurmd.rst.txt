@@ -347,3 +347,14 @@ This action will install singularity using the official .deb (Ubuntu)  or .rpm (
 
 
 
+
+``mpi-install``
+---------------
+
+Install MPI (``mpich``). This might take a few minutes to complete.
+
+
+
+
+
+
