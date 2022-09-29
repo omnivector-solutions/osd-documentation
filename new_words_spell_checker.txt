@@ -36,6 +36,7 @@ Makefile
 Matheus
 Mellanox
 Mohamad
+mpich
 munge
 Nvidia
 Omnivector

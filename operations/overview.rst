@@ -37,6 +37,7 @@ configuration options and actions.
    gpu
    nhc
    singularity
+   mpi
    backup-restore
    upgrading-osd
    accounting-profiling
