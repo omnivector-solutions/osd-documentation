@@ -1,5 +1,6 @@
-sphinx<4
+sphinx
 sphinxcontrib-httpdomain
 sphinx-book-theme
 sphinxcontrib-spelling
 jinja2<3.1
+pyyaml
