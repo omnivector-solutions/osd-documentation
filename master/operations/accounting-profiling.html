@@ -1,640 +1,508 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Accounting And Profiling &#8212; Omnivector Slurm Distribution  documentation</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css" type="text/css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'operations/accounting-profiling';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Monitoring" href="monitoring.html" />
     <link rel="prev" title="Upgrade OSD" href="upgrading-osd.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Omnivector Slurm Distribution  documentation</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../architecture.html">
-   OSD Architecture
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../installation.html">
-   Installation overview
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="overview.html">
-   Operations Overview
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="installation.html">
-     Slurm Installation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="nodes.html">
-     Nodes operations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="partitions.html">
-     Partitions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="munge.html">
-     Munge operations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="infiniband.html">
-     Infiniband
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="gpu.html">
-     GPU Support
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="nhc.html">
-     NHC
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="singularity.html">
-     Singularity
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="mpi.html">
-     MPI
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="backup-restore.html">
-     Backup and restore the Slurm database
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="upgrading-osd.html">
-     Upgrade OSD
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Accounting And Profiling
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="monitoring.html">
-     Monitoring
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="logging.html">
-     Logging
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../configuration/configuration.html">
-   Configuration and Administration
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../configuration/slurmd.html">
-     slurmd
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../configuration/slurmdbd.html">
-     slurmdbd
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../configuration/slurmctld.html">
-     slurmctld
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../configuration/slurmrestd.html">
-     slurmrestd
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../contributing.html">
-   Contributing to OSD
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../acknowledgments.html">
-   Acknowledgments
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../changelog.html">
-   Changelog
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">OSD Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation overview</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="overview.html">Operations Overview</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Slurm Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodes.html">Nodes operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="partitions.html">Partitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="munge.html">Munge operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infiniband.html">Infiniband</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nhc.html">NHC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html">Backup and restore the Slurm database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrading-osd.html">Upgrade OSD</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Accounting And Profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monitoring.html">Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../configuration/configuration.html">Configuration and Administration</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/slurmd.html">slurmd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/slurmdbd.html">slurmdbd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/slurmctld.html">slurmctld</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/slurmrestd.html">slurmrestd</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to OSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../acknowledgments.html">Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/omnivector-solutions/osd-documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/omnivector-solutions/osd-documentation/issues/new?title=Issue%20on%20page%20%2Foperations/accounting-profiling.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
 
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
 
 
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/operations/accounting-profiling.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
   </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/omnivector-solutions/osd-documentation/"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/omnivector-solutions/osd-documentation//issues/new?title=Issue%20on%20page%20%2Foperations/accounting-profiling.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/operations/accounting-profiling.rst.txt"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.rst</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#slurmdbd">
-   Slurmdbd
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#elasticsearch-plugin">
-   ElasticSearch plugin
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-saved">
-     Data Saved
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#influxdb-profiling-plugin">
-   InfluxDB profiling plugin
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Data saved
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#accessing-the-data">
-     Accessing the data
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Accounting And Profiling</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#slurmdbd">
-   Slurmdbd
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#elasticsearch-plugin">
-   ElasticSearch plugin
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-saved">
-     Data Saved
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#influxdb-profiling-plugin">
-   InfluxDB profiling plugin
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Data saved
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#accessing-the-data">
-     Accessing the data
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Accounting And Profiling</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slurmdbd">Slurmdbd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elasticsearch-plugin">ElasticSearch plugin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-saved">Data Saved</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#influxdb-profiling-plugin">InfluxDB profiling plugin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Data saved</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-data">Accessing the data</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <div class="section" id="accounting-and-profiling">
-<span id="accounting-profiling"></span><h1>Accounting And Profiling<a class="headerlink" href="#accounting-and-profiling" title="Permalink to this headline">#</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="accounting-and-profiling">
+<span id="accounting-profiling"></span><h1>Accounting And Profiling<a class="headerlink" href="#accounting-and-profiling" title="Permalink to this heading">#</a></h1>
 <p>Slurm can collect accounting and profiling information about jobs and job
 steps. Please find below instructions on how to setup accounting for the
 different plugins, as well as the <a class="reference external" href="https://slurm.schedmd.com/accounting.html">official documentation about accounting</a>.</p>
-<div class="section" id="slurmdbd">
-<h2>Slurmdbd<a class="headerlink" href="#slurmdbd" title="Permalink to this headline">#</a></h2>
+<section id="slurmdbd">
+<h2>Slurmdbd<a class="headerlink" href="#slurmdbd" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">slurmdbd</span></code> is used for job accounting.</p>
-</div>
-<div class="section" id="elasticsearch-plugin">
-<span id="elasticsearch-accounting"></span><h2>ElasticSearch plugin<a class="headerlink" href="#elasticsearch-plugin" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="elasticsearch-plugin">
+<span id="elasticsearch-accounting"></span><h2>ElasticSearch plugin<a class="headerlink" href="#elasticsearch-plugin" title="Permalink to this heading">#</a></h2>
 <p>The <a class="reference external" href="https://slurm.schedmd.com/elasticsearch.html">Slurm Elastic Search Plugin</a> stores accounting data for
 finished jobs.</p>
 <p>This plugin can be automatically enabled by relating the <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm
 with the <a class="reference external" href="https://charmhub.io/elasticsearch/">Elastic Search Charm</a>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju relate slurmctld elasticsearch
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>relate<span class="w"> </span>slurmctld<span class="w"> </span>elasticsearch
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> will create a new index with the name of the cluster and the
 document type is named <code class="docutils literal notranslate"><span class="pre">jobcomp</span></code>.</p>
-<div class="section" id="data-saved">
-<h3>Data Saved<a class="headerlink" href="#data-saved" title="Permalink to this headline">#</a></h3>
+<section id="data-saved">
+<h3>Data Saved<a class="headerlink" href="#data-saved" title="Permalink to this heading">#</a></h3>
 <p>An example to get all the documents saved in the <code class="docutils literal notranslate"><span class="pre">osd-cluster</span></code> index from the
 Elastic Search server at <code class="docutils literal notranslate"><span class="pre">10.220.130.6</span></code> is:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -XGET <span class="s1">&#39;http://10.220.130.6:9200/osd-cluster/_search?pretty=true&amp;q=*:*&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-XGET<span class="w"> </span><span class="s1">&#39;http://10.220.130.6:9200/osd-cluster/_search?pretty=true&amp;q=*:*&#39;</span>
 <span class="o">{</span>
-  <span class="s2">&quot;took&quot;</span> : <span class="m">2</span>,
-  <span class="s2">&quot;timed_out&quot;</span> : false,
-  <span class="s2">&quot;_shards&quot;</span> : <span class="o">{</span>
-    <span class="s2">&quot;total&quot;</span> : <span class="m">5</span>,
-    <span class="s2">&quot;successful&quot;</span> : <span class="m">5</span>,
-    <span class="s2">&quot;skipped&quot;</span> : <span class="m">0</span>,
-    <span class="s2">&quot;failed&quot;</span> : <span class="m">0</span>
-  <span class="o">}</span>,
-  <span class="s2">&quot;hits&quot;</span> : <span class="o">{</span>
-    <span class="s2">&quot;total&quot;</span> : <span class="m">2</span>,
-    <span class="s2">&quot;max_score&quot;</span> : <span class="m">1</span>.0,
-    <span class="s2">&quot;hits&quot;</span> : <span class="o">[</span>
-      <span class="o">{</span>
-        <span class="s2">&quot;_index&quot;</span> : <span class="s2">&quot;osd-cluster&quot;</span>,
-        <span class="s2">&quot;_type&quot;</span> : <span class="s2">&quot;jobcomp&quot;</span>,
-        <span class="s2">&quot;_id&quot;</span> : <span class="s2">&quot;bnhJ3n0BaChVi1VR3viV&quot;</span>,
-        <span class="s2">&quot;_score&quot;</span> : <span class="m">1</span>.0,
-        <span class="s2">&quot;_source&quot;</span> : <span class="o">{</span>
-          <span class="s2">&quot;jobid&quot;</span> : <span class="m">24</span>,
-          <span class="s2">&quot;username&quot;</span> : <span class="s2">&quot;john&quot;</span>,
-          <span class="s2">&quot;user_id&quot;</span> : <span class="m">1200</span>,
-          <span class="s2">&quot;groupname&quot;</span> : <span class="s2">&quot;john&quot;</span>,
-          <span class="s2">&quot;group_id&quot;</span> : <span class="m">1200</span>,
-          <span class="s2">&quot;@start&quot;</span> : <span class="s2">&quot;2021-12-21T18:37:02&quot;</span>,
-          <span class="s2">&quot;@end&quot;</span> : <span class="s2">&quot;2021-12-21T18:37:02&quot;</span>,
-          <span class="s2">&quot;elapsed&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;partition&quot;</span> : <span class="s2">&quot;osd-slurmd&quot;</span>,
-          <span class="s2">&quot;alloc_node&quot;</span> : <span class="s2">&quot;juju-f48c73-285&quot;</span>,
-          <span class="s2">&quot;nodes&quot;</span> : <span class="s2">&quot;juju-f48c73-286&quot;</span>,
-          <span class="s2">&quot;total_cpus&quot;</span> : <span class="m">16</span>,
-          <span class="s2">&quot;total_nodes&quot;</span> : <span class="m">1</span>,
-          <span class="s2">&quot;derived_ec&quot;</span> : <span class="s2">&quot;0:0&quot;</span>,
-          <span class="s2">&quot;exit_code&quot;</span> : <span class="s2">&quot;0:0&quot;</span>,
-          <span class="s2">&quot;state&quot;</span> : <span class="s2">&quot;COMPLETED&quot;</span>,
-          <span class="s2">&quot;cpu_hours&quot;</span> : <span class="m">0</span>.0,
-          <span class="s2">&quot;pack_job_id&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;pack_job_offset&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;het_job_id&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;het_job_offset&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;@submit&quot;</span> : <span class="s2">&quot;2021-12-21T18:37:02&quot;</span>,
-          <span class="s2">&quot;@eligible&quot;</span> : <span class="s2">&quot;2021-12-21T18:37:02&quot;</span>,
-          <span class="s2">&quot;queue_wait&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;work_dir&quot;</span> : <span class="s2">&quot;/home/john/project/foo&quot;</span>,
-          <span class="s2">&quot;cluster&quot;</span> : <span class="s2">&quot;osd-cluster&quot;</span>,
-          <span class="s2">&quot;qos&quot;</span> : <span class="s2">&quot;normal&quot;</span>,
-          <span class="s2">&quot;ntasks&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;ntasks_per_node&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;ntasks_per_tres&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;cpus_per_task&quot;</span> : <span class="m">1</span>,
-          <span class="s2">&quot;job_name&quot;</span> : <span class="s2">&quot;hostname&quot;</span>,
-          <span class="s2">&quot;tres_req&quot;</span> : <span class="s2">&quot;cpu=1,mem=15921M,node=1,billing=1&quot;</span>,
-          <span class="s2">&quot;tres_alloc&quot;</span> : <span class="s2">&quot;cpu=16,node=1,billing=16&quot;</span>,
-          <span class="s2">&quot;account&quot;</span> : <span class="s2">&quot;john&quot;</span>,
-          <span class="s2">&quot;parent_accounts&quot;</span> : <span class="s2">&quot;/users/user&quot;</span>
-        <span class="o">}</span>
-      <span class="o">}</span>,
-      <span class="o">{</span>
-        <span class="s2">&quot;_index&quot;</span> : <span class="s2">&quot;osd-cluster&quot;</span>,
-        <span class="s2">&quot;_type&quot;</span> : <span class="s2">&quot;jobcomp&quot;</span>,
-        <span class="s2">&quot;_id&quot;</span> : <span class="s2">&quot;b3hJ3n0BaChVi1VR3vi0&quot;</span>,
-        <span class="s2">&quot;_score&quot;</span> : <span class="m">1</span>.0,
-        <span class="s2">&quot;_source&quot;</span> : <span class="o">{</span>
-          <span class="s2">&quot;jobid&quot;</span> : <span class="m">25</span>,
-          <span class="s2">&quot;username&quot;</span> : <span class="s2">&quot;root&quot;</span>,
-          <span class="s2">&quot;user_id&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;groupname&quot;</span> : <span class="s2">&quot;root&quot;</span>,
-          <span class="s2">&quot;group_id&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;@start&quot;</span> : <span class="s2">&quot;2021-12-21T18:37:25&quot;</span>,
-          <span class="s2">&quot;@end&quot;</span> : <span class="s2">&quot;2021-12-21T18:37:25&quot;</span>,
-          <span class="s2">&quot;elapsed&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;partition&quot;</span> : <span class="s2">&quot;osd-slurmd&quot;</span>,
-          <span class="s2">&quot;alloc_node&quot;</span> : <span class="s2">&quot;juju-f48c73-285&quot;</span>,
-          <span class="s2">&quot;nodes&quot;</span> : <span class="s2">&quot;juju-f48c73-286&quot;</span>,
-          <span class="s2">&quot;total_cpus&quot;</span> : <span class="m">16</span>,
-          <span class="s2">&quot;total_nodes&quot;</span> : <span class="m">1</span>,
-          <span class="s2">&quot;derived_ec&quot;</span> : <span class="s2">&quot;0:0&quot;</span>,
-          <span class="s2">&quot;exit_code&quot;</span> : <span class="s2">&quot;0:0&quot;</span>,
-          <span class="s2">&quot;state&quot;</span> : <span class="s2">&quot;COMPLETED&quot;</span>,
-          <span class="s2">&quot;cpu_hours&quot;</span> : <span class="m">0</span>.0,
-          <span class="s2">&quot;pack_job_id&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;pack_job_offset&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;het_job_id&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;het_job_offset&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;@submit&quot;</span> : <span class="s2">&quot;2021-12-21T18:37:25&quot;</span>,
-          <span class="s2">&quot;@eligible&quot;</span> : <span class="s2">&quot;2021-12-21T18:37:25&quot;</span>,
-          <span class="s2">&quot;queue_wait&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;work_dir&quot;</span> : <span class="s2">&quot;/root&quot;</span>,
-          <span class="s2">&quot;cluster&quot;</span> : <span class="s2">&quot;osd-cluster&quot;</span>,
-          <span class="s2">&quot;qos&quot;</span> : <span class="s2">&quot;normal&quot;</span>,
-          <span class="s2">&quot;ntasks&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;ntasks_per_node&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;ntasks_per_tres&quot;</span> : <span class="m">0</span>,
-          <span class="s2">&quot;cpus_per_task&quot;</span> : <span class="m">1</span>,
-          <span class="s2">&quot;job_name&quot;</span> : <span class="s2">&quot;hostname&quot;</span>,
-          <span class="s2">&quot;tres_req&quot;</span> : <span class="s2">&quot;cpu=1,mem=15921M,node=1,billing=1&quot;</span>,
-          <span class="s2">&quot;tres_alloc&quot;</span> : <span class="s2">&quot;cpu=16,node=1,billing=16&quot;</span>,
-          <span class="s2">&quot;account&quot;</span> : <span class="s2">&quot;root&quot;</span>,
-          <span class="s2">&quot;parent_accounts&quot;</span> : <span class="s2">&quot;/root/root&quot;</span>
-        <span class="o">}</span>
-      <span class="o">}</span>
-    <span class="o">]</span>
-  <span class="o">}</span>
+<span class="w">  </span><span class="s2">&quot;took&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">2</span>,
+<span class="w">  </span><span class="s2">&quot;timed_out&quot;</span><span class="w"> </span>:<span class="w"> </span>false,
+<span class="w">  </span><span class="s2">&quot;_shards&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;total&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">5</span>,
+<span class="w">    </span><span class="s2">&quot;successful&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">5</span>,
+<span class="w">    </span><span class="s2">&quot;skipped&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">    </span><span class="s2">&quot;failed&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>
+<span class="w">  </span><span class="o">}</span>,
+<span class="w">  </span><span class="s2">&quot;hits&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;total&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">2</span>,
+<span class="w">    </span><span class="s2">&quot;max_score&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">1</span>.0,
+<span class="w">    </span><span class="s2">&quot;hits&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">      </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;_index&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;osd-cluster&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;_type&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;jobcomp&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;_id&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;bnhJ3n0BaChVi1VR3viV&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;_score&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">1</span>.0,
+<span class="w">        </span><span class="s2">&quot;_source&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">          </span><span class="s2">&quot;jobid&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">24</span>,
+<span class="w">          </span><span class="s2">&quot;username&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;john&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;user_id&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">1200</span>,
+<span class="w">          </span><span class="s2">&quot;groupname&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;john&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;group_id&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">1200</span>,
+<span class="w">          </span><span class="s2">&quot;@start&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;2021-12-21T18:37:02&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;@end&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;2021-12-21T18:37:02&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;elapsed&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;partition&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;osd-slurmd&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;alloc_node&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;juju-f48c73-285&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;nodes&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;juju-f48c73-286&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;total_cpus&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">16</span>,
+<span class="w">          </span><span class="s2">&quot;total_nodes&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">1</span>,
+<span class="w">          </span><span class="s2">&quot;derived_ec&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;0:0&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;exit_code&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;0:0&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;state&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;COMPLETED&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;cpu_hours&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>.0,
+<span class="w">          </span><span class="s2">&quot;pack_job_id&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;pack_job_offset&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;het_job_id&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;het_job_offset&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;@submit&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;2021-12-21T18:37:02&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;@eligible&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;2021-12-21T18:37:02&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;queue_wait&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;work_dir&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;/home/john/project/foo&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;cluster&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;osd-cluster&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;qos&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;normal&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;ntasks&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;ntasks_per_node&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;ntasks_per_tres&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;cpus_per_task&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">1</span>,
+<span class="w">          </span><span class="s2">&quot;job_name&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;hostname&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;tres_req&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;cpu=1,mem=15921M,node=1,billing=1&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;tres_alloc&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;cpu=16,node=1,billing=16&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;account&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;john&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;parent_accounts&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;/users/user&quot;</span>
+<span class="w">        </span><span class="o">}</span>
+<span class="w">      </span><span class="o">}</span>,
+<span class="w">      </span><span class="o">{</span>
+<span class="w">        </span><span class="s2">&quot;_index&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;osd-cluster&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;_type&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;jobcomp&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;_id&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;b3hJ3n0BaChVi1VR3vi0&quot;</span>,
+<span class="w">        </span><span class="s2">&quot;_score&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">1</span>.0,
+<span class="w">        </span><span class="s2">&quot;_source&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">          </span><span class="s2">&quot;jobid&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">25</span>,
+<span class="w">          </span><span class="s2">&quot;username&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;root&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;user_id&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;groupname&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;root&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;group_id&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;@start&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;2021-12-21T18:37:25&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;@end&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;2021-12-21T18:37:25&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;elapsed&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;partition&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;osd-slurmd&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;alloc_node&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;juju-f48c73-285&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;nodes&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;juju-f48c73-286&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;total_cpus&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">16</span>,
+<span class="w">          </span><span class="s2">&quot;total_nodes&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">1</span>,
+<span class="w">          </span><span class="s2">&quot;derived_ec&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;0:0&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;exit_code&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;0:0&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;state&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;COMPLETED&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;cpu_hours&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>.0,
+<span class="w">          </span><span class="s2">&quot;pack_job_id&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;pack_job_offset&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;het_job_id&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;het_job_offset&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;@submit&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;2021-12-21T18:37:25&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;@eligible&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;2021-12-21T18:37:25&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;queue_wait&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;work_dir&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;/root&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;cluster&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;osd-cluster&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;qos&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;normal&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;ntasks&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;ntasks_per_node&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;ntasks_per_tres&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">0</span>,
+<span class="w">          </span><span class="s2">&quot;cpus_per_task&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="m">1</span>,
+<span class="w">          </span><span class="s2">&quot;job_name&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;hostname&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;tres_req&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;cpu=1,mem=15921M,node=1,billing=1&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;tres_alloc&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;cpu=16,node=1,billing=16&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;account&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;root&quot;</span>,
+<span class="w">          </span><span class="s2">&quot;parent_accounts&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s2">&quot;/root/root&quot;</span>
+<span class="w">        </span><span class="o">}</span>
+<span class="w">      </span><span class="o">}</span>
+<span class="w">    </span><span class="o">]</span>
+<span class="w">  </span><span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="influxdb-profiling-plugin">
-<span id="influxdb-profiling"></span><h2>InfluxDB profiling plugin<a class="headerlink" href="#influxdb-profiling-plugin" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="influxdb-profiling-plugin">
+<span id="influxdb-profiling"></span><h2>InfluxDB profiling plugin<a class="headerlink" href="#influxdb-profiling-plugin" title="Permalink to this heading">#</a></h2>
 <p>Slurm provides a profiling gathering plugin to collect metrics and send them to
 <a class="reference external" href="https://www.influxdata.com/products/influxdb/">InfluxDB</a>. OSD encapsulates
 the configuration of this plugin in a <em>Juju relation</em> between <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> and
@@ -646,9 +514,9 @@ the configuration of this plugin in a <em>Juju relation</em> between <code class
 <li><p>[optional] Configure the accounting frequency.</p></li>
 </ol>
 <p>The Juju commands to accomplish these steps are:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy influxdb
-$ juju relate slurmctld influxdb
-$ juju config slurmctld acct-gather-frequency<span class="o">=</span><span class="s2">&quot;task=30&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>deploy<span class="w"> </span>influxdb
+$<span class="w"> </span>juju<span class="w"> </span>relate<span class="w"> </span>slurmctld<span class="w"> </span>influxdb
+$<span class="w"> </span>juju<span class="w"> </span>config<span class="w"> </span>slurmctld<span class="w"> </span>acct-gather-frequency<span class="o">=</span><span class="s2">&quot;task=30&quot;</span>
 </pre></div>
 </div>
 <p>In this scenario, <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> will setup everything needed to collect and
@@ -656,8 +524,8 @@ save the metrics. This includes creating an user and a database in InfluxDB.
 The username is <code class="docutils literal notranslate"><span class="pre">slurm</span></code> and the password is generated at random, while name
 of the database is the name of the cluster, as set in <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code>'s
 configuration <code class="docutils literal notranslate"><span class="pre">cluster-name</span></code>.</p>
-<div class="section" id="id1">
-<h3>Data saved<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<section id="id1">
+<h3>Data saved<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>Slurm collects profiling metrics at a frequency specified in the <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code>
 configuration option <code class="docutils literal notranslate"><span class="pre">acct-gather-frequency</span></code>.  The following field keys are
 saved for the tasks:</p>
@@ -687,75 +555,133 @@ saved for the tasks:</p>
 <p>Field type: <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="accessing-the-data">
-<h3>Accessing the data<a class="headerlink" href="#accessing-the-data" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="accessing-the-data">
+<h3>Accessing the data<a class="headerlink" href="#accessing-the-data" title="Permalink to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm provides a convenient Juju Action to export the
 InfluxDB parameters to setup a Grafana Data Source:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmctld/leader influxdb-info --wait
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>run-action<span class="w"> </span>slurmctld/leader<span class="w"> </span>influxdb-info<span class="w"> </span>--wait
 unit-slurmctld-13:
-  UnitId: slurmctld/13
-  id: <span class="s2">&quot;573&quot;</span>
-  results:
-    influxdb: <span class="s1">&#39;{&#39;&#39;ingress&#39;&#39;: &#39;&#39;10.220.130.30&#39;&#39;, &#39;&#39;port&#39;&#39;: &#39;&#39;8086&#39;&#39;, &#39;&#39;user&#39;&#39;: &#39;&#39;slurm&#39;&#39;,</span>
+<span class="w">  </span>UnitId:<span class="w"> </span>slurmctld/13
+<span class="w">  </span>id:<span class="w"> </span><span class="s2">&quot;573&quot;</span>
+<span class="w">  </span>results:
+<span class="w">    </span>influxdb:<span class="w"> </span><span class="s1">&#39;{&#39;&#39;ingress&#39;&#39;: &#39;&#39;10.220.130.30&#39;&#39;, &#39;&#39;port&#39;&#39;: &#39;&#39;8086&#39;&#39;, &#39;&#39;user&#39;&#39;: &#39;&#39;slurm&#39;&#39;,</span>
 <span class="s1">      &#39;&#39;password&#39;&#39;: &#39;&#39;LeCZSef2IzyOp3GAnYNC&#39;&#39;, &#39;&#39;database&#39;&#39;: &#39;&#39;osd-cluster&#39;&#39;, &#39;&#39;retention_policy&#39;&#39;:</span>
 <span class="s1">      &#39;&#39;autogen&#39;&#39;}&#39;</span>
-  status: completed
-  timing:
-    completed: <span class="m">2021</span>-07-20 <span class="m">13</span>:00:35 +0000 UTC
-    enqueued: <span class="m">2021</span>-07-20 <span class="m">13</span>:00:31 +0000 UTC
-    started: <span class="m">2021</span>-07-20 <span class="m">13</span>:00:34 +0000 UTC
+<span class="w">  </span>status:<span class="w"> </span>completed
+<span class="w">  </span>timing:
+<span class="w">    </span>completed:<span class="w"> </span><span class="m">2021</span>-07-20<span class="w"> </span><span class="m">13</span>:00:35<span class="w"> </span>+0000<span class="w"> </span>UTC
+<span class="w">    </span>enqueued:<span class="w"> </span><span class="m">2021</span>-07-20<span class="w"> </span><span class="m">13</span>:00:31<span class="w"> </span>+0000<span class="w"> </span>UTC
+<span class="w">    </span>started:<span class="w"> </span><span class="m">2021</span>-07-20<span class="w"> </span><span class="m">13</span>:00:34<span class="w"> </span>+0000<span class="w"> </span>UTC
 </pre></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="upgrading-osd.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Upgrade OSD</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="upgrading-osd.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Upgrade OSD</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="monitoring.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="monitoring.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Monitoring</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slurmdbd">Slurmdbd</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elasticsearch-plugin">ElasticSearch plugin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-saved">Data Saved</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#influxdb-profiling-plugin">InfluxDB profiling plugin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Data saved</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-data">Accessing the data</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By Omnivector Solutions<br/>
-  
-      &copy; Copyright 2021-2022, Omnivector Solutions.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By Omnivector Solutions
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021-2023, Omnivector Solutions.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

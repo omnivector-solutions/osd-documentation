@@ -1,519 +1,400 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Nodes operations &#8212; Omnivector Slurm Distribution  documentation</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css" type="text/css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'operations/nodes';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Partitions" href="partitions.html" />
     <link rel="prev" title="Slurm Installation" href="installation.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Omnivector Slurm Distribution  documentation</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../architecture.html">
-   OSD Architecture
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../installation.html">
-   Installation overview
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="overview.html">
-   Operations Overview
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="installation.html">
-     Slurm Installation
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Nodes operations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="partitions.html">
-     Partitions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="munge.html">
-     Munge operations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="infiniband.html">
-     Infiniband
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="gpu.html">
-     GPU Support
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="nhc.html">
-     NHC
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="singularity.html">
-     Singularity
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="mpi.html">
-     MPI
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="backup-restore.html">
-     Backup and restore the Slurm database
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="upgrading-osd.html">
-     Upgrade OSD
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="accounting-profiling.html">
-     Accounting And Profiling
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="monitoring.html">
-     Monitoring
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="logging.html">
-     Logging
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../configuration/configuration.html">
-   Configuration and Administration
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../configuration/slurmd.html">
-     slurmd
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../configuration/slurmdbd.html">
-     slurmdbd
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../configuration/slurmctld.html">
-     slurmctld
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../configuration/slurmrestd.html">
-     slurmrestd
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../contributing.html">
-   Contributing to OSD
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../acknowledgments.html">
-   Acknowledgments
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../changelog.html">
-   Changelog
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture.html">OSD Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation overview</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="overview.html">Operations Overview</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Slurm Installation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Nodes operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="partitions.html">Partitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="munge.html">Munge operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infiniband.html">Infiniband</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nhc.html">NHC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup-restore.html">Backup and restore the Slurm database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrading-osd.html">Upgrade OSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accounting-profiling.html">Accounting And Profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monitoring.html">Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../configuration/configuration.html">Configuration and Administration</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/slurmd.html">slurmd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/slurmdbd.html">slurmdbd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/slurmctld.html">slurmctld</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/slurmrestd.html">slurmrestd</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to OSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../acknowledgments.html">Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/omnivector-solutions/osd-documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/omnivector-solutions/osd-documentation/issues/new?title=Issue%20on%20page%20%2Foperations/nodes.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
 
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
 
 
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/operations/nodes.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
   </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/omnivector-solutions/osd-documentation/"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/omnivector-solutions/osd-documentation//issues/new?title=Issue%20on%20page%20%2Foperations/nodes.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/operations/nodes.rst.txt"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.rst</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adding-nodes">
-   Adding nodes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#removing-nodes">
-   Removing nodes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#draining-nodes">
-   Draining nodes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resuming-nodes">
-   Resuming nodes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#rebooting-nodes">
-   Rebooting Nodes
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Nodes operations</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adding-nodes">
-   Adding nodes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#removing-nodes">
-   Removing nodes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#draining-nodes">
-   Draining nodes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#resuming-nodes">
-   Resuming nodes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#rebooting-nodes">
-   Rebooting Nodes
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Nodes operations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-nodes">Adding nodes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-nodes">Removing nodes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#draining-nodes">Draining nodes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resuming-nodes">Resuming nodes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rebooting-nodes">Rebooting Nodes</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <div class="section" id="nodes-operations">
-<span id="nodes"></span><h1>Nodes operations<a class="headerlink" href="#nodes-operations" title="Permalink to this headline">#</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="nodes-operations">
+<span id="nodes"></span><h1>Nodes operations<a class="headerlink" href="#nodes-operations" title="Permalink to this heading">#</a></h1>
 <p>This section walks through configurations and actions dealing with Slurm
 compute nodes.</p>
-<div class="section" id="adding-nodes">
-<h2>Adding nodes<a class="headerlink" href="#adding-nodes" title="Permalink to this headline">#</a></h2>
+<section id="adding-nodes">
+<h2>Adding nodes<a class="headerlink" href="#adding-nodes" title="Permalink to this heading">#</a></h2>
 <p>When adding nodes to the cluster, they always join Slurm in <code class="docutils literal notranslate"><span class="pre">down</span></code> state,
 with <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">node</span></code> as the reason. This allows the cluster administrator to
 install and configure dependencies before the node can run jobs.</p>
 <p>To add an additional compute node, use <code class="docutils literal notranslate"><span class="pre">juju</span></code>. Assuming the name of your
 slurmd application is <code class="docutils literal notranslate"><span class="pre">slurmd</span></code>, run the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju add-unit slurmd
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>add-unit<span class="w"> </span>slurmd
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you need to add multiple units at the same time, you can specify the
 <code class="docutils literal notranslate"><span class="pre">--num-units</span></code> flag. For example, to add 10 compute nodes:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju add-unit slurmd --num-units<span class="o">=</span><span class="m">10</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>add-unit<span class="w"> </span>slurmd<span class="w"> </span>--num-units<span class="o">=</span><span class="m">10</span>
 </pre></div>
 </div>
 </div>
 <p>After a newly added node has been prepared and is ready to join the cluster,
 you can enlist the node to change its state from <code class="docutils literal notranslate"><span class="pre">down</span></code> to <code class="docutils literal notranslate"><span class="pre">idle</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmd/1 node-configured
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>run-action<span class="w"> </span>slurmd/1<span class="w"> </span>node-configured
 </pre></div>
 </div>
-</div>
-<div class="section" id="removing-nodes">
-<h2>Removing nodes<a class="headerlink" href="#removing-nodes" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="removing-nodes">
+<h2>Removing nodes<a class="headerlink" href="#removing-nodes" title="Permalink to this heading">#</a></h2>
 <p>Removing nodes are as simple as:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju remove-unit slurmd/4
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>remove-unit<span class="w"> </span>slurmd/4
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -526,28 +407,28 @@ responsibility to ensure that the node can be safely removed.</p>
 cluster (see <a class="reference internal" href="#draining-nodes"><span class="std std-ref">Draining nodes</span></a>). Placing a node in the <em>drain</em> state will
 prevent if from being allocated to incoming jobs and provides a method for a
 safe removal.</p>
-</div>
-<div class="section" id="draining-nodes">
-<span id="id1"></span><h2>Draining nodes<a class="headerlink" href="#draining-nodes" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="draining-nodes">
+<span id="id1"></span><h2>Draining nodes<a class="headerlink" href="#draining-nodes" title="Permalink to this heading">#</a></h2>
 <p>We provide an action in the <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm to drain nodes. You need to
 know in advance the hostname of the nodes you want to drain and also
 specify a <em>reason</em> to drain. You can specify more than one node, by using the
 Slurm convention:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmctld/leader drain <span class="nv">nodename</span><span class="o">=</span>juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span> <span class="nv">reason</span><span class="o">=</span><span class="s2">&quot;Maintenance - drive failure&quot;</span> --wait
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>run-action<span class="w"> </span>slurmctld/leader<span class="w"> </span>drain<span class="w"> </span><span class="nv">nodename</span><span class="o">=</span>juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span><span class="w"> </span><span class="nv">reason</span><span class="o">=</span><span class="s2">&quot;Maintenance - drive failure&quot;</span><span class="w"> </span>--wait
 unit-slurmctld-0:
-  UnitId: slurmctld/0
-  id: <span class="s2">&quot;26&quot;</span>
-  log:
-  - <span class="m">2021</span>-04-28 <span class="m">17</span>:13:06 -0300 -03 Draining juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span> because Maintenance -
-    drive failure.
-  results:
-    nodes: juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span>
-    status: draining
-  status: completed
-  timing:
-    completed: <span class="m">2021</span>-04-28 <span class="m">20</span>:13:07 +0000 UTC
-    enqueued: <span class="m">2021</span>-04-28 <span class="m">20</span>:13:04 +0000 UTC
-    started: <span class="m">2021</span>-04-28 <span class="m">20</span>:13:06 +0000 UTC
+<span class="w">  </span>UnitId:<span class="w"> </span>slurmctld/0
+<span class="w">  </span>id:<span class="w"> </span><span class="s2">&quot;26&quot;</span>
+<span class="w">  </span>log:
+<span class="w">  </span>-<span class="w"> </span><span class="m">2021</span>-04-28<span class="w"> </span><span class="m">17</span>:13:06<span class="w"> </span>-0300<span class="w"> </span>-03<span class="w"> </span>Draining<span class="w"> </span>juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span><span class="w"> </span>because<span class="w"> </span>Maintenance<span class="w"> </span>-
+<span class="w">    </span>drive<span class="w"> </span>failure.
+<span class="w">  </span>results:
+<span class="w">    </span>nodes:<span class="w"> </span>juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span>
+<span class="w">    </span>status:<span class="w"> </span>draining
+<span class="w">  </span>status:<span class="w"> </span>completed
+<span class="w">  </span>timing:
+<span class="w">    </span>completed:<span class="w"> </span><span class="m">2021</span>-04-28<span class="w"> </span><span class="m">20</span>:13:07<span class="w"> </span>+0000<span class="w"> </span>UTC
+<span class="w">    </span>enqueued:<span class="w"> </span><span class="m">2021</span>-04-28<span class="w"> </span><span class="m">20</span>:13:04<span class="w"> </span>+0000<span class="w"> </span>UTC
+<span class="w">    </span>started:<span class="w"> </span><span class="m">2021</span>-04-28<span class="w"> </span><span class="m">20</span>:13:06<span class="w"> </span>+0000<span class="w"> </span>UTC
 </pre></div>
 </div>
 <p>We recommend running this action in the <em>leader</em> of <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> application
@@ -563,25 +444,25 @@ instead of using the unit number, just for convenience.</p>
 change will be overwritten by the charms whenever OSD needs to update the
 Slurm configuration file.</p>
 </div>
-</div>
-<div class="section" id="resuming-nodes">
-<h2>Resuming nodes<a class="headerlink" href="#resuming-nodes" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="resuming-nodes">
+<h2>Resuming nodes<a class="headerlink" href="#resuming-nodes" title="Permalink to this heading">#</a></h2>
 <p>We provide an action in <code class="docutils literal notranslate"><span class="pre">slurmctld</span></code> charm to resume nodes. The <code class="docutils literal notranslate"><span class="pre">resume</span></code>
 action has a syntax similar to <code class="docutils literal notranslate"><span class="pre">update</span></code> command of Slurm's <code class="docutils literal notranslate"><span class="pre">scontrol</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmctld/leader resume <span class="nv">nodename</span><span class="o">=</span>juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span> --wait
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>run-action<span class="w"> </span>slurmctld/leader<span class="w"> </span>resume<span class="w"> </span><span class="nv">nodename</span><span class="o">=</span>juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span><span class="w"> </span>--wait
 unit-slurmctld-0:
-  UnitId: slurmctld/0
-  id: <span class="s2">&quot;32&quot;</span>
-  log:
-  - <span class="m">2021</span>-04-28 <span class="m">17</span>:17:23 -0300 -03 Resuming juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span>.
-  results:
-    nodes: juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span>
-    status: resuming
-  status: completed
-  timing:
-    completed: <span class="m">2021</span>-04-28 <span class="m">20</span>:17:23 +0000 UTC
-    enqueued: <span class="m">2021</span>-04-28 <span class="m">20</span>:17:18 +0000 UTC
-    started: <span class="m">2021</span>-04-28 <span class="m">20</span>:17:23 +0000 UTC
+<span class="w">  </span>UnitId:<span class="w"> </span>slurmctld/0
+<span class="w">  </span>id:<span class="w"> </span><span class="s2">&quot;32&quot;</span>
+<span class="w">  </span>log:
+<span class="w">  </span>-<span class="w"> </span><span class="m">2021</span>-04-28<span class="w"> </span><span class="m">17</span>:17:23<span class="w"> </span>-0300<span class="w"> </span>-03<span class="w"> </span>Resuming<span class="w"> </span>juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span>.
+<span class="w">  </span>results:
+<span class="w">    </span>nodes:<span class="w"> </span>juju-724cba-<span class="o">[</span><span class="m">1</span>,3<span class="o">]</span>
+<span class="w">    </span>status:<span class="w"> </span>resuming
+<span class="w">  </span>status:<span class="w"> </span>completed
+<span class="w">  </span>timing:
+<span class="w">    </span>completed:<span class="w"> </span><span class="m">2021</span>-04-28<span class="w"> </span><span class="m">20</span>:17:23<span class="w"> </span>+0000<span class="w"> </span>UTC
+<span class="w">    </span>enqueued:<span class="w"> </span><span class="m">2021</span>-04-28<span class="w"> </span><span class="m">20</span>:17:18<span class="w"> </span>+0000<span class="w"> </span>UTC
+<span class="w">    </span>started:<span class="w"> </span><span class="m">2021</span>-04-28<span class="w"> </span><span class="m">20</span>:17:23<span class="w"> </span>+0000<span class="w"> </span>UTC
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -598,14 +479,14 @@ jobs.</p>
 change will be overwritten by the charms whenever OSD needs to update the
 Slurm configuration file.</p>
 </div>
-</div>
-<div class="section" id="rebooting-nodes">
-<span id="id2"></span><h2>Rebooting Nodes<a class="headerlink" href="#rebooting-nodes" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="rebooting-nodes">
+<span id="id2"></span><h2>Rebooting Nodes<a class="headerlink" href="#rebooting-nodes" title="Permalink to this heading">#</a></h2>
 <p>There are multiple ways of rebooting machines controlled via Juju. Our
 suggestion to reboot a specific unit is to run <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">reboot</span></code> via a <code class="docutils literal notranslate"><span class="pre">juju</span>
 <span class="pre">ssh</span></code> command, either specifying a <em>unit</em> or a <em>machine number</em>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju ssh foo/2 <span class="s2">&quot;sudo reboot&quot;</span>
-$ juju ssh <span class="m">42</span> <span class="s2">&quot;sudo reboot&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>ssh<span class="w"> </span>foo/2<span class="w"> </span><span class="s2">&quot;sudo reboot&quot;</span>
+$<span class="w"> </span>juju<span class="w"> </span>ssh<span class="w"> </span><span class="m">42</span><span class="w"> </span><span class="s2">&quot;sudo reboot&quot;</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -613,10 +494,10 @@ $ juju ssh <span class="m">42</span> <span class="s2">&quot;sudo reboot&quot;</s
 <p>This command will return with an non-zero status code, because the SSH
 connection will be interrupted when the machines turns off. This is
 expected:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju ssh slurmd/leader <span class="s2">&quot;sudo reboot&quot;</span>
-Connection to <span class="m">10</span>.220.130.124 closed by remote host.
-Connection to <span class="m">10</span>.220.130.124 closed.
-ERROR subprocess encountered error code <span class="m">255</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>ssh<span class="w"> </span>slurmd/leader<span class="w"> </span><span class="s2">&quot;sudo reboot&quot;</span>
+Connection<span class="w"> </span>to<span class="w"> </span><span class="m">10</span>.220.130.124<span class="w"> </span>closed<span class="w"> </span>by<span class="w"> </span>remote<span class="w"> </span>host.
+Connection<span class="w"> </span>to<span class="w"> </span><span class="m">10</span>.220.130.124<span class="w"> </span>closed.
+ERROR<span class="w"> </span>subprocess<span class="w"> </span>encountered<span class="w"> </span>error<span class="w"> </span>code<span class="w"> </span><span class="m">255</span>
 </pre></div>
 </div>
 </div>
@@ -629,61 +510,114 @@ running, they will be forcefully terminated. Be sure to have the nodes in
 <p>Another options, when all that is needed is to reboot a Slurm <em>compute node</em>
 (any unit running the Slurmd charm), is to use Slurm's <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">reboot</span></code>
 command, wrapped in <code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">run</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run --unit slurmctld/leader <span class="s2">&quot;scontrol reboot ASAP c-01,g-01&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>run<span class="w"> </span>--unit<span class="w"> </span>slurmctld/leader<span class="w"> </span><span class="s2">&quot;scontrol reboot ASAP c-01,g-01&quot;</span>
 </pre></div>
 </div>
 <p>The advantage of this approach is that it will not reboot the node if there are
 any jobs running.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">reboot</span></code> command has other optional parameters that can be
 useful, check the <a class="reference external" href="https://slurm.schedmd.com/scontrol.html#OPT_reboot">Slurm documentation for more details</a>.</p>
-</div>
-</div>
+</section>
+</section>
 
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="installation.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Slurm Installation</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="installation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Slurm Installation</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="partitions.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="partitions.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Partitions</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-nodes">Adding nodes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-nodes">Removing nodes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#draining-nodes">Draining nodes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resuming-nodes">Resuming nodes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rebooting-nodes">Rebooting Nodes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By Omnivector Solutions<br/>
-  
-      &copy; Copyright 2021-2022, Omnivector Solutions.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By Omnivector Solutions
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021-2023, Omnivector Solutions.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

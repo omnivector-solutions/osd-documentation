@@ -1,684 +1,438 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Contributing to OSD &#8212; Omnivector Slurm Distribution  documentation</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css" type="text/css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contributing';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Acknowledgments" href="acknowledgments.html" />
     <link rel="prev" title="slurmrestd" href="configuration/slurmrestd.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Omnivector Slurm Distribution  documentation</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="architecture.html">
-   OSD Architecture
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="installation.html">
-   Installation overview
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="operations/overview.html">
-   Operations Overview
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/installation.html">
-     Slurm Installation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/nodes.html">
-     Nodes operations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/partitions.html">
-     Partitions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/munge.html">
-     Munge operations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/infiniband.html">
-     Infiniband
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/gpu.html">
-     GPU Support
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/nhc.html">
-     NHC
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/singularity.html">
-     Singularity
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/mpi.html">
-     MPI
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/backup-restore.html">
-     Backup and restore the Slurm database
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/upgrading-osd.html">
-     Upgrade OSD
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/accounting-profiling.html">
-     Accounting And Profiling
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/monitoring.html">
-     Monitoring
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/logging.html">
-     Logging
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="configuration/configuration.html">
-   Configuration and Administration
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="configuration/slurmd.html">
-     slurmd
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="configuration/slurmdbd.html">
-     slurmdbd
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="configuration/slurmctld.html">
-     slurmctld
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="configuration/slurmrestd.html">
-     slurmrestd
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Contributing to OSD
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="acknowledgments.html">
-   Acknowledgments
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="changelog.html">
-   Changelog
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">OSD Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation overview</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="operations/overview.html">Operations Overview</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="operations/installation.html">Slurm Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/nodes.html">Nodes operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/partitions.html">Partitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/munge.html">Munge operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/infiniband.html">Infiniband</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/nhc.html">NHC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/backup-restore.html">Backup and restore the Slurm database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/upgrading-osd.html">Upgrade OSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/accounting-profiling.html">Accounting And Profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/monitoring.html">Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/logging.html">Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="configuration/configuration.html">Configuration and Administration</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration/slurmd.html">slurmd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration/slurmdbd.html">slurmdbd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration/slurmctld.html">slurmctld</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration/slurmrestd.html">slurmrestd</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Contributing to OSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/omnivector-solutions/osd-documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/omnivector-solutions/osd-documentation/issues/new?title=Issue%20on%20page%20%2Fcontributing.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
 
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
 
 
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/contributing.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
   </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/omnivector-solutions/osd-documentation/"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/omnivector-solutions/osd-documentation//issues/new?title=Issue%20on%20page%20%2Fcontributing.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/contributing.rst.txt"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.rst</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#feedback">
-   Feedback
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#documentation">
-   Documentation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#git-branches">
-     Git branches
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#general-recommendations">
-     General Recommendations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sections">
-     Sections
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#naming-conventions">
-     Naming conventions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#code">
-   Code
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#git-usage">
-     Git usage
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#charm-development">
-     Charm development
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#local-setup">
-       Local setup
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#slurm-ops-manager">
-       Slurm-ops-manager
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       Slurm-charms
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#actions-and-configurations">
-         Actions and Configurations
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#changelog">
-         CHANGELOG
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#bats-tests">
-         Bats tests
-        </a>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#versioning">
-     Versioning
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#release-process">
-     Release process
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id8">
-       Slurm-ops-manager
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Contributing to OSD</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#feedback">
-   Feedback
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#documentation">
-   Documentation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#git-branches">
-     Git branches
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#general-recommendations">
-     General Recommendations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sections">
-     Sections
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#naming-conventions">
-     Naming conventions
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#code">
-   Code
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#git-usage">
-     Git usage
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#charm-development">
-     Charm development
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#local-setup">
-       Local setup
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#slurm-ops-manager">
-       Slurm-ops-manager
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       Slurm-charms
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#actions-and-configurations">
-         Actions and Configurations
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#changelog">
-         CHANGELOG
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#bats-tests">
-         Bats tests
-        </a>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#versioning">
-     Versioning
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#release-process">
-     Release process
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id8">
-       Slurm-ops-manager
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Contributing to OSD</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback">Feedback</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#git-branches">Git branches</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-recommendations">General Recommendations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sections">Sections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-conventions">Naming conventions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#git-usage">Git usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charm-development">Charm development</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#local-setup">Local setup</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-ops-manager">Slurm-ops-manager</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Slurm-charms</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#actions-and-configurations">Actions and Configurations</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#changelog">CHANGELOG</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bats-tests">Bats tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#versioning">Versioning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#release-process">Release process</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Slurm-ops-manager</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <div class="section" id="contributing-to-osd">
-<span id="contributing"></span><h1>Contributing to OSD<a class="headerlink" href="#contributing-to-osd" title="Permalink to this headline">#</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="contributing-to-osd">
+<span id="contributing"></span><h1>Contributing to OSD<a class="headerlink" href="#contributing-to-osd" title="Permalink to this heading">#</a></h1>
 <p>OSD is an open-source project, and as such we welcome contributions from
 developers, engineers, system administrators, and users in general.
 Contributions are what make the open source community such an amazing place to
 learn, inspire, and create. Any contributions you make are <strong>greatly
 appreciated</strong>.</p>
 <p>There are many ways to contribute:</p>
-<div class="section" id="feedback">
-<h2>Feedback<a class="headerlink" href="#feedback" title="Permalink to this headline">#</a></h2>
+<section id="feedback">
+<h2>Feedback<a class="headerlink" href="#feedback" title="Permalink to this heading">#</a></h2>
 <p>Feedback is very welcome! We are interested in hearing from you how! Email us
 &#64; <a class="reference external" href="mailto:info&#37;&#52;&#48;omnivector&#46;solutions">info<span>&#64;</span>omnivector<span>&#46;</span>solutions</a>.</p>
 <p>In the case things aren't working as expected, please
 <a class="reference external" href="https://github.com/omnivector-solutions/slurm-charms/issues">file a bug</a>.</p>
 <p>Reach out if you have any questions and/or suggestions.</p>
-</div>
-<div class="section" id="documentation">
-<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading">#</a></h2>
 <p>This documentation is built using <a class="reference external" href="https://sphinx-doc.org/">Sphinx</a> and
 <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">reStructuredText</a>,
 and is hosted in
 <a class="reference external" href="https://github.com/omnivector-solutions/osd-documentation">GitHub</a>.</p>
-<div class="section" id="git-branches">
-<h3>Git branches<a class="headerlink" href="#git-branches" title="Permalink to this headline">#</a></h3>
+<section id="git-branches">
+<h3>Git branches<a class="headerlink" href="#git-branches" title="Permalink to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">master</span></code> branch is rebuilt at every commit and published automatically
 <a class="reference external" href="https://omnivector-solutions.github.io/osd-documentation/master/">online</a>.
 If you want to test/show any specific branch, you can do so by &quot;resetting&quot; the
 <code class="docutils literal notranslate"><span class="pre">testing</span></code> branch. This branch is automatically built and published to
 <a class="reference external" href="https://omnivector-solutions.github.io/osd-documentation/testing/">omnivector-solutions.github.io/osd-documentation/testing/</a>.
 One way to achieve that is:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout testing
-$ git reset --hard &lt;my-branch&gt;
-$ git push --force
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span>testing
+$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>&lt;my-branch&gt;
+$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>--force
 </pre></div>
 </div>
-</div>
-<div class="section" id="general-recommendations">
-<h3>General Recommendations<a class="headerlink" href="#general-recommendations" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="general-recommendations">
+<h3>General Recommendations<a class="headerlink" href="#general-recommendations" title="Permalink to this heading">#</a></h3>
 <p>Use US English for writing documentation and always run a spell checker. The
 GitHub project will spell check the project on every Pull Request. In case the
 spell checker gives an error due to a word not available in the US dictionary,
 add this word to the <code class="docutils literal notranslate"><span class="pre">new_words_spell_checker.txt</span></code>. Please keep this file in
 alphabetical order.</p>
 <p>Wrap the lines at 80 columns when writing documentation.</p>
-</div>
-<div class="section" id="sections">
-<h3>Sections<a class="headerlink" href="#sections" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="sections">
+<h3>Sections<a class="headerlink" href="#sections" title="Permalink to this heading">#</a></h3>
 <p>This projects uses the following convention for section headers, from the
 <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html#sections">rsTructuredText Primer</a>
 document:</p>
@@ -699,9 +453,9 @@ document:</p>
 <span class="o">~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="naming-conventions">
-<h3>Naming conventions<a class="headerlink" href="#naming-conventions" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="naming-conventions">
+<h3>Naming conventions<a class="headerlink" href="#naming-conventions" title="Permalink to this heading">#</a></h3>
 <p>Throughout the documentation and code (specially in logs), we stick to these
 naming conventions with regards to Slurm:</p>
 <dl>
@@ -714,10 +468,10 @@ naming conventions with regards to Slurm:</p>
 <dt><code class="docutils literal notranslate"><span class="pre">Slurm-charms</span></code></dt><dd><p>Omnivector charms.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="code">
-<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="code">
+<h2>Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
 <p>OSD source-code is hosted in GitHub repositories. All the charms are in
 <a class="reference external" href="https://github.com/omnivector-solutions/slurm-charms">omnivector-solutions/slurm-charms</a>,
 and a common code shared among them, called <code class="docutils literal notranslate"><span class="pre">slurm-ops-mananger</span></code>, is hosted at
@@ -725,8 +479,8 @@ and a common code shared among them, called <code class="docutils literal notran
 <p>The Slurm-charms source code is developed under the <code class="docutils literal notranslate"><span class="pre">MIT</span></code> license. By
 contributing to the Slurm-charms project or affiliated code you are implicitly
 agreeing to your code contributions being governed by this license too.</p>
-<div class="section" id="git-usage">
-<h3>Git usage<a class="headerlink" href="#git-usage" title="Permalink to this headline">#</a></h3>
+<section id="git-usage">
+<h3>Git usage<a class="headerlink" href="#git-usage" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>all commits should be atomic</p></li>
 <li><p>all commits should have a proper commit message:</p>
@@ -753,29 +507,29 @@ details</p></li>
 <li><p>do not include merge commits in new branches. New branches should contain
 only new code.</p></li>
 </ul>
-</div>
-<div class="section" id="charm-development">
-<span id="id1"></span><h3>Charm development<a class="headerlink" href="#charm-development" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="charm-development">
+<span id="id1"></span><h3>Charm development<a class="headerlink" href="#charm-development" title="Permalink to this heading">#</a></h3>
 <p>All Python code should be compliant with Python3.6. This is a strong
 requirement for the charms to run on CentOS7.</p>
 <p>The coding style used follows closely
 <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP-008</a>.</p>
-<div class="section" id="local-setup">
-<h4>Local setup<a class="headerlink" href="#local-setup" title="Permalink to this headline">#</a></h4>
+<section id="local-setup">
+<h4>Local setup<a class="headerlink" href="#local-setup" title="Permalink to this heading">#</a></h4>
 <p>This sections describes how to setup your system for local charm development.
 This section assumes the system is Linux-based and has support for <cite>snaps</cite>.</p>
 <p>The tool used to build a charm is
 <a class="reference external" href="https://github.com/canonical/charmcraft/">charmcraft</a>, and it should be
 installed as a classical snap:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo snap install charmcraft --classic
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>charmcraft<span class="w"> </span>--classic
 </pre></div>
 </div>
 <p>The OSD charm code is available in the Git repository <a class="reference external" href="https://github.com/omnivector-solutions/slurm-charms">slurm-charms</a>, it contains all the
 nuts and bolts of all Slurm-charms as well as a helper <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> to build
 them. To clone and build:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/omnivector-solutions/slurm-charms
-$ <span class="nb">cd</span> slurm-charms
-$ make charms
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/omnivector-solutions/slurm-charms
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>slurm-charms
+$<span class="w"> </span>make<span class="w"> </span>charms
 </pre></div>
 </div>
 <p>After the <code class="docutils literal notranslate"><span class="pre">.charm</span></code> artifacts have been produced, <code class="docutils literal notranslate"><span class="pre">juju</span></code> can be used to
@@ -799,9 +553,9 @@ deploy the built charms to a local LXD cloud by using the command <code class="d
 <span class="pre">lxd-focal</span></code>, or for CentOS7, <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">lxd-centos</span></code>. See <a class="reference internal" href="installation.html#installation"><span class="std std-ref">Installation overview</span></a> for
 more details</p></li>
 </ul>
-</div>
-<div class="section" id="slurm-ops-manager">
-<h4>Slurm-ops-manager<a class="headerlink" href="#slurm-ops-manager" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="slurm-ops-manager">
+<h4>Slurm-ops-manager<a class="headerlink" href="#slurm-ops-manager" title="Permalink to this heading">#</a></h4>
 <p>The <a class="reference external" href="https://github.com/omnivector-solutions/slurm-bundles">slurm-ops-manager</a> is a code base that
 contains common methods and attributes used across multiple Slurm charms. Code
 that is used in more than one Slurm charm should not be repeated, it should
@@ -816,13 +570,13 @@ for each charm</p></li>
 <li><p>this should be a single commit. If there are any necessary changes in the
 charms, these should live in separate commits.</p></li>
 </ul>
-</div>
-<div class="section" id="id3">
-<h4>Slurm-charms<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="id3">
+<h4>Slurm-charms<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
 <p>Find below the standards and conventions used when contributing code to the
 <a class="reference external" href="https://github.com/omnivector-solutions/slurm-charms">slurm-charms</a>.</p>
-<div class="section" id="actions-and-configurations">
-<h5>Actions and Configurations<a class="headerlink" href="#actions-and-configurations" title="Permalink to this headline">#</a></h5>
+<section id="actions-and-configurations">
+<h5>Actions and Configurations<a class="headerlink" href="#actions-and-configurations" title="Permalink to this heading">#</a></h5>
 <p>In an effort to keep the OSD documentation current and accurate, we generate
 the documentation for charm actions and charm configurations dynamically. OSD
 documentation is built in such a way that the actions and configurations that
@@ -843,9 +597,9 @@ Slurm charms:</p>
 <li><p>wrap the lines at 80 columns</p></li>
 <li><p>use multi-line strings</p></li>
 </ul>
-</div>
-<div class="section" id="changelog">
-<span id="id5"></span><h5>CHANGELOG<a class="headerlink" href="#changelog" title="Permalink to this headline">#</a></h5>
+</section>
+<section id="changelog">
+<span id="id5"></span><h5>CHANGELOG<a class="headerlink" href="#changelog" title="Permalink to this heading">#</a></h5>
 <p>The <code class="docutils literal notranslate"><span class="pre">CHANGELOG</span></code> file contains notable changes for end users, not charm
 developers. This means that internal changes (e.g., code related to CI,
 refactoring, unit tests, etc.) should not be documented.</p>
@@ -861,9 +615,9 @@ refactoring, unit tests, etc.) should not be documented.</p>
 documentation <a class="reference external" href="changelog.html">Changelog page</a> automatically.</p>
 <p>There should always be one, and only one, section <code class="docutils literal notranslate"><span class="pre">Unreleased</span></code> in the
 <code class="docutils literal notranslate"><span class="pre">CHANGELOG</span></code>. New entries should go at the top of this section.</p>
-</div>
-<div class="section" id="bats-tests">
-<h5>Bats tests<a class="headerlink" href="#bats-tests" title="Permalink to this headline">#</a></h5>
+</section>
+<section id="bats-tests">
+<h5>Bats tests<a class="headerlink" href="#bats-tests" title="Permalink to this heading">#</a></h5>
 <p>The Slurm Charms have an extensive suite of tests using
 <a class="reference external" href="https://github.com/bats-core/bats-core/">Bats</a>.</p>
 <p>To run the tests, you need two additional dependencies:
@@ -898,15 +652,15 @@ tests finish and takes a considerable amount of time to run.</p>
 LXD installation. Please refer to <a class="reference internal" href="installation.html#centos7-image"><span class="std std-ref">CentOS7 Deploys on LXD clouds</span></a> for details on
 building one.</p>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="versioning">
-<span id="id6"></span><h3>Versioning<a class="headerlink" href="#versioning" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+</section>
+<section id="versioning">
+<span id="id6"></span><h3>Versioning<a class="headerlink" href="#versioning" title="Permalink to this heading">#</a></h3>
 <p>The Slurm-charms and <code class="docutils literal notranslate"><span class="pre">slurm-ops-manager</span></code> follow a semantic versioning scheme.</p>
-</div>
-<div class="section" id="release-process">
-<span id="id7"></span><h3>Release process<a class="headerlink" href="#release-process" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="release-process">
+<span id="id7"></span><h3>Release process<a class="headerlink" href="#release-process" title="Permalink to this heading">#</a></h3>
 <p>The release process is separated from the development process.
 The development process includes writing code to add features and or
 fixing issues. The release process involves building a new version of the
@@ -920,8 +674,8 @@ with a description of the new release. This script intentionally does not push
 to GitHub, this way one can review the changes before <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">slurm-charms</span></code> are always updated in the <code class="docutils literal notranslate"><span class="pre">latest/edge</span></code> channel in
 CharmHub after every Pull Request is merged.</p>
-<div class="section" id="id8">
-<h4>Slurm-ops-manager<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h4>
+<section id="id8">
+<h4>Slurm-ops-manager<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
 <p>The release process for <code class="docutils literal notranslate"><span class="pre">slurm-ops-manager</span></code> is straightforward:</p>
 <ul>
 <li><p>bump the version string in the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file</p></li>
@@ -939,56 +693,132 @@ example:</p>
 </li>
 <li><p>push to GitHub: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">--tags</span></code>.</p></li>
 </ul>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="configuration/slurmrestd.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">slurmrestd</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="configuration/slurmrestd.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">slurmrestd</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="acknowledgments.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="acknowledgments.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Acknowledgments</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedback">Feedback</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#git-branches">Git branches</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-recommendations">General Recommendations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sections">Sections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-conventions">Naming conventions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code">Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#git-usage">Git usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#charm-development">Charm development</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#local-setup">Local setup</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#slurm-ops-manager">Slurm-ops-manager</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Slurm-charms</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#actions-and-configurations">Actions and Configurations</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#changelog">CHANGELOG</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bats-tests">Bats tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#versioning">Versioning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#release-process">Release process</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Slurm-ops-manager</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By Omnivector Solutions<br/>
-  
-      &copy; Copyright 2021-2022, Omnivector Solutions.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By Omnivector Solutions
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021-2023, Omnivector Solutions.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

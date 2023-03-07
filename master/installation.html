@@ -1,634 +1,433 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Installation overview &#8212; Omnivector Slurm Distribution  documentation</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css" type="text/css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'installation';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Operations" href="operations/overview.html" />
     <link rel="prev" title="OSD Architecture" href="architecture.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Omnivector Slurm Distribution  documentation</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="architecture.html">
-   OSD Architecture
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Installation overview
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="operations/overview.html">
-   Operations Overview
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/installation.html">
-     Slurm Installation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/nodes.html">
-     Nodes operations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/partitions.html">
-     Partitions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/munge.html">
-     Munge operations
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/infiniband.html">
-     Infiniband
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/gpu.html">
-     GPU Support
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/nhc.html">
-     NHC
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/singularity.html">
-     Singularity
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/mpi.html">
-     MPI
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/backup-restore.html">
-     Backup and restore the Slurm database
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/upgrading-osd.html">
-     Upgrade OSD
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/accounting-profiling.html">
-     Accounting And Profiling
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/monitoring.html">
-     Monitoring
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="operations/logging.html">
-     Logging
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="configuration/configuration.html">
-   Configuration and Administration
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="configuration/slurmd.html">
-     slurmd
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="configuration/slurmdbd.html">
-     slurmdbd
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="configuration/slurmctld.html">
-     slurmctld
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="configuration/slurmrestd.html">
-     slurmrestd
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="contributing.html">
-   Contributing to OSD
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="acknowledgments.html">
-   Acknowledgments
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="changelog.html">
-   Changelog
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">OSD Architecture</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Installation overview</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="operations/overview.html">Operations Overview</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="operations/installation.html">Slurm Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/nodes.html">Nodes operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/partitions.html">Partitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/munge.html">Munge operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/infiniband.html">Infiniband</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/nhc.html">NHC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/backup-restore.html">Backup and restore the Slurm database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/upgrading-osd.html">Upgrade OSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/accounting-profiling.html">Accounting And Profiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/monitoring.html">Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/logging.html">Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="configuration/configuration.html">Configuration and Administration</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration/slurmd.html">slurmd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration/slurmdbd.html">slurmdbd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration/slurmctld.html">slurmctld</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration/slurmrestd.html">slurmrestd</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to OSD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgments.html">Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/omnivector-solutions/osd-documentation" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/omnivector-solutions/osd-documentation/issues/new?title=Issue%20on%20page%20%2Finstallation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
 
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
 
 
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/installation.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
   </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/omnivector-solutions/osd-documentation/"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/omnivector-solutions/osd-documentation//issues/new?title=Issue%20on%20page%20%2Finstallation.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/installation.rst.txt"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.rst</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#install-juju">
-   Install Juju
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup-cloud">
-   Setup cloud
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#aws">
-     AWS
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#login-to-a-juju-controller">
-       Login to a Juju controller
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#add-a-model">
-       Add a model
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lxd">
-     LXD
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bootstrap-a-localhost-lxd-juju-controller">
-       Bootstrap a localhost LXD Juju controller
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#centos7-deploys-on-lxd-clouds">
-         CentOS7 Deploys on LXD clouds
-        </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Add a model
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#maas">
-     MAAS
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id2">
-       Login to a Juju controller
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       Add a model
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deploy-slurm">
-   Deploy Slurm
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Installation overview</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#install-juju">
-   Install Juju
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup-cloud">
-   Setup cloud
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#aws">
-     AWS
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#login-to-a-juju-controller">
-       Login to a Juju controller
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#add-a-model">
-       Add a model
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#lxd">
-     LXD
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bootstrap-a-localhost-lxd-juju-controller">
-       Bootstrap a localhost LXD Juju controller
-      </a>
-      <ul class="nav section-nav flex-column">
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#centos7-deploys-on-lxd-clouds">
-         CentOS7 Deploys on LXD clouds
-        </a>
-       </li>
-      </ul>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Add a model
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#maas">
-     MAAS
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id2">
-       Login to a Juju controller
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       Add a model
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#deploy-slurm">
-   Deploy Slurm
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Installation overview</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-juju">Install Juju</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-cloud">Setup cloud</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aws">AWS</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#login-to-a-juju-controller">Login to a Juju controller</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-model">Add a model</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lxd">LXD</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-a-localhost-lxd-juju-controller">Bootstrap a localhost LXD Juju controller</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#centos7-deploys-on-lxd-clouds">CentOS7 Deploys on LXD clouds</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Add a model</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maas">MAAS</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Login to a Juju controller</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Add a model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-slurm">Deploy Slurm</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <div class="section" id="installation-overview">
-<span id="installation"></span><h1>Installation overview<a class="headerlink" href="#installation-overview" title="Permalink to this headline">#</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="installation-overview">
+<span id="installation"></span><h1>Installation overview<a class="headerlink" href="#installation-overview" title="Permalink to this heading">#</a></h1>
 <p>The OSD can be installed on a cloud of your choosing. The only common component
 used across deployments is <a class="reference external" href="https://juju.is">juju</a> itself. You must have the Juju client
 installed on your local system in order to administer the installation and
 deployment of the Slurm charms.</p>
-<div class="section" id="install-juju">
-<h2>Install Juju<a class="headerlink" href="#install-juju" title="Permalink to this headline">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo snap install juju --classic
+<section id="install-juju">
+<h2>Install Juju<a class="headerlink" href="#install-juju" title="Permalink to this heading">#</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>juju<span class="w"> </span>--classic
 </pre></div>
 </div>
 <p>Once the Juju client is installed you will be ready to proceed with deploying
 Slurm to a cloud of your choosing.</p>
-</div>
-<div class="section" id="setup-cloud">
-<h2>Setup cloud<a class="headerlink" href="#setup-cloud" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="setup-cloud">
+<h2>Setup cloud<a class="headerlink" href="#setup-cloud" title="Permalink to this heading">#</a></h2>
 <p>Follow the documentation for the cloud you with to deploy Slurm on:</p>
-<div class="section" id="aws">
-<h3>AWS<a class="headerlink" href="#aws" title="Permalink to this headline">#</a></h3>
-<div class="section" id="login-to-a-juju-controller">
-<h4>Login to a Juju controller<a class="headerlink" href="#login-to-a-juju-controller" title="Permalink to this headline">#</a></h4>
+<section id="aws">
+<h3>AWS<a class="headerlink" href="#aws" title="Permalink to this heading">#</a></h3>
+<section id="login-to-a-juju-controller">
+<h4>Login to a Juju controller<a class="headerlink" href="#login-to-a-juju-controller" title="Permalink to this heading">#</a></h4>
 <p>In any deployment scenario we will need to be logged into a Juju controller.
 For this example we will login to the public Juju controller, JAAS.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju login jaas
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>login<span class="w"> </span>jaas
 </pre></div>
 </div>
-</div>
-<div class="section" id="add-a-model">
-<h4>Add a model<a class="headerlink" href="#add-a-model" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="add-a-model">
+<h4>Add a model<a class="headerlink" href="#add-a-model" title="Permalink to this heading">#</a></h4>
 <p>Once you are logged into a Juju controller you need to add a model. Run the
 following command to add the model that will house the OSD.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju add-model slurm aws/us-west-2
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>add-model<span class="w"> </span>slurm<span class="w"> </span>aws/us-west-2
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="lxd">
-<h3>LXD<a class="headerlink" href="#lxd" title="Permalink to this headline">#</a></h3>
-<div class="section" id="bootstrap-a-localhost-lxd-juju-controller">
-<h4>Bootstrap a localhost LXD Juju controller<a class="headerlink" href="#bootstrap-a-localhost-lxd-juju-controller" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+<section id="lxd">
+<h3>LXD<a class="headerlink" href="#lxd" title="Permalink to this heading">#</a></h3>
+<section id="bootstrap-a-localhost-lxd-juju-controller">
+<h4>Bootstrap a localhost LXD Juju controller<a class="headerlink" href="#bootstrap-a-localhost-lxd-juju-controller" title="Permalink to this heading">#</a></h4>
 <p>In any deployment scenario we will need to be logged into a Juju controller.
 For this example we will bootstrap a Juju controller in a LXD container on our
 local machine.</p>
 <p>Install and configure LXD, if you haven't already:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo snap install lxd
-$ lxd init --auto
-$ lxc network <span class="nb">set</span> lxdbr0 ipv6.address none
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>lxd
+$<span class="w"> </span>lxd<span class="w"> </span>init<span class="w"> </span>--auto
+$<span class="w"> </span>lxc<span class="w"> </span>network<span class="w"> </span><span class="nb">set</span><span class="w"> </span>lxdbr0<span class="w"> </span>ipv6.address<span class="w"> </span>none
 </pre></div>
 </div>
 <div class="admonition note">
@@ -636,95 +435,95 @@ $ lxc network <span class="nb">set</span> lxdbr0 ipv6.address none
 <p>Juju does not support IPv6, the last command disables it.</p>
 </div>
 <p>You can now bootstrap your local cloud:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju bootstrap localhost
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>bootstrap<span class="w"> </span>localhost
 </pre></div>
 </div>
 <p>Following a successful bootstrap, <code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">controllers</span></code> will show your newly
 provisioned LXD controller.</p>
-<div class="section" id="centos7-deploys-on-lxd-clouds">
-<span id="centos7-image"></span><h5>CentOS7 Deploys on LXD clouds<a class="headerlink" href="#centos7-deploys-on-lxd-clouds" title="Permalink to this headline">#</a></h5>
+<section id="centos7-deploys-on-lxd-clouds">
+<span id="centos7-image"></span><h5>CentOS7 Deploys on LXD clouds<a class="headerlink" href="#centos7-deploys-on-lxd-clouds" title="Permalink to this heading">#</a></h5>
 <p>You need to manually create an LXD image for CentOS7 in order to deploy it with
 Juju.</p>
 <p>First step is to download a configuration file describing the image:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget https://raw.githubusercontent.com/lxc/lxc-ci/master/images/centos.yaml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>wget<span class="w"> </span>https://raw.githubusercontent.com/lxc/lxc-ci/master/images/centos.yaml
 </pre></div>
 </div>
 <p>Juju needs two extra packages (<cite>sudo</cite> and <cite>openssh-server</cite>) that are not in the
 base image. You need to manually add them in the <cite>packages</cite> section of the yaml
 file. The first <cite>set</cite> of packages in the file should then be:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>packages:
-  manager: yum
-  update: <span class="nb">true</span>
-  cleanup: <span class="nb">true</span>
-  sets:
-  - packages:
-    - cronie
-    - cronie-noanacron
-    - curl
-    - dhclient
-    - initscripts
-    - openssh-clients
-    - passwd
-    - policycoreutils
-    - rootfiles
-    - rsyslog
-    - vim-minimal
-    - sudo
-    - openssh-server
-    action: install
+<span class="w">  </span>manager:<span class="w"> </span>yum
+<span class="w">  </span>update:<span class="w"> </span><span class="nb">true</span>
+<span class="w">  </span>cleanup:<span class="w"> </span><span class="nb">true</span>
+<span class="w">  </span>sets:
+<span class="w">  </span>-<span class="w"> </span>packages:
+<span class="w">    </span>-<span class="w"> </span>cronie
+<span class="w">    </span>-<span class="w"> </span>cronie-noanacron
+<span class="w">    </span>-<span class="w"> </span>curl
+<span class="w">    </span>-<span class="w"> </span>dhclient
+<span class="w">    </span>-<span class="w"> </span>initscripts
+<span class="w">    </span>-<span class="w"> </span>openssh-clients
+<span class="w">    </span>-<span class="w"> </span>passwd
+<span class="w">    </span>-<span class="w"> </span>policycoreutils
+<span class="w">    </span>-<span class="w"> </span>rootfiles
+<span class="w">    </span>-<span class="w"> </span>rsyslog
+<span class="w">    </span>-<span class="w"> </span>vim-minimal
+<span class="w">    </span>-<span class="w"> </span>sudo
+<span class="w">    </span>-<span class="w"> </span>openssh-server
+<span class="w">    </span>action:<span class="w"> </span>install
 </pre></div>
 </div>
 <p>Now we need to install <cite>distrobuilder</cite> and generate the image:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo snap install distrobuilder --classic
-$ sudo distrobuilder build-lxd centos.yaml -o image.architecture<span class="o">=</span>x86_64 -o image.release<span class="o">=</span><span class="m">7</span> -o image.variant<span class="o">=</span>cloud
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>snap<span class="w"> </span>install<span class="w"> </span>distrobuilder<span class="w"> </span>--classic
+$<span class="w"> </span>sudo<span class="w"> </span>distrobuilder<span class="w"> </span>build-lxd<span class="w"> </span>centos.yaml<span class="w"> </span>-o<span class="w"> </span>image.architecture<span class="o">=</span>x86_64<span class="w"> </span>-o<span class="w"> </span>image.release<span class="o">=</span><span class="m">7</span><span class="w"> </span>-o<span class="w"> </span>image.variant<span class="o">=</span>cloud
 </pre></div>
 </div>
 <p>To make this new image available to Juju, we need to import it with an alias:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ lxc image import lxd.tar.xz rootfs.squashfs --alias juju/centos7/amd64
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>lxc<span class="w"> </span>image<span class="w"> </span>import<span class="w"> </span>lxd.tar.xz<span class="w"> </span>rootfs.squashfs<span class="w"> </span>--alias<span class="w"> </span>juju/centos7/amd64
 </pre></div>
 </div>
 <p>You can check that the image was correctly imported to LXD with
 <code class="docutils literal notranslate"><span class="pre">lxc</span> <span class="pre">image</span> <span class="pre">list</span></code>. To test it works with Juju, you can
 <code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">add-machine</span> <span class="pre">--series</span> <span class="pre">centos7</span></code>.</p>
-</div>
-</div>
-<div class="section" id="id1">
-<h4>Add a model<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+<section id="id1">
+<h4>Add a model<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
 <p>Once you have created your Juju controller you need to add a model. Run the
 following command to add the model that will house the OSD.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju add-model slurm
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>add-model<span class="w"> </span>slurm
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="maas">
-<h3>MAAS<a class="headerlink" href="#maas" title="Permalink to this headline">#</a></h3>
-<div class="section" id="id2">
-<h4>Login to a Juju controller<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+</section>
+</section>
+<section id="maas">
+<h3>MAAS<a class="headerlink" href="#maas" title="Permalink to this heading">#</a></h3>
+<section id="id2">
+<h4>Login to a Juju controller<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
 <p>If you don't already have a Juju controller, bootstrap Juju by creating a Juju
 controller machine.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju bootstrap
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>bootstrap
 </pre></div>
 </div>
-</div>
-<div class="section" id="id3">
-<h4>Add a model<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="id3">
+<h4>Add a model<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
 <p>Once you are logged into a Juju controller you need to add a model. Run the
 following command to add the model that will house the OSD.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju add-model slurm
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>add-model<span class="w"> </span>slurm
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="deploy-slurm">
-<h2>Deploy Slurm<a class="headerlink" href="#deploy-slurm" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+</section>
+<section id="deploy-slurm">
+<h2>Deploy Slurm<a class="headerlink" href="#deploy-slurm" title="Permalink to this heading">#</a></h2>
 <p>Now it is time to get Slurm :)</p>
 <p>We provide a bundle and overlays to simplify deploying all the components
 needed for a complete Slurm cluster in the repository <a class="reference external" href="https://github.com/omnivector-solutions/slurm-bundles">slurm-bundles</a>. First, clone the
 repository and then enter it:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/omnivector-solutions/slurm-bundles
-$ <span class="nb">cd</span> slurm-bundles
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/omnivector-solutions/slurm-bundles
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>slurm-bundles
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">slurm-core</span></code> directory contains all the bundles and overlays to deploy a
@@ -757,9 +556,9 @@ to the <code class="docutils literal notranslate"><span class="pre">slurm-charms
 </ul>
 <p>For example, to deploy Slurm to a local LXD cloud, on Ubuntu Focal, using the
 <code class="docutils literal notranslate"><span class="pre">latest/stable</span></code> charms:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju deploy ./slurm-core/bundle.yaml <span class="se">\</span>
-              --overlay ./slurm-core/clouds/lxd.yaml <span class="se">\</span>
-              --overlay ./slurm-core/series/focal.yaml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>deploy<span class="w"> </span>./slurm-core/bundle.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>--overlay<span class="w"> </span>./slurm-core/clouds/lxd.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>--overlay<span class="w"> </span>./slurm-core/series/focal.yaml
 </pre></div>
 </div>
 <p>Juju will then download the charms from Charmhub, create the applications,
@@ -777,39 +576,39 @@ supported and might result in a broken system.</p>
 </div>
 <p>It will take a moment get everything ready. You can check the status of your
 model with <code class="docutils literal notranslate"><span class="pre">juju</span> <span class="pre">status</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ watch -n <span class="m">1</span> -c juju status --color
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>watch<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>-c<span class="w"> </span>juju<span class="w"> </span>status<span class="w"> </span>--color
 
-Model    Controller  Cloud/Region         Version  SLA          Timestamp
-default  overlord    localhost/localhost  <span class="m">2</span>.8.7    unsupported  <span class="m">17</span>:44:29Z
+Model<span class="w">    </span>Controller<span class="w">  </span>Cloud/Region<span class="w">         </span>Version<span class="w">  </span>SLA<span class="w">          </span>Timestamp
+default<span class="w">  </span>overlord<span class="w">    </span>localhost/localhost<span class="w">  </span><span class="m">2</span>.8.7<span class="w">    </span>unsupported<span class="w">  </span><span class="m">17</span>:44:29Z
 
-App              Version  Status  Scale  Charm            Store       Channel  Rev  OS      Message
-percona-cluster  <span class="m">5</span>.7.20   active      <span class="m">1</span>  percona-cluster  charmstore  stable   <span class="m">293</span>  ubuntu  Unit is ready
-slurmctld        <span class="m">0</span>.6.4    active      <span class="m">1</span>  slurmctld        charmhub    stable     <span class="m">7</span>  ubuntu  slurmctld available
-slurmd           <span class="m">0</span>.6.4    active      <span class="m">1</span>  slurmd           charmhub    stable    <span class="m">13</span>  ubuntu  slurmd available
-slurmdbd         <span class="m">0</span>.6.4    active      <span class="m">1</span>  slurmdbd         charmhub    stable     <span class="m">5</span>  ubuntu  slurmdbd ready
-slurmrestd       <span class="m">0</span>.6.4    active      <span class="m">1</span>  slurmrestd       charmhub    stable     <span class="m">5</span>  ubuntu  slurmrestd available
+App<span class="w">              </span>Version<span class="w">  </span>Status<span class="w">  </span>Scale<span class="w">  </span>Charm<span class="w">            </span>Store<span class="w">       </span>Channel<span class="w">  </span>Rev<span class="w">  </span>OS<span class="w">      </span>Message
+percona-cluster<span class="w">  </span><span class="m">5</span>.7.20<span class="w">   </span>active<span class="w">      </span><span class="m">1</span><span class="w">  </span>percona-cluster<span class="w">  </span>charmstore<span class="w">  </span>stable<span class="w">   </span><span class="m">293</span><span class="w">  </span>ubuntu<span class="w">  </span>Unit<span class="w"> </span>is<span class="w"> </span>ready
+slurmctld<span class="w">        </span><span class="m">0</span>.6.4<span class="w">    </span>active<span class="w">      </span><span class="m">1</span><span class="w">  </span>slurmctld<span class="w">        </span>charmhub<span class="w">    </span>stable<span class="w">     </span><span class="m">7</span><span class="w">  </span>ubuntu<span class="w">  </span>slurmctld<span class="w"> </span>available
+slurmd<span class="w">           </span><span class="m">0</span>.6.4<span class="w">    </span>active<span class="w">      </span><span class="m">1</span><span class="w">  </span>slurmd<span class="w">           </span>charmhub<span class="w">    </span>stable<span class="w">    </span><span class="m">13</span><span class="w">  </span>ubuntu<span class="w">  </span>slurmd<span class="w"> </span>available
+slurmdbd<span class="w">         </span><span class="m">0</span>.6.4<span class="w">    </span>active<span class="w">      </span><span class="m">1</span><span class="w">  </span>slurmdbd<span class="w">         </span>charmhub<span class="w">    </span>stable<span class="w">     </span><span class="m">5</span><span class="w">  </span>ubuntu<span class="w">  </span>slurmdbd<span class="w"> </span>ready
+slurmrestd<span class="w">       </span><span class="m">0</span>.6.4<span class="w">    </span>active<span class="w">      </span><span class="m">1</span><span class="w">  </span>slurmrestd<span class="w">       </span>charmhub<span class="w">    </span>stable<span class="w">     </span><span class="m">5</span><span class="w">  </span>ubuntu<span class="w">  </span>slurmrestd<span class="w"> </span>available
 
-Unit                   Workload  Agent  Machine  Public address  Ports     Message
-percona-cluster/0*     active    idle   <span class="m">0</span>        <span class="m">10</span>.34.166.18    <span class="m">3306</span>/tcp  Unit is ready
-slurmctld/0*           active    idle   <span class="m">2</span>        <span class="m">10</span>.34.166.222             slurmctld available
-slurmd/0*              active    idle   <span class="m">3</span>        <span class="m">10</span>.34.166.219             slurmd available
-slurmdbd/0*            active    idle   <span class="m">4</span>        <span class="m">10</span>.34.166.218             slurmdbd available
-slurmrestd/0*          active    idle   <span class="m">5</span>        <span class="m">10</span>.34.166.66              slurmrestd available
+Unit<span class="w">                   </span>Workload<span class="w">  </span>Agent<span class="w">  </span>Machine<span class="w">  </span>Public<span class="w"> </span>address<span class="w">  </span>Ports<span class="w">     </span>Message
+percona-cluster/0*<span class="w">     </span>active<span class="w">    </span>idle<span class="w">   </span><span class="m">0</span><span class="w">        </span><span class="m">10</span>.34.166.18<span class="w">    </span><span class="m">3306</span>/tcp<span class="w">  </span>Unit<span class="w"> </span>is<span class="w"> </span>ready
+slurmctld/0*<span class="w">           </span>active<span class="w">    </span>idle<span class="w">   </span><span class="m">2</span><span class="w">        </span><span class="m">10</span>.34.166.222<span class="w">             </span>slurmctld<span class="w"> </span>available
+slurmd/0*<span class="w">              </span>active<span class="w">    </span>idle<span class="w">   </span><span class="m">3</span><span class="w">        </span><span class="m">10</span>.34.166.219<span class="w">             </span>slurmd<span class="w"> </span>available
+slurmdbd/0*<span class="w">            </span>active<span class="w">    </span>idle<span class="w">   </span><span class="m">4</span><span class="w">        </span><span class="m">10</span>.34.166.218<span class="w">             </span>slurmdbd<span class="w"> </span>available
+slurmrestd/0*<span class="w">          </span>active<span class="w">    </span>idle<span class="w">   </span><span class="m">5</span><span class="w">        </span><span class="m">10</span>.34.166.66<span class="w">              </span>slurmrestd<span class="w"> </span>available
 
-Machine  State    DNS            Inst id        Series  AZ  Message
-<span class="m">0</span>        started  <span class="m">10</span>.34.166.18   juju-01ab62-0  bionic      Running
-<span class="m">2</span>        started  <span class="m">10</span>.34.166.222  juju-01ab62-2  focal       Running
-<span class="m">3</span>        started  <span class="m">10</span>.34.166.219  juju-01ab62-3  focal       Running
-<span class="m">4</span>        started  <span class="m">10</span>.34.166.218  juju-01ab62-4  focal       Running
-<span class="m">5</span>        started  <span class="m">10</span>.34.166.66   juju-01ab62-5  focal       Running
+Machine<span class="w">  </span>State<span class="w">    </span>DNS<span class="w">            </span>Inst<span class="w"> </span>id<span class="w">        </span>Series<span class="w">  </span>AZ<span class="w">  </span>Message
+<span class="m">0</span><span class="w">        </span>started<span class="w">  </span><span class="m">10</span>.34.166.18<span class="w">   </span>juju-01ab62-0<span class="w">  </span>bionic<span class="w">      </span>Running
+<span class="m">2</span><span class="w">        </span>started<span class="w">  </span><span class="m">10</span>.34.166.222<span class="w">  </span>juju-01ab62-2<span class="w">  </span>focal<span class="w">       </span>Running
+<span class="m">3</span><span class="w">        </span>started<span class="w">  </span><span class="m">10</span>.34.166.219<span class="w">  </span>juju-01ab62-3<span class="w">  </span>focal<span class="w">       </span>Running
+<span class="m">4</span><span class="w">        </span>started<span class="w">  </span><span class="m">10</span>.34.166.218<span class="w">  </span>juju-01ab62-4<span class="w">  </span>focal<span class="w">       </span>Running
+<span class="m">5</span><span class="w">        </span>started<span class="w">  </span><span class="m">10</span>.34.166.66<span class="w">   </span>juju-01ab62-5<span class="w">  </span>focal<span class="w">       </span>Running
 </pre></div>
 </div>
 <p>Once the workload status is <em>active</em> and the agent status is <em>idle</em>, the Slurm
 cluster is ready for use.</p>
 <p>You can see the status of your cluster by running the <code class="docutils literal notranslate"><span class="pre">sinfo</span></code> command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run --unit slurmctld/0 sinfo
-PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
-osd-slurmd           up   infinite      <span class="m">1</span>   down juju-01ab62-3
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>run<span class="w"> </span>--unit<span class="w"> </span>slurmctld/0<span class="w"> </span>sinfo
+PARTITION<span class="w">         </span>AVAIL<span class="w">  </span>TIMELIMIT<span class="w">  </span>NODES<span class="w">  </span>STATE<span class="w"> </span>NODELIST
+osd-slurmd<span class="w">           </span>up<span class="w">   </span>infinite<span class="w">      </span><span class="m">1</span><span class="w">   </span>down<span class="w"> </span>juju-01ab62-3
 </pre></div>
 </div>
 <p>The nodes start in <em>down</em> state with a <code class="docutils literal notranslate"><span class="pre">Reason</span> <span class="pre">=</span> <span class="pre">New</span> <span class="pre">node</span></code>, so when you add
@@ -817,68 +616,139 @@ more nodes to the cluster, they will not execute the jobs from queue. This way
 it is possible to do some post installation before setting the nodes as <em>idle</em>.
 You can double check that your nodes are down because of this and not some
 other reason with <code class="docutils literal notranslate"><span class="pre">sinfo</span> <span class="pre">-R</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run --unit slurmctld/0 <span class="s2">&quot;sinfo -R&quot;</span>
-REASON               USER      TIMESTAMP           NODELIST
-New node             root      <span class="m">2021</span>-03-09T20:24:09 ip-172-31-83-4
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>run<span class="w"> </span>--unit<span class="w"> </span>slurmctld/0<span class="w"> </span><span class="s2">&quot;sinfo -R&quot;</span>
+REASON<span class="w">               </span>USER<span class="w">      </span>TIMESTAMP<span class="w">           </span>NODELIST
+New<span class="w"> </span>node<span class="w">             </span>root<span class="w">      </span><span class="m">2021</span>-03-09T20:24:09<span class="w"> </span>ip-172-31-83-4
 </pre></div>
 </div>
 <p>After setting the node up, to bring it back you need to run a Juju <em>action</em>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ juju run-action slurmd/1 node-configured
-$ juju run --unit slurmctld/0 sinfo
-PARTITION         AVAIL  TIMELIMIT  NODES  STATE NODELIST
-osd-slurmd           up   infinite      <span class="m">1</span>   idle juju-01ab62-3
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>juju<span class="w"> </span>run-action<span class="w"> </span>slurmd/1<span class="w"> </span>node-configured
+$<span class="w"> </span>juju<span class="w"> </span>run<span class="w"> </span>--unit<span class="w"> </span>slurmctld/0<span class="w"> </span>sinfo
+PARTITION<span class="w">         </span>AVAIL<span class="w">  </span>TIMELIMIT<span class="w">  </span>NODES<span class="w">  </span>STATE<span class="w"> </span>NODELIST
+osd-slurmd<span class="w">           </span>up<span class="w">   </span>infinite<span class="w">      </span><span class="m">1</span><span class="w">   </span>idle<span class="w"> </span>juju-01ab62-3
 </pre></div>
 </div>
 <p>Please refer to our <a class="reference internal" href="operations/overview.html#operations"><span class="std std-ref">Operations</span></a> section for detailed instructions on how
 to manage the cluster.</p>
-</div>
-</div>
+</section>
+</section>
 
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="architecture.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">OSD Architecture</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="architecture.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">OSD Architecture</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="operations/overview.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="operations/overview.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Operations</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-juju">Install Juju</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-cloud">Setup cloud</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aws">AWS</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#login-to-a-juju-controller">Login to a Juju controller</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-model">Add a model</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lxd">LXD</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-a-localhost-lxd-juju-controller">Bootstrap a localhost LXD Juju controller</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#centos7-deploys-on-lxd-clouds">CentOS7 Deploys on LXD clouds</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Add a model</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maas">MAAS</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Login to a Juju controller</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Add a model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-slurm">Deploy Slurm</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By Omnivector Solutions<br/>
-  
-      &copy; Copyright 2021-2022, Omnivector Solutions.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By Omnivector Solutions
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2021-2023, Omnivector Solutions.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
