@@ -34,10 +34,7 @@ configuration options and actions.
    partitions
    munge
    infiniband
-   gpu
    nhc
-   singularity
-   mpi
    backup-restore
    upgrading-osd
    accounting-profiling
