@@ -25,7 +25,7 @@ jobs:
       - name: "Install dependencies"
         run: |
           sudo apt update
-          sudo apt install -y graphviz enchant python3-enchant hunspell
+          sudo apt install -y graphviz enchant-2 python3-enchant hunspell
           pip install -r requirements.txt
 
       - name: "Build the HTML docs"
