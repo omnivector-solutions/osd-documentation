@@ -46,11 +46,6 @@ administrator mus provide the ``tar.gz`` for ``nhc``. It is possible, and
 recommended, that the cluster administrator extends these checks. Check
 :ref:`nhc` section for details on how to configure it.
 
-The easiest way to install Infiniband drivers on the compute nodes is to use
-the charm supplied actions related to Infiniband management. Check
-:ref:`infiniband` section for more details on Infiniband driver lifecycle
-operations.
-
 .. |slurmd-badge| image:: https://charmhub.io/slurmd/badge.svg
    :target: https://charmhub.io/slurmd
 

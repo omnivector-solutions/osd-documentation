@@ -7,6 +7,12 @@ This file keeps track of all notable changes to the Slurm Charms.
 Unreleased
 ----------
 
+- changed license to Apache-2.0
+- removed the action in slurmd to install InfiniBand drivers
+- removed the action in slurmd to install Nvidia drivers
+- removed the action in slurmd to install Singularity
+- removed the action in slurmd to install MPI (mpich)
+
 1.0.0 - 2022-10-17
 ------------------
 

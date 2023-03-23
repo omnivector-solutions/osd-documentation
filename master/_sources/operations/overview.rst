@@ -33,7 +33,6 @@ configuration options and actions.
    nodes
    partitions
    munge
-   infiniband
    nhc
    backup-restore
    upgrading-osd

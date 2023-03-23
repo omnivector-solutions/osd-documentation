@@ -135,7 +135,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../operations/nodes.html">Nodes operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../operations/partitions.html">Partitions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../operations/munge.html">Munge operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../operations/infiniband.html">Infiniband</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../operations/nhc.html">NHC</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../operations/backup-restore.html">Backup and restore the Slurm database</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../operations/upgrading-osd.html">Upgrade OSD</a></li>
@@ -361,19 +360,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-node-inventory"><code class="docutils literal notranslate"><span class="pre">get-node-inventory</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-node-inventory"><code class="docutils literal notranslate"><span class="pre">set-node-inventory</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#show-nhc-config"><code class="docutils literal notranslate"><span class="pre">show-nhc-config</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-infiniband-repo"><code class="docutils literal notranslate"><span class="pre">get-infiniband-repo</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-infiniband-repo"><code class="docutils literal notranslate"><span class="pre">set-infiniband-repo</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-infiniband"><code class="docutils literal notranslate"><span class="pre">install-infiniband</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uninstall-infiniband"><code class="docutils literal notranslate"><span class="pre">uninstall-infiniband</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#start-infiniband"><code class="docutils literal notranslate"><span class="pre">start-infiniband</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-infiniband"><code class="docutils literal notranslate"><span class="pre">enable-infiniband</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stop-infiniband"><code class="docutils literal notranslate"><span class="pre">stop-infiniband</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-active-infiniband"><code class="docutils literal notranslate"><span class="pre">is-active-infiniband</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nvidia-repo"><code class="docutils literal notranslate"><span class="pre">nvidia-repo</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nvidia-package"><code class="docutils literal notranslate"><span class="pre">nvidia-package</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nvidia-install"><code class="docutils literal notranslate"><span class="pre">nvidia-install</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singularity-install"><code class="docutils literal notranslate"><span class="pre">singularity-install</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mpi-install"><code class="docutils literal notranslate"><span class="pre">mpi-install</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -485,100 +471,6 @@ document.write(`
 <h3><code class="docutils literal notranslate"><span class="pre">show-nhc-config</span></code><a class="headerlink" href="#show-nhc-config" title="Permalink to this heading">#</a></h3>
 <p>Display the currently used <code class="docutils literal notranslate"><span class="pre">nhc.conf</span></code>.</p>
 </section>
-<section id="get-infiniband-repo">
-<h3><code class="docutils literal notranslate"><span class="pre">get-infiniband-repo</span></code><a class="headerlink" href="#get-infiniband-repo" title="Permalink to this heading">#</a></h3>
-<p>Display the currently configured repository for Infiniband drivers.</p>
-</section>
-<section id="set-infiniband-repo">
-<h3><code class="docutils literal notranslate"><span class="pre">set-infiniband-repo</span></code><a class="headerlink" href="#set-infiniband-repo" title="Permalink to this heading">#</a></h3>
-<p>Overrides the repository file with a custom repository for Infiniband installation.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This file should be base64 encoded.</p>
-</div>
-<p>On CentOS, the file is placed at <code class="docutils literal notranslate"><span class="pre">/etc/yum.repos.d/infiniband.repo</span></code>, while on Ubuntu it is at <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list.d/infiniband.list</span></code>.</p>
-<p>Parameters:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">repo</span></code>: Base64 encoded string that holds all information about the repository.</p>
-<ul>
-<li><p>type: string</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="install-infiniband">
-<h3><code class="docutils literal notranslate"><span class="pre">install-infiniband</span></code><a class="headerlink" href="#install-infiniband" title="Permalink to this heading">#</a></h3>
-<p>Install Mellanox Infiniband drivers. This might take a few minutes to complete.</p>
-<p>If no custom repository was specified before, this action will set the Mellanox repository as the default and install the latest drivers from it.</p>
-</section>
-<section id="uninstall-infiniband">
-<h3><code class="docutils literal notranslate"><span class="pre">uninstall-infiniband</span></code><a class="headerlink" href="#uninstall-infiniband" title="Permalink to this heading">#</a></h3>
-<p>Uninstall Mellanox Infiniband drivers.</p>
-</section>
-<section id="start-infiniband">
-<h3><code class="docutils literal notranslate"><span class="pre">start-infiniband</span></code><a class="headerlink" href="#start-infiniband" title="Permalink to this heading">#</a></h3>
-<p>Start Infiniband systemd service.</p>
-</section>
-<section id="enable-infiniband">
-<h3><code class="docutils literal notranslate"><span class="pre">enable-infiniband</span></code><a class="headerlink" href="#enable-infiniband" title="Permalink to this heading">#</a></h3>
-<p>Enable Infiniband systemd service.</p>
-</section>
-<section id="stop-infiniband">
-<h3><code class="docutils literal notranslate"><span class="pre">stop-infiniband</span></code><a class="headerlink" href="#stop-infiniband" title="Permalink to this heading">#</a></h3>
-<p>Stop Infiniband systemd service.</p>
-</section>
-<section id="is-active-infiniband">
-<h3><code class="docutils literal notranslate"><span class="pre">is-active-infiniband</span></code><a class="headerlink" href="#is-active-infiniband" title="Permalink to this heading">#</a></h3>
-<p>Check if Infiniband systemd service is active.</p>
-</section>
-<section id="nvidia-repo">
-<h3><code class="docutils literal notranslate"><span class="pre">nvidia-repo</span></code><a class="headerlink" href="#nvidia-repo" title="Permalink to this heading">#</a></h3>
-<p>Get or set the repository used to install Nvidia drivers.</p>
-<p>This value must be set <strong>before</strong> installing the drivers. Changing it afterwards has no impact on the system.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The repository file must be base64 encoded when using this action.</p>
-</div>
-<p>Parameters:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">repo</span></code>: If specified, set the repository to the value specified.</p>
-<ul>
-<li><p>type: string</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="nvidia-package">
-<h3><code class="docutils literal notranslate"><span class="pre">nvidia-package</span></code><a class="headerlink" href="#nvidia-package" title="Permalink to this heading">#</a></h3>
-<p>Get or set the Nvidia driver package name.</p>
-<p>This value must be set <strong>before</strong> installing the drivers. Changing it afterwards has no impact on the system.</p>
-<p>Parameters:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">package</span></code>: If specified, set the package name to the value specified</p>
-<ul>
-<li><p>type: string</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="nvidia-install">
-<h3><code class="docutils literal notranslate"><span class="pre">nvidia-install</span></code><a class="headerlink" href="#nvidia-install" title="Permalink to this heading">#</a></h3>
-<p>Install Nvidia GPU drivers. This might take a few minutes to complete.</p>
-<p>If no custom repository was specified before, this action will set the Nvidia repository as the default and install the latest drivers from it.</p>
-</section>
-<section id="singularity-install">
-<h3><code class="docutils literal notranslate"><span class="pre">singularity-install</span></code><a class="headerlink" href="#singularity-install" title="Permalink to this heading">#</a></h3>
-<p>Install Singularity. This might take a few minutes to complete.</p>
-<p>This action will install singularity using the official .deb (Ubuntu)  or .rpm (CentOS) packages retrieved from GitHub Releases.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The .deb or .rpm files must be supplied as Juju resources.</p>
-</div>
-</section>
-<section id="mpi-install">
-<h3><code class="docutils literal notranslate"><span class="pre">mpi-install</span></code><a class="headerlink" href="#mpi-install" title="Permalink to this heading">#</a></h3>
-<p>Install MPI (<code class="docutils literal notranslate"><span class="pre">mpich</span></code>). This might take a few minutes to complete.</p>
-</section>
 </section>
 </section>
 
@@ -638,19 +530,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-node-inventory"><code class="docutils literal notranslate"><span class="pre">get-node-inventory</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-node-inventory"><code class="docutils literal notranslate"><span class="pre">set-node-inventory</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#show-nhc-config"><code class="docutils literal notranslate"><span class="pre">show-nhc-config</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-infiniband-repo"><code class="docutils literal notranslate"><span class="pre">get-infiniband-repo</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-infiniband-repo"><code class="docutils literal notranslate"><span class="pre">set-infiniband-repo</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-infiniband"><code class="docutils literal notranslate"><span class="pre">install-infiniband</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uninstall-infiniband"><code class="docutils literal notranslate"><span class="pre">uninstall-infiniband</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#start-infiniband"><code class="docutils literal notranslate"><span class="pre">start-infiniband</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enable-infiniband"><code class="docutils literal notranslate"><span class="pre">enable-infiniband</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stop-infiniband"><code class="docutils literal notranslate"><span class="pre">stop-infiniband</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-active-infiniband"><code class="docutils literal notranslate"><span class="pre">is-active-infiniband</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nvidia-repo"><code class="docutils literal notranslate"><span class="pre">nvidia-repo</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nvidia-package"><code class="docutils literal notranslate"><span class="pre">nvidia-package</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nvidia-install"><code class="docutils literal notranslate"><span class="pre">nvidia-install</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singularity-install"><code class="docutils literal notranslate"><span class="pre">singularity-install</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mpi-install"><code class="docutils literal notranslate"><span class="pre">mpi-install</span></code></a></li>
 </ul>
 </li>
 </ul>
