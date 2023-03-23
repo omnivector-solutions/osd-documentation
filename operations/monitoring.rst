@@ -76,5 +76,5 @@ functionality:
 Please refer to these charms' documentation for configuration details.
 
 You can use the `Grafana Dashboard 4323
-<https://grafana.com/dashboards/4323>`_ to visualize the metrics exported via
+<https://grafana.com/grafana/dashboards/4323-slurm-dashboard/>`_ to visualize the metrics exported via
 ``slurm-exporter``.
