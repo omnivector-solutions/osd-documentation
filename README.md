@@ -59,7 +59,7 @@
 Before you begin, ensure you have met the following requirements:
 
 - A modern Python installation
-- [sphinx](https://sphinx-doc.org/)
+- [sphinx](https://www.sphinx-doc.org/)
 
 ## Building the documentation
 
